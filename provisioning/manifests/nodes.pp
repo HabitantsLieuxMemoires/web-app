@@ -1,0 +1,33 @@
+node "staging.hlm.fr" {
+  # Packages
+  $packages = ['git-core', 'curl']
+  package { $packages:
+    ensure => present,
+  }
+
+  # User
+  account { 'hlm':
+    ensure    => present,
+    comment   => 'HLM user',
+  }
+
+  # RBEnv
+  class { 'rbenv': }
+  rbenv::plugin { 'sstephenson/ruby-build': }
+  rbenv::build { '2.1.1': global => true }
+
+  # MongoDB
+  class {'::mongodb::globals':
+    manage_package_repo => true,
+  }->
+  class {'::mongodb::server': }
+
+  mongodb::db { 'hlm_development':
+    user      => 'hlm',
+    password  => 'hlm',
+  }
+
+  #TODO: ElasticSearch
+
+  realize Account['hlm']
+}
