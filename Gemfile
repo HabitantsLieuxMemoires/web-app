@@ -25,14 +25,23 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Use MongoDB as the document database
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-# Use MongoDB as the document database
-gem 'mongoid', github: 'mongoid/mongoid'
-gem 'bson_ext'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'spork'
+  gem 'faker'
+  gem 'capybara'
+  gem 'glebtv-mongoid-rspec'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
