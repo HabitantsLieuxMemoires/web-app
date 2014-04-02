@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 1.2'
 # Use MongoDB as the document database
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
+gem 'mongoid-enum', github: 'connectedbits/mongoid-enum'
+
+# Using Sorcery as authentication manager
+gem 'sorcery'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -41,6 +45,8 @@ group :development, :test do
   gem 'faker'
   gem 'capybara'
   gem 'glebtv-mongoid-rspec'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
