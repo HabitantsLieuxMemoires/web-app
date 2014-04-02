@@ -65,6 +65,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     connection_pool (2.0.0)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -205,6 +206,7 @@ DEPENDENCIES
   bson_ext
   capybara
   coffee-rails (~> 4.0.0)
+  database_cleaner
   factory_girl_rails
   faker
   glebtv-mongoid-rspec

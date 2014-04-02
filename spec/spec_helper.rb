@@ -3,22 +3,31 @@ require 'spork'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
-  require 'rspec/rails'
-  require 'rspec/autorun'
-  require 'capybara/rspec'
 
-  # require rspec support files
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  # Mongoid models reload
+  require 'rails/mongoid'
+  Spork.trap_class_method(Rails::Mongoid, :load_models)
+
+  # Routes and app/ classes reload
+  require 'rails/application'
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+  Spork.trap_method(Rails::Application, :eager_load!)
+
+  # Load railties
+  require File.expand_path('../../config/environment', __FILE__)
+
+  # General require
+  require 'rspec/rails'
+  require 'capybara/rspec'
+  require 'database_cleaner'
 
   RSpec.configure do |config|
     config.mock_with :rspec
 
     # Drop databases before each spec
-    config.before do
-      Mongoid.purge!
-    end
-
+    config.before(:suite) { DatabaseCleaner.strategy = :truncation }
+    config.before(:suite) { DatabaseCleaner.orm      = :mongoid }
+    config.before(:each)  { DatabaseCleaner.clean }
 
     # Include Factory Girl syntax to simplify calls to factories
     config.include FactoryGirl::Syntax::Methods
@@ -30,5 +39,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  require 'factory_girl_rails'
   FactoryGirl.reload
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 end
