@@ -11,5 +11,6 @@ feature 'User logs out' do
 
     logout
     expect(page).to have_content('Log in')
+    expect(current_path).to eq(root_path)
   end
 end
