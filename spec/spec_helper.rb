@@ -14,10 +14,17 @@ Spork.prefork do
   RSpec.configure do |config|
     config.mock_with :rspec
 
-    # drop databases before each spec
-    config.before(:each) do
+    # Drop databases before each spec
+    config.before do
       Mongoid.purge!
     end
+
+
+    # Include Factory Girl syntax to simplify calls to factories
+    config.include FactoryGirl::Syntax::Methods
+
+    # Include Sorcery helpers
+    config.include Sorcery::TestHelpers::Rails
   end
 
 end
