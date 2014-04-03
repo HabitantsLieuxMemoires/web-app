@@ -10,16 +10,14 @@ module Features
     end
 
     def login_with(email, password)
-      visit root_path
-      click_on 'Log in'
+      visit login_path
       fill_in 'Identity', with: email
       fill_in 'Password', with: password
       click_button 'Log in'
     end
 
     def login_with_nickname(nickname, password)
-      visit root_path
-      click_on 'Log in'
+      visit login_path
       fill_in 'Identity', with: nickname
       fill_in 'Password', with: password
       click_button 'Log in'
@@ -28,6 +26,12 @@ module Features
     def logout
       visit root_path
       click_on 'Log out'
+    end
+
+    def reset_password_with(identity)
+      visit new_password_reset_path
+      fill_in 'Identity', with: identity
+      click_button 'Reset password'
     end
   end
 end

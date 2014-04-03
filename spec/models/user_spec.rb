@@ -3,7 +3,7 @@ require 'spec_helper'
 #TODO: Find a way to role field (actually mongoid-rspec does not support Mongoid::Enum module)
 describe User do
 
-  describe "validations" do
+  describe "contains validators" do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password) }
     it { should validate_uniqueness_of(:email) }

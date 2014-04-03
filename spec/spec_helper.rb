@@ -20,6 +20,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'capybara/rspec'
   require 'database_cleaner'
+  require 'email_spec'
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -34,6 +35,12 @@ Spork.prefork do
 
     # Include Sorcery helpers
     config.include Sorcery::TestHelpers::Rails
+
+    # Include email helpers
+    config.include(EmailSpec::Helpers)
+    config.include(EmailSpec::Matchers)
+
+    Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   end
 
 end
@@ -41,5 +48,4 @@ end
 Spork.each_run do
   require 'factory_girl_rails'
   FactoryGirl.reload
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 end

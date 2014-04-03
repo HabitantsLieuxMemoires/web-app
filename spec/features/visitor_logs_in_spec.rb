@@ -41,8 +41,14 @@ feature 'Visitor logs in' do
   end
 
   scenario 'and can sign up on the same page' do
-    visit signup_path
+    visit login_path
 
     expect(page).to have_content('Sign up')
+  end
+
+  scenario 'and can reset password on the same page' do
+    visit login_path
+
+    expect(page).to have_content('Reset password')
   end
 end

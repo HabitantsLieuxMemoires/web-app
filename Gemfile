@@ -47,6 +47,7 @@ group :development, :test do
   gem 'glebtv-mongoid-rspec'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'email_spec'
 end
 
 # Use ActiveModel has_secure_password
