@@ -1,0 +1,10 @@
+<div class="login">
+  <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "Deconnexion", logout_path %>
+  <% else %>
+      <%= link_to "Inscription", signup_path %> or
+      <%= link_to "Identification", login_path %>
+  <% end %>
+</div>
+<div class="logo"><img src="http://www.digicitoyens.fr/wp-content/uploads/2011/03/2_Logo_150x150.gif"></div>

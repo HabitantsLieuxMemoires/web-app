@@ -13,3 +13,64 @@
  */
 
 @import 'bootstrap';
+
+#header {
+  height: 200px;
+  div.logo {
+    float: left;
+    margin-left: 100px;
+    width: 150px;
+    clear: both;
+    height: 150px;
+  }
+
+  div.login {
+    float: right;
+    margin-tpop: 10px;
+    margin-left: 100px;
+    margin-right: 10px;
+    width: 200px;
+    border: 1px solid red;
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+    @include border-top-radius(6px);
+    @include border-bottom-radius(6px);
+  }
+
+  div.map {
+    height: 200px;
+    width: 100%;
+    background-image: url('http://upload.wikimedia.org/wikipedia/commons/8/8a/Gironde_map_routes_villes.png');
+  }
+}
+
+.pageContainer {
+  margin-top:20px;
+
+  .sidebar .sideBox {
+    margin-top:20px;
+    clear:both;
+
+    .boxTitle
+    {
+      font-weight:bold;
+      text-align:center;
+    }
+
+    ul
+    {
+      margin-top:5px;
+      margin-bottom:5px;
+
+      li span
+      {
+        float:right;
+        font-weight: bold;
+      }
+    }
+
+    button {
+      float:right;
+    }
+  }
+}

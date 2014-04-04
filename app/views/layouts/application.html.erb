@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <title>Hlm</title>
+  <meta charset="utf-8">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="nav">
-    <% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <%= link_to "Log out", logout_path %>
-    <% else %>
-        <%= link_to "Sign up", signup_path %> or
-        <%= link_to "Log in", login_path %>.
-    <% end %>
+<div id="header">
+  <div class="header_container">
+    <%= render 'layouts/header' %>
+  </div>
+  <div class="map"></div>
 </div>
 
-<%= render 'layouts/messages' %>
-<%= yield %>
+<div class="container pageContainer">
+  <div class="row">
+    <div class="col-xs-12 col-md-2 sidebar">
+        <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-md-10">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
