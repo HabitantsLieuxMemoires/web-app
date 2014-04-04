@@ -26,9 +26,9 @@ Spork.prefork do
     config.mock_with :rspec
 
     # Drop databases before each spec
-    config.before(:suite) { DatabaseCleaner.strategy = :truncation }
-    config.before(:suite) { DatabaseCleaner.orm      = :mongoid }
-    config.before(:each)  { DatabaseCleaner.clean }
+    config.before(:suite) { DatabaseCleaner[:mongoid].strategy = :truncation }
+    config.before(:each)  { DatabaseCleaner[:mongoid].start }
+    config.after(:each)   { DatabaseCleaner[:mongoid].clean }
 
     # Include Factory Girl syntax to simplify calls to factories
     config.include FactoryGirl::Syntax::Methods

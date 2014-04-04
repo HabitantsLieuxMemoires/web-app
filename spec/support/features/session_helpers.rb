@@ -1,25 +1,28 @@
 module Features
   module SessionHelpers
-    def sign_up_with(email, nickname, password)
+    def sign_up_with(user)
+      user.password ||= "password"
       visit signup_path
-      fill_in 'user[email]', with: email
-      fill_in 'user[nickname]', with: nickname
-      fill_in 'user[password]', with: password
-      fill_in 'user[password_confirmation]', with: password
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[nickname]', with: user.nickname
+      fill_in 'user[password]', with: user.password
+      fill_in 'user[password_confirmation]', with: user.password
       click_button 'Sign up'
     end
 
-    def login_with(email, password)
+    def login_with_email(user)
+      user.password ||= "password"
       visit login_path
-      fill_in 'Identity', with: email
-      fill_in 'Password', with: password
+      fill_in 'Identity', with: user.email
+      fill_in 'Password', with: user.password
       click_button 'Log in'
     end
 
-    def login_with_nickname(nickname, password)
+    def login_with_nickname(user)
+      user.password ||= "password"
       visit login_path
-      fill_in 'Identity', with: nickname
-      fill_in 'Password', with: password
+      fill_in 'Identity', with: user.nickname
+      fill_in 'Password', with: user.password
       click_button 'Log in'
     end
 
