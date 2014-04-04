@@ -10,6 +10,7 @@ group :assets do
   gem 'sass-rails',             "~> 4.0.2"
   gem 'coffee-rails',           "~> 4.0.1"
   gem 'uglifier',               "~> 2.5.0"
+  gem 'bootstrap-sass',         "~> 3.1.1"
 
   # Many Linux environments do not have a javascript environment which is
   # required by the asset generators. However, windows and os x have one
