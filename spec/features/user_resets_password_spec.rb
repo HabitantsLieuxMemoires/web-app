@@ -6,21 +6,21 @@ feature 'User resets password' do
     ActionMailer::Base.deliveries.clear
   end
 
-  scenario 'with valid email' do
+  scenario 'emails user when requesting password reset with valid email' do
     reset_password_with('valid@example.com')
 
     expect(ActionMailer::Base.deliveries.last.to).to eq(['valid@example.com'])
     expect(current_path).to eq(root_path)
   end
 
-  scenario 'with valid nickname' do
+  scenario 'emails user when requesting password reset with valid nickname' do
     reset_password_with('nickname.test')
 
     expect(ActionMailer::Base.deliveries.last.to).to eq(['valid@example.com'])
     expect(current_path).to eq(root_path)
   end
 
-  scenario 'with invalid email' do
+  scenario 'does not email invalid user when requesting password reset' do
     reset_password_with('invalid@example.com')
 
     expect(ActionMailer::Base.deliveries.size).to eq(0)
