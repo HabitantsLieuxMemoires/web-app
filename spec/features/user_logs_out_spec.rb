@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'User logs out' do
   background do
-    create(:user, :member, :email => 'valid@example.com', :password => 'password')
+    create(:user, :email => 'valid@example.com', :password => 'password')
   end
 
   scenario 'while connected' do

@@ -16,34 +16,34 @@ describe User do
   end
 
   it "is valid with nickname, email and password confirmation" do
-    u = build(:user, :member)
+    u = build(:user)
     expect(u).to be_valid
   end
 
   it "is invalid without email" do
-    u = build(:user, :member, :email=> nil)
+    u = build(:user, :email=> nil)
     expect(u).to_not be_valid
   end
 
   it "is invalid without nickname" do
-    u = build(:user, :member, :nickname=> nil)
+    u = build(:user, :nickname=> nil)
     expect(u).to_not be_valid
   end
 
   it "is invalid if passwords don't match" do
-    u = build(:user, :member, :password => "password1", :password_confirmation => "1drowssap")
+    u = build(:user, :password => "password1", :password_confirmation => "1drowssap")
     expect(u).to_not be_valid
   end
 
   it "is invalid with a duplicate email address" do
-    create(:user, :member)
-    u = build(:user, :member, :nickname => "other.nickname")
+    create(:user)
+    u = build(:user, :nickname => "other.nickname")
     expect(u).to_not be_valid
   end
 
   it "is invalid with a duplicate nickname" do
-    create(:user, :member)
-    u = build(:user, :member, :email => "other@exmaple.com")
+    create(:user)
+    u = build(:user, :email => "other@exmaple.com")
     expect(u).to_not be_valid
   end
 

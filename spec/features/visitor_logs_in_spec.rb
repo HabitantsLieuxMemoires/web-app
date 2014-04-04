@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Visitor logs in' do
   background do
-    create(:user, :member, :email => 'valid@example.com', :password => 'password', :nickname => 'valid.user')
+    create(:user, :email => 'valid@example.com', :password => 'password', :nickname => 'valid.user')
   end
 
   scenario 'with valid email and password' do

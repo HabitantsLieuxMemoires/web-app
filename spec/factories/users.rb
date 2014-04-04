@@ -8,17 +8,5 @@ FactoryGirl.define do
     crypted_password      { Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds") }
     password              "password"
     password_confirmation "password"
-
-    trait :member do
-      role :member
-    end
-
-    trait :moderator do
-      role :moderator
-    end
-
-    trait :admin do
-      role :admin
-    end
   end
 end

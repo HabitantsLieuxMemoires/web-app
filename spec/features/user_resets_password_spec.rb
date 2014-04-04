@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'User resets password' do
   background do
-    create(:user, :member, :email => 'valid@example.com', :nickname => 'nickname.test')
+    create(:user, :email => 'valid@example.com', :nickname => 'nickname.test')
     ActionMailer::Base.deliveries.clear
   end
 
