@@ -1,4 +1,4 @@
-node "staging.hlm.fr" {
+node "vagrant.hlm.local" {
   # Packages
   $packages = ['git-core', 'curl']
   package { $packages:
@@ -15,6 +15,13 @@ node "staging.hlm.fr" {
   class { 'rbenv': }
   rbenv::plugin { 'sstephenson/ruby-build': }
   rbenv::build { '2.1.1': global => true }
+
+  # Bundler
+  exec { 'bundle install':
+    command   => "/usr/local/rbenv/shims/bundle install",
+    cwd       => "/vagrant",
+    require   => Class['rbenv'],
+  }
 
   # MongoDB
   class {'::mongodb::globals':
