@@ -1,31 +1,23 @@
-<h1>Choose a new password</h1>
-<%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
-    <% if @user.errors.any? %>
-        <div class="errors">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="panel panel-default" id="change-password">
+  <div class="panel-heading">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
+      hoc responsum. Ita prorsus, inquam; </p>
+  </div>
+  <div class="panel-body">
+    <%= bootstrap_form_for @user, :url => password_reset_path(@user), :html => {:method => :put}, :inline_errors => false do |f| %>
+        <% if @user.errors.any? %>
+            <%= f.error_summary %>
+        <% end %>
 
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+        <div class="alert alert-info">
+          <%= f.label :email %>: <%= @user.email %>
         </div>
-    <% end %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= @user.email %>
-    </div>
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
-      <%= hidden_field_tag :token, @token %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Update password" %>
-    </div>
-<% end %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.hidden_field :token, :value => @token %>
+
+        <%= f.submit t('password.update') %>
+    <% end %>
+  </div>
+</div>

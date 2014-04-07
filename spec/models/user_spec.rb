@@ -3,7 +3,7 @@ require 'spec_helper'
 #TODO: Find a way to role field (actually mongoid-rspec does not support Mongoid::Enum module)
 describe User do
 
-  describe "contains validators" do
+  describe 'contains validators' do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password) }
     it { should validate_uniqueness_of(:email) }
@@ -15,35 +15,35 @@ describe User do
     it { should validate_uniqueness_of(:nickname) }
   end
 
-  it "is valid with nickname, email and password confirmation" do
+  it 'is valid with nickname, email and password confirmation' do
     u = build(:user)
     expect(u).to be_valid
   end
 
-  it "is invalid without email" do
+  it 'is invalid without email' do
     u = build(:user, :email=> nil)
     expect(u).to_not be_valid
   end
 
-  it "is invalid without nickname" do
+  it 'is invalid without nickname' do
     u = build(:user, :nickname=> nil)
     expect(u).to_not be_valid
   end
 
-  it "is invalid if passwords don't match" do
-    u = build(:user, :password => "password1", :password_confirmation => "1drowssap")
+  it 'is invalid if passwords do not match' do
+    u = build(:user, :password => 'password1', :password_confirmation => '1drowssap')
     expect(u).to_not be_valid
   end
 
-  it "is invalid with a duplicate email address" do
+  it 'is invalid with a duplicate email address' do
     create(:user)
-    u = build(:user, :nickname => "other.nickname")
+    u = build(:user, :nickname => 'other.nickname')
     expect(u).to_not be_valid
   end
 
-  it "is invalid with a duplicate nickname" do
+  it 'is invalid with a duplicate nickname' do
     create(:user)
-    u = build(:user, :email => "other@exmaple.com")
+    u = build(:user, :email => 'other@exmaple.com')
     expect(u).to_not be_valid
   end
 

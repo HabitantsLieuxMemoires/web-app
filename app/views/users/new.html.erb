@@ -1,31 +1,23 @@
-<%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+<div class="panel panel-default" id="signup">
+  <div class="panel-heading">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
+      hoc responsum. Ita prorsus, inquam; </p>
 
-    <div class="field">
-        <%= f.label :email, 'Email' %>
-        <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :nickname, 'Nickname' %>
-      <%= f.text_field :nickname %>
-    </div>
-    <div class="field">
-        <%= f.label :password, 'Password' %>
+    <p>Quid iudicant sensus? Duo Reges: constructio interrete. Sed residamus, inquit, si placet. Praeclare hoc
+      quidem. </p>
+  </div>
+  <div class="panel-body">
+    <%= bootstrap_form_for(@user, inline_errors: false) do |f| %>
+        <% if @user.errors.any? %>
+            <%= f.error_summary %>
+        <% end %>
+
+        <%= f.email_field :email %>
+        <%= f.text_field :nickname %>
         <%= f.password_field :password %>
-    </div>
-    <div class="field">
-        <%= f.label :password_confirmation, 'Password Confirmation' %>
         <%= f.password_field :password_confirmation %>
-    </div>
 
-    <div class="actions"><%= f.submit 'Sign up' %></div>
-<% end %>
+        <%= f.submit t('signup') %>
+    <% end %>
+  </div>
+</div>

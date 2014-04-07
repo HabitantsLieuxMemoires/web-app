@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <title>Hlm</title>
-  <meta charset="utf-8">
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+    <head>
+      <title>Hlm</title>
+      <meta charset="utf-8">
+      <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
 
-<div id="header">
-  <div class="header_container">
-    <%= render 'layouts/header' %>
-  </div>
-  <div class="map"></div>
-</div>
+        <%= render 'layouts/header' %>
 
-<div class="container pageContainer">
-  <div class="row">
-    <div class="col-xs-12 col-md-2 sidebar">
-        <%= render 'layouts/sidebar' %>
-    </div>
-    <div class="col-md-10">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </div>
-  </div>
-</div>
+        <div class="container">
+          <hr>
+          <div class="row">
+            <div class="col-lg-3">
+                <%= render 'layouts/sidebar' %>
+            </div>
+            <div class="col-lg-9">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
 
-</body>
+    </body>
 </html>

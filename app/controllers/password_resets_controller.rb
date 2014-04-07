@@ -9,7 +9,7 @@ class PasswordResetsController < ApplicationController
 
     @user.deliver_reset_password_instructions! if @user
 
-    redirect_to(root_path, :notice => 'Instructions have been sent to your email.')
+    redirect_to(root_path, :notice => t('password.reset_instructions_sent'))
   end
 
   def edit
@@ -22,8 +22,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @token = params[:token]
-    @user = User.load_from_reset_password_token(params[:token])
+    @token = params[:user][:token]
+    @user = User.load_from_reset_password_token(@token)
 
     if @user.blank?
       not_authenticated
@@ -32,9 +32,9 @@ class PasswordResetsController < ApplicationController
 
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password!(params[:user][:password])
-      redirect_to(root_path, :notice => 'Password was successfully updated.')
+      redirect_to(root_path, :notice => t('password.updated'))
     else
-      render :action => "edit"
+      render :action => 'edit'
     end
   end
 

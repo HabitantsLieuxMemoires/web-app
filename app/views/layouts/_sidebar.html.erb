@@ -1,33 +1,23 @@
-<!-- Bloc de recherche -->
-<%= text_field_tag "searchString", nil, placeholder:"Recherche...", class:"search"  %>
-
-<!-- Ajouter un article -->
-<%= button_tag "Créer un nouvel article", class: "btn btn-default", type:"button" %>
-
-<!-- Thématiques -->
-<div class="sideBox">
-  <div class="boxTitle">Thématiques</div>
-
-  <ul>
-    <li>Nature <span>1</span></li>
-    <li>Lormont <span>12</span></li>
-    <li>.... <span>?</span></li>
-  </ul>
-  <%= button_tag "Toutes...", class: "btn btn-default btn-xs", type:"button" %>
-
+<div class="well" id="sidebar-actions">
+  <div class="input-group">
+    <input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+  </div>
 </div>
 
-<!-- Chronologie -->
-<div class="sideBox">
-  <div class="boxTitle">Chronologie</div>
+<div class="well" id="sidebar-themes">
+  <h4><%= t('nav.themes') %></h4>
+</div>
 
-  <ul>
-    <li>1980 <span>2</span></li>
-    <li>1990 <span>1</span></li>
-    <li>.... <span>?</span></li>
-  </ul>
-  <%= button_tag "Toutes...", class: "btn btn-default btn-xs", type:"button" %>
+<div class="well" id="sidebar-chronology">
+  <h4><%= t('nav.chronology') %></h4>
 </div>
 
 
-<!-- Nouveautés -->
+<div class="well" id="sidebar-news">
+  <h4><%= t('nav.news') %></h4>
+</div>

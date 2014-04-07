@@ -10,7 +10,6 @@ group :assets do
   gem 'sass-rails',             "~> 4.0.2"
   gem 'coffee-rails',           "~> 4.0.1"
   gem 'uglifier',               "~> 2.5.0"
-  gem 'bootstrap-sass',         "~> 3.1.1"
 
   # Many Linux environments do not have a javascript environment which is
   # required by the asset generators. However, windows and os x have one
@@ -19,11 +18,13 @@ group :assets do
 end
 
 gem 'jquery-rails',             "~> 3.1.0"
+gem 'bootstrap-sass',           "~> 3.1.1"
 gem 'turbolinks',               "~> 2.2.1"
 gem 'jbuilder',                 "~> 2.0.5"
 gem 'mongoid',                  github: "mongoid/mongoid", tag: "v4.0.0.beta1"
 gem 'bson_ext'
 gem 'sorcery',                  "~> 0.8.5"
+gem 'bootstrap_form',           "~> 2.1.0"
 
 group :development, :test do
   gem 'rspec-rails',            "~> 2.14.2"

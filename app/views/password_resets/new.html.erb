@@ -1,11 +1,17 @@
-<h1>Reset password</h1>
+<div class="panel panel-default" id="reset-password">
+  <div class="panel-heading">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
+      hoc responsum. Ita prorsus, inquam; </p>
 
-<%= form_tag password_resets_path, :method => :post do %>
-    <div class="field">
-      <%= label_tag :identity %><br />
-      <%= text_field_tag :identity %>
-    </div>
-    <div class="actions">
-      <%= submit_tag "Reset password" %>
-    </div>
-<% end %>
+    <p>Quid iudicant sensus? Duo Reges: constructio interrete. Sed residamus, inquit, si placet. Praeclare hoc
+      quidem. </p>
+  </div>
+  <div class="panel-body">
+    <%= bootstrap_form_tag url: password_resets_path do |f| %>
+
+        <%= f.text_field :identity %>
+
+        <%= f.submit t('password.reset') %>
+    <% end %>
+  </div>
+</div>

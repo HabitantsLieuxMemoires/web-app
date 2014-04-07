@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:identity], params[:password], params[:remember_me])
     if user
-      redirect_to root_url, :notice => "Logged in!"
+      redirect_to root_url, :notice => t('logged_in')
     else
       flash.now.alert = "Identity or password was invalid"
       render :new
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to root_url, :notice => t('logged_out')
   end
 end
