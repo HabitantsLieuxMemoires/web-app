@@ -6,6 +6,8 @@ en:
   logged_in_as: "Logged in as"
   logged_out:   "Successfully logged out"
 
+  create:       "Create"
+
   password:
     reset:                    "Reset password"
     update:                   "Update password"
@@ -15,3 +17,7 @@ en:
   authentication:
     not_authenticated: "You must be logged in to access this page"
 
+  models:
+    article:
+      created:         "Article successfully created"
+      creation_error:  "Unable to create article"

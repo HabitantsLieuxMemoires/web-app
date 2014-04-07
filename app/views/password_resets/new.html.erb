@@ -7,11 +7,16 @@
       quidem. </p>
   </div>
   <div class="panel-body">
-    <%= bootstrap_form_tag url: password_resets_path do |f| %>
+    <%= bootstrap_form_tag :url         => password_resets_path,
+                           :layout      => :horizontal,
+                           :label_col   => "col-lg-4",
+                           :control_col => "col-lg-8" do |f| %>
 
         <%= f.text_field :identity %>
 
-        <%= f.submit t('password.reset') %>
+        <%= f.form_group do %>
+          <%= f.submit t('password.reset') %>
+        <% end %>
     <% end %>
   </div>
 </div>

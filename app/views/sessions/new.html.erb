@@ -7,12 +7,17 @@
       quidem. </p>
   </div>
   <div class="panel-body">
-    <%= bootstrap_form_tag url: sessions_path do |f| %>
+    <%= bootstrap_form_tag :url         => sessions_path,
+                           :layout      => :horizontal,
+                           :label_col   => "col-lg-4",
+                           :control_col => "col-lg-8" do |f| %>
 
-        <%= f.text_field :identity %>
+        <%= f.text_field     :identity %>
         <%= f.password_field :password %>
 
-        <%= f.submit t('login') %>
+        <%= f.form_group do %>
+          <%= f.submit t('login') %>
+        <% end %>
     <% end %>
   </div>
   <div class="panel-footer">
@@ -21,6 +26,3 @@
     <div class="clearfix"></div>
   </div>
 </div>
-
-
-
