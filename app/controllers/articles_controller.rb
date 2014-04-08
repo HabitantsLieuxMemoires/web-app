@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  skip_before_filter   :require_login, only: [:new, :create]
-  before_filter        :set_article,   only: [:show, :destroy, :update]
+  skip_before_filter   :require_login, only: [:show]
+  before_filter        :set_article,   only: [:show]
 
   def new
     @article = Article.new
@@ -17,10 +17,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    flash[:error] = I18n.t('models.article.not_found') unless @article
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :body)
   end

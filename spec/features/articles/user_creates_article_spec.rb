@@ -2,6 +2,11 @@ require 'spec_helper'
 
 feature 'User create articles' do
 
+  background do
+    user = create(:user)
+    login_with_email(user)
+  end
+
   scenario 'with valid title and content' do
     article = build(:article)
     create_article(article)

@@ -6,12 +6,13 @@ feature 'Visitor reads article' do
   end
 
   scenario 'which exist' do
-    visit article_path(@article.id)
-    expect(page).to have_content(@article.title)
+    visit article_path(@article)
+    expect(current_path).to eql(article_path(@article.id))
   end
 
   scenario 'wich does not exist' do
-    visit article_path('no-result-id')
-    expect(page).to have_content(I18n.t('models.article.not_found'))
+    expect {
+      visit article_path('no-result-id')
+    }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
 end
