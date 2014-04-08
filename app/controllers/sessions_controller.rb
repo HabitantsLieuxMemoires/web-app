@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user
       redirect_to root_url, :notice => t('logged_in')
     else
-      flash.now.alert = "Identity or password was invalid"
+      flash.now.alert = t('authentication.invalid_credentials')
       render :new
     end
   end

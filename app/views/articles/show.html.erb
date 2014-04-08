@@ -1,0 +1,11 @@
+<div class="panel panel-default" id="change-password">
+  <div class="panel-body">
+    <%= bootstrap_form_for @article,
+                           :url => {action: "edit"} do |f| %>
+
+        <%= f.text_field  :title %>
+        <%= f.text_area   :body %>
+
+    <% end %>
+  </div>
+</div>
