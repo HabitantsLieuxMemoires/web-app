@@ -7,6 +7,13 @@
             </button>
         </span>
   </div>
+
+  <br>
+
+  <% if logged_in? %>
+    <%= link_to t('models.article.create'), new_article_path, class: 'btn btn-primary btn-block', role: 'button' %>
+  <% end %>
+
 </div>
 
 <div class="well" id="sidebar-themes">

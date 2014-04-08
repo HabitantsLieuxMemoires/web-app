@@ -20,4 +20,10 @@ feature 'User create articles' do
     expect(current_path).to eq(articles_path)
   end
 
+  scenario 'from home page' do
+    visit root_path
+    click_on I18n.t('models.article.create')
+    expect(current_path).to eql(new_article_path)
+  end
+
 end
