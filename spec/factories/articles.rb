@@ -5,4 +5,9 @@ FactoryGirl.define do
     title    Faker::Commerce.product_name
     body     Faker::Lorem.paragraph(3, false, 4)
   end
+
+  trait :with_location do
+    latitude    Faker::Address.latitude
+    longitude   Faker::Address.longitude
+  end
 end

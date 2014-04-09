@@ -33,4 +33,10 @@ feature 'User create articles' do
     expect(page).to have_content(I18n.t('models.article.created'))
   end
 
+  scenario 'with location' do
+    article = build(:article, :with_location)
+    create_article(article)
+    expect(page).to have_content(I18n.t('models.article.created'))
+  end
+
 end
