@@ -7,7 +7,7 @@ feature 'User create articles' do
     login_with_email(user)
   end
 
-  scenario 'with valid title and content' do
+  scenario 'with valid data' do
     article = build(:article)
     create_article(article)
     expect(page).to have_content(I18n.t('models.article.created'))
@@ -24,6 +24,19 @@ feature 'User create articles' do
     visit root_path
     click_on I18n.t('models.article.create')
     expect(current_path).to eql(new_article_path)
+  end
+
+  scenario 'with tags' do
+    article = build(:article)
+    article.tags_array = Faker::Lorem.words
+    create_article(article)
+    expect(page).to have_content(I18n.t('models.article.created'))
+  end
+
+  scenario 'with location' do
+    article = build(:article, :with_location)
+    create_article(article)
+    expect(page).to have_content(I18n.t('models.article.created'))
   end
 
 end

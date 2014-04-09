@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude)
   end
 
   def set_article

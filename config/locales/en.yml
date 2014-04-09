@@ -8,6 +8,7 @@ en:
   logged_out:   "Successfully logged out"
 
   create:       "Create"
+  publish:      "Publish"
 
   password:
     reset:                    "Reset password"
@@ -16,7 +17,8 @@ en:
     reset_instructions_sent:  "Instructions have been sent to your email"
 
   authentication:
-    not_authenticated: "You must be logged in to access this page"
+    not_authenticated:    "You must be logged in to access this page"
+    invalid_credentials:  "Username or password is invalid"
 
   models:
     article:

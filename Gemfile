@@ -25,6 +25,8 @@ gem 'mongoid',                  github: "mongoid/mongoid", tag: "v4.0.0.beta1"
 gem 'bson_ext'
 gem 'sorcery',                  "~> 0.8.5"
 gem 'bootstrap_form',           "~> 2.1.0"
+gem 'mongoid_taggable',         "~> 1.1.1"
+gem 'selectize-rails',          "~> 0.9.0"
 
 group :development, :test do
   gem 'rspec-rails',            "~> 2.14.2"
