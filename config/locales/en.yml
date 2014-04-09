@@ -9,6 +9,7 @@ en:
 
   create:       "Create"
   publish:      "Publish"
+  export:       "Export"
 
   password:
     reset:                    "Reset password"
@@ -25,3 +26,7 @@ en:
       create:          "Create article"
       created:         "Article successfully created"
       creation_error:  "Unable to create article"
+      update:          "Update article"
+      signal:          "Signal content"
+      details:         "Details"
+      metadatas:       "Metadatas"

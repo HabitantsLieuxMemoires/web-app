@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    render :layout => 'articles/show'
   end
 
   private

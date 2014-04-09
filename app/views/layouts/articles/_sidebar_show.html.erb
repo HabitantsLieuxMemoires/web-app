@@ -1,0 +1,25 @@
+<div class="well" id="article-actions">
+  <button class="btn btn-success btn-block" type="button"><%= t('article.update') %></button>
+  <button class="btn btn-danger btn-block" type="button"><%= t('article.signal') %></button>
+  <button class="btn btn-default btn-block" type="button"><%= t('export') %></button>
+</div>
+
+<div class="panel panel-default" id="article-details">
+  <div class="panel-heading">
+    <%= t('article.details') %>
+  </div>
+  <div class="panel-body">
+    <p><strong><%= t('article.tags') %></strong><p>
+    <% @article.tags_array.each do |t| %>
+      <h4><span class="label label-primary"><%= t %></span></h4>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-default" id="article-metadatas">
+  <div class="panel-heading">
+    <%= t('article.metadatas') %>
+  </div>
+  <div class="panel-body">
+  </div>
+</div>
