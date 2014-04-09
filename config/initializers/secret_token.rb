@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Hlm::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || '5df6ff095d7aa94abe42b1b468dc18e8d84393bc54632abbcdff2b15f03cfb05f5673a9960f38267b03b8f0f9eda25ded275899dbfee6d483779e445c957c8d5'
+
+Hlm::Application.config.secret_token = if Rails.env.development? or Rails.env.test?
+  ('x' * 30) # meets minimum requirement of 30 chars long
+else
+  ENV['SECRET_TOKEN']
+end
