@@ -1,7 +1,7 @@
 <div class="row">
   <%= bootstrap_form_for @article,
                          :url => {action: "create"} do |f| %>
-    <div class="col-lg-9" id="article-content">
+    <div class="col-lg-8" id="article-content">
       <div class="panel panel-default" id="change-password">
         <div class="panel-heading">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3" id="article-options">
+    <div class="col-lg-4" id="article-options">
       <div class="well">
         <%= f.submit t('publish'), class: 'btn btn-primary btn-block', role: 'button' %>
         <hr>
