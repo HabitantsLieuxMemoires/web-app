@@ -9,6 +9,8 @@
     <%= t('article.details') %>
   </div>
   <div class="panel-body">
+    <p><strong><%= t('article.type') %> : </strong><p>
+    <hr>
     <p><strong><%= t('article.tags') %></strong><p>
     <% @article.tags_array.each do |t| %>
       <h4><span class="label label-primary"><%= t %></span></h4>
@@ -21,5 +23,8 @@
     <%= t('article.metadatas') %>
   </div>
   <div class="panel-body">
+    <p><strong><%= t('article.location') %> : </strong><p>
+    <p><strong><%= t('article.url') %> : </strong><p>
+    <p><strong><%= t('article.revision') %> : </strong><p>
   </div>
 </div>
