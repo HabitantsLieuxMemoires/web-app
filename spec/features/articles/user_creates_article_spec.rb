@@ -7,7 +7,7 @@ feature 'User create articles' do
     login_with_email(user)
   end
 
-  scenario 'with valid title and content' do
+  scenario 'with valid data' do
     article = build(:article)
     create_article(article)
     expect(page).to have_content(I18n.t('models.article.created'))

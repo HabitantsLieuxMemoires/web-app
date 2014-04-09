@@ -1,20 +1,4 @@
-<div class="well" id="sidebar-actions">
-  <div class="input-group">
-    <input type="text" class="form-control">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
-  </div>
-
-  <br>
-
-  <% if logged_in? %>
-    <%= link_to t('models.article.create'), new_article_path, class: 'btn btn-primary btn-block', role: 'button' %>
-  <% end %>
-
-</div>
+<%= render 'layouts/sidebar_actions' %>
 
 <div class="well" id="sidebar-themes">
   <h4><%= t('nav.themes') %></h4>

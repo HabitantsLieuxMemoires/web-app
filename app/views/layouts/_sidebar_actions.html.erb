@@ -1,0 +1,16 @@
+<div class="well" id="sidebar-actions">
+  <div class="input-group">
+    <input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+  </div>
+
+  <% if logged_in? %>
+    <br>
+    <%= link_to t('models.article.create'), new_article_path, class: 'btn btn-primary btn-block', role: 'button' %>
+  <% end %>
+
+</div>
