@@ -16,5 +16,6 @@
 //= require jquery.remotipart
 //= require underscore
 //= require bootstrap
+//= require leaflet
 //= require_directory
 //= require_directory ./admin
