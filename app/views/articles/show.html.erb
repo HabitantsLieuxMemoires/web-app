@@ -15,26 +15,9 @@
         <%= @article.body %>
       </div>
     </div>
+    <%= render 'comments' %>
   </div>
   <div class="col-lg-1" id="article-control">
-    <ul class="nav nav-pills nav-stacked">
-      <li class="active">
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-list"></span>
-        </button>
-      </li>
-      <br>
-      <li>
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-picture"></span>
-        </button>
-      </li>
-      <br>
-      <li>
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-comment"></span>
-        </button>
-      </li>
-    </ul>
+    <%= render 'actionbar' %>
   </div>
 </div>

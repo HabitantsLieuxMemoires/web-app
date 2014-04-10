@@ -1,0 +1,8 @@
+<%= bootstrap_form_for [@article, @comment],
+                       :url => {action: "create"},
+                       :remote => true do |f| %>
+
+  <%= f.text_area :content %>
+  <%= f.submit %>
+
+<% end %>

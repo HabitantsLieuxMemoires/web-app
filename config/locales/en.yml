@@ -36,3 +36,6 @@ en:
       location:        "Location"
       url:             "URL"
       revision:        "Revision"
+      comments:        "Comments"
+    comment:
+      create:          "Create comment"

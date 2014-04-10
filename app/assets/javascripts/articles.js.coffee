@@ -50,7 +50,7 @@ editorController =
       # Fix buttons alignment
       # $('.mce-toolbar .mce-last:last').parents('.mce-container:nth(0)').css('float','right');
 
-ready= ->
+ready = ->
   $('#article_tags').selectize
     plugins: ['remove_button']
     delimiter: ','
@@ -59,13 +59,17 @@ ready= ->
       return {
       value: input,
       text: input
-      }
+    }
 
-  editorController.init();
+  editorController.init()
 
+  $('#show_comments').click ->
+    $('#article-comments').removeClass('hidden')
+
+  $('#create_comment').click ->
+    $.get $(this).attr('ajax_path'), (data) ->
+        $('#comments-list').prepend(data)
 
 # Page (re)loaded ?
 $(document).ready ready
 $(document).on 'page:load', ready
-
-

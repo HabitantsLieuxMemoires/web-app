@@ -18,6 +18,8 @@ class Article
 
   index({ location: "2d" }, { min: -200, max: 200 })
 
+  has_many :comments, autosave: true
+
   private
 
   def update_location

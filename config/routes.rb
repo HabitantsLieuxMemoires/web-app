@@ -1,7 +1,4 @@
 Hlm::Application.routes.draw do
-  get "articles/show"
-  get "articles/new"
-  get "article/new"
   root "home#index"
 
   get "logout"  => "sessions#destroy",  :as => "logout"
@@ -12,5 +9,7 @@ Hlm::Application.routes.draw do
   resources :sessions
   resources :password_resets
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end
