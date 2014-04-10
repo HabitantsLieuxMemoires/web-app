@@ -4,13 +4,22 @@
       <h3 class="panel-title"><%= t('models.article.comments') %></h3>
     </div>
     <div class="pull-right">
-      <button type="button" class="btn btn-default btn-sm" id="create_comment"
-              ajax_path=<%= new_article_comment_path(@article.id) %>>
-        <%= t('models.comment.create') %>
+        <%= link_to t('models.comment.create'), new_article_comment_path(@article.id),
+                  :id => 'create_comment',
+                  :class => "btn btn-default btn-sm",
+                  :remote => true,
+                  :data => {
+                    :toggle => 'modal',
+                    :target => '#modal-create-comment'
+                  } %>
       </button>
     </div>
   </div>
   <div class="panel-body" id="comments-list">
     <!-- TODO: Load comments -->
   </div>
+</div>
+
+<!-- Modals -->
+<div id="modal-create-comment" class="modal" aria-labelledby="modal-create-comment-label" aria-hidden="true" role="dialog">
 </div>

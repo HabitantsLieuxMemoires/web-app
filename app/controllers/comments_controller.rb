@@ -2,19 +2,20 @@ class CommentsController < ApplicationController
   before_filter        :set_article,   only: [:create]
 
   def new
-    @comment = Comment.new
-    render :layout => false
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
-    @comment = Comment.new(comment_params[:comment])
-    @article.comments << @comment
+    @comment = @article.comments.create!(comment_params)
     @article.save
 
     #TODO: Add support for validation errors when publishing comment
 
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 

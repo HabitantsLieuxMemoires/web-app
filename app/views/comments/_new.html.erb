@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 id="modal-create-comment-label"><%= t('models.comment.create') %></h4>
+    </div>
+    <div class="modal-body">
+      <%= bootstrap_form_for [@article, Comment.new],
+                             :layout  => :horizontal,
+                             :url     => {action: "create"},
+                             :remote  => true do |f| %>
+
+        <%= f.text_area :content %>
+
+        <%= f.form_group do %>
+          <%= f.submit t('create'), :id => 'submit_comment' %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

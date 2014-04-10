@@ -25,6 +25,9 @@ Spork.prefork do
   RSpec.configure do |config|
     config.mock_with :rspec
 
+    # Setting Capybara JS driver
+    Capybara.javascript_driver = :webkit
+
     # Drop databases before each spec
     config.before(:suite) { DatabaseCleaner[:mongoid].strategy = :truncation }
     config.before(:each)  { DatabaseCleaner[:mongoid].start }

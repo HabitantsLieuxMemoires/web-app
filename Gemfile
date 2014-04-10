@@ -36,10 +36,10 @@ group :development, :test do
   gem 'factory_girl_rails',     "~> 4.4.1"
   gem 'spork',                  "~> 0.9.2"
   gem 'faker',                  "~> 1.3.0"
-  gem 'capybara',               "~> 2.2.1"
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'glebtv-mongoid-rspec',   "~> 1.12.0"
   gem 'launchy',                "~> 2.4.2"
   gem 'database_cleaner',       "~> 1.2.0"
   gem 'email_spec',             "~> 1.5.0"
-  gem 'selenium-webdriver',     "~> 2.41.0"
 end

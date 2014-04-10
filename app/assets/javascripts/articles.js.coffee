@@ -57,18 +57,14 @@ ready = ->
     persist: false
     create: (input) ->
       return {
-      value: input,
-      text: input
-    }
-
-  editorController.init()
+        value: input,
+        text: input
+      }
 
   $('#show_comments').click ->
     $('#article-comments').removeClass('hidden')
 
-  $('#create_comment').click ->
-    $.get $(this).attr('ajax_path'), (data) ->
-        $('#comments-list').prepend(data)
+  editorController.init()
 
 # Page (re)loaded ?
 $(document).ready ready
