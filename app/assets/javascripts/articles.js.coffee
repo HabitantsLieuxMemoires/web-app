@@ -64,8 +64,9 @@ ready = ->
   $('#show_comments').on 'click', ->
     # Check comments already loaded
     comments_list_selector = $('#comments-list')
-    comments_selector = comments_list_selector.find('.comment')
-    if ( comments_selector.length > 0 )
+    no_comment_selector    = $('#no-comment')
+    comments_selector      = comments_list_selector.find('.comment')
+    if ( comments_selector.length || no_comment_selector.length )
       return false
 
   editorController.init()

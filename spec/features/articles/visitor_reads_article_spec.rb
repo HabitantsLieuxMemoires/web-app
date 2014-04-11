@@ -16,7 +16,7 @@ feature 'Visitor reads article' do
     }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
 
-  scenario 'with comments', :focus => true do
+  scenario 'with comments' do
     comment = create(:comment)
     @article.comments << comment
     @article.save

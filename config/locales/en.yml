@@ -49,3 +49,4 @@ en:
       comments:        "Comments"
     comment:
       create:          "Create comment"
+      none:            "No comment"
