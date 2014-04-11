@@ -4,6 +4,7 @@
       <h3 class="panel-title"><%= t('models.article.comments') %></h3>
     </div>
     <div class="pull-right">
+      <% if current_user %>
         <%= link_to t('models.comment.create'), new_article_comment_path(@article.id),
                   :id => 'create_comment',
                   :class => "btn btn-default btn-sm",
@@ -12,7 +13,7 @@
                     :toggle => 'modal',
                     :target => '#modal-create-comment'
                   } %>
-      </button>
+      <% end %>
     </div>
   </div>
   <div class="panel-body" id="comments-list">

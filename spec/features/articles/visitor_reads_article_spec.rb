@@ -16,7 +16,7 @@ feature 'Visitor reads article' do
     }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
 
-  scenario 'with comments' do
+  scenario 'and can see comments', :js => true, :focus => true do
     comment = create(:comment)
     @article.comments << comment
     @article.save
@@ -24,8 +24,12 @@ feature 'Visitor reads article' do
     visit article_path(@article)
     click_on 'show_comments'
 
-    within('#comments-list') do
-      expect(page.all('.comment').size).to eq(1)
-    end
+    expect(page.all('#comments-list .comment').size).to eq(1)
+  end
+
+  scenario 'and cannot create comment' do
+    visit article_path(@article)
+
+    expect(page).not_to have_css('#create_comment')
   end
 end
