@@ -14,23 +14,46 @@ mapSettings =
     }
   }
 
-mapController =
+window.mapController =
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
+    # Already initialized?
     if $('#business-header').hasClass('leaflet-container') == false
       debug "Map:: Initialization..."
+      mapSettings.originalHeight = $('#business-header').height()
+
+      # Marker cluster
       @markerCluster = new L.MarkerClusterGroup
         showCoverageOnHover:  false
         spiderfyOnMaxZoom: true
         animateAddingMarkers: true
       map = new L.Map el
 
-      tileLayer = new L.TileLayer(providerSettings.url, {attribution: providerSettings.attrib});
-      map.setView(new L.LatLng(defaultPosition[0],defaultPosition[1]),12);
-      map.addLayer(tileLayer);
-      map.addLayer(@markerCluster);
+      # Map settings & base layers
+      tileLayer = new L.TileLayer(providerSettings.url, {attribution: providerSettings.attrib})
+      map.setView(new L.LatLng(defaultPosition[0],defaultPosition[1]),12)
+      map.addLayer(tileLayer)
+      map.addLayer(@markerCluster)
+
+      @mapInstance = map
+
+      # Add height toggle button
+      heightControl = L.Control.extend
+        options:
+          position: 'topright'
+        ,
+        onAdd: (map) ->
+          control= L.DomUtil.create('div', 'heightToggle leaflet-bar')
+          control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
+          control.onclick = mapController.heightToggle
+          control
+
+      map.addControl(new heightControl());
+
+    # Refresh markers
     @refresh()
 
+  # Refresh markers (delete all & reload)
   refresh: ->
     mapController.deleteMarkers()
     mapController.loadMarkers()
@@ -45,6 +68,7 @@ mapController =
         latitude: $(this).data "latitude"
         longitude: $(this).data "longitude"
         text: $(this).data "text"
+        uri: $(this).data "uri"
 
   # Erase all markers
   deleteMarkers: ->
@@ -61,8 +85,18 @@ mapController =
     mapController.addMarker(data)
   addMarker: (data) ->
     debug data
-    mapController.markerCluster.addLayer L.marker([data.latitude, data.longitude]).bindPopup(data.text)
-    #.addTo(mapController.layerGroup)
+    text = "<a href=\"{ data.uri }\">#{ data.text }</a>";
+    mapController.markerCluster.addLayer L.marker([data.latitude, data.longitude]).bindPopup(text)
+    mapController.mapInstance.fitBounds mapController.markerCluster.getBounds()
+
+  heightToggle: ->
+    currentHeight = $('#'+mapSettings.el).height()
+    targetHeight = if currentHeight!= mapSettings.originalHeight then mapSettings.originalHeight else mapSettings.originalHeight * 0.3
+    $('#'+mapSettings.el).animate
+      'height':targetHeight+'px'
+    ,500
+    $('#'+mapSettings.el).find('.heightToggle span.glyphicon').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus')
+
 
 # Page (re)loaded ?
 $(document).ready -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
