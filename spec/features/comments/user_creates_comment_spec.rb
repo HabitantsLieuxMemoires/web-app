@@ -6,7 +6,7 @@ feature 'User creates comment' do
     login_with_email(@user)
   end
 
-  scenario 'with valid data', :js => true, :focus => true do
+  scenario 'with valid data', :js => true do
     a = create(:article)
     visit article_path(a.id)
     click_on 'show_comments'

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Comment do
-  it 'belongs to article', :focus => true do
+  it 'belongs to article' do
     a = create(:article)
     c = create(:comment)
     a.comments << c
