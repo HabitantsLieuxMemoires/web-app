@@ -12,8 +12,13 @@
   </li>
   <br>
   <li>
-    <button id="show_comments" type="button" class="btn btn-default btn-lg">
+    <%= button_to article_comments_path(@article.id),
+              :method => :get,
+              :id => 'show_comments',
+              :class => 'btn btn-default btn-lg',
+              :type => 'button',
+              :remote => true do %>
       <span class="glyphicon glyphicon-comment"></span>
-    </button>
+    <% end %>
   </li>
 </ul>

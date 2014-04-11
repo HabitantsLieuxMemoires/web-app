@@ -15,4 +15,17 @@ feature 'Visitor reads article' do
       visit article_path('no-result-id')
     }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
+
+  scenario 'with comments', :focus => true do
+    comment = create(:comment)
+    @article.comments << comment
+    @article.save
+
+    visit article_path(@article)
+    click_on 'show_comments'
+
+    within('#comments-list') do
+      expect(page.all('.comment').size).to eq(1)
+    end
+  end
 end

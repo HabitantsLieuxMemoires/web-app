@@ -1,0 +1,2 @@
+$('#comments-list').append("<%= escape_javascript(render :partial => 'index', :locals => {:comments => @comments} ) %>")
+$('#article-comments').removeClass('hidden')

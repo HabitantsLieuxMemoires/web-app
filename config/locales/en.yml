@@ -11,6 +11,16 @@ en:
   publish:      "Publish"
   export:       "Export"
 
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      short:   "%m/%d"
+  datetime:
+    formats:
+      default: "%m/%d/%Y %H:%M"
+      short:   "%H:%M"
+      notime:  "%m/%d/%Y"
+
   password:
     reset:                    "Reset password"
     update:                   "Update password"

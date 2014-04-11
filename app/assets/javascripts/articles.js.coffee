@@ -61,8 +61,12 @@ ready = ->
         text: input
       }
 
-  $('#show_comments').click ->
-    $('#article-comments').removeClass('hidden')
+  $('#show_comments').on 'click', ->
+    # Check comments already loaded
+    comments_list_selector = $('#comments-list')
+    comments_selector = comments_list_selector.find('.comment')
+    if ( comments_selector.length > 0 )
+      return false
 
   editorController.init()
 

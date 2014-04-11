@@ -1,9 +1,9 @@
-<div class="media">
+<div class="media comment">
   <a class="pull-left" href="#">
-    <img class="media-object" src="" alt="">
+    <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
   </a>
   <div class="media-body">
-    <h4 class="media-heading">Test</h4>
-    <%= @comment.content %>
+    <h4 class="media-heading">Author <small><%= l(comment.created_at, :format => :short) %></small></h4>
+    <%= comment.content %>
   </div>
 </div>

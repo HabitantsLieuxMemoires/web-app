@@ -1,5 +1,13 @@
 class CommentsController < ApplicationController
-  before_filter        :set_article,   only: [:create]
+  before_filter        :set_article,   only: [:index, :create]
+
+  def index
+    @comments = @article.comments.desc(:created_at)
+
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def new
     respond_to do |format|
