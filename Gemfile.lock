@@ -133,6 +133,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    leaflet-markercluster-rails (0.7.0)
+      railties (>= 3.1)
     leaflet-rails (0.7.2)
     libv8 (3.16.14.3)
     mail (2.5.4)
@@ -288,6 +290,7 @@ DEPENDENCIES
   jquery-rails (~> 3.1.0)
   kaminari (~> 0.15.1)
   launchy (~> 2.4.2)
+  leaflet-markercluster-rails (~> 0.7.0)
   leaflet-rails (~> 0.7.2)
   mini_magick!
   momentjs-rails (~> 2.5.1)

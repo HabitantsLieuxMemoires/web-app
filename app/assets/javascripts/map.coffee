@@ -14,36 +14,61 @@ mapSettings =
     }
   }
 
-window.mapController =
+mapController =
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
-    debug "Map:: Initialization..."
-    mapController.mapInstance = new L.Map(el);
-    tileLayer = new L.TileLayer(providerSettings.url, {attribution: providerSettings.attrib});
-    mapController.mapInstance.setView(new L.LatLng(defaultPosition[0],defaultPosition[1]),13);
-    mapController.mapInstance.addLayer(tileLayer);
-    @layerGroup = new L.layerGroup();
-    L.control.layers null,
-      "HLM Markers": mapController.layerGroup
-    .addTo(mapController.mapInstance)
+    if $('#business-header').hasClass('leaflet-container') == false
+      debug "Map:: Initialization..."
+      @markerCluster = new L.MarkerClusterGroup
+        showCoverageOnHover:  false
+        spiderfyOnMaxZoom: true
+        animateAddingMarkers: true
+      map = new L.Map el
+
+      tileLayer = new L.TileLayer(providerSettings.url, {attribution: providerSettings.attrib});
+      map.setView(new L.LatLng(defaultPosition[0],defaultPosition[1]),12);
+      map.addLayer(tileLayer);
+      map.addLayer(@markerCluster);
+    @refresh()
+
+  refresh: ->
+    mapController.deleteMarkers()
+    mapController.loadMarkers()
+
+  # Load all markers contained into the current page
+  loadMarkers: ->
+    debug "Loading markers from the current page"
+    markers = $('article[data-latitude]')
+    debug markers.length + " markers found"
+    markers.each ->
+      mapController.addMarker
+        latitude: $(this).data "latitude"
+        longitude: $(this).data "longitude"
+        text: $(this).data "text"
 
   # Erase all markers
   deleteMarkers: ->
     debug 'Map:: Deleting all markers'
-    mapController.layerGroup?.clearLayers?;
+    @markerCluster.clearLayers();
 
-  # Data updated
-  updateData: (e, dataArr) ->
+  # Add Marker Handlers
+  addMarkersHandler: (e, dataArr) ->
     debug 'Map:: New data'
-    #mapController.deleteMarkers()
     if dataArr? and dataArr.length > 0
       for data in dataArr
-        debug data
-        L.marker([data.latitude, data.longitude]).bindPopup('Dummy text').addTo(mapController.layerGroup)
+        mapController.addMarker(data)
+  addMarkerHandler: (e, data) ->
+    mapController.addMarker(data)
+  addMarker: (data) ->
+    debug data
+    mapController.markerCluster.addLayer L.marker([data.latitude, data.longitude]).bindPopup(data.text)
+    #.addTo(mapController.layerGroup)
 
 # Page (re)loaded ?
 $(document).ready -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
 $(document).on 'page:load', -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
 
-# Map data updated
-$(document).on 'map:data', mapController.updateData
+# Bind "map:addMarkers"
+$(document).on 'map:addMarkers', mapController.addMarkersHandler
+$(document).on 'map:addMarker', mapController.addMarkerHandler
+$(document).on 'map:refresh', mapController.refresh

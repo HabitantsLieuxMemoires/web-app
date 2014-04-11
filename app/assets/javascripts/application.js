@@ -17,5 +17,7 @@
 //= require underscore
 //= require bootstrap
 //= require leaflet
+//= require leaflet.markercluster.js
 //= require_directory
 //= require_directory ./admin
+
