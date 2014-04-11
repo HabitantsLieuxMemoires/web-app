@@ -12,9 +12,11 @@
     <p><strong><%= t('article.type') %> : </strong><p>
     <hr>
     <p><strong><%= t('article.tags') %></strong><p>
-    <% @article.tags_array.each do |t| %>
-      <h4><span class="label label-primary"><%= t %></span></h4>
-    <% end %>
+    <div id="article-tags">
+      <% @article.tags_array.each do |t| %>
+        <h4><span class="label label-primary"><%= t %></span></h4>
+      <% end %>
+    </div>
   </div>
 </div>
 
