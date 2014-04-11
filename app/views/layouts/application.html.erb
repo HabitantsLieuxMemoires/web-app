@@ -5,6 +5,8 @@
       <meta charset="utf-8">
       <%= stylesheet_link_tag    "application", media: "all" %>
       <%= javascript_include_tag "application" %>
+      <%= javascript_include_tag "debug" %>
+      <%= javascript_include_tag :modernizr %>
       <%= csrf_meta_tags %>
     </head>
     <body data-env="<%= Rails.env %>">
