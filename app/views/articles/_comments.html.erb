@@ -5,7 +5,7 @@
     </div>
     <div class="pull-right">
       <% if current_user %>
-        <%= link_to t('models.comment.create'), new_article_comment_path(@article.id),
+        <%= link_to t('models.comment.create'), new_article_comment_path(article.id),
                   :id => 'create_comment',
                   :class => "btn btn-default btn-sm",
                   :remote => true,

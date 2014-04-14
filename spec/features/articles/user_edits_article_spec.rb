@@ -8,7 +8,7 @@ feature 'User edits article' do
     @article = create(:article)
   end
 
-  scenario 'with valid data', :focus => true do
+  scenario 'with valid data' do
     visit edit_article_path(@article.id)
     fill_in 'article[title]', with: 'New Title'
     click_on I18n.t('publish')
@@ -17,7 +17,7 @@ feature 'User edits article' do
     expect(page).to have_content('New Title')
   end
 
-  scenario 'with invalid data', :focus => true do
+  scenario 'with invalid data' do
     visit edit_article_path(@article.id)
     fill_in 'article[title]', with: ''
     click_on I18n.t('publish')

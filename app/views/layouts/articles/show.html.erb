@@ -12,19 +12,19 @@
     </head>
     <body>
 
-        <%= render 'layouts/header' %>
+        <%= render 'shared/header' %>
 
         <div class="container">
           <hr>
           <div class="row">
             <div class="col-lg-3">
-              <%= render 'layouts/sidebar_actions' %>
+              <%= render 'shared/sidebar_actions' %>
 
               <%= render 'layouts/articles/sidebar_actions' %>
-              <%= render 'layouts/articles/sidebar_details' %>
+              <%= render 'layouts/articles/sidebar_details_show' %>
             </div>
             <div class="col-lg-9">
-              <%= render 'layouts/messages' %>
+              <%= render 'shared/messages' %>
               <%= yield %>
             </div>
           </div>

@@ -24,7 +24,9 @@ feature 'Visitor reads article' do
     visit article_path(@article)
     click_on 'show_comments'
 
-    expect(page.all('#comments-list .comment').size).to eq(1)
+    within('#comments-list') do
+      expect(page.all('.comment').size).to eq(1)
+    end
   end
 
   scenario 'and cannot create comment' do
