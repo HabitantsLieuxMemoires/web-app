@@ -1,0 +1,7 @@
+<div class="well" id="article-actions">
+  <%= link_to t('article.update'), edit_article_path(@article.id),
+                                     :class => 'btn btn-success btn-block',
+                                     :type  => 'button' %>
+  <button class="btn btn-danger btn-block" type="button"><%= t('article.signal') %></button>
+  <button class="btn btn-default btn-block" type="button"><%= t('export') %></button>
+</div>

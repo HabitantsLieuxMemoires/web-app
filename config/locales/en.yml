@@ -36,6 +36,7 @@ en:
       create:          "Create article"
       created:         "Article successfully created"
       creation_error:  "Unable to create article"
+      edit:            "Edit article"
       update:          "Update article"
       signal:          "Signal content"
       details:         "Details"

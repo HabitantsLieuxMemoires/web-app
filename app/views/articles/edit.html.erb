@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-lg-11" id="article-content">
+    <%= bootstrap_form_for @article do |f| %>
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="pull-left">
+            <h3 class="panel-title"><%= t('models.article.edit') %></h3>
+          </div>
+          <div class="pull-right">
+            <%= f.primary t('publish'), :class => 'btn btn-sm' %>
+          </div>
+        </div>
+        <div class="panel-body">
+            <%= f.text_field  :title %>
+            <%= f.text_area   :body, rows: 8, :class => "tinymce" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-lg-1" id="article-control">
+    <%= render 'actionbar' %>
+  </div>
+</div>

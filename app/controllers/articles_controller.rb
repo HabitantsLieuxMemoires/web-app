@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_filter   :require_login, only: [:show]
-  before_filter        :set_article,   only: [:show]
+  before_filter        :set_article,   only: [:show, :edit]
 
   def new
     @article = Article.new
@@ -14,6 +14,10 @@ class ArticlesController < ApplicationController
       flash[:error] = t('models.article.creation_error')
       render :new
     end
+  end
+
+  def edit
+    render :layout => 'articles/edit'
   end
 
   def show
