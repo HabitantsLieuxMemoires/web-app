@@ -11,5 +11,6 @@ Hlm::Application.routes.draw do
 
   resources :articles do
     resources :comments
+    resources :images
   end
 end

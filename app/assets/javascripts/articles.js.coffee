@@ -61,13 +61,55 @@ ready = ->
         text: input
       }
 
+  toggleArticleContent = (withContent, show, replace = false) ->
+    articleContent = $('#article-content')
+
+    if show
+      withContent.addClass 'hidden'
+      if replace
+        articleContent.removeClass 'hidden'
+    else
+      withContent.removeClass 'hidden'
+      if replace
+        articleContent.addClass 'hidden'
+
   $('#show_comments').on 'click', ->
-    # Check comments already loaded
-    comments_list_selector = $('#comments-list')
-    no_comment_selector    = $('#no-comment')
-    comments_selector      = comments_list_selector.find('.comment')
-    if ( comments_selector.length || no_comment_selector.length )
-      return false
+    articleComments  = $('#article-comments')
+
+    if articleComments.is ':visible'
+      toggleArticleContent articleComments, true
+    else
+      # Loading comments
+      targetPath = articleComments.data 'load'
+      if not targetPath
+        console.log 'Cannot load content asynchronously for component: ' + articleImages.attr 'id'
+        return false
+
+      if not articleComments.hasClass 'loaded'
+        commentsList = $('#comments-list')
+        commentsList.load targetPath
+        articleComments.addClass 'loaded'
+
+      toggleArticleContent articleComments, false
+
+  $('#show_images').on 'click', ->
+    articleImages  = $('#article-images')
+
+    if articleImages.is ':visible'
+      toggleArticleContent articleImages, true, true
+    else
+      # Loading images
+      targetPath = articleImages.data 'load'
+      if not targetPath
+        console.log 'Cannot load content asynchronously for component: ' + articleImages.attr 'id'
+        return false
+
+      if not articleImages.hasClass 'loaded'
+        imagesList = $('#images-list')
+        imagesList.load targetPath
+        articleImages.addClass 'loaded'
+
+      toggleArticleContent articleImages, false, true
 
   editorController.init()
 

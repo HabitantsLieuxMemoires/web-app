@@ -43,6 +43,9 @@ Spork.prefork do
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
+    # Include file helpers
+    config.include(ActionDispatch::TestProcess)
+
     Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   end
 

@@ -6,19 +6,14 @@
   </li>
   <br>
   <li>
-    <button type="button" class="btn btn-default btn-lg">
+    <button class="btn btn-default btn-lg" id="show_images" type="button">
       <span class="glyphicon glyphicon-picture"></span>
     </button>
   </li>
   <br>
   <li>
-    <%= button_to article_comments_path(article.id),
-              :method => :get,
-              :id => 'show_comments',
-              :class => 'btn btn-default btn-lg',
-              :type => 'button',
-              :remote => true do %>
+    <button class="btn btn-default btn-lg" id="show_comments" type="button">
       <span class="glyphicon glyphicon-comment"></span>
-    <% end %>
+    </button>
   </li>
 </ul>
