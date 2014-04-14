@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_filter   :require_login, only: [:show]
-  before_filter        :set_article,   only: [:show, :edit]
+  before_filter        :set_article,   only: [:show, :edit, :update]
 
   def new
     @article = Article.new
@@ -18,6 +18,15 @@ class ArticlesController < ApplicationController
 
   def edit
     render :layout => 'articles/edit'
+  end
+
+  def update
+    if @article.update_attributes(article_params)
+      redirect_to article_path(@article.id), :notice => t('models.article.updated')
+    else
+      flash[:error] = t('models.article.update_error')
+      render :edit
+    end
   end
 
   def show

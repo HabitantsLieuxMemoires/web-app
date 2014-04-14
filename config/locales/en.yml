@@ -38,6 +38,8 @@ en:
       creation_error:  "Unable to create article"
       edit:            "Edit article"
       update:          "Update article"
+      updated:         "Article successfully updated"
+      update_error:    "Unable to updated article"
       signal:          "Signal content"
       details:         "Details"
       metadatas:       "Metadatas"
