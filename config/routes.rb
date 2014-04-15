@@ -13,4 +13,6 @@ Hlm::Application.routes.draw do
     resources :comments
     resources :images
   end
+
+  match "/images/uploads/*path" => "gridfs#serve", via: :get
 end

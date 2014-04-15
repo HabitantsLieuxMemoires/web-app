@@ -50,7 +50,7 @@ editorController =
       # Fix buttons alignment
       # $('.mce-toolbar .mce-last:last').parents('.mce-container:nth(0)').css('float','right');
 
-ready = ->
+$(document).on 'ready page:load', ->
   $('#article_tags').selectize
     plugins: ['remove_button']
     delimiter: ','
@@ -112,7 +112,3 @@ ready = ->
       toggleArticleContent articleImages, false, true
 
   editorController.init()
-
-# Page (re)loaded ?
-$(document).ready ready
-$(document).on 'page:load', ready

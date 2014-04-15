@@ -1,0 +1,28 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 id="modal-add-image-label"><%= t('models.image.add') %></h4>
+    </div>
+    <div class="modal-body">
+      <%= bootstrap_form_for [@article, Image.new],
+                             :url     => {action: "create"},
+                             :html    => {:multipart => true},
+                             :layout  => :horizontal do |f| %>
+
+        <%= f.text_field :title %>
+
+        <%= f.form_group do %>
+          <%= render partial: 'file_upload', :locals => {f: f} %>
+
+          <%= f.hidden_field :article_image_cache %>
+        <% end %>
+
+        <%= f.form_group do %>
+          <%= f.submit t('models.image.upload'), :id => 'upload_image' %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

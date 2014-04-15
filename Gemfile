@@ -26,6 +26,9 @@ gem 'bson_ext'
 gem 'sorcery',                  "~> 0.8.5"
 gem 'bootstrap_form',           "~> 2.1.0"
 gem 'mongoid_taggable',         "~> 1.1.1"
+gem 'mongoid-grid_fs',          "~> 2.1.0"
+gem 'mini_magick',              github: "minimagick/minimagick", tag: "v3.7.0"
+gem 'carrierwave-mongoid',      "~> 0.7.1"
 gem 'selectize-rails',          "~> 0.9.0"
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'

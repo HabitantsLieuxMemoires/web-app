@@ -53,3 +53,5 @@ en:
     comment:
       create:          "Create comment"
       none:            "No comment"
+    image:
+      upload:          "Upload"

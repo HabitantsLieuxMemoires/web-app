@@ -1,1 +1,16 @@
-<h4>Article images</h4>
+<%
+=begin
+%>
+<% if @images.any? %>
+  <%= render :partial => 'image', collection: @images %>
+<% else %>
+  <div class="center-block" id="no-image">
+    <div class="alert alert-info">
+      <%= t('models.image.none') %>
+    </div>
+  </div>
+<% end %>
+<%
+=end
+%>
+<h4>Images</h4>

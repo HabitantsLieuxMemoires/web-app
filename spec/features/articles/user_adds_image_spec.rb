@@ -9,12 +9,20 @@ feature 'User adds image' do
     @article = create(:article)
   end
 
-  scenario 'with valid image', :focus => true do
-    file = fixture_file_upload('spec/files/test_image.gif', 'image/gif')
+  scenario 'with valid image', :js => true, :focus => true do
+    image = create(:image)
     visit edit_article_path(@article.id)
 
     click_on 'show_images'
-    attach_file 'article_image', file
+    click_on 'add_image'
+
+    within '#modal-add-image' do
+      fill_in 'image[title]', with: image.title
+      attach_file 'image[article_image]', image.article_image
+      click_on 'upload_image'
+    end
+
+    expect(page).to have_content(I18n.t('models.image.uploaded'))
   end
 
   scenario 'with image too big', :focus => true do

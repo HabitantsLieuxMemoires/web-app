@@ -1,6 +1,6 @@
 node "vagrant.hlm.local" {
   # Packages
-  $packages = ['git-core', 'curl', 'xvfb', 'libqtwebkit-dev']
+  $packages = ['git-core', 'curl', 'xvfb', 'libqtwebkit-dev', 'imagemagick']
   package { $packages:
     ensure => present,
   }

@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-lg-11" id="article-content">
+  <div class="col-lg-11">
     <%= bootstrap_form_for @article do |f| %>
-      <div class="panel panel-default">
+      <div class="panel panel-default" id="article-content">
         <div class="panel-heading clearfix">
           <div class="pull-left">
             <h3 class="panel-title"><%= t('models.article.edit') %></h3>
@@ -16,6 +16,9 @@
         </div>
       </div>
     <% end %>
+
+    <%= render 'images',   article: @article %>
+    <%= render 'comments', article: @article %>
   </div>
   <div class="col-lg-1" id="article-control">
     <%= render 'actionbar', article: @article %>

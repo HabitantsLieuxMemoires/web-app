@@ -19,6 +19,7 @@ class Article
   index({ location: "2d" }, { min: -200, max: 200 })
 
   has_many :comments, autosave: true
+  has_many :images,   autosave: true
 
   private
 
