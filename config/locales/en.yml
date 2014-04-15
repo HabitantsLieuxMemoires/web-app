@@ -10,6 +10,10 @@ en:
   create:       "Create"
   publish:      "Publish"
   export:       "Export"
+  upload:       "Upload"
+  change:       "Change"
+  remove:       "Remove"
+  select_file:  "Select file"
 
   date:
     formats:
@@ -54,4 +58,4 @@ en:
       create:          "Create comment"
       none:            "No comment"
     image:
-      upload:          "Upload"
+      upload:          "Upload image"

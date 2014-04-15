@@ -17,8 +17,8 @@
       </div>
     <% end %>
 
-    <%= render 'images',   article: @article %>
-    <%= render 'comments', article: @article %>
+    <%= render 'images',   article: @article, edit_mode: true %>
+    <%= render 'comments', article: @article, edit_mode: true %>
   </div>
   <div class="col-lg-1" id="article-control">
     <%= render 'actionbar', article: @article %>

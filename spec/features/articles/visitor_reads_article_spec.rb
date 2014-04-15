@@ -34,4 +34,10 @@ feature 'Visitor reads article' do
 
     expect(page).not_to have_css('#create_comment')
   end
+
+  scenario 'and cannot add image' do
+    visit article_path(@article)
+
+    expect(page).not_to have_css('#add_image')
+  end
 end

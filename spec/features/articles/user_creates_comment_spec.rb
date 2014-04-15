@@ -18,4 +18,8 @@ feature 'User creates comment' do
     expect(page).to have_content(c.content)
   end
 
+  scenario 'with invalid data', :js => true, :focus => true do
+    pending
+  end
+
 end
