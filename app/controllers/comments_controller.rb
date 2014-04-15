@@ -5,9 +5,7 @@ class CommentsController < ApplicationController
   def index
     @comments = @article.comments.desc(:created_at)
 
-    respond_to do |format|
-      format.js
-    end
+    render layout: false
   end
 
   def new

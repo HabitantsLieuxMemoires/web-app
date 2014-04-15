@@ -15,6 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require selectize
-// Todo: Remove tinymce from global manifest
 //= require tinymce
+//= require jasny-bootstrap.min
 //= require_tree .

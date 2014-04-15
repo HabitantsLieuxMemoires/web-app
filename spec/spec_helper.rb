@@ -28,10 +28,13 @@ Spork.prefork do
     # Setting Capybara JS driver
     Capybara.javascript_driver = :webkit
 
-    # Drop databases before each spec
+    # Drop databases and clear files before each spec
     config.before(:suite) { DatabaseCleaner[:mongoid].strategy = :truncation }
     config.before(:each)  { DatabaseCleaner[:mongoid].start }
-    config.after(:each)   { DatabaseCleaner[:mongoid].clean }
+    config.after(:each) do
+      DatabaseCleaner[:mongoid].clean
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
 
     # Include Factory Girl syntax to simplify calls to factories
     config.include FactoryGirl::Syntax::Methods
@@ -42,6 +45,9 @@ Spork.prefork do
     # Include email helpers
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
+
+    # Include file helpers
+    config.include(ActionDispatch::TestProcess)
 
     Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   end

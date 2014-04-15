@@ -25,4 +25,18 @@ feature 'User edits article' do
     expect(page).to have_content(I18n.t('models.article.update_error'))
   end
 
+  scenario 'and cannot add comment', :js => true do
+    visit edit_article_path(@article)
+    click_on 'show_comments'
+
+    expect(page).not_to have_content(I18n.t('models.comment.create'))
+  end
+
+  scenario 'and can add image', :js => true do
+    visit edit_article_path(@article)
+    click_on 'show_images'
+
+    expect(page).to have_content(I18n.t('models.image.upload'))
+  end
+
 end

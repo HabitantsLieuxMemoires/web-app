@@ -10,6 +10,16 @@ en:
   create:       "Create"
   publish:      "Publish"
   export:       "Export"
+  upload:       "Upload"
+  change:       "Change"
+  remove:       "Remove"
+  select_file:  "Select file"
+
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"
 
   date:
     formats:
@@ -53,3 +63,5 @@ en:
     comment:
       create:          "Create comment"
       none:            "No comment"
+    image:
+      upload:          "Upload image"
