@@ -1,8 +1,7 @@
-<%
-=begin
-%>
 <% if @images.any? %>
-  <%= render :partial => 'image', collection: @images %>
+  <div class="row">
+    <%= render :partial => 'image', collection: @images %>
+  </div>
 <% else %>
   <div class="center-block" id="no-image">
     <div class="alert alert-info">
@@ -10,7 +9,3 @@
     </div>
   </div>
 <% end %>
-<%
-=end
-%>
-<h4>Images</h4>

@@ -65,3 +65,5 @@ en:
       none:            "No comment"
     image:
       upload:          "Upload image"
+      uploaded:        "Image successfully uploaded"
+      none:            "No image"

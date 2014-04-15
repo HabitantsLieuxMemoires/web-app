@@ -17,4 +17,11 @@
 //= require selectize
 //= require tinymce
 //= require jasny-bootstrap.min
+//= require ekko-lightbox.min
 //= require_tree .
+
+// Adding Ekko Lightbox support
+$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});

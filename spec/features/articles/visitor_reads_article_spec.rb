@@ -35,6 +35,19 @@ feature 'Visitor reads article' do
     expect(page).not_to have_css('#create_comment')
   end
 
+  scenario 'and can see images', :js => true, :focus => true do
+    image = create(:image)
+    @article.images << image
+    @article.save!
+
+    visit article_path(@article)
+    click_on 'show_images'
+
+    within('#images-list') do
+      expect(page).to have_css('.image')
+    end
+  end
+
   scenario 'and cannot add image' do
     visit article_path(@article)
 
