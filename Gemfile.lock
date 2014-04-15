@@ -249,7 +249,6 @@ DEPENDENCIES
   launchy (~> 2.4.2)
   mini_magick!
   mongoid!
-  mongoid-grid_fs (~> 2.1.0)
   mongoid_taggable (~> 1.1.1)
   rails (= 4.0.4)
   rspec-rails (~> 2.14.2)
