@@ -44,7 +44,7 @@ feature 'Visitor reads article' do
     click_on 'show_images'
 
     within('#images-list') do
-      expect(page).to have_content(image.title)
+      expect(page).to have_css('.image')
     end
   end
 
