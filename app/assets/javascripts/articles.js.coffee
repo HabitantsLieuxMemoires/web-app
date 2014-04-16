@@ -1,68 +1,74 @@
-editorController =
-  setButtons: (editor) ->
-    debug "Initializaing editor's buttons"
-    # Titre
-    editor.addButton 'btnTitre',
-      text: 'Titre',
-      icon: false,
-      onclick: ->
-        editor.execCommand('mceToggleFormat', false, "h1");
-      onPostRender: ->
-        self = @
-        setup = ->
-          editor.formatter.formatChanged "h1", (state) ->
-            self.active state
-        if editor.formatter then setup() else editor.on 'init', setup
-    # Chapeau
-    editor.addButton 'btnChapeau',
-      text: 'Chapeau',
-      icon: false,
-      onclick: ->
-        editor.selection.setContent '<p class="chapeau">' + editor.selection.getContent() + '</p>'
-    # Chapeau
-    editor.addButton 'btnSection',
-      class:'test',
-      text: 'Section',
-      icon: false,
-      onclick: ->
-        editor.selection.setContent '<section>' + editor.selection.getContent() + '</section>'
+#= require selectize
+#= require tinymce
+#= require jasny-bootstrap.min
+#= require ekko-lightbox.min
+#= require jquery.scrollTo.min
+#= require shared/ajax-loader
+#= require shared/ekko-lightbox-loader
+#= require editor/article
 
-  # TinyMCE Initilization
-  init: ->
-    debug "Initializing editor "
-    tinyMCE.init
-      selector: 'textarea.tinymce'
-      toolbar1: "bold underline italic strikethrough | removeformat | btnTitre btnChapeau btnSection"
-      menubar: false
-      statusbar: false
-      content_css:"/assets/tinymce_preview.css"
-      plugins: "code"
-      height: 400
-      style_formats: [
-        {title: 'Titre', block: 'h1'}
-        {title: 'Chapeau', block: 'p'}
-        {title: 'Section', block: 'section', wrapper: true, merge_siblings: false}
-      ]
-      visualblocks_default_state: true,
-      end_container_on_empty_block: true
-      setup: (editor) ->
-        editorController.setButtons editor
+window['articles#new'] = (data) ->
+  UI.initEditor('#article_body')
+  UI.initTagsSelector($('#article_tags'))
 
-      # Fix buttons alignment
-      # $('.mce-toolbar .mce-last:last').parents('.mce-container:nth(0)').css('float','right');
+window['articles#edit'] = (data) ->
+  UI.initEditor('#article_body')
+  UI.initTagsSelector($('#article_tags'))
 
-$(document).on 'ready page:load', ->
-  $('#article_tags').selectize
-    plugins: ['remove_button']
-    delimiter: ','
-    persist: false
-    create: (input) ->
-      return {
-        value: input,
-        text: input
-      }
+  $('#show_comments').on 'click', ->
+    Data.loadComments()
 
-  toggleArticleContent = (withContent, show, replace = false) ->
+  $('#show_images').on 'click', ->
+    Data.loadImages()
+
+window['articles#show'] = (data) ->
+  $('#show_comments').on 'click', ->
+    Data.loadComments()
+
+  $('#show_images').on 'click', ->
+    Data.loadImages()
+
+UI =
+  initEditor: (@editorSelector) ->
+    ArticleEditor.init(@editorSelector)
+
+  initTagsSelector: (@component, @delimiter = ',') ->
+    @component.selectize
+        plugins: ['remove_button']
+        delimiter: @delimiter
+        persist: false
+        create: (input) ->
+          return {
+            value: input,
+            text: input
+          }
+
+Data =
+  loadComments: ->
+    articleComments  = $('#article-comments')
+    commentsList     = $('#comments-list')
+
+    if articleComments.is ':visible'
+      Helpers.toggleArticleContent articleComments, true
+    else if AjaxLoader.load(articleComments, commentsList)
+      # Displaying comments
+      Helpers.toggleArticleContent articleComments, false
+
+      # Then scrolling to them
+      $('html, body').scrollTo articleComments
+
+  loadImages: ->
+    articleImages  = $('#article-images')
+    imagesList = $('#images-list')
+
+    if articleImages.is ':visible'
+      Helpers.toggleArticleContent articleImages, true, true
+    else if AjaxLoader.load(articleImages, imagesList)
+      # Displaying images
+      Helpers.toggleArticleContent articleImages, false, true
+
+Helpers =
+  toggleArticleContent: (withContent, show, replace = false) ->
     articleContent = $('#article-content')
 
     if show
@@ -74,46 +80,4 @@ $(document).on 'ready page:load', ->
       if replace
         articleContent.addClass 'hidden'
 
-  $('#show_comments').on 'click', ->
-    articleComments  = $('#article-comments')
 
-    if articleComments.is ':visible'
-      toggleArticleContent articleComments, true
-    else
-      # Loading comments
-      targetPath = articleComments.data 'load'
-      if not targetPath
-        console.log 'Cannot load content asynchronously for component: ' + articleImages.attr 'id'
-        return false
-
-      if not articleComments.hasClass 'loaded'
-        commentsList = $('#comments-list')
-        commentsList.load targetPath
-        articleComments.addClass 'loaded'
-
-      # Displaying comments
-      toggleArticleContent articleComments, false
-
-      # Then scrolling to them
-      $('html, body').scrollTo articleComments
-
-  $('#show_images').on 'click', ->
-    articleImages  = $('#article-images')
-
-    if articleImages.is ':visible'
-      toggleArticleContent articleImages, true, true
-    else
-      # Loading images
-      targetPath = articleImages.data 'load'
-      if not targetPath
-        console.log 'Cannot load content asynchronously for component: ' + articleImages.attr 'id'
-        return false
-
-      if not articleImages.hasClass 'loaded'
-        imagesList = $('#images-list')
-        imagesList.load targetPath
-        articleImages.addClass 'loaded'
-
-      toggleArticleContent articleImages, false, true
-
-  editorController.init()

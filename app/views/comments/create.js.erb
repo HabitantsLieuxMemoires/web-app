@@ -1,7 +1,9 @@
-var no_comment = $('#no-comment')
-if ( no_comment.length ) {
-  $('#comments-list').empty();
-}
+(function() {
+  var no_comment = $('#no-comment')
+  if ( no_comment.length ) {
+    $('#comments-list').empty()
+  }
 
-$('#comments-list').prepend("<%= escape_javascript(render @comment) %>");
-$("#modal-create-comment").modal('hide');
+  $('#comments-list').prepend("<%= escape_javascript(render @comment) %>")
+  $("#modal-create-comment").modal('hide')
+})()

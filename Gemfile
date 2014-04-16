@@ -17,20 +17,26 @@ group :assets do
   gem 'therubyracer',           "~> 0.12.1" unless RUBY_PLATFORM.match(/darwin|mswin/)
 end
 
+# Assets gems
 gem 'jquery-rails',             "~> 3.1.0"
 gem 'bootstrap-sass',           "~> 3.1.1"
 gem 'turbolinks',               "~> 2.2.1"
 gem 'jbuilder',                 "~> 2.0.5"
-gem 'mongoid',                  github: "mongoid/mongoid", tag: "v4.0.0.beta1"
-gem 'bson_ext'
-gem 'sorcery',                  "~> 0.8.5"
+gem 'pluggable_js',             "~> 2.0.0"
 gem 'bootstrap_form',           "~> 2.1.0"
-gem 'mongoid_taggable',         "~> 1.1.1"
-gem 'mini_magick',              github: "minimagick/minimagick", tag: "v3.7.0"
-gem 'carrierwave-mongoid',      "~> 0.7.1"
 gem 'selectize-rails',          "~> 0.9.0"
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+
+# Mongoid gems
+gem 'mongoid',                  github: "mongoid/mongoid", tag: "v4.0.0.beta1"
+gem 'bson_ext'
+gem 'mongoid_taggable',         "~> 1.1.1"
+gem 'mini_magick',              github: "minimagick/minimagick", tag: "v3.7.0"
+gem 'carrierwave-mongoid',      "~> 0.7.1"
+
+# Authentication gems
+gem 'sorcery',                  "~> 0.8.5"
 
 group :development, :test do
   gem 'dotenv-rails',           "~> 0.10.0"

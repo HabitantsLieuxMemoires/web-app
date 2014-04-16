@@ -14,15 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require selectize
-//= require tinymce
-//= require jasny-bootstrap.min
-//= require ekko-lightbox.min
-//= require jquery.scrollTo.min
-//= require_tree .
-
-// Adding Ekko Lightbox support
-$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox();
-});
+//= require_directory
