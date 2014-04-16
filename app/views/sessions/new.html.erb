@@ -7,10 +7,10 @@
       quidem. </p>
   </div>
   <div class="panel-body">
-    <%= bootstrap_form_tag :url         => sessions_path,
-                           :layout      => :horizontal,
-                           :label_col   => "col-lg-4",
-                           :control_col => "col-lg-8" do |f| %>
+    <%= bootstrap_form_tag url: sessions_path,
+                           layout: :horizontal,
+                           label_col: "col-lg-4",
+                           control_col: "col-lg-8" do |f| %>
 
         <%= f.text_field     :identity %>
         <%= f.password_field :password %>

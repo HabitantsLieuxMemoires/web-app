@@ -8,12 +8,12 @@
     <div class="pull-right">
       <% if current_user and not edit_mode %>
         <%= link_to t('models.comment.create'), new_article_comment_path(article.id),
-                  :id => 'create_comment',
-                  :class => "btn btn-default btn-sm",
-                  :remote => true,
-                  :data => {
-                    :toggle => 'modal',
-                    :target => '#modal-create-comment'
+                  id: 'create_comment',
+                  class: "btn btn-default btn-sm",
+                  remote: true,
+                  data: {
+                    toggle: 'modal',
+                    target: '#modal-create-comment'
                   } %>
       <% end %>
     </div>

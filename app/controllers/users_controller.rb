@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user, should_remember=true)
-      redirect_to root_url, :notice => t('signed_up')
+      redirect_to root_url, notice: t('signed_up')
     else
       render :new
     end

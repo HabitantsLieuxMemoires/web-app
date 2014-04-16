@@ -8,10 +8,10 @@
   </div>
   <div class="panel-body">
     <%= bootstrap_form_for @user,
-                            :layout => :horizontal,
-                            :inline_errors => false,
-                            :label_col => "col-lg-4",
-                            :control_col => "col-lg-8" do |f| %>
+                            layout: :horizontal,
+                            inline_errors: false,
+                            label_col: "col-lg-4",
+                            control_col: "col-lg-8" do |f| %>
         <% if @user.errors.any? %>
             <%= f.error_summary %>
         <% end %>

@@ -18,6 +18,7 @@
 //= require tinymce
 //= require jasny-bootstrap.min
 //= require ekko-lightbox.min
+//= require jquery.scrollTo.min
 //= require_tree .
 
 // Adding Ekko Lightbox support

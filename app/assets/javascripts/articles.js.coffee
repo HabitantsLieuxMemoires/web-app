@@ -37,6 +37,7 @@ editorController =
       statusbar: false
       content_css:"/assets/tinymce_preview.css"
       plugins: "code"
+      height: 400
       style_formats: [
         {title: 'Titre', block: 'h1'}
         {title: 'Chapeau', block: 'p'}
@@ -90,7 +91,11 @@ $(document).on 'ready page:load', ->
         commentsList.load targetPath
         articleComments.addClass 'loaded'
 
+      # Displaying comments
       toggleArticleContent articleComments, false
+
+      # Then scrolling to them
+      $('html, body').scrollTo articleComments
 
   $('#show_images').on 'click', ->
     articleImages  = $('#article-images')

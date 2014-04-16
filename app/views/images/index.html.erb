@@ -1,6 +1,6 @@
 <% if @images.any? %>
   <div class="row">
-    <%= render :partial => 'image', collection: @images %>
+    <%= render partial: 'image', collection: @images %>
   </div>
 <% else %>
   <div class="center-block" id="no-image">

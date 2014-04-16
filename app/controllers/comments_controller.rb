@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter        :set_article,   only: [:index, :create]
-  skip_before_filter   :require_login, only: [:index]
+  before_action        :set_article,   only: [:index, :create]
+  skip_before_action   :require_login, only: [:index]
 
   def index
     @comments = @article.comments.desc(:created_at)

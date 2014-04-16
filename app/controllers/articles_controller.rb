@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  skip_before_filter   :require_login, only: [:show]
-  before_filter        :set_article,   only: [:show, :edit, :update]
+  skip_before_action   :require_login, only: [:show]
+  before_action        :set_article,   only: [:show, :edit, :update]
 
   def new
     @article = Article.new
@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to article_path(@article.id), :notice => t('models.article.created')
+      redirect_to article_path(@article.id), notice: t('models.article.created')
     else
       flash[:error] = t('models.article.creation_error')
       render :new
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    render :layout => 'articles/edit'
+    render layout: 'articles/edit'
   end
 
   def update
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    render :layout => 'articles/show'
+    render layout: 'articles/show'
   end
 
   private

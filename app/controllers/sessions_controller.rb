@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_login, :except => [:destroy]
+  skip_before_action :require_login, only: [:create, :new]
 
   def new
     @user = User.new
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:identity], params[:password], params[:remember_me])
     if user
-      redirect_to root_url, :notice => t('logged_in')
+      redirect_to root_url, notice: t('logged_in')
     else
       flash.now.alert = t('authentication.invalid_credentials')
       render :new
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url, :notice => t('logged_out')
+    redirect_to root_url, notice: t('logged_out')
   end
 end

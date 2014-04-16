@@ -5,12 +5,12 @@
   </div>
   <div class="panel-body">
     <%= bootstrap_form_for @user,
-                           :url           => password_reset_path(@user),
-                           :html          => {:method => :put},
-                           :layout        => :horizontal,
-                           :inline_errors => false,
-                           :label_col => "col-lg-4",
-                           :control_col => "col-lg-8" do |f| %>
+                           url: password_reset_path(@user),
+                           html: {method: :put},
+                           layout: :horizontal,
+                           inline_errors: false,
+                           label_col: "col-lg-4",
+                           control_col: "col-lg-8" do |f| %>
         <% if @user.errors.any? %>
             <%= f.error_summary %>
         <% end %>
@@ -21,7 +21,7 @@
 
         <%= f.password_field :password %>
         <%= f.password_field :password_confirmation %>
-        <%= f.hidden_field   :token, :value => @token %>
+        <%= f.hidden_field   :token, value: @token %>
 
         <%= f.form_group do %>
           <%= f.submit t('password.update') %>

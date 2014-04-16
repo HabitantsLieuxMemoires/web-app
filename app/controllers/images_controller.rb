@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
-  before_filter        :set_article,   only: [:index, :create]
-  skip_before_filter   :require_login, only: [:index]
+  before_action        :set_article,   only: [:index, :create]
+  skip_before_action   :require_login, only: [:index]
 
   def index
     @images = @article.images.desc(:created_at)
@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
 
     #TODO: Add support for validation errors when publishing image
 
-    redirect_to edit_article_path(@article.id), :notice => t('models.image.uploaded')
+    redirect_to edit_article_path(@article.id), notice: t('models.image.uploaded')
   end
 
   private

@@ -1,5 +1,5 @@
 <% if @comments.any? %>
-  <%= render :partial => 'comment', collection: @comments %>
+  <%= render partial: 'comment', collection: @comments %>
 <% else %>
   <div class="center-block" id="no-comment">
     <div class="alert alert-info">
