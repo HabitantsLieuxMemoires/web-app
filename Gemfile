@@ -38,6 +38,9 @@ gem 'carrierwave-mongoid',      "~> 0.7.1"
 # Authentication gems
 gem 'sorcery',                  "~> 0.8.5"
 
+# Seeding gems
+gem 'seedbank',                 "~> 0.3.0"
+
 group :development, :test do
   gem 'dotenv-rails',           "~> 0.10.0"
   gem 'rspec-rails',            "~> 2.14.2"
