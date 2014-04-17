@@ -13,13 +13,16 @@ class Article
   field :locked,    type: Boolean, default: false
   field :location,  type: Array,   default: []
 
+  belongs_to :theme,  dependent: :nullify
+  belongs_to :chronology, dependent: :nullify
+
+  has_many :comments, autosave: true
+  has_many :images,   autosave: true
+
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }
 
   index({ location: "2d" }, { min: -200, max: 200 })
-
-  has_many :comments, autosave: true
-  has_many :images,   autosave: true
 
   private
 

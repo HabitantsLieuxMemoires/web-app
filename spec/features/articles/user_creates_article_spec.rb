@@ -39,4 +39,20 @@ feature 'User create articles' do
     expect(page).to have_content(I18n.t('models.article.created'))
   end
 
+  scenario 'with theme' do
+    article = build(:article)
+    create_article(article)
+
+    expect(page).to have_content(I18n.t('models.article.created'))
+    expect(page).to have_content(article.theme.title)
+  end
+
+  scenario 'with chronology' do
+    article = build(:article)
+    create_article(article)
+
+    expect(page).to have_content(I18n.t('models.article.created'))
+    expect(page).to have_content(article.chronology.title)
+  end
+
 end

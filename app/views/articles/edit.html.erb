@@ -1,3 +1,7 @@
+<% content_for :sidebar do %>
+  <%= render 'articles/layouts/sidebar_edit', article: @article %>
+<% end %>
+
 <div class="row">
   <div class="col-lg-11">
     <%= bootstrap_form_for @article do |f| %>
@@ -17,7 +21,7 @@
       </div>
     <% end %>
 
-    <%= render 'images',   article: @article, edit_mode: true %>
+    <%= render 'images', article: @article, edit_mode: true %>
     <%= render 'comments', article: @article, edit_mode: true %>
   </div>
   <div class="col-lg-1" id="article-control">

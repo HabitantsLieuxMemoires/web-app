@@ -17,6 +17,10 @@
       <div class="well">
         <%= f.submit t('publish'), class: 'btn btn-primary btn-block', role: 'button' %>
         <hr>
+
+        <%= f.collection_select :theme_id, Theme.all, :id, :title %>
+        <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
+
         <%= f.text_field :tags %>
         <%= f.check_box  :public %>
         <%= f.check_box  :locked %>
