@@ -14,4 +14,6 @@ Hlm::Application.routes.draw do
     resources :images,   only: [:index, :new, :create]
   end
 
+  resources :themes, only: [:show]
+
 end
