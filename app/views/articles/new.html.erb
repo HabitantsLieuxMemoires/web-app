@@ -19,6 +19,7 @@
         <hr>
 
         <%= f.collection_select :theme_id, Theme.all, :id, :title %>
+        <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
 
         <%= f.text_field :tags %>
         <%= f.check_box  :public %>

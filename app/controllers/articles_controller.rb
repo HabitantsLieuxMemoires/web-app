@@ -8,8 +8,12 @@ class ArticlesController < ApplicationController
 
   def create
     theme = Theme.find(article_params[:theme_id])
+    chronology = Chronology.find(article_params[:chronology_id])
 
-    @article = theme.articles.build(article_params)
+    @article = Article.new(article_params)
+    @article.theme = theme
+    @article.chronology = chronology
+
     if @article.save
       redirect_to article_path(@article.id), notice: t('models.article.created')
     else
@@ -36,7 +40,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme_id)
+    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme_id, :chronology_id)
   end
 
   def set_article

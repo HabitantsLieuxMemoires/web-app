@@ -5,6 +5,7 @@ module Features
       fill_in 'article[title]', with: article.title
       fill_in 'article[body]', with: article.body
       select article.theme.title, from: 'article[theme_id]'
+      select article.chronology.title, from: 'article[chronology_id]'
       click_button I18n.t('publish')
     end
   end

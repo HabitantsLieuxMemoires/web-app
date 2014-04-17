@@ -14,11 +14,10 @@ class Article
   field :location,  type: Array,   default: []
 
   belongs_to :theme,  dependent: :nullify
+  belongs_to :chronology, dependent: :nullify
 
   has_many :comments, autosave: true
   has_many :images,   autosave: true
-
-  accepts_nested_attributes_for :theme
 
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }

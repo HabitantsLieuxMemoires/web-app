@@ -13,9 +13,11 @@
     <%= t('article.details') %>
   </div>
   <div class="panel-body">
-    <p><strong><%= t('article.theme') %> : </strong><%= @article.theme.title %><p>
+    <p><strong><%= t('models.article.theme') %> : </strong><%= @article.theme.title %><p>
     <hr>
-    <p><strong><%= t('article.tags') %></strong><p>
+    <p><strong><%= t('models.article.chronology') %> : </strong><%= @article.chronology.title %><p>
+    <hr>
+    <p><strong><%= t('models.article.tags') %></strong><p>
     <div id="article-tags">
       <% @article.tags_array.each do |t| %>
         <h4><span class="label label-primary"><%= t %></span></h4>
@@ -29,8 +31,8 @@
     <%= t('article.metadatas') %>
   </div>
   <div class="panel-body">
-    <p><strong><%= t('article.location') %> : </strong><p>
-    <p><strong><%= t('article.url') %> : </strong><p>
-    <p><strong><%= t('article.revision') %> : </strong><p>
+    <p><strong><%= t('models.article.location') %> : </strong><p>
+    <p><strong><%= t('models.article.url') %> : </strong><p>
+    <p><strong><%= t('models.article.revision') %> : </strong><p>
   </div>
 </div>
