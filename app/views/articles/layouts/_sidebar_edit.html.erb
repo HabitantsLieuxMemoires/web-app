@@ -1,9 +1,12 @@
-<%= bootstrap_form_for @article do |f| %>
+<%= render 'shared/sidebar_actions' %>
+
+<%= bootstrap_form_for(article) do |f| %>
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
       <%= t('article.details') %>
     </div>
     <div class="panel-body">
+      <%= f.collection_select :theme_id, Theme.all, :id, :title %>
       <%= f.text_field :tags %>
     </div>
   </div>
@@ -19,3 +22,6 @@
     </div>
   </div>
 <% end %>
+
+
+

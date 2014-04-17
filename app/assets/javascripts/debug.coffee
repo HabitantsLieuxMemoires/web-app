@@ -1,3 +1,4 @@
 window.debug= (txt) ->
-    if ENV != "production" and console? and console.log? and txt?
-      console.log txt
+  environment = $('body').data('env')
+  if environment != "production" and console? and console.log? and txt?
+    console.log txt

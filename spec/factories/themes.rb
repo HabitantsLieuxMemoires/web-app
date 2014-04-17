@@ -2,6 +2,8 @@
 
 FactoryGirl.define do
   factory :theme do
-    title Faker::Address.city
+    sequence :title do
+      Faker::Address.city
+    end
   end
 end

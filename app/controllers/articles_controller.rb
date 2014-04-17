@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    theme = Theme.find(article_params[:theme])
+    theme = Theme.find(article_params[:theme_id])
 
     @article = theme.articles.build(article_params)
     if @article.save
@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    render layout: 'articles/edit'
   end
 
   def update
@@ -32,16 +31,16 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    render layout: 'articles/show'
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme)
+    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme_id)
   end
 
   def set_article
     @article = Article.find(params[:id])
   end
+
 end

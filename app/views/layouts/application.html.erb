@@ -5,20 +5,20 @@
       <meta charset="utf-8">
       <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
       <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-      <%= javascript_include_tag "debug", "data-turbolinks-track" => true %>
       <%= csrf_meta_tags %>
-      <script type="application/javascript">
-        var ENV = <%=Rails.env.development? %> ? 'DEV' : 'PROD';
-      </script>
     </head>
-    <body>
+    <body data-env="<%= Rails.env %>">
       <%= render 'shared/header' %>
 
       <div class="container">
         <hr>
         <div class="row">
           <div class="col-lg-3">
+            <% if content_for?(:sidebar) %>
+              <%= yield(:sidebar) %>
+            <% else %>
               <%= render 'shared/sidebar' %>
+            <% end %>
           </div>
           <div class="col-lg-9">
             <%= render 'shared/messages' %>

@@ -39,4 +39,15 @@ feature 'User edits article' do
     expect(page).to have_content(I18n.t('models.image.upload'))
   end
 
+  scenario 'and can update theme', :focus => true do
+    article = create(:article)
+    theme = create(:theme)
+
+    visit edit_article_path(article)
+    select theme.title, from: 'article[theme_id]'
+    click_button I18n.t('publish')
+
+    expect(page).to have_content(theme.title)
+  end
+
 end
