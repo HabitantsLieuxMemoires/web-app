@@ -39,4 +39,13 @@ feature 'User create articles' do
     expect(page).to have_content(I18n.t('models.article.created'))
   end
 
+  scenario 'with theme', :feature => true do
+    theme = create(:theme)
+    article = build(:article)
+    create_article_with_theme(article, theme)
+
+    expect(page).to have_content(I18n.t('models.article.created'))
+    expect(page).to have_content(theme.title)
+  end
+
 end

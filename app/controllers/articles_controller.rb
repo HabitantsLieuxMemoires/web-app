@@ -7,7 +7,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    theme = Theme.find(article_params[:theme])
+
+    @article = theme.articles.build(article_params)
     if @article.save
       redirect_to article_path(@article.id), notice: t('models.article.created')
     else
@@ -36,7 +38,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude)
+    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme)
   end
 
   def set_article
