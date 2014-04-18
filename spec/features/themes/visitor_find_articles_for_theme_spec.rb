@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Visitor find articles for theme' do
 
-  scenario 'from home page', :feature => true do
+  scenario 'from home page' do
     theme = create(:theme)
 
     visit root_path
