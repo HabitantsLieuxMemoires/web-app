@@ -1,33 +1,19 @@
-<div class="row">
-  <%= bootstrap_form_for @article,
-                         :url => {action: "create"} do |f| %>
-    <div class="col-lg-9" id="article-content">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
-            hoc responsum. Ita prorsus, inquam; </p>
-        </div>
-        <div class="panel-body">
-          <%= f.text_field  :title %>
-          <%= f.text_area   :body, rows: 8, class: "tinymce" %>
-        </div>
+<%= bootstrap_form_for @article, url: {action: "create"} do |f| %>
+
+  <div class="col-lg-3">
+    <%= render 'articles/layouts/sidebar_edit', f: f %>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
+          hoc responsum. Ita prorsus, inquam; </p>
+      </div>
+      <div class="panel-body">
+        <%= f.text_field  :title %>
+        <%= f.text_area   :body, rows: 8, class: "tinymce" %>
       </div>
     </div>
-    <div class="col-lg-3" id="article-options">
-      <div class="well">
-        <%= f.submit t('publish'), class: 'btn btn-primary btn-block', role: 'button' %>
-        <hr>
-
-        <%= f.collection_select :theme_id, Theme.all, :id, :title %>
-        <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
-
-        <%= f.text_field :tags %>
-        <%= f.check_box  :public %>
-        <%= f.check_box  :locked %>
-        <hr>
-        <%= f.text_field :latitude %>
-        <%= f.text_field :longitude %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

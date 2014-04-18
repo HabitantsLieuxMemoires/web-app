@@ -39,7 +39,7 @@ feature 'User edits article' do
     expect(page).to have_content(I18n.t('models.image.upload'))
   end
 
-  scenario 'and can update theme', :focus => true do
+  scenario 'and can update theme' do
     article = create(:article)
     theme = create(:theme)
 
@@ -50,7 +50,7 @@ feature 'User edits article' do
     expect(page).to have_content(theme.title)
   end
 
-  scenario 'and can update chronology', :focus => true do
+  scenario 'and can update chronology' do
     article = create(:article)
     chronology = create(:chronology)
 
@@ -58,7 +58,7 @@ feature 'User edits article' do
     select chronology.title, from: 'article[chronology_id]'
     click_button I18n.t('publish')
 
-    expect(page).to have_content(theme.title)
+    expect(page).to have_content(chronology.title)
   end
 
 end

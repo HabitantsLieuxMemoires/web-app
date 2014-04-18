@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   skip_before_action   :require_login, only: [:show]
   before_action        :set_article,   only: [:show, :edit, :update]
 
+  layout               'empty',        only: [:new, :edit]
+
   def new
     @article = Article.new
   end

@@ -13,7 +13,7 @@ class Article
   field :locked,    type: Boolean, default: false
   field :location,  type: Array,   default: []
 
-  belongs_to :theme,  dependent: :nullify
+  belongs_to :theme,      dependent: :nullify
   belongs_to :chronology, dependent: :nullify
 
   has_many :comments, autosave: true
