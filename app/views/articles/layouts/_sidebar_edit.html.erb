@@ -1,28 +1,31 @@
-<%= render 'shared/sidebar_actions' %>
+<div class="well" id="article-actions">
+  <%= f.submit t('publish'), class: 'btn btn-primary btn-block' %>
+  <%= link_to t('cancel'), root_path, class: 'btn btn-danger btn-block' %>
+</div>
 
-<%= bootstrap_form_for(article) do |f| %>
-  <div class="panel panel-default" id="article-details">
-    <div class="panel-heading">
-      <%= t('article.details') %>
-    </div>
-    <div class="panel-body">
-      <%= f.collection_select :theme_id, Theme.all, :id, :title %>
-      <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
-      <%= f.text_field :tags %>
-    </div>
+<div class="panel panel-default" id="article-details">
+  <div class="panel-heading">
+    <%= t('article.details') %>
   </div>
+  <div class="panel-body">
+    <%= f.collection_select :theme_id, Theme.all, :id, :title %>
+    <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
+    <%= f.text_field :tags %>
+    <%= f.check_box  :public %>
+    <%= f.check_box  :locked %>
+  </div>
+</div>
 
-  <div class="panel panel-default" id="article-metadatas">
-    <div class="panel-heading">
-      <%= t('article.metadatas') %>
-    </div>
-    <div class="panel-body">
-      <p><strong><%= t('article.location') %> : </strong><p>
-      <p><strong><%= t('article.url') %> : </strong><p>
-      <p><strong><%= t('article.revision') %> : </strong><p>
-    </div>
+<div class="panel panel-default" id="article-metadatas">
+  <div class="panel-heading">
+    <%= t('article.metadatas') %>
   </div>
-<% end %>
+  <div class="panel-body">
+    <p><strong><%= t('article.location') %> : </strong><p>
+    <p><strong><%= t('article.url') %> : </strong><p>
+    <p><strong><%= t('article.revision') %> : </strong><p>
+  </div>
+</div>
 
 
 

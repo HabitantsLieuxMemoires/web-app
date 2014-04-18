@@ -14,7 +14,7 @@ class Article
   field :locked,    type: Boolean, default: false
   field :location,  type: Array,   default: []
 
-  belongs_to    :theme,  dependent: :nullify
+  belongs_to    :theme, dependent: :nullify
   counter_cache :theme
 
   belongs_to :chronology, dependent: :nullify

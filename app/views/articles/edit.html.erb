@@ -1,30 +1,30 @@
-<% content_for :sidebar do %>
-  <%= render 'articles/layouts/sidebar_edit', article: @article %>
-<% end %>
+<%= bootstrap_form_for @article do |f| %>
 
-<div class="row">
-  <div class="col-lg-11">
-    <%= bootstrap_form_for @article do |f| %>
-      <div class="panel panel-default" id="article-content">
-        <div class="panel-heading clearfix">
-          <div class="pull-left">
-            <h3 class="panel-title"><%= t('models.article.edit') %></h3>
+  <div class="col-lg-3">
+    <%= render 'articles/layouts/sidebar_edit', f: f %>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="row">
+      <div class="col-lg-11">
+
+          <div class="panel panel-default" id="article-content">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= t('models.article.edit') %></h3>
+            </div>
+            <div class="panel-body">
+                <%= f.text_field  :title %>
+                <%= f.text_area   :body, rows: 8, class: "tinymce" %>
+            </div>
           </div>
-          <div class="pull-right">
-            <%= f.primary t('publish'), class: 'btn btn-sm' %>
-          </div>
-        </div>
-        <div class="panel-body">
-            <%= f.text_field  :title %>
-            <%= f.text_area   :body, rows: 8, class: "tinymce" %>
-        </div>
+
+
+        <%= render 'images', article: @article, edit_mode: true %>
+        <%= render 'comments', article: @article, edit_mode: true %>
       </div>
-    <% end %>
-
-    <%= render 'images', article: @article, edit_mode: true %>
-    <%= render 'comments', article: @article, edit_mode: true %>
+      <div class="col-lg-1" id="article-control">
+        <%= render 'actionbar', article: @article %>
+      </div>
+    </div>
   </div>
-  <div class="col-lg-1" id="article-control">
-    <%= render 'actionbar', article: @article %>
-  </div>
-</div>
+<% end %>
