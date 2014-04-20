@@ -1,18 +1,17 @@
 #= require selectize
-#= require tinymce
 #= require jasny-bootstrap.min
 #= require ekko-lightbox.min
 #= require jquery.scrollTo.min
 #= require shared/ajax-loader
 #= require shared/ekko-lightbox-loader
-#= require editor/article
+#= require bootstrap-wysihtml5/b3
 
 window['articles#new'] = (data) ->
-  UI.initEditor('#article_body')
+  UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
 
 window['articles#edit'] = (data) ->
-  UI.initEditor('#article_body')
+  UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
 
   $('#show_comments').on 'click', ->
@@ -29,8 +28,10 @@ window['articles#show'] = (data) ->
     Data.loadImages()
 
 UI =
-  initEditor: (@editorSelector) ->
-    ArticleEditor.init(@editorSelector)
+  initEditor: (editor) ->
+    editor = editor.wysihtml5({
+      "link": false
+    })
 
   initTagsSelector: (@component, @delimiter = ',') ->
     @component.selectize
@@ -79,5 +80,3 @@ Helpers =
       withContent.removeClass 'hidden'
       if replace
         articleContent.addClass 'hidden'
-
-

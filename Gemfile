@@ -27,8 +27,7 @@ gem 'bootstrap_form',               "~> 2.1.0"
 gem 'selectize-rails',              "~> 0.9.0"
 gem 'font-awesome-rails',           "~> 4.0.3.1"
 gem 'momentjs-rails',               "~> 2.5.1"
-gem 'tinymce-rails'
-gem 'tinymce-rails-langs'
+gem 'bootstrap-wysihtml5-rails',    "~> 0.3.1.23"
 
 # Mongoid gems
 gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.beta1"
