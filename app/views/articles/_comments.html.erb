@@ -8,9 +8,8 @@
     <div class="pull-right">
       <% if current_user and not edit_mode %>
         <%= link_to t('models.comment.create'), new_article_comment_path(article.id),
-                  id: 'create_comment',
                   class: "btn btn-default btn-sm",
-                  remote: true,
+                  id: "create_comment",
                   data: {
                     toggle: 'modal',
                     target: '#modal-create-comment'
@@ -20,8 +19,4 @@
   </div>
   <div class="panel-body" id="comments-list">
   </div>
-</div>
-
-<!-- Modals -->
-<div id="modal-create-comment" class="modal" aria-labelledby="modal-create-comment-label" aria-hidden="true" role="dialog">
 </div>

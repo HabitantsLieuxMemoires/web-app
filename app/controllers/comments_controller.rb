@@ -9,10 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render layout: false
   end
 
   def create

@@ -11,8 +11,11 @@ Hlm::Application.routes.draw do
 
   resources :articles do
     resources :comments, only: [:index, :new, :create]
-    resources :images,   only: [:index, :new, :create]
     resources :reports,  only: [:new, :create]
+
+    resources :images,   only: [:index, :new, :create] do
+      get 'select', on: :collection
+    end
   end
 
   resources :themes, only: [:show] do
@@ -30,7 +33,6 @@ Hlm::Application.routes.draw do
       get   'page/:page',   action: :index, on: :collection
       get   'treat',        on: :member
     end
-
   end
 
 end

@@ -1,0 +1,20 @@
+<div class="col-xs-6 col-md-4">
+  <div class="thumbnail" data-url="<%= request.protocol + request.host_with_port + file_select.article_image_url(:thumb) %>" data-caption="<%= file_select.title %>">
+    <img src="<%= file_select.article_image_url(:thumb) %>" alt="<%= file_select.title %>">
+    <div class="caption">
+      <h4><%= file_select.title %></h4>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

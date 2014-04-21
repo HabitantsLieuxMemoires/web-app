@@ -24,9 +24,11 @@ gem 'turbolinks',                   "~> 2.2.1"
 gem 'jbuilder',                     "~> 2.0.5"
 gem 'pluggable_js',                 "~> 2.0.0"
 gem 'bootstrap_form',               "~> 2.1.0"
+gem 'remotipart',                   "~> 1.2"
 gem 'selectize-rails',              "~> 0.9.0"
 gem 'font-awesome-rails',           "~> 4.0.3.1"
 gem 'momentjs-rails',               "~> 2.5.1"
+gem 'underscore-rails',             "~> 1.6.0"
 gem 'bootstrap-wysihtml5-rails',    "~> 0.3.1.23"
 
 # Mongoid gems

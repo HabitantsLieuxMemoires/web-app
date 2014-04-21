@@ -5,6 +5,9 @@
 #= require shared/ajax-loader
 #= require shared/ekko-lightbox-loader
 #= require bootstrap-wysihtml5/b3
+#= require wysihtml5.autoresize
+#= require editor/custom-wysihtml5-options
+#= require editor/custom-wysihtml5-image
 
 window['articles#new'] = (data) ->
   UI.initEditor($('#article_body'))
@@ -29,9 +32,19 @@ window['articles#show'] = (data) ->
 
 UI =
   initEditor: (editor) ->
-    editor = editor.wysihtml5({
-      "link": false
-    })
+    editor = editor.wysihtml5(
+      $.extend(wysiwygOptions,
+        {
+          link: false,
+          html:false,
+          color:false,
+          "events": {
+            "load": ->
+              $('iframe.wysihtml5-sandbox').wysihtml5_size_matters();
+          }
+        }
+      )
+    )
 
   initTagsSelector: (@component, @delimiter = ',') ->
     @component.selectize
