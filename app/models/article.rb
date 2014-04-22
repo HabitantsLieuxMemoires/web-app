@@ -1,8 +1,10 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Taggable
-  include Mongoid::MagicCounterCache
+
+  include Mongoid::Taggable # Tag management support
+  include Mongoid::MagicCounterCache # Counter cache support (allowing queries based on counter)
+  include Mongoid::Audit::Trackable # History tracking support
 
   before_save :update_location
 
@@ -27,6 +29,8 @@ class Article
   validates :body,       presence: true, length: { maximum: 26000 }
 
   index({ location: "2d" }, { min: -200, max: 200 })
+
+  track_history on: [:title, :body]
 
   private
 

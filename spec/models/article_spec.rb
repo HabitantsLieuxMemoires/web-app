@@ -31,4 +31,19 @@ describe Article do
     a.theme = build(:theme)
     expect(a).to be_valid
   end
+
+  it 'is tracked when title updated' do
+    a = create(:article)
+    a.update_attributes(title: 'New title')
+
+    expect(a.history_tracks.count).to eq(1)
+  end
+
+  it 'is tracked when body updated' do
+    a = create(:article)
+    a.update_attributes(body: 'New Body')
+
+    expect(a.history_tracks.count).to eq(1)
+  end
+
 end
