@@ -17,7 +17,8 @@ class Article
   belongs_to    :theme, dependent: :nullify
   counter_cache :theme
 
-  belongs_to :chronology, dependent: :nullify
+  belongs_to    :chronology, dependent: :nullify
+  counter_cache :chronology
 
   has_many :comments, autosave: true
   has_many :images,   autosave: true
