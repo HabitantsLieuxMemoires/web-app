@@ -53,4 +53,16 @@ feature 'Visitor reads article' do
 
     expect(page).not_to have_css('#add_image')
   end
+
+  scenario 'and cannot update content' do
+    visit article_path(@article)
+
+    expect(page).not_to have_content(I18n.t('models.article.update'))
+  end
+
+  scenario 'and cannot signal content' do
+    visit article_path(@article)
+
+    expect(page).not_to have_content(I18n.t('models.article.report'))
+  end
 end

@@ -14,6 +14,7 @@ en:
   change:       "Change"
   remove:       "Remove"
   select_file:  "Select file"
+  report:       "Report"
 
   errors:
     messages:
@@ -50,7 +51,7 @@ en:
       update:          "Update article"
       updated:         "Article successfully updated"
       update_error:    "Unable to updated article"
-      signal:          "Signal content"
+      report:          "Report content"
       details:         "Details"
       metadatas:       "Metadatas"
       public:          "Public"
@@ -67,3 +68,6 @@ en:
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
       none:            "No image"
+    report:
+      created:         "Article content successfully reported"
+      creation_error:  "Unable to report article content"

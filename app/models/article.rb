@@ -24,6 +24,7 @@ class Article
 
   has_many :comments, autosave: true
   has_many :images,   autosave: true
+  has_many :reports
 
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }

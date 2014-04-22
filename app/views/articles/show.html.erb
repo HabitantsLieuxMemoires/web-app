@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-  <%= render 'articles/layouts/sidebar_show' %>
+  <%= render partial: 'articles/layouts/sidebar_show', locals: {article: @article} %>
 <% end %>
 
 <div class="row">
@@ -26,5 +26,13 @@
   </div>
   <div class="col-lg-1" id="article-control">
     <%= render 'actionbar', article: @article %>
+  </div>
+</div>
+
+<!-- Modals -->
+<div id="modal-report-article" class="modal" aria-labelledby="modal-report-article-label" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
   </div>
 </div>

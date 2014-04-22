@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="modal-report-article-label"><%= t('models.article.report') %></h4>
+</div>
+<div class="modal-body">
+  <%= bootstrap_form_for [@article, Report.new], url: {action: "create"}, layout: :horizontal do |f| %>
+
+    <%= f.text_area   :description %>
+
+    <%= f.form_group do %>
+      <%= f.submit t('report'), id: 'report_article' %>
+    <% end %>
+
+  <% end %>
+</div>
