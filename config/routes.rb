@@ -14,4 +14,13 @@ Hlm::Application.routes.draw do
     resources :images,   only: [:index, :new, :create]
   end
 
+  resources :themes, only: [:show] do
+    get 'page/:page', action: :show, on: :member
+  end
+
+  resources :chronologies, only: [:show] do
+    get 'page/:page', action: :show, on: :member
+  end
+
+
 end

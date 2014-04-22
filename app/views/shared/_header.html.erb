@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse navbar-hlm-collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-            <li><%= t('logged_in_as') %> <%= current_user.email %></li>
+            <p class="navbar-text"><%= t('logged_in_as') %> <%= current_user.email %></p>
             <li><%= link_to t('logout'), logout_path %></li>
         <% else %>
             <li><%= link_to t('signup'), signup_path %></li>

@@ -3,6 +3,6 @@ require 'faker'
 
 puts 'DEVELOPMENT THEMES'
 
-10.times do
+8.times do
   FactoryGirl.create(:theme, title: Faker::Address.city)
 end

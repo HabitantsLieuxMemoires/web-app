@@ -1,0 +1,11 @@
+<li class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
+  </a>
+  <div class="media-body">
+    <%= link_to article_path(article.id) do %>
+      <h4 class="media-heading"><%= article.title %></h4>
+    <% end %>
+    <%=raw article.body.split('<br/>').first %>
+  </div>
+</li>
