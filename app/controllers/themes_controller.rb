@@ -3,6 +3,7 @@ class ThemesController < ApplicationController
   before_action      :set_theme,     only: [:show]
 
   def show
+    @articles = @theme.articles.desc(:created_at).page(params[:page])
   end
 
   private

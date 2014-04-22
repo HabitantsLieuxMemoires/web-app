@@ -36,11 +36,11 @@ gem 'mini_magick',                  github: "minimagick/minimagick", tag: "v3.7.
 gem 'carrierwave-mongoid',          "~> 0.7.1"
 gem 'mongoid_magic_counter_cache',  "~> 1.1.0"
 
-# Authentication gems
-gem 'sorcery',                      "~> 0.8.5"
-
-# Seeding gems
-gem 'seedbank',                     "~> 0.3.0"
+# Misc gems
+gem 'sorcery',                      "~> 0.8.5"  # Authentication
+gem 'seedbank',                     "~> 0.3.0"  # Seeding
+gem 'kaminari',                     "~> 0.15.1" # Pagination
+gem 'bootstrap-kaminari-views',     "~> 0.0.3"  # Bootstrap Pagination
 
 group :development, :test do
   gem 'dotenv-rails',               "~> 0.10.0"

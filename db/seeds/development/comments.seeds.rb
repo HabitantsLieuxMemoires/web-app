@@ -4,7 +4,7 @@ require 'faker'
 after "development:articles" do
   puts 'DEVELOPMENT COMMENTS'
 
-  280.times do
+  840.times do
     FactoryGirl.create(:comment,
       content:      Faker::Lorem.paragraph(4, true, 2),
       article:      Article.skip(rand(Article.count)).first,
