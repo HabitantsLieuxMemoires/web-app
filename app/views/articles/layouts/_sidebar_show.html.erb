@@ -1,38 +1,57 @@
 <%= render 'shared/sidebar_actions' %>
 
-<div class="well" id="article-actions">
-  <%= link_to t('article.update'), edit_article_path(@article.id),
-                                   class: 'btn btn-success btn-block',
-                                   type: 'button' %>
-  <button class="btn btn-danger btn-block" type="button"><%= t('article.signal') %></button>
-  <button class="btn btn-default btn-block" type="button"><%= t('export') %></button>
-</div>
+<% if current_user %>
+  <div class="well" id="article-actions">
+    <%= link_to t('models.article.update'), edit_article_path(article.id),
+                                     class: 'btn btn-success btn-block',
+                                     type: 'button' %>
 
-<div class="panel panel-default" id="article-details">
-  <div class="panel-heading">
-    <%= t('article.details') %>
+    <%= link_to t('models.article.report'), new_article_report_path(article.id),
+              id: 'create_report',
+              class: "btn btn-danger btn-block",
+              data: {
+                toggle: 'modal',
+                target: '#modal-report-article'
+              } %>
   </div>
-  <div class="panel-body">
-    <p><strong><%= t('models.article.theme') %> : </strong><%= @article.theme.title %><p>
-    <hr>
-    <p><strong><%= t('models.article.chronology') %> : </strong><%= @article.chronology.title %><p>
-    <hr>
-    <p><strong><%= t('models.article.tags') %></strong><p>
-    <div id="article-tags">
-      <% @article.tags_array.each do |t| %>
-        <h4><span class="label label-primary"><%= t %></span></h4>
+<% end %>
+
+<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>
+  <div class="panel panel-default" id="article-details">
+    <div class="panel-heading">
+      <%= t('article.details') %>
+    </div>
+    <div class="panel-body">
+      <%= f.static_control nil, label: t('models.article.theme') do %>
+        <%= article.theme.title %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.chronology') do %>
+        <%= article.chronology.title %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.tags') do %>
+        <% if article.tags_array.any? %>
+          <% article.tags_array.each do |t| %>
+            <span class="label label-primary"><%= t %></span>
+          <% end %>
+        <% else %>
+          <span class="label label-primary"><%= t('none') %></span>
+        <% end %>
       <% end %>
     </div>
   </div>
-</div>
 
-<div class="panel panel-default" id="article-metadatas">
-  <div class="panel-heading">
-    <%= t('article.metadatas') %>
+  <div class="panel panel-default" id="article-metadatas">
+    <div class="panel-heading">
+      <%= t('article.metadatas') %>
+    </div>
+    <div class="panel-body">
+      <%= f.static_control nil, label: t('models.article.url') do %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.location') do %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.revision') do %>
+        <%= article.history_tracks.count %>
+      <% end %>
+    </div>
   </div>
-  <div class="panel-body">
-    <p><strong><%= t('models.article.location') %> : </strong><p>
-    <p><strong><%= t('models.article.url') %> : </strong><p>
-    <p><strong><%= t('models.article.revision') %> : </strong><p>
-  </div>
-</div>
+<% end %>

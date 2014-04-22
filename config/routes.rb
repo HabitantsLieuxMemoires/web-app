@@ -12,6 +12,7 @@ Hlm::Application.routes.draw do
   resources :articles do
     resources :comments, only: [:index, :new, :create]
     resources :images,   only: [:index, :new, :create]
+    resources :reports,  only: [:new, :create]
   end
 
   resources :themes, only: [:show] do
@@ -21,6 +22,5 @@ Hlm::Application.routes.draw do
   resources :chronologies, only: [:show] do
     get 'page/:page', action: :show, on: :member
   end
-
 
 end

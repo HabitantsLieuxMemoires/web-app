@@ -8,7 +8,9 @@ describe Article do
     it { should validate_length_of(:title).within(4..80) }
     it { should have_many(:images).with_autosave }
     it { should have_many(:comments).with_autosave }
+    it { should have_many(:reports) }
     it { should belong_to(:theme) }
+    it { should belong_to(:chronology) }
   end
 
   it 'is valid with tags' do
@@ -31,4 +33,25 @@ describe Article do
     a.theme = build(:theme)
     expect(a).to be_valid
   end
+
+  it 'is valid with chronology' do
+    a = build(:article)
+    a.chronology = build(:chronology)
+    expect(a).to be_valid
+  end
+
+  it 'is tracked when title updated' do
+    a = create(:article)
+    a.update_attributes(title: 'New title')
+
+    expect(a.history_tracks.count).to eq(1)
+  end
+
+  it 'is tracked when body updated' do
+    a = create(:article)
+    a.update_attributes(body: 'New Body')
+
+    expect(a.history_tracks.count).to eq(1)
+  end
+
 end

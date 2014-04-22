@@ -13,6 +13,7 @@ describe User do
     it { should validate_presence_of(:nickname) }
     it { should validate_length_of(:nickname).within(4..50) }
     it { should validate_uniqueness_of(:nickname) }
+    it { should have_many(:reports) }
   end
 
   it 'is valid with nickname, email and password confirmation' do

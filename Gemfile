@@ -35,6 +35,7 @@ gem 'mongoid_taggable',             "~> 1.1.1"
 gem 'mini_magick',                  github: "minimagick/minimagick", tag: "v3.7.0"
 gem 'carrierwave-mongoid',          "~> 0.7.1"
 gem 'mongoid_magic_counter_cache',  "~> 1.1.0"
+gem 'mongoid-audit',                "~> 0.3.2"
 
 # Misc gems
 gem 'sorcery',                      "~> 0.8.5"  # Authentication
