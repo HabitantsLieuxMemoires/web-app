@@ -16,31 +16,42 @@
   </div>
 <% end %>
 
-<div class="panel panel-default" id="article-details">
-  <div class="panel-heading">
-    <%= t('article.details') %>
-  </div>
-  <div class="panel-body">
-    <p><strong><%= t('models.article.theme') %> : </strong><%= article.theme.title %><p>
-    <hr>
-    <p><strong><%= t('models.article.chronology') %> : </strong><%= article.chronology.title %><p>
-    <hr>
-    <p><strong><%= t('models.article.tags') %></strong><p>
-    <div id="article-tags">
-      <% article.tags_array.each do |t| %>
-        <h4><span class="label label-primary"><%= t %></span></h4>
+<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>
+  <div class="panel panel-default" id="article-details">
+    <div class="panel-heading">
+      <%= t('article.details') %>
+    </div>
+    <div class="panel-body">
+      <%= f.static_control nil, label: t('models.article.theme') do %>
+        <%= article.theme.title %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.chronology') do %>
+        <%= article.chronology.title %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.tags') do %>
+        <% if article.tags_array.any? %>
+          <% article.tags_array.each do |t| %>
+            <span class="label label-primary"><%= t %></span>
+          <% end %>
+        <% else %>
+          <span class="label label-primary"><%= t('none') %></span>
+        <% end %>
       <% end %>
     </div>
   </div>
-</div>
 
-<div class="panel panel-default" id="article-metadatas">
-  <div class="panel-heading">
-    <%= t('article.metadatas') %>
+  <div class="panel panel-default" id="article-metadatas">
+    <div class="panel-heading">
+      <%= t('article.metadatas') %>
+    </div>
+    <div class="panel-body">
+      <%= f.static_control nil, label: t('models.article.url') do %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.location') do %>
+      <% end %>
+      <%= f.static_control nil, label: t('models.article.revision') do %>
+        <%= article.history_tracks.count %>
+      <% end %>
+    </div>
   </div>
-  <div class="panel-body">
-    <p><strong><%= t('models.article.location') %> : </strong><p>
-    <p><strong><%= t('models.article.url') %> : </strong><p>
-    <p><strong><%= t('models.article.revision') %> : </strong><p>
-  </div>
-</div>
+<% end %>

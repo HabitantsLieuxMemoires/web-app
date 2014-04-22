@@ -3,7 +3,15 @@
   <h4 id="modal-report-article-label"><%= t('models.article.report') %></h4>
 </div>
 <div class="modal-body">
+  <div class="alert alert-info">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eam stabilem appellas. Huius ego nunc auctoritatem sequens idem faciam. Paria sunt igitur.
+  </div>
+
   <%= bootstrap_form_for [@article, Report.new], url: {action: "create"}, layout: :horizontal do |f| %>
+
+    <%= f.static_control nil, label: t('models.article.title') do %>
+      <%= @article.title %>
+    <% end %>
 
     <%= f.text_area   :description %>
 
