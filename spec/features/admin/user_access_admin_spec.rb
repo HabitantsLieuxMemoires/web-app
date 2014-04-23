@@ -6,12 +6,12 @@ feature 'User access admin' do
     login_with_email(user)
   end
 
-  scenario 'is redirected to root if not admin', feature: true do
+  scenario 'is redirected to root if not admin' do
     visit admin_root_path
     expect(current_path).to eql(root_path)
   end
 
-  scenario 'is redirected to dashboard if admin', feature: true do
+  scenario 'is redirected to dashboard if admin' do
     user = create(:user, :admin)
     login_with_email(user)
 

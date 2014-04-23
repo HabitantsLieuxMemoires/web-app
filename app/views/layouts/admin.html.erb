@@ -3,8 +3,8 @@
     <head>
       <title>Hlm</title>
       <meta charset="utf-8">
-      <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
-      <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+      <%= stylesheet_link_tag    "admin/admin", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
       <%= csrf_meta_tags %>
     </head>
     <body class="skin-blue" data-env="<%= Rails.env %>">
@@ -20,9 +20,11 @@
         </aside>
 
         <aside class="right-side">
-          <section class="content-header">
-            <%= yield :content_header %>
-          </section>
+          <% if content_for?(:content_header) %>
+            <section class="content-header">
+              <%= yield :content_header %>
+            </section>
+          <% end %>
 
           <section class="content">
             <%= yield %>
@@ -30,5 +32,6 @@
         </aside>
       </div>
 
+      <%= javascript_pluggable_tag %>
     </body>
 </html>

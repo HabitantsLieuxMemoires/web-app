@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Visitor find articles for chronology' do
+feature 'Visitor finds articles for chronology' do
 
   scenario 'from home page' do
     chronology = create(:chronology)

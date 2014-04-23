@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Visitor list articles for theme' do
+feature 'Visitor lists articles for theme' do
 
   scenario 'with no article' do
     theme = create(:theme)

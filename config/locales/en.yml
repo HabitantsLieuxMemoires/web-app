@@ -48,10 +48,12 @@ en:
     editorial:         "Editorial"
     alert:             "Alert"
     moderation:        "Moderation"
+    moderation_full:   "Manage article reports"
     import_export:     "Import/Export"
 
   models:
     article:
+      name:            "Article"
       create:          "Create article"
       created:         "Article successfully created"
       creation_error:  "Unable to create article"
@@ -79,3 +81,5 @@ en:
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"
+      list:            "Article reports list"
+      state:           "Status"

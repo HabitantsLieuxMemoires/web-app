@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Visitor find articles for theme' do
+feature 'Visitor finds articles for theme' do
 
   scenario 'from home page' do
     theme = create(:theme)
