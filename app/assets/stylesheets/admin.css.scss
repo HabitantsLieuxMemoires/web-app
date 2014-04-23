@@ -9,12 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
- *= require selectize
- *= require selectize.bootstrap3
- *= require jasny-bootstrap.min
- *= require ekko-lightbox.min
+ *= require font-awesome
+ *= require admin-lte/theme.css
  */
 
 @import 'bootstrap';
-

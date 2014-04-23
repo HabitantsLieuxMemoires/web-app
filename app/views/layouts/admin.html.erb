@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
       <title>Hlm</title>
       <meta charset="utf-8">
-      <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
       <%= csrf_meta_tags %>
     </head>
-    <body data-env="<%= Rails.env %>">
-      <div class="container">
-        <%= yield %>
+    <body class="skin-blue" data-env="<%= Rails.env %>">
+
+      <header class="header">
+        <a href="#" class="logo">Hlm</a>
+        <%= render 'shared/admin/navbar' %>
+      </header>
+
+      <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas">
+          <%= render 'shared/admin/sidebar' %>
+        </aside>
+
+        <aside class="right-side">
+          <section class="content-header">
+            <%= yield :content_header %>
+          </section>
+
+          <section class="content">
+            <%= yield %>
+          </section>
+        </aside>
       </div>
+
     </body>
 </html>

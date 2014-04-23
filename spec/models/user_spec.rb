@@ -37,14 +37,14 @@ describe User do
   end
 
   it 'is invalid with a duplicate email address' do
-    create(:user)
-    u = build(:user, :nickname => 'other.nickname')
+    create(:user, email: 'same@email.fr')
+    u = build(:user, email: 'same@email.fr')
     expect(u).to_not be_valid
   end
 
   it 'is invalid with a duplicate nickname' do
-    create(:user)
-    u = build(:user, :email => 'other@exmaple.com')
+    create(:user, nickname: 'SameNickname')
+    u = build(:user, nickname: 'SameNickname')
     expect(u).to_not be_valid
   end
 

@@ -42,6 +42,14 @@ en:
     not_authenticated:    "You must be logged in to access this page"
     invalid_credentials:  "Username or password is invalid"
 
+  admin:
+    dashboard:         "Dashboard"
+    dashboard_full:    "Dashboard control panel"
+    editorial:         "Editorial"
+    alert:             "Alert"
+    moderation:        "Moderation"
+    import_export:     "Import/Export"
+
   models:
     article:
       create:          "Create article"
