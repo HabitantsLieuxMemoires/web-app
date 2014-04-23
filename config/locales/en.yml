@@ -15,6 +15,7 @@ en:
   remove:       "Remove"
   select_file:  "Select file"
   report:       "Report"
+  search:       "Search"
 
   errors:
     messages:

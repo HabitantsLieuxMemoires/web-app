@@ -8,6 +8,13 @@
 <div class="box">
   <div class="box-header">
     <h3 class="box-title"><%= t('models.report.list') %></h3>
+    <div class="box-tools pull-right">
+      <%= bootstrap_form_tag url: '/admin/reports', method: 'get', layout: :inline do |f| %>
+        <%= f.text_field :date, id: 'report_date_range' %>
+
+        <%= f.submit t('search') %>
+      <% end %>
+    </div>
   </div>
   <div class="box-body">
     <% if @reports.any? %>

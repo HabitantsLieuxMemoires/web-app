@@ -41,7 +41,15 @@ feature 'Admin lists reports' do
   end
 
   scenario 'and can filter them by date range', feature: true do
-    pending
+    create_list(:report, 10, created_at: Date.new(2014, 3, 10))
+    create_list(:report, 10)
+
+    visit admin_reports_path
+    fill_in 'date', with: '03/01/2014 - 03/30/2014'
+    click_on I18n.t('search')
+
+    reports = page.all('.report')
+    expect(reports.size).to eq(10)
   end
 
   scenario 'and can see details of one of them', feature: true do
