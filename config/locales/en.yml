@@ -16,6 +16,7 @@ en:
   select_file:  "Select file"
   report:       "Report"
   search:       "Search"
+  all:          "All"
 
   errors:
     messages:
@@ -84,3 +85,5 @@ en:
       creation_error:  "Unable to report article content"
       list:            "Article reports list"
       state:           "Status"
+      addressed:       "Addressed"
+      not_addressed:   "Not addressed"

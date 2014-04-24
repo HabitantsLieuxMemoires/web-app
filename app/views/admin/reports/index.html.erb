@@ -11,6 +11,7 @@
     <div class="box-tools pull-right">
       <%= bootstrap_form_tag url: '/admin/reports', method: 'get', layout: :inline do |f| %>
         <%= f.text_field :date, id: 'report_date_range' %>
+        <%= f.select :state, options_for_report_state %>
 
         <%= f.submit t('search') %>
       <% end %>
@@ -23,7 +24,7 @@
           <tr>
             <th><%= t('models.article.name') %></th>
             <th><%= t('models.report.state') %></th>
-            <th><%= t('models.report.data') %></th>
+            <th><%= t('models.report.date') %></th>
           </tr>
           <% @reports.each do |r| %>
             <tr class="report">
