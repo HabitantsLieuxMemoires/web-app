@@ -27,8 +27,8 @@ Hlm::Application.routes.draw do
     root to: "dashboard#index"
 
     resources :reports,   only: [:index, :show] do
-      get 'page/:page',   action: :index, on: :collection
-      get 'state/:state', action: :index, on: :collection
+      get   'page/:page',   action: :index, on: :collection
+      get   'treat',        on: :member
     end
 
   end

@@ -73,6 +73,7 @@ en:
       url:             "URL"
       revision:        "Revision"
       comments:        "Comments"
+      go_to:           "Go to article"
     comment:
       create:          "Create comment"
       none:            "No comment"
@@ -85,5 +86,9 @@ en:
       creation_error:  "Unable to report article content"
       list:            "Article reports list"
       state:           "Status"
+      treat:           "Treat report"
+      treated:         "Report successfully treated"
+      treat_error:     "Unable to treat article"
       addressed:       "Addressed"
       not_addressed:   "Not addressed"
+      details:         "Report details"

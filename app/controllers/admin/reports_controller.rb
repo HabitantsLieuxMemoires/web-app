@@ -1,5 +1,5 @@
 class Admin::ReportsController < Admin::BaseController
-  before_action     :set_report, only: [:show]
+  before_action     :set_report, only: [:show, :treat]
 
   def index
     @reports = Report.desc(:created_at)
@@ -10,6 +10,15 @@ class Admin::ReportsController < Admin::BaseController
   end
 
   def show
+  end
+
+  def treat
+    if @report.update_attributes(state: Report::STATES[:addressed])
+      redirect_to admin_reports_path, notice: t('models.report.treated')
+    else
+      flash[:error] = t('models.report.treat_error')
+      render :show
+    end
   end
 
   private
