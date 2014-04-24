@@ -7,7 +7,7 @@ describe Article do
     it { should be_timestamped_document }
     it { should validate_length_of(:title).within(4..80) }
     it { should have_many(:images).with_autosave }
-    it { should have_many(:comments).with_autosave }
+    it { should have_many(:comments) }
     it { should have_many(:reports) }
     it { should belong_to(:theme) }
     it { should belong_to(:chronology) }
@@ -23,9 +23,6 @@ describe Article do
   it 'is valid with location' do
     a = build(:article, :with_location)
     expect(a).to be_valid
-    # Article must be saved as location is updated using :before_save callback
-    a.save!
-    expect(a.location).not_to be_empty
   end
 
   it 'is valid with theme' do
@@ -40,18 +37,24 @@ describe Article do
     expect(a).to be_valid
   end
 
+  it 'is tracked when created' do
+    a = create(:article)
+
+    expect(a.history_tracks.count).to eq(1)
+  end
+
   it 'is tracked when title updated' do
     a = create(:article)
     a.update_attributes(title: 'New title')
 
-    expect(a.history_tracks.count).to eq(1)
+    expect(a.history_tracks.count).to eq(2)
   end
 
   it 'is tracked when body updated' do
     a = create(:article)
     a.update_attributes(body: 'New Body')
 
-    expect(a.history_tracks.count).to eq(1)
+    expect(a.history_tracks.count).to eq(2)
   end
 
 end

@@ -152,6 +152,9 @@ GEM
     mongoid_magic_counter_cache (1.1.0)
       mongoid
       rake
+    mongoid_slug (3.2.1)
+      mongoid (> 3.0)
+      stringex (~> 2.0)
     mongoid_taggable (1.1.1)
       mongoid (>= 3)
       rake
@@ -238,6 +241,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringex (2.5.2)
     subexec (0.2.3)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
@@ -288,6 +292,7 @@ DEPENDENCIES
   mongoid!
   mongoid-audit (~> 0.3.2)
   mongoid_magic_counter_cache (~> 1.1.0)
+  mongoid_slug (~> 3.2.1)
   mongoid_taggable (~> 1.1.1)
   pluggable_js (~> 2.0.0)
   rails (= 4.0.4)

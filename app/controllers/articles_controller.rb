@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = @article.decorate
   end
 
   private

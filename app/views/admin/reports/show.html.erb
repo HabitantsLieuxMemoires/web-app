@@ -13,7 +13,7 @@
     </dl>
   </div>
   <div class="box-footer">
-    <%= link_to t('models.article.go_to'), edit_article_path(@report.article.id), class: 'btn btn-default' %>
+    <%= link_to t('models.article.go_to'), edit_article_path(@report.article.slug), class: 'btn btn-default' %>
     <%= link_to t('models.report.treat'),  treat_admin_report_path(@report.id),   class: 'btn btn-primary' %>
   </div>
 </div>

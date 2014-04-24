@@ -5,6 +5,7 @@ class Comment
   field :content, type: String
 
   belongs_to :article
+  belongs_to :user
 
   validates :content, presence: true, length: { in: 4..1024 }
 end

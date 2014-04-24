@@ -13,7 +13,7 @@ feature 'Visitor finds articles for theme' do
       themes.first.click
     end
 
-    expect(current_path).to eql(theme_path(theme.id))
+    expect(current_path).to eql(theme_path(theme.slug))
   end
 
 end

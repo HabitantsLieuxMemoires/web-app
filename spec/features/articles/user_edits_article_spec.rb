@@ -26,14 +26,14 @@ feature 'User edits article' do
   end
 
   scenario 'and cannot add comment', :js => true do
-    visit edit_article_path(@article)
+    visit edit_article_path(@article.id)
     click_on 'show_comments'
 
     expect(page).not_to have_content(I18n.t('models.comment.create'))
   end
 
   scenario 'and can add image', :js => true do
-    visit edit_article_path(@article)
+    visit edit_article_path(@article.id)
     click_on 'show_images'
 
     expect(page).to have_content(I18n.t('models.image.upload'))
@@ -43,7 +43,7 @@ feature 'User edits article' do
     article = create(:article)
     theme = create(:theme)
 
-    visit edit_article_path(article)
+    visit edit_article_path(article.id)
     select theme.title, from: 'article[theme_id]'
     click_button I18n.t('publish')
 
@@ -54,7 +54,7 @@ feature 'User edits article' do
     article = create(:article)
     chronology = create(:chronology)
 
-    visit edit_article_path(article)
+    visit edit_article_path(article.id)
     select chronology.title, from: 'article[chronology_id]'
     click_button I18n.t('publish')
 

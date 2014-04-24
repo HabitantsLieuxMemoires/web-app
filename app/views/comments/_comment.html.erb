@@ -3,7 +3,7 @@
     <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
   </a>
   <div class="media-body">
-    <h4 class="media-heading">Author <small><%= l(comment.created_at, format: :short) %></small></h4>
+    <h4 class="media-heading"><%= comment.user.nickname %> <small><%= time_ago_in_words(comment.created_at) %></small></h4>
     <%= comment.content %>
   </div>
 </div>

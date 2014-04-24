@@ -20,7 +20,7 @@ feature 'Admin edits report' do
     visit admin_report_path(r.id)
     click_on I18n.t('models.article.go_to')
 
-    expect(current_path).to eql(edit_article_path(r.article.id))
+    expect(current_path).to eql(edit_article_path(r.article.slug))
   end
 
   scenario 'and can warn an article modifier about the content', feature: true do

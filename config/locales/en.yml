@@ -81,6 +81,7 @@ en:
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
       none:            "No image"
+      none_hint:       "No image found for article. Please add one before process"
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"

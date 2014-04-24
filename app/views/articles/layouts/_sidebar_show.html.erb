@@ -2,7 +2,7 @@
 
 <% if current_user %>
   <div class="well" id="article-actions">
-    <%= link_to t('models.article.update'), edit_article_path(article.id),
+    <%= link_to t('models.article.update'), edit_article_path(article.slug),
                                      class: 'btn btn-success btn-block',
                                      type: 'button' %>
 
@@ -16,26 +16,20 @@
   </div>
 <% end %>
 
-<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>
+<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8" do |f| %>
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
       <%= t('article.details') %>
     </div>
     <div class="panel-body">
       <%= f.static_control nil, label: t('models.article.theme') do %>
-        <%= article.theme.title %>
+        <%= article.theme_title %>
       <% end %>
       <%= f.static_control nil, label: t('models.article.chronology') do %>
-        <%= article.chronology.title %>
+        <%= article.chronology_title %>
       <% end %>
       <%= f.static_control nil, label: t('models.article.tags') do %>
-        <% if article.tags_array.any? %>
-          <% article.tags_array.each do |t| %>
-            <span class="label label-primary"><%= t %></span>
-          <% end %>
-        <% else %>
-          <span class="label label-primary"><%= t('none') %></span>
-        <% end %>
+        <%= article.tags %>
       <% end %>
     </div>
   </div>
@@ -45,12 +39,14 @@
       <%= t('article.metadatas') %>
     </div>
     <div class="panel-body">
+      <%= f.static_control nil, label: t('models.article.revision') do %>
+        <%= article.history %>
+      <% end %>
       <%= f.static_control nil, label: t('models.article.url') do %>
+        <%= link_to article.slug, article_path(article.slug) %>
       <% end %>
       <%= f.static_control nil, label: t('models.article.location') do %>
-      <% end %>
-      <%= f.static_control nil, label: t('models.article.revision') do %>
-        <%= article.history_tracks.count %>
+        <%= article.location %>
       <% end %>
     </div>
   </div>

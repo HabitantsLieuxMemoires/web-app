@@ -13,13 +13,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @article.comments.create!(comment_params)
-    @article.save
+    @comment = Comment.new(comment_params)
+    @comment.article  = @article
+    @comment.user     = current_user
 
-    #TODO: Add support for validation errors when publishing comment
-
-    respond_to do |format|
-      format.js
+    if @comment.save
+      respond_to do |format|
+        format.js
+      end
+    else
+      #TODO: Handling validation errors (redirect does not work in js format)
     end
   end
 

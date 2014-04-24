@@ -2,10 +2,11 @@
 #= require jasny-bootstrap.min
 #= require ekko-lightbox.min
 #= require jquery.scrollTo.min
-#= require shared/ajax-loader
-#= require shared/ekko-lightbox-loader
 #= require bootstrap-wysihtml5/b3
 #= require wysihtml5.autoresize
+#= require shared/ajax-loader
+#= require shared/ekko-lightbox-loader
+#= require shared/modal-form-cleaner
 #= require editor/custom-wysihtml5-options
 #= require editor/custom-wysihtml5-image
 

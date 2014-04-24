@@ -5,7 +5,7 @@
   <ul class="nav nav-pills nav-stacked">
     <% Theme.by_articles_count.each do |t| %>
       <li>
-        <%= link_to theme_path(t), class: 'theme' do %>
+        <%= link_to theme_path(t.slug), class: 'theme' do %>
           <%= t.title %>
           <div class="pull-right"><span class="badge"><%= t.article_count %></span></div>
         <% end %>
@@ -19,7 +19,7 @@
   <ul class="nav nav-pills nav-stacked">
     <% Chronology.by_articles_count.each do |c| %>
       <li>
-        <%= link_to chronology_path(c), class: 'chronology' do %>
+        <%= link_to chronology_path(c.slug), class: 'chronology' do %>
           <%= c.title %>
           <div class="pull-right"><span class="badge"><%= c.article_count %></span></div>
         <% end %>

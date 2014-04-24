@@ -10,9 +10,7 @@
           <h3 class="panel-title"><%= @article.title %></h3>
         </div>
         <div class="pull-right">
-          <span class="label label-default">
-            <%= @article.public? ? t('article.public') : t('article.private') %>
-          </span>
+          <%= @article.visibility %>
         </div>
       </div>
       <div class="panel-body">

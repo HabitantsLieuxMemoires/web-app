@@ -3,7 +3,13 @@
   <h4 id="modal-select-image-label"><%= t('models.image.select') %></h4>
 </div>
 <div class="modal-body">
-  <div class="row" id="image_chooser">
-    <%= render partial: 'file_select', collection: @article.images %>
-  </div>
+  <% if @article.images.any? %>
+    <div class="row" id="image_chooser">
+        <%= render partial: 'file_select', collection: @article.images %>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <%= t('models.image.none_hint') %>
+    </div>
+  <% end %>
 </div>

@@ -9,6 +9,7 @@ class User
   field :nickname, type: String
 
   has_many :reports
+  has_many :comments
 
   validates :password,                presence: true, confirmation: true, length: { in: 8..50 }
   validates :email,                   presence: true, uniqueness: true, email: true

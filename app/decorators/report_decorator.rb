@@ -1,5 +1,4 @@
 class ReportDecorator < ApplicationDecorator
-  delegate :current_page, :total_pages, :limit_value
   delegate :id, :article
 
   def created_at

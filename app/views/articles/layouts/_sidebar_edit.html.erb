@@ -11,8 +11,10 @@
     <%= f.collection_select :theme_id, Theme.all, :id, :title %>
     <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
     <%= f.text_field :tags %>
-    <%= f.check_box  :public %>
-    <%= f.check_box  :locked %>
+    <%= f.form_group do %>
+      <%= f.check_box  :public, inline: true %>
+      <%= f.check_box  :locked, inline: true %>
+    <% end %>
   </div>
 </div>
 
@@ -21,9 +23,20 @@
     <%= t('article.metadatas') %>
   </div>
   <div class="panel-body">
-    <p><strong><%= t('article.location') %> : </strong><p>
-    <p><strong><%= t('article.url') %> : </strong><p>
-    <p><strong><%= t('article.revision') %> : </strong><p>
+    <!-- TODO: Waiting for bootstrap-rails-form to implement append-prepend buttons -->
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="article_location">Location</label>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <input class="form-control" disabled="disabled" id="article_location" name="article[location]" type="text">
+          <span class="input-group-btn">
+            <a class="btn btn-default" href="#" id="bt_fill_location">
+              <i class="fa fa-map-marker"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

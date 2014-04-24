@@ -13,7 +13,7 @@ feature 'Visitor finds articles for chronology' do
       chronologies.first.click
     end
 
-    expect(current_path).to eql(chronology_path(chronology.id))
+    expect(current_path).to eql(chronology_path(chronology.slug))
   end
 
 end

@@ -7,13 +7,14 @@ class ReportsController < ApplicationController
 
   def create
     report = Report.new(report_params)
-    report.article = @article
-    report.user = current_user
+    report.article  = @article
+    report.user     = current_user
 
     if report.save
       redirect_to article_path(@article.id), notice: t('models.report.created')
     else
-      redirect_to article_path(@article.id), notice: t('models.report.creation_error')
+      flash[:error] = t('models.report.creation_error')
+      redirect_to article_path(@article.id)
     end
   end
 
