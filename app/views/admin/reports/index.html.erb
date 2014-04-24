@@ -1,0 +1,44 @@
+<%= render 'header' %>
+
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title"><%= t('models.report.list') %></h3>
+    <div class="box-tools pull-right">
+      <%= bootstrap_form_tag url: '/admin/reports', method: 'get', layout: :inline do |f| %>
+        <%= f.text_field :date, id: 'report_date_range' %>
+        <%= f.select :state, options_for_report_state %>
+
+        <%= f.submit t('search') %>
+      <% end %>
+    </div>
+  </div>
+  <div class="box-body">
+    <% if @reports.any? %>
+      <table class="table table-hover">
+        <tbody data-link="row" class="rowlink">
+          <tr>
+            <th><%= t('models.article.name') %></th>
+            <th><%= t('models.report.state') %></th>
+            <th><%= t('models.report.date') %></th>
+          </tr>
+          <% @reports.each do |r| %>
+            <tr class="report">
+              <td><%= link_to r.article.title, admin_report_path(r.id) %></td>
+              <td><%= r.state %></td>
+              <td><%= r.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="text-center">
+        <%= paginate @reports, :theme => 'twitter-bootstrap-3' %>
+      </div>
+    <% else %>
+      <div class="callout callout-info">
+        <p><%= t('models.report.none') %></p
+      </div>
+    <% end %>
+  </div>
+</div>
+

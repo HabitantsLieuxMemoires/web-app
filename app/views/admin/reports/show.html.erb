@@ -1,0 +1,19 @@
+<%= render 'header' %>
+
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title"><%= t('models.report.details') %></h3>
+  </div>
+  <div class="box-body">
+    <dl class="dl-horizontal">
+      <dt><%= t('models.article.title') %></dt>
+      <dd><%= @report.article.title %></dd>
+      <dt><%= t('models.report.description') %></dt>
+      <dd><%= @report.description %></dd>
+    </dl>
+  </div>
+  <div class="box-footer">
+    <%= link_to t('models.article.go_to'), edit_article_path(@report.article.id), class: 'btn btn-default' %>
+    <%= link_to t('models.report.treat'),  treat_admin_report_path(@report.id),   class: 'btn btn-primary' %>
+  </div>
+</div>

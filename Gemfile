@@ -25,6 +25,8 @@ gem 'jbuilder',                     "~> 2.0.5"
 gem 'pluggable_js',                 "~> 2.0.0"
 gem 'bootstrap_form',               "~> 2.1.0"
 gem 'selectize-rails',              "~> 0.9.0"
+gem 'font-awesome-rails',           "~> 4.0.3.1"
+gem 'momentjs-rails',               "~> 2.5.1"
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 
@@ -42,6 +44,7 @@ gem 'sorcery',                      "~> 0.8.5"  # Authentication
 gem 'seedbank',                     "~> 0.3.0"  # Seeding
 gem 'kaminari',                     "~> 0.15.1" # Pagination
 gem 'bootstrap-kaminari-views',     "~> 0.0.3"  # Bootstrap Pagination
+gem 'draper',                       "~> 1.3.0"  # ViewModels
 
 group :development, :test do
   gem 'dotenv-rails',               "~> 0.10.0"

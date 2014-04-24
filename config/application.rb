@@ -46,4 +46,7 @@ module Hlm
     # config.i18n.default_locale = :de
 
   end
+
+  # Constants
+  ROLES = {:admin => 'admin', :user => 'user'}.freeze
 end

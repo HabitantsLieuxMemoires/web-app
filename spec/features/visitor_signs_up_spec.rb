@@ -34,8 +34,8 @@ feature 'Visitor signs up' do
   end
 
   scenario 'does not create account with duplicated email' do
-    create(:user)
-    user = build(:user, nickname: 'another.nickname')
+    create(:user, email: 'same@email.fr')
+    user = build(:user, email: 'same@email.fr')
 
     sign_up_with user
     expect(page).to have_content('Email is already taken')
@@ -43,8 +43,8 @@ feature 'Visitor signs up' do
   end
 
   scenario 'does not create account with duplicated nickname' do
-    create(:user)
-    user = build(:user, email: 'another@hlm.fr')
+    create(:user, nickname: 'SameNickname')
+    user = build(:user, nickname: 'SameNickname')
 
     sign_up_with user
     expect(page).to have_content('Nickname is already taken')

@@ -15,6 +15,8 @@ en:
   remove:       "Remove"
   select_file:  "Select file"
   report:       "Report"
+  search:       "Search"
+  all:          "All"
 
   errors:
     messages:
@@ -42,8 +44,18 @@ en:
     not_authenticated:    "You must be logged in to access this page"
     invalid_credentials:  "Username or password is invalid"
 
+  admin:
+    dashboard:         "Dashboard"
+    dashboard_full:    "Dashboard control panel"
+    editorial:         "Editorial"
+    alert:             "Alert"
+    moderation:        "Moderation"
+    moderation_full:   "Manage article reports"
+    import_export:     "Import/Export"
+
   models:
     article:
+      name:            "Article"
       create:          "Create article"
       created:         "Article successfully created"
       creation_error:  "Unable to create article"
@@ -61,6 +73,7 @@ en:
       url:             "URL"
       revision:        "Revision"
       comments:        "Comments"
+      go_to:           "Go to article"
     comment:
       create:          "Create comment"
       none:            "No comment"
@@ -71,3 +84,11 @@ en:
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"
+      list:            "Article reports list"
+      state:           "Status"
+      treat:           "Treat report"
+      treated:         "Report successfully treated"
+      treat_error:     "Unable to treat article"
+      addressed:       "Addressed"
+      not_addressed:   "Not addressed"
+      details:         "Report details"

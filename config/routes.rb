@@ -23,4 +23,14 @@ Hlm::Application.routes.draw do
     get 'page/:page', action: :show, on: :member
   end
 
+  namespace :admin do
+    root to: "dashboard#index"
+
+    resources :reports,   only: [:index, :show] do
+      get   'page/:page',   action: :index, on: :collection
+      get   'treat',        on: :member
+    end
+
+  end
+
 end

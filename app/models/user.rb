@@ -2,6 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps::Created
 
+  include Roleable
+
   authenticates_with_sorcery!
 
   field :nickname, type: String

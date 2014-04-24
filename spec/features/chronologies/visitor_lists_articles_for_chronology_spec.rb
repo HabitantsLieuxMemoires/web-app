@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Visitor list articles for chronology' do
+feature 'Visitor lists articles for chronology' do
 
   scenario 'with no article' do
     chronology = create(:chronology)
