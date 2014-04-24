@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action        :set_article,   only: [:index, :create]
+  before_action        :set_article,   only: [:index, :create, :select]
   skip_before_action   :require_login, only: [:index]
 
   def index
@@ -9,10 +9,7 @@ class ImagesController < ApplicationController
   end
 
   def new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render layout: false
   end
 
   def create
@@ -21,7 +18,13 @@ class ImagesController < ApplicationController
 
     #TODO: Add support for validation errors when publishing image
 
-    redirect_to edit_article_path(@article.id), notice: t('models.image.uploaded')
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def select
+    render layout: false
   end
 
   private

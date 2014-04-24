@@ -7,7 +7,7 @@ class ReportDecorator < ApplicationDecorator
   end
 
   def state
-    if object.state.eql?(Report::STATES['addressed']) then
+    if object.state.eql?(Report::STATES[:addressed]) then
       h.content_tag(:span, class: "label label-primary") do
         t('models.report.addressed')
       end

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.remotipart
+//= require underscore
 //= require bootstrap
 //= require_directory
 //= require_directory ./admin

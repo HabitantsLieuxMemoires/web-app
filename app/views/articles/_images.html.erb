@@ -8,9 +8,8 @@
     <div class="pull-right">
       <% if current_user and edit_mode %>
         <%= link_to t('models.image.upload'), new_article_image_path(article.id),
-                  id: 'add_image',
                   class: "btn btn-default btn-sm",
-                  remote: true,
+                  id: "add_image",
                   data: {
                     toggle: 'modal',
                     target: '#modal-add-image'
@@ -20,9 +19,4 @@
   </div>
   <div class="panel-body" id="images-list">
   </div>
-</div>
-
-
-<!-- Modals -->
-<div id="modal-add-image" class="modal" aria-labelledby="modal-add-image-label" aria-hidden="true" role="dialog">
 </div>
