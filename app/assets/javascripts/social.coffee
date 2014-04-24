@@ -32,7 +32,7 @@ window.socialControllers =
         # 'message' event triggered by the popup window.
         $(window).bind "message", (event) ->
           event = event.originalEvent
-          if event.source == socialControllers.shareWindow && event.data != "__ready__"
+          if socialControllers.shareWindow? && event.source == socialControllers.shareWindow && event.data != "__ready__"
             socialControllers.shareCallback "twitter", jQuery.parseJSON(event.data)
       ## Bind click on Twitter share button
       $('.shareTwitter').click ->
@@ -48,7 +48,10 @@ window.socialControllers =
 
   google:
     init: ->
-      debug "social::G+ Not ready"
+      jQuery.getScript '//apis.google.com/js/plusone.js'
+      debug "social::G+ Initialized"
+    callback: (href, state) ->
+      socialControllers.shareCallback("googleplus", state = "on" ? state : "")
 
   ### This callback will receive callback result for :
     Twitter: Callback is allways success
@@ -68,6 +71,9 @@ window.socialControllers =
       socialControllers.twitter.init()
       socialControllers.google.init()
       console.log "social::Init done"
+
+window.gTestCB= (json)->
+  debug json
 
 # Page (re)loaded ?
 $(document).ready ->

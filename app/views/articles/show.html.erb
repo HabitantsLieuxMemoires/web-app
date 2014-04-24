@@ -22,9 +22,9 @@
     <%= render 'comments', article: @article %>
 
     <div class="social-buttons">
-      <a href="http://twitter.com/share" class="shareButton shareTwitter" data-text="<%= strip_tags(@article.body[0..150]) %>" data-url="<%= request.original_url %>" data-title="<%= @article.title %>" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a>
-      <a href="https://plus.google.com/share?url=<%= request.original_url %>" class="shareButton shareGoogle" data-text="<%= strip_tags(@article.body[0..150]) %>" data-url="<%= request.original_url %>" data-title="<%= @article.title %>" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a>
-      <a href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= @article.title %>" class="shareButton shareFacebook" data-text="<%= strip_tags(@article.body[0..150]) %>" data-url="<%= request.original_url %>" data-title="<%= @article.title %>" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a>
+      <a href="http://twitter.com/share" class="shareButton shareTwitter" data-text="<%= strip_tags(@article.body[0..150]) %>" data-href="<%= request.original_url %>" data-title="<%= @article.title %>" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a>
+      <div class="g-plusone" data-annotation="none" data-callback="socialControllers.google.callback" data-recommendations="false" data-href="<%= request.original_url %>"></div>
+      <a href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= @article.title %>" class="shareButton shareFacebook" data-text="<%= strip_tags(@article.body[0..150]) %>" data-href="<%= request.original_url %>" data-title="<%= @article.title %>" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a>
     </div>
 
   </div>
