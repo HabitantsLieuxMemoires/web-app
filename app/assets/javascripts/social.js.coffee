@@ -27,6 +27,7 @@ window.socialControllers =
     init: ->
       ## Load SDK
       $.getScript 'http://platform.twitter.com/widgets.js', ->
+        # Case 1 : Custom button
         # Twitter SDK do not provide a proper
         # 'tweet' event. Instead we'll catch
         # 'message' event triggered by the popup window.
@@ -34,6 +35,9 @@ window.socialControllers =
           event = event.originalEvent
           if socialControllers.shareWindow? && event.source == socialControllers.shareWindow && event.data != "__ready__"
             socialControllers.shareCallback "twitter", jQuery.parseJSON(event.data)
+        # Case 2 : Default button
+        twttr.events.bind 'tweet', (event) ->
+            socialControllers.shareCallback "twitter", event
       ## Bind click on Twitter share button
       $('.shareTwitter').click ->
         socialControllers.twitter.shareAction $(this)
@@ -54,8 +58,8 @@ window.socialControllers =
       socialControllers.shareCallback("googleplus", state = "on" ? state : "")
 
   ### This callback will receive callback result for :
-    Twitter: Callback is allways success
-    Facebook: Respense is empty in case of failure
+    Twitter: Callback is always success
+    Facebook and Google: Response is empty in case of failure/cancel
   ###
   shareCallback: (service, response) ->
       if response?
