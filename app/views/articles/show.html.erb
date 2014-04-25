@@ -16,6 +16,11 @@
       <div class="panel-body">
         <%=raw @article.body %>
       </div>
+      <div class="panel-footer">
+        <div class="text-center">
+          <%= render 'social',   article: @article %>
+        </div>
+      </div>
     </div>
 
     <%= render 'images',   article: @article %>
@@ -25,6 +30,6 @@
   <div class="col-lg-1" id="article-control">
     <%= render 'actionbar', article: @article %>
   </div>
-</div>
 
-<%= render 'articles/modals/modals_show' %>
+  <%= render 'articles/modals/modals_show' %>
+</div>

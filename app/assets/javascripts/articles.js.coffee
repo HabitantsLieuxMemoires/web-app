@@ -4,6 +4,8 @@
 #= require jquery.scrollTo.min
 #= require bootstrap-wysihtml5/b3
 #= require wysihtml5.autoresize
+#= require socialite.min
+#= require social
 #= require shared/ajax-loader
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
