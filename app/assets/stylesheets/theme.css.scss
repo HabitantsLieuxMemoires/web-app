@@ -39,3 +39,41 @@ body {
 }
 
 
+.leaflet-center {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.leaflet-control-position-picker {
+  margin: 10px auto 0 auto;
+  text-align: center;
+  display:none;
+}
+.leaflet-control-position-picker>span, .leaflet-control-position-picker>button {
+  border-radius: 7px;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
+  padding: 5px;
+  height: auto;
+  position:relative;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  width: 300px;
+}
+
+.leaflet-control-search
+{
+  display:none;
+}
+
+.leaflet-control-position-picker button.search
+{
+  width:180px
+}
+
+.leaflet-control-position-picker button.cancel
+{
+  width:100px
+}

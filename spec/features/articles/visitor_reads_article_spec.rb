@@ -67,4 +67,14 @@ feature 'Visitor reads article' do
 
     expect(page).not_to have_content(I18n.t('models.article.report'))
   end
+
+  scenario 'and can see marker if location set', feature: true do
+    a = create(:article, location: '44.853739, -0.526914')
+
+    visit article_path(a)
+
+    within '.leaflet-map-pane' do
+      expect(all(".leaflet-marker-icon").count).to eq(1)
+    end
+  end
 end

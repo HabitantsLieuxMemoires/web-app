@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme_id, :chronology_id)
+    params.require(:article).permit(:title, :body, :tags, :location, :theme_id, :chronology_id)
   end
 
   def set_article

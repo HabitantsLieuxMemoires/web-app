@@ -1,5 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology
+  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :location
 
   delegate :title, to: :theme,      prefix: true
   delegate :title, to: :chronology, prefix: true
@@ -28,7 +28,7 @@ class ArticleDecorator < ApplicationDecorator
     end
   end
 
-  def location
+  def display_location
     object.location.blank? ? t('none') : object.location
   end
 
