@@ -1,5 +1,8 @@
 class ReportDecorator < ApplicationDecorator
-  delegate :id, :article
+  delegate :id, :description
+  delegate :title, to: :article, prefix: true
+
+  decorates_association :article
 
   def created_at
     object.created_at.strftime("%a %m/%d/%y")

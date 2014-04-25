@@ -1,7 +1,7 @@
 require 'factory_girl_rails'
 require 'faker'
 
-after "development:themes", "development:chronologies" do
+after "development:users", "development:themes", "development:chronologies" do
   puts 'DEVELOPMENT ARTICLES'
 
   160.times do

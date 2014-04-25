@@ -2,6 +2,7 @@
 
 <div class="box">
   <div class="box-header">
+    <%= fa_icon "list-ul" %>
     <h3 class="box-title"><%= t('models.report.details') %></h3>
   </div>
   <div class="box-body">
@@ -15,5 +16,47 @@
   <div class="box-footer">
     <%= link_to t('models.article.go_to'), edit_article_path(@report.article.slug), class: 'btn btn-default' %>
     <%= link_to t('models.report.treat'),  treat_admin_report_path(@report.id),   class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="box box" id="article-updates">
+  <div class="box-header">
+    <%= fa_icon "edit" %>
+    <h3 class="box-title"><%= t('models.article.history') %></h3>
+  </div>
+  <div class="box-body">
+    <% if @report.article.history_tracks.any? %>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th><%= t('models.article.author') %></th>
+            <th><%= t('models.article.date') %></th>
+            <th><%= t('models.article.changes') %></th>
+            <th><%= t('actions') %></th>
+          </tr>
+          <% @report.article.history_tracks.drop(1).each do |t| %>
+            <tr>
+              <td><%= t.user %></td>
+              <td><%= t.updated_at %></td>
+              <td>
+                  <span class="label label-success"><%= t.changes %></span>
+              </td>
+              <td>
+                <a href="#" class="btn btn-default btn-sm">
+                  <%= fa_icon 'eye' %>
+                </a>
+                <a href="#" class="btn btn-warning btn-sm">
+                  <%= fa_icon 'warning' %>
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="callout callout-info">
+        <p><%= t('models.article.tracks.none') %></p>
+      </div>
+    <% end %>
   </div>
 </div>

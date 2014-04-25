@@ -4,6 +4,8 @@ class ArticleDecorator < ApplicationDecorator
   delegate :title, to: :theme,      prefix: true
   delegate :title, to: :chronology, prefix: true
 
+  decorates_association :history_tracks
+
   def history
     object.history_tracks.count
   end

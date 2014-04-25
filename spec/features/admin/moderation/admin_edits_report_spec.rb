@@ -27,4 +27,8 @@ feature 'Admin edits report' do
     pending 'implement article history'
   end
 
+  scenario 'and can see differences of each update', feature: true do
+    pending 'implement diff view'
+  end
+
 end

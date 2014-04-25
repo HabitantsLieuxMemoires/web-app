@@ -10,6 +10,7 @@ class Admin::ReportsController < Admin::BaseController
   end
 
   def show
+    @report = @report.decorate unless @report.nil?
   end
 
   def treat
