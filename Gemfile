@@ -54,7 +54,7 @@ group :development, :test do
   gem 'dotenv-rails',               "~> 0.10.0"
   gem 'rspec-rails',                "~> 2.14.2"
   gem 'factory_girl_rails',         "~> 4.4.1"
-  gem 'spork',                      "~> 0.9.2"
+  gem 'spork-rails',                "~> 4.0.0"
   gem 'faker',                      "~> 1.3.0"
   gem 'capybara'
   gem 'capybara-webkit'
