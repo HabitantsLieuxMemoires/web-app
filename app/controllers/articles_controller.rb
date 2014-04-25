@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     @article.chronology = chronology
 
     if @article.save
-      redirect_to article_path(@article.id), notice: t('models.article.created')
+      redirect_to article_path(@article.slug), notice: t('models.article.created')
     else
       flash[:error] = t('models.article.creation_error')
       render :new
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(article_params)
-      redirect_to article_path(@article.id), :notice => t('models.article.updated')
+      redirect_to article_path(@article.slug), :notice => t('models.article.updated')
     else
       flash[:error] = t('models.article.update_error')
       render :edit
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :latitude, :longitude, :theme_id, :chronology_id)
+    params.require(:article).permit(:title, :body, :tags, :location, :theme_id, :chronology_id)
   end
 
   def set_article

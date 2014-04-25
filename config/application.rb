@@ -27,6 +27,8 @@ module Hlm
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
+    config.assets.precompile += %w(*.png *.jpg *.gif)
+
     # Adding validators path
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 
