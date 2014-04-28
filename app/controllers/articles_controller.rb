@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_action   :require_login, only: [:show]
+  skip_before_action   :require_login, only: [:show, :autocomplete]
   before_action        :set_article,   only: [:show, :edit, :update]
 
   layout               'empty',        only: [:new, :edit]
@@ -38,6 +38,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = @article.decorate
+  end
+
+  def autocomplete
+    articles = Article.search(params[:query], autocomplete: true, limit: 10)
+    render json: articles.map{|a| { :id => a.slug, :title => a.title }}
   end
 
   private

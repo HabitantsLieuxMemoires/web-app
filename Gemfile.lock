@@ -97,6 +97,14 @@ GEM
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
     easy_diff (0.0.2)
+    elasticsearch (0.4.11)
+      elasticsearch-api (= 0.4.11)
+      elasticsearch-transport (= 0.4.11)
+    elasticsearch-api (0.4.11)
+      multi_json
+    elasticsearch-transport (0.4.11)
+      faraday
+      multi_json
     email_spec (1.5.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -117,6 +125,7 @@ GEM
       mongoid (>= 3.0, < 4.1)
       rake
       rspec (>= 2.14)
+    hashie (2.1.1)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.6)
@@ -228,6 +237,10 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    searchkick (0.7.2)
+      activemodel
+      elasticsearch (~> 0.4.11)
+      hashie
     seedbank (0.3.0)
     selectize-rails (0.9.0)
     sorcery (0.8.5)
@@ -307,6 +320,7 @@ DEPENDENCIES
   remotipart (~> 1.2)
   rspec-rails (~> 2.14.2)
   sass-rails (~> 4.0.2)
+  searchkick (~> 0.7.2)
   seedbank (~> 0.3.0)
   selectize-rails (~> 0.9.0)
   sorcery (~> 0.8.5)

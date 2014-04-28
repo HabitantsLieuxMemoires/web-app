@@ -7,6 +7,8 @@ class Article
   include Mongoid::Audit::Trackable   # History tracking support
   include Mongoid::Slug               # Slug support
 
+  include Searchable                  # ElasticSearch support
+
   field :title,     type: String
   slug  :title
 
