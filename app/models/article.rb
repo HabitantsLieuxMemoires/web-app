@@ -7,8 +7,6 @@ class Article
   include Mongoid::Audit::Trackable   # History tracking support
   include Mongoid::Slug               # Slug support
 
-  include Searchable                  # ElasticSearch support
-
   field :title,     type: String
   slug  :title
 
@@ -30,5 +28,15 @@ class Article
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }
 
+  # History tracking
   track_history on: [:title, :body], track_create: true
+
+  # ElasticSearch indexing
+  searchkick    autocomplete: ['title']
+
+  # Filter fields to be indexed
+  def search_data
+    as_json only: [:_id, :title]
+  end
+
 end
