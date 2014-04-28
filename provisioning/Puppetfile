@@ -6,6 +6,8 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/apt'
 
+mod 'puppetlabs/java', '1.1.0'
 mod 'torrancew/account', '0.0.5'
 mod 'jdowning/rbenv', '1.1.0'
 mod 'puppetlabs/mongodb', '0.7.0'
+mod 'elasticsearch/elasticsearch', '0.3.1'

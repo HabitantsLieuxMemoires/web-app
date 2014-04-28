@@ -1,9 +1,13 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
+    elasticsearch/elasticsearch (0.3.1)
+      puppetlabs/stdlib (>= 3.2.0)
     jdowning/rbenv (1.1.0)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/java (1.1.0)
+      puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/mongodb (0.7.0)
       puppetlabs/apt (>= 1.0.0)
       puppetlabs/stdlib (>= 2.2.0)
@@ -11,8 +15,10 @@ FORGE
     torrancew/account (0.0.5)
 
 DEPENDENCIES
+  elasticsearch/elasticsearch (= 0.3.1)
   jdowning/rbenv (= 1.1.0)
   puppetlabs/apt (>= 0)
+  puppetlabs/java (= 1.1.0)
   puppetlabs/mongodb (= 0.7.0)
   puppetlabs/stdlib (>= 0)
   torrancew/account (= 0.0.5)
