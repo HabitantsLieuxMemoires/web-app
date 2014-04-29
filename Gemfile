@@ -50,6 +50,7 @@ gem 'kaminari',                     "~> 0.15.1" # Pagination
 gem 'bootstrap-kaminari-views',     "~> 0.0.3"  # Bootstrap Pagination
 gem 'draper',                       "~> 1.3.0"  # ViewModels
 gem 'searchkick',                   "~> 0.7.2"  # Search (ElasticSearch)
+gem 'cells',                        "~> 3.10.1" # Cell view components
 
 group :development, :test do
   gem 'dotenv-rails',               "~> 0.10.0"

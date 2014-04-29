@@ -1,0 +1,13 @@
+<div class="well sidebar-box" id="sidebar-themes">
+  <h4><%= t('nav.themes') %></h4>
+  <ul class="nav nav-pills nav-stacked">
+    <% @themes.each do |t| %>
+      <li>
+        <%= link_to theme_path(t.slug), class: 'theme' do %>
+          <%= t.title %>
+          <div class="pull-right"><span class="badge"><%= t.article_count %></span></div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
