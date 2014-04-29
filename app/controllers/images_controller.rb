@@ -1,3 +1,5 @@
+require 'pp'
+
 class ImagesController < ApplicationController
   before_action        :set_article,   only: [:index, :create, :select]
   skip_before_action   :require_login, only: [:index]

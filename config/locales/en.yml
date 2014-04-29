@@ -81,7 +81,7 @@ en:
     image:
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
-      none:            "No image"
+      none:            "No image for this article"
       none_hint:       "No image found for article. Please add one before process"
     report:
       created:         "Article content successfully reported"

@@ -1,11 +1,21 @@
-<% if @images.any? %>
-  <div class="row">
+<div class="row" id="images-list">
+  <% if @images.any? %>
     <%= render partial: 'image', collection: @images %>
-  </div>
-<% else %>
-  <div class="center-block" id="no-image">
-    <div class="alert alert-info">
-      <%= t('models.image.none') %>
+  <% end %>
+
+  <% if can_add_image %>
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb image">
+      <%= link_to new_article_image_path(@article.id),
+              class: "thumbnail",
+              id: "add_image",
+              data: {
+                toggle: 'modal',
+                target: '#modal-add-image'
+              }  do %>
+          <img class="img-responsive" src="http://placehold.it/300x300">
+      <% end %>
     </div>
-  </div>
-<% end %>
+  <% else %>
+    <p class="bg-info"><%= t('models.image.none') %></p>
+  <% end %>
+</div>

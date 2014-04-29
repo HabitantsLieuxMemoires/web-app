@@ -1,14 +1,13 @@
 #= require selectize
 #= require jasny-bootstrap.min
 #= require ekko-lightbox.min
-#= require jquery.scrollTo.min
 #= require bootstrap-wysihtml5/b3
 #= require wysihtml5.autoresize
 #= require socialite.min
 #= require social
 #= require waypoints
 #= require waypoints-infinite
-#= require shared/ajax-loader
+#= require shared/remote-tabs
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
 #= require editor/custom-wysihtml5-options
@@ -19,17 +18,13 @@ window['articles#new'] = (data) ->
   UI.initTagsSelector($('#article_tags'))
 
 window['articles#edit'] = (data) ->
+  UI.initTabs()
   UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
 
-  $('#show_images').on 'click', ->
-    Data.loadImages()
-
 window['articles#show'] = (data) ->
+  UI.initTabs()
   UI.infineComments()
-
-  $('#show_images').on 'click', ->
-    Data.loadImages()
 
 UI =
   initEditor: (editor) ->
@@ -58,33 +53,16 @@ UI =
             text: input
           }
 
+  initTabs: ->
+    callback = ->
+      $.waypoints('refresh')
+
+    $('[data-toggle=tab]').on 'show.bs.tab', (e) ->
+      RemoteTabs.triggerTabChanged(e, callback)
+
   infineComments: ->
     debug 'Initializing infinite comments...'
     $('#comments-list').waypoint 'infinite',
       more: '.more-comments-link'
       items: '.comment'
       loadingClass: 'comments-loader'
-
-Data =
-  loadImages: ->
-    articleImages  = $('#article-images')
-    imagesList = $('#images-list')
-
-    if articleImages.is ':visible'
-      Helpers.toggleArticleContent articleImages, true, true
-    else if AjaxLoader.load(articleImages, imagesList)
-      # Displaying images
-      Helpers.toggleArticleContent articleImages, false, true
-
-Helpers =
-  toggleArticleContent: (withContent, show, replace = false) ->
-    articleContent = $('#article-content')
-
-    if show
-      withContent.addClass 'hidden'
-      if replace
-        articleContent.removeClass 'hidden'
-    else
-      withContent.removeClass 'hidden'
-      if replace
-        articleContent.addClass 'hidden'

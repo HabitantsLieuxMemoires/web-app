@@ -31,11 +31,11 @@ feature 'User edits article' do
     expect(page).not_to have_content(I18n.t('models.comment.create'))
   end
 
-  scenario 'and can add image', :js => true do
+  scenario 'and can add image', js: true, feature: true do
     visit edit_article_path(@article.id)
     click_on 'show_images'
 
-    expect(page).to have_content(I18n.t('models.image.upload'))
+    expect(page).to have_css('#add_image')
   end
 
   scenario 'and can update theme' do

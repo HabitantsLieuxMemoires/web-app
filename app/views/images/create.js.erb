@@ -1,9 +1,4 @@
 (function() {
-  var no_image = $('#no-image')
-  if ( no_image.length ) {
-    $('#images-list').empty()
-  }
-
   $('#images-list').prepend("<%= escape_javascript(render @image) %>")
   $("#modal-add-image").modal('hide')
 })()

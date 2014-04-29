@@ -13,7 +13,7 @@ feature 'User reads article' do
     expect(page).to have_css('#create_comment')
   end
 
-  scenario 'and cannot add image', :js => true do
+  scenario 'and cannot add image', js: true, feature: true do
     visit article_path(@article)
     click_on 'show_images'
 
