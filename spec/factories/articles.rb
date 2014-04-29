@@ -16,6 +16,8 @@ FactoryGirl.define do
         create_list(:comment, evaluator.comments_count, article: article)
       end
     end
+
+    after(:create) { |a| Article.searchkick_index.refresh }
   end
 
   trait :with_location do

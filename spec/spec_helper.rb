@@ -30,7 +30,10 @@ Spork.prefork do
 
     # Drop databases and clear files before each spec
     config.before(:suite) { DatabaseCleaner[:mongoid].strategy = :truncation }
-    config.before(:each)  { DatabaseCleaner[:mongoid].start }
+    config.before(:each) do
+      DatabaseCleaner[:mongoid].start
+      Article.reindex
+    end
     config.after(:each) do
       DatabaseCleaner[:mongoid].clean
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])

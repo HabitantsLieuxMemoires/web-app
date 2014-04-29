@@ -17,3 +17,4 @@
 .vagrant/
 .idea/
 public/uploads/
+provisioning/.librarian/

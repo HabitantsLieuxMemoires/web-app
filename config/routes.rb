@@ -10,6 +10,8 @@ Hlm::Application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :articles do
+    get :autocomplete, on: :collection
+
     resources :comments, only: [:index, :new, :create]
     resources :reports,  only: [:new, :create]
 

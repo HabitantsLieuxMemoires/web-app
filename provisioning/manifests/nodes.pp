@@ -16,12 +16,8 @@ node "vagrant.hlm.local" {
   rbenv::plugin { 'sstephenson/ruby-build': }
   rbenv::build { '2.1.1': global => true }
 
-  # Bundler
-  exec { 'bundle install':
-    command   => "/usr/local/rbenv/shims/bundle install",
-    cwd       => "/vagrant",
-    require   => Class['rbenv'],
-  }
+  # Java
+  class { 'java': }
 
   # MongoDB
   class {'::mongodb::globals':
@@ -34,7 +30,17 @@ node "vagrant.hlm.local" {
     password  => 'hlm',
   }
 
-  #TODO: ElasticSearch
+  # ElasticSearch
+  class { 'elasticsearch':
+    manage_repo  => true,
+    repo_version => '1.0',
+    config => {
+     'cluster' => {
+       'name' => 'Hlm',
+    },
+    require => Class['java'],
+   }
+  }
 
   realize Account['hlm']
 }
