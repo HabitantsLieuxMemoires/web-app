@@ -12,8 +12,11 @@ Hlm::Application.routes.draw do
   resources :articles do
     get :autocomplete, on: :collection
 
-    resources :comments, only: [:index, :new, :create]
     resources :reports,  only: [:new, :create]
+
+    resources :comments, only: [:index, :new, :create] do
+      get   'page/:page',   action: :index, on: :collection
+    end
 
     resources :images,   only: [:index, :new, :create] do
       get 'select', on: :collection

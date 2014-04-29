@@ -9,7 +9,6 @@ feature 'User reads article' do
 
   scenario 'and can create comment', :js => true do
     visit article_path(@article)
-    click_on 'show_comments'
 
     expect(page).to have_css('#create_comment')
   end

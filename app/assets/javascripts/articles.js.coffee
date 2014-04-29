@@ -6,6 +6,8 @@
 #= require wysihtml5.autoresize
 #= require socialite.min
 #= require social
+#= require waypoints
+#= require waypoints-infinite
 #= require shared/ajax-loader
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
@@ -20,15 +22,11 @@ window['articles#edit'] = (data) ->
   UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
 
-  $('#show_comments').on 'click', ->
-    Data.loadComments()
-
   $('#show_images').on 'click', ->
     Data.loadImages()
 
 window['articles#show'] = (data) ->
-  $('#show_comments').on 'click', ->
-    Data.loadComments()
+  UI.infineComments()
 
   $('#show_images').on 'click', ->
     Data.loadImages()
@@ -60,20 +58,14 @@ UI =
             text: input
           }
 
+  infineComments: ->
+    debug 'Initializing infinite comments...'
+    $('#comments-list').waypoint 'infinite',
+      more: '.more-comments-link'
+      items: '.comment'
+      loadingClass: 'comments-loader'
+
 Data =
-  loadComments: ->
-    articleComments  = $('#article-comments')
-    commentsList     = $('#comments-list')
-
-    if articleComments.is ':visible'
-      Helpers.toggleArticleContent articleComments, true
-    else if AjaxLoader.load(articleComments, commentsList)
-      # Displaying comments
-      Helpers.toggleArticleContent articleComments, false
-
-      # Then scrolling to them
-      $('html, body').scrollTo articleComments
-
   loadImages: ->
     articleImages  = $('#article-images')
     imagesList = $('#images-list')

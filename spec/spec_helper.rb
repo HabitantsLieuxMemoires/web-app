@@ -21,6 +21,8 @@ Spork.prefork do
   require 'capybara/rspec'
   require 'database_cleaner'
   require 'email_spec'
+  require 'coffee_script'
+  require 'sass'
 
   RSpec.configure do |config|
     config.mock_with :rspec

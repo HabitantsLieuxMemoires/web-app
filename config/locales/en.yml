@@ -76,7 +76,8 @@ en:
       go_to:           "Go to article"
     comment:
       create:          "Create comment"
-      none:            "No comment"
+      none:            "No comment for this article"
+      loading:         "Loading comments..."
     image:
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"

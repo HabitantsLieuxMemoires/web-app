@@ -16,18 +16,19 @@ feature 'Visitor reads article' do
     }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
 
-  scenario 'and can see comments', :js => true do
-    pending 'find a way to make comment selector working'
-    # article = create(:article_with_comments, comments_count: 10)
+  scenario 'and can see comments', js: true do
+    article = create(:article_with_comments, comments_count: 10)
 
-    # visit article_path(article.id)
-    # click_on 'show_comments'
+    visit article_path(article.id)
 
-    # within('#comments-list') do
-    #   comments = page.all('.comment')
+    # Scroll to bootom (will trigger comments loading)
+    page.execute_script "window.scrollBy(0,10000)"
 
-    #   expect(comments.size).to eq(10)
-    # end
+    within('#comments-list') do
+      comments = page.all('.comment')
+
+      expect(comments.size).to eq(10)
+    end
   end
 
   scenario 'and cannot create comment' do

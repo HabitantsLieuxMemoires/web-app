@@ -1,12 +1,10 @@
-<% edit_mode = false if local_assigns[:edit_mode].nil? %>
-
-<div class="panel panel-default hidden" id="article-comments" data-load="<%= article_comments_path(article.id) %>">
+<div class="panel panel-default" id="article-comments" data-load="<%= article_comments_path(article.id) %>">
   <div class="panel-heading clearfix">
     <div class="pull-left">
       <h3 class="panel-title"><%= t('models.article.comments') %></h3>
     </div>
     <div class="pull-right">
-      <% if current_user and not edit_mode %>
+      <% if current_user %>
         <%= link_to t('models.comment.create'), new_article_comment_path(article.id),
                   class: "btn btn-default btn-sm",
                   id: "create_comment",
@@ -17,6 +15,9 @@
       <% end %>
     </div>
   </div>
+
   <div class="panel-body" id="comments-list">
+    <a class="more-comments-link" href="<%= article_comments_path(article.id) %>"></a>
   </div>
+
 </div>

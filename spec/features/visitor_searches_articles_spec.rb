@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Visitor searches articles' do
 
-  scenario 'from autocomplete field', js: true, feature: true do
+  scenario 'from autocomplete field', js: true, pending: true do
     pending 'Find a way to make typeahead autocomplete working'
     # a = create(:article, title: 'Test')
 
