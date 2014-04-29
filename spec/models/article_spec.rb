@@ -57,4 +57,10 @@ describe Article do
     expect(a.history_tracks.count).to eq(2)
   end
 
+  it 'has index on title' do
+    a = create(:article)
+
+    expect(a.search_data).to include('title' => a.title)
+  end
+
 end
