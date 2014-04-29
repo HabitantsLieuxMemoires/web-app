@@ -4,6 +4,9 @@ ruby '2.1.1'
 
 gem 'rails',                        "4.0.4"
 
+# Environment variables management (before any other gems)
+gem 'dotenv-rails',                 "~> 0.10.0", group: [:development, :test]
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -52,16 +55,25 @@ gem 'draper',                       "~> 1.3.0"  # ViewModels
 gem 'searchkick',                   "~> 0.7.2"  # Search (ElasticSearch)
 gem 'cells',                        "~> 3.10.1" # Cell view components
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'letter_opener'
+  gem 'quiet_assets'
+end
+
 group :development, :test do
-  gem 'dotenv-rails',               "~> 0.10.0"
   gem 'rspec-rails',                "~> 2.14.2"
   gem 'factory_girl_rails',         "~> 4.4.1"
   gem 'spork-rails',                "~> 4.0.0"
   gem 'faker',                      "~> 1.3.0"
+end
+
+group :test do
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'glebtv-mongoid-rspec',       "~> 1.12.0"
-  gem 'launchy',                    "~> 2.4.2"
   gem 'database_cleaner',           "~> 1.2.0"
   gem 'email_spec',                 "~> 1.5.0"
+  gem 'glebtv-mongoid-rspec',       "~> 1.12.0"
+  gem 'launchy',                    "~> 2.4.2"
 end
