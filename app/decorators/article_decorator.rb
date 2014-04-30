@@ -36,4 +36,13 @@ class ArticleDecorator < ApplicationDecorator
     end
   end
 
+  def summary
+    heads = Nokogiri::HTML(object.body).css('h2')
+    h.content_tag(:ul) do
+      heads.collect do |head|
+        concat(content_tag(:li, head.text))
+      end
+    end
+  end
+
 end

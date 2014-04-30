@@ -335,6 +335,7 @@ DEPENDENCIES
   mongoid_magic_counter_cache (~> 1.1.0)
   mongoid_slug (~> 3.2.1)
   mongoid_taggable (~> 1.1.1)
+  nokogiri (~> 1.6.1)
   pluggable_js (~> 2.0.0)
   quiet_assets
   rails (= 4.0.4)

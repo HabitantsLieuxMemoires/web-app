@@ -74,6 +74,7 @@ en:
       revision:        "Revision"
       comments:        "Comments"
       go_to:           "Go to article"
+      summary:         "Summary"
     comment:
       create:          "Create comment"
       none:            "No comment for this article"
