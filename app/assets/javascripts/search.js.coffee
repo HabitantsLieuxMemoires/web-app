@@ -30,6 +30,4 @@ window.Search =
 
 $(document).ready ->
   Search.init()
-$(document).on 'page:load', ->
-  Search.init()
 

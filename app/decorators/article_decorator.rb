@@ -41,7 +41,6 @@ class ArticleDecorator < ApplicationDecorator
     h.content_tag(:ul) do
       heads.collect do |head|
         concat(content_tag(:li, head.text))
-        #TODO: Add support for sub elements
       end
     end
   end

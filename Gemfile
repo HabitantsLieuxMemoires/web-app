@@ -23,7 +23,6 @@ end
 # Assets gems
 gem 'jquery-rails',                 "~> 3.1.0"
 gem 'bootstrap-sass',               "~> 3.1.1"
-gem 'turbolinks',                   "~> 2.2.1"
 gem 'jbuilder',                     "~> 2.0.5"
 gem 'pluggable_js',                 "~> 2.0.0"
 gem 'bootstrap_form',               "~> 2.1.0"

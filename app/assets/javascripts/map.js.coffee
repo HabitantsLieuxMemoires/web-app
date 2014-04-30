@@ -227,9 +227,7 @@ window.mapController =
     $('#'+mapSettings.el).find('.heightToggle span.glyphicon').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus')
 
 
-# Page (re)loaded ?
 $(document).ready -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
-$(document).on 'page:load', -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
 
 # Bind "map:addMarkers"
 $(document).on 'map:addMarkers', mapController.addMarkersHandler

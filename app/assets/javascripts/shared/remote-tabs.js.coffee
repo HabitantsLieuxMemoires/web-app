@@ -18,7 +18,7 @@
           if not obj.hasClass('loaded')
             obj.addClass('loaded')
 
-          div.html(data)
+          div.append(data)
 
           if callback
             callback()

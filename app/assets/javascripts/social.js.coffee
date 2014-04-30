@@ -79,8 +79,5 @@ window.socialControllers =
 window.gTestCB= (json)->
   debug json
 
-# Page (re)loaded ?
 $(document).ready ->
-  socialControllers.init()
-$(document).on 'page:load', ->
   socialControllers.init()

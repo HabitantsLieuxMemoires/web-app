@@ -1,9 +1,13 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="well">
-      <h4 class="text-center"><%= t('models.article.summary') %></h4>
-      <br>
-      <%= article.summary %>
+<% summary ||= article.summary %>
+
+<% if summary.to_str.blank? %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="well">
+        <h4 class="text-center"><%= t('models.article.summary') %></h4>
+        <br>
+        <%= summary %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

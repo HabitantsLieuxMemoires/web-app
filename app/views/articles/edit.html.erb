@@ -1,7 +1,7 @@
 <%= bootstrap_form_for @article do |f| %>
 
   <div class="col-lg-3">
-    <%= render 'articles/layouts/sidebar_edit', f: f %>
+    <%= render 'articles/sidebars/edit', f: f %>
   </div>
 
   <div class="col-lg-9">
@@ -17,10 +17,9 @@
                   <%= f.text_field  :title %>
                   <%= f.text_area   :body, rows: 8 %>
                 </div>
-                <div class="tab-pane" id="images">
-                </div>
-                <div class="tab-pane" id="videos">
-                </div>
+
+                <%= render 'articles/images', edit_mode: true %>
+                <%= render 'articles/videos', edit_mode: true %>
               </div>
             </div>
           </div>
@@ -36,4 +35,4 @@
 <div id="data-select-image" data-load="<%= select_article_images_path(@article.id) %>">
 </div>
 
-<%= render 'articles/modals/modals_edit' %>
+<%= render 'articles/modals/edit' %>

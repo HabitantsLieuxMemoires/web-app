@@ -1,31 +1,7 @@
-<ul class="list-group">
-  <li class="list-group-item clearfix">
-    <h4>
-      <%= t('models.article.images') %>
-      <span class="pull-right">
-        <% if can_add_image %>
-          <%= link_to new_article_image_path(@article.id),
-                  class: "thumbnail",
-                  id: "add_image",
-                  class: "btn btn-primary btn-sm",
-                  data: {
-                    toggle: 'modal',
-                    target: '#modal-add-image'
-                  }  do %>
-              <%= fa_icon "cloud-upload", text: t('models.image.upload'), right: true %>
-          <% end %>
-        <% end %>
-      </span>
-    </h4>
-  </li>
-</ul>
-
-<div class="row" id="images-list">
-  <% if @images.any? %>
+<% if @images.any? %>
+  <div class="row" id="images-list">
     <%= render partial: 'image', collection: @images %>
-  <% end %>
-
-  <% unless can_add_image %>
-    <p class="bg-info"><%= t('models.image.none') %></p>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <p class="bg-info"><%= t('models.image.none') %></p>
+<% end %>

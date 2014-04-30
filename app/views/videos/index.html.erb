@@ -1,32 +1,9 @@
-<ul class="list-group">
-  <li class="list-group-item clearfix">
-    <h4>
-      <%= t('models.article.videos') %>
-      <span class="pull-right">
-        <% if can_add_video %>
-          <%= link_to new_article_video_path(@article.id),
-              id: "add_video",
-              class: "btn btn-primary btn-sm",
-              data: {
-                toggle: 'modal',
-                target: '#modal-add-video'
-              }  do %>
-              <%= fa_icon "cloud-upload", text: t('models.video.add'), right: true %>
-          <% end %>
-        <% end %>
-      </span>
-    </h4>
-  </li>
-</ul>
-
-<div class="row" id="videos-list">
-  <% if @videos.any? %>
+<% if @videos.any? %>
+  <div class="row" id="videos-list">
     <%= render partial: 'video', collection: @videos %>
-  <% end %>
-
-  <% unless can_add_video %>
-    <p class="bg-info"><%= t('models.video.none') %></p>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <p class="bg-info"><%= t('models.video.none') %></p>
+<% end %>
 
 

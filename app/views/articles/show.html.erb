@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-  <%= render partial: 'articles/layouts/sidebar_show', locals: {article: @article} %>
+  <%= render partial: 'articles/sidebars/show', locals: {article: @article} %>
 <% end %>
 
 <div class="row">
@@ -13,6 +13,7 @@
           <%= @article.visibility %>
         </div>
       </div>
+
       <div class="panel-body">
         <div class="tab-content">
           <div class="tab-pane active" id="content">
@@ -20,10 +21,9 @@
 
             <%=raw @article.body %>
           </div>
-          <div class="tab-pane" id="images">
-          </div>
-          <div class="tab-pane" id="videos">
-          </div>
+
+          <%= render 'articles/images' %>
+          <%= render 'articles/videos' %>
         </div>
       </div>
       <div class="panel-footer">
@@ -40,5 +40,5 @@
     <%= render 'actionbar', article: @article %>
   </div>
 
-  <%= render 'articles/modals/modals_show' %>
+  <%= render 'articles/modals/show' %>
 </div>

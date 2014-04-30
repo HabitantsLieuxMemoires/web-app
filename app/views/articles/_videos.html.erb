@@ -1,0 +1,24 @@
+<% edit_mode = false if local_assigns[:edit_mode].nil? %>
+
+<div class="tab-pane" id="videos">
+  <ul class="list-group">
+    <li class="list-group-item clearfix">
+      <h4>
+        <%= t('models.article.videos') %>
+        <span class="pull-right">
+          <% if edit_mode %>
+            <%= link_to new_article_video_path(@article.id),
+                id: "add_video",
+                class: "btn btn-primary btn-sm",
+                data: {
+                  toggle: 'modal',
+                  target: '#modal-add-video'
+                }  do %>
+                <%= fa_icon "cloud-upload", text: t('models.video.add'), right: true %>
+            <% end %>
+          <% end %>
+        </span>
+      </h4>
+    </li>
+  </ul>
+</div>
