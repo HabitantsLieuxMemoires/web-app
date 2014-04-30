@@ -37,10 +37,11 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def summary
-    heads = Nokogiri::HTML(object.body).css('h2')
+    heads = Nokogiri::HTML(object.body).css('h4')
     h.content_tag(:ul) do
       heads.collect do |head|
         concat(content_tag(:li, head.text))
+        #TODO: Add support for sub elements
       end
     end
   end

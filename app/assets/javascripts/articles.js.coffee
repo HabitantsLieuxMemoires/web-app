@@ -12,6 +12,8 @@
 #= require shared/modal-form-cleaner
 #= require editor/custom-wysihtml5-options
 #= require editor/custom-wysihtml5-image
+#= require editor/custom-wysihtml5-link
+#= require editor/custom-wysihtml5-templates
 
 window['articles#new'] = (data) ->
   UI.initEditor($('#article_body'))
@@ -31,9 +33,10 @@ UI =
     editor = editor.wysihtml5(
       $.extend(wysiwygOptions,
         {
-          link: false,
+          link: true,
           html:false,
           color:false,
+          customTemplates: wysiwygTemplates,
           "events": {
             "load": ->
               $('iframe.wysihtml5-sandbox').wysihtml5_size_matters();

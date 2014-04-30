@@ -75,6 +75,9 @@ en:
       comments:        "Comments"
       go_to:           "Go to article"
       summary:         "Summary"
+      search:          "Search article"
+      link:
+        insert:        "Insert Link"
     comment:
       create:          "Create comment"
       none:            "No comment for this article"
