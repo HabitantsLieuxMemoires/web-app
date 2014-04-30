@@ -22,6 +22,7 @@ class Article
   counter_cache :chronology
 
   has_many :images,   autosave: true
+  has_many :videos,   autosave: true
   has_many :comments
   has_many :reports
 

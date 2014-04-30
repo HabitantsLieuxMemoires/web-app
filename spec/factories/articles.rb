@@ -17,6 +17,16 @@ FactoryGirl.define do
       end
     end
 
+    factory :article_with_videos do
+      ignore do
+        videos_count 3
+      end
+
+      after(:create) do |article, evaluator|
+        create_list(:video, evaluator.videos_count, article: article)
+      end
+    end
+
     after(:create) { |a| Article.searchkick_index.refresh }
   end
 

@@ -13,10 +13,22 @@ feature 'User reads article' do
     expect(page).to have_css('#create_comment')
   end
 
-  scenario 'and cannot add image', js: true, feature: true do
+  scenario 'and cannot add image', js: true do
     visit article_path(@article)
     click_on 'show_images'
 
-    expect(page).not_to have_css('#add_image')
+    within '#images' do
+      expect(page).not_to have_content(I18n.t('models.image.upload'))
+    end
   end
+
+  scenario 'and cannot add video', js: true do
+    visit article_path(@article)
+    click_on 'show_videos'
+
+    within '#videos' do
+      expect(page).not_to have_content(I18n.t('models.video.add'))
+    end
+  end
+
 end

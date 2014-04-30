@@ -13,6 +13,7 @@ Hlm::Application.routes.draw do
     get :autocomplete, on: :collection
 
     resources :reports,  only: [:new, :create]
+    resources :videos,   only: [:index, :new, :create]
 
     resources :comments, only: [:index, :new, :create] do
       get   'page/:page',   action: :index, on: :collection

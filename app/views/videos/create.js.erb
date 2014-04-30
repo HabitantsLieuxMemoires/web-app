@@ -1,0 +1,4 @@
+(function() {
+  $('#videos-list').prepend("<%= escape_javascript(render @video) %>")
+  $("#modal-add-video").modal('hide')
+})()

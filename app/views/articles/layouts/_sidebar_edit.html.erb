@@ -28,7 +28,7 @@
       <label class="control-label col-sm-4" for="article_location">Location</label>
       <div class="col-sm-8">
         <div class="input-group">
-          <input class="form-control" readonly="readonly" id="article_location" name="article[location]" type="text">
+          <input class="form-control location" data-latlng="<%= @article.location %>" readonly="readonly" id="article_location" name="article[location]" type="text">
           <span class="input-group-btn">
             <a class="btn btn-default" href="#" id="bt_fill_location">
               <i class="fa fa-map-marker"></i>
