@@ -1,4 +1,4 @@
-wysiHelpers = {
+wysiImageHelpers = {
   getImageTemplate: function() {
     /* this is what goes in the wysiwyg content after the image has been chosen */
     var tmpl;
@@ -11,12 +11,12 @@ wysiHelpers = {
   }
 };
 
-bootWysiOverrides = {
+bootWysiImageOverrides = {
   initInsertImage: function(toolbar) {
     var self = this;
     var selectImageModal = $('#modal-select-image');
     var selectImageData = $('#data-select-image');
-    var helpers = wysiHelpers;
+    var helpers = wysiImageHelpers;
 
     var insertImage = function(imageData) {
       if(imageData.url) {
@@ -59,4 +59,4 @@ bootWysiOverrides = {
   }
 };
 
-$.extend($.fn.wysihtml5.Constructor.prototype, bootWysiOverrides);
+$.extend($.fn.wysihtml5.Constructor.prototype, bootWysiImageOverrides);

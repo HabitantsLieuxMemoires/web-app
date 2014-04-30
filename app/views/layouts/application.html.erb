@@ -7,7 +7,7 @@
       <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
       <%= csrf_meta_tags %>
     </head>
-    <body data-env="<%= Rails.env %>">
+    <body data-env="<%= Rails.env %>" data-no-turbolink>
       <%= render 'shared/header' %>
 
       <div class="container">

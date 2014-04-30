@@ -1,9 +1,11 @@
-<% if @comments.any? %>
-  <%= render partial: 'comment', collection: @comments %>
-<% else %>
-  <div class="center-block" id="no-comment">
-    <div class="alert alert-info">
-      <%= t('models.comment.none') %>
-    </div>
-  </div>
-<% end %>
+<div id="comments-list">
+  <% if @comments.any? %>
+      <%= render partial: 'comment', collection: @comments %>
+
+      <% unless @comments.last_page? %>
+        <a class="more-comments-link" href="<%= article_comments_path(id: @article.id, page: @comments.next_page) %>"></a>
+      <% end %>
+  <% else %>
+    <p class="comment no-comment bg-info"><%= t('models.comment.none') %></p>
+  <% end %>
+</div>

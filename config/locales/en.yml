@@ -17,6 +17,7 @@ en:
   report:       "Report"
   search:       "Search"
   all:          "All"
+  add:          "Add"
 
   errors:
     messages:
@@ -73,15 +74,25 @@ en:
       url:             "URL"
       revision:        "Revision"
       comments:        "Comments"
+      images:          "Article images"
+      videos:          "Article videos"
       go_to:           "Go to article"
+      summary:         "Summary"
+      search:          "Search article"
+      link:
+        insert:        "Insert Link"
     comment:
       create:          "Create comment"
-      none:            "No comment"
+      none:            "No comment for this article"
+      loading:         "Loading comments..."
     image:
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
-      none:            "No image"
+      none:            "No image for this article"
       none_hint:       "No image found for article. Please add one before process"
+    video:
+      add:             "Add video"
+      none:            "No video for this article"
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"

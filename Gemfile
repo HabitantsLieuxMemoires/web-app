@@ -54,6 +54,8 @@ gem 'bootstrap-kaminari-views',     "~> 0.0.3"  # Bootstrap Pagination
 gem 'draper',                       "~> 1.3.0"  # ViewModels
 gem 'searchkick',                   "~> 0.7.2"  # Search (ElasticSearch)
 gem 'cells',                        "~> 3.10.1" # Cell view components
+gem 'nokogiri',                     "~> 1.6.1"  # HTML Parsing
+gem 'video_info',                   "~> 2.3.1"  # Video embedding
 
 group :development do
   gem 'better_errors'

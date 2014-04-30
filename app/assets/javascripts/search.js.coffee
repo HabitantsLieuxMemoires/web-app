@@ -11,17 +11,22 @@ window.Search =
 
     articlesRemote.initialize()
 
-    typeahead = $('.typeahead').typeahead({
-      minLength: 2,
-      highlight: true
-    }, {
-      name: 'articles',
-      displayKey: 'title',
-      source: articlesRemote.ttAdapter()
-    })
+    elements = $('.typeahead')
+    elements.each (index, element) =>
+      redirect = $(element).data('redirect')
 
-    typeahead.on 'typeahead:selected', (e, data, suggestion) ->
-      window.location.href = "/articles/" + encodeURIComponent(data.id)
+      typeahead = $(element).typeahead({
+        minLength: 2,
+        highlight: true
+      }, {
+        name: 'articles',
+        displayKey: 'title',
+        source: articlesRemote.ttAdapter()
+      })
+
+      if redirect
+        typeahead.on 'typeahead:selected', (e, data, suggestion) ->
+          window.location.href = "/articles/" + encodeURIComponent(data.id)
 
 $(document).ready ->
   Search.init()

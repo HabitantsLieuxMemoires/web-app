@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
 
   def autocomplete
     articles = Article.search(params[:query], autocomplete: true, limit: 10)
-    render json: articles.map{|a| { :id => a.slug, :title => a.title }}
+    render json: articles.map{|a| { :id => a.slug, :title => a.title, :full_url => article_url(a) }}
   end
 
   private

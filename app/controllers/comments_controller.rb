@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
   skip_before_action   :require_login, only: [:index]
 
   def index
-    @comments = @article.comments.desc(:created_at)
+    @comments = @article.comments
+      .desc(:created_at)
+      .page(params[:page])
+      .per(10)
 
     render layout: false
   end

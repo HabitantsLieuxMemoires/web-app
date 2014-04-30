@@ -16,18 +16,19 @@ feature 'Visitor reads article' do
     }.to raise_error(Mongoid::Errors::DocumentNotFound)
   end
 
-  scenario 'and can see comments', :js => true do
-    pending 'find a way to make comment selector working'
-    # article = create(:article_with_comments, comments_count: 10)
+  scenario 'and can see comments', js: true do
+    article = create(:article_with_comments, comments_count: 10)
 
-    # visit article_path(article.id)
-    # click_on 'show_comments'
+    visit article_path(article.id)
 
-    # within('#comments-list') do
-    #   comments = page.all('.comment')
+    # Scroll to bootom (will trigger comments loading)
+    page.execute_script "window.scrollBy(0,10000)"
 
-    #   expect(comments.size).to eq(10)
-    # end
+    within('#comments-list') do
+      comments = page.all('.comment')
+
+      expect(comments.size).to eq(10)
+    end
   end
 
   scenario 'and cannot create comment' do
@@ -50,10 +51,13 @@ feature 'Visitor reads article' do
     # end
   end
 
-  scenario 'and cannot add image' do
+  scenario 'and cannot add image', js: true do
     visit article_path(@article)
+    click_on 'show_images'
 
-    expect(page).not_to have_css('#add_image')
+    within '#images' do
+      expect(page).not_to have_content(I18n.t('models.image.upload'))
+    end
   end
 
   scenario 'and cannot update content' do
@@ -77,4 +81,26 @@ feature 'Visitor reads article' do
       expect(all(".leaflet-marker-icon").count).to eq(1)
     end
   end
+
+  scenario 'and can see videos', js: true do
+    a = create(:article_with_videos, videos_count: 2)
+    visit article_path(a)
+    click_on 'show_videos'
+
+    within '#videos-list' do
+      videos = all('.video')
+
+      expect(videos.size).to eq(2)
+    end
+  end
+
+  scenario 'and cannot add video', js: true do
+    visit article_path(@article)
+    click_on 'show_videos'
+
+    within '#videos' do
+      expect(page).not_to have_content(I18n.t('models.video.add'))
+    end
+  end
+
 end

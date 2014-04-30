@@ -1,0 +1,33 @@
+<%= bootstrap_form_for [@article, Video.new], url: {action: "create"}, remote: true, layout: :horizontal do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="modal-add-video-label"><%= t('models.video.add') %></h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-4">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/150x150" alt="youtube">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/150x150" alt="dailymotion">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/150x150" alt="vimeo">
+        </a>
+      </div>
+    </div>
+    <br>
+
+    <%= f.text_field :title %>
+    <%= f.text_field :url   %>
+
+  </div>
+  <div class="modal-footer">
+      <%= f.submit t('add'), id: 'add_video' %>
+  </div>
+<% end %>
