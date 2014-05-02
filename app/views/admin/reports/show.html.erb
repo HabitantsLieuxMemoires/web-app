@@ -56,9 +56,9 @@
                 <%= link_to warn_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-warning btn-sm" do %>
                   <%= fa_icon 'warning', text: t('models.user.warn'), right: true %>
                 <% end %>
-                <a href="#" class="btn btn-danger btn-sm">
-                  <%= fa_icon 'minus-circle' %>
-                </a>
+                <%= link_to ban_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-danger btn-sm" do %>
+                  <%= fa_icon 'minus-circle', text: t('models.user.ban'), right: true %>
+                <% end %>
               </td>
             </tr>
           <% end %>
