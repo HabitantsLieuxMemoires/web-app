@@ -103,6 +103,7 @@ en:
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"
+      created_at:      "Created at"
       list:            "Article reports list"
       state:           "Status"
       treat:           "Treat report"
@@ -111,3 +112,5 @@ en:
       addressed:       "Addressed"
       not_addressed:   "Not addressed"
       details:         "Report details"
+      changes:         "Changes"
+      see_changes:     "See changes"

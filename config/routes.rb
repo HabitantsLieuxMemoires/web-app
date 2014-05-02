@@ -38,6 +38,8 @@ Hlm::Application.routes.draw do
     resources :reports,   only: [:index, :show] do
       get   'page/:page',   action: :index, on: :collection
       get   'treat',        on: :member
+
+      resources :tracks, only: [:show]
     end
   end
 

@@ -1,7 +1,8 @@
 class ArticleHistoryTrackerDecorator < ApplicationDecorator
+  delegate :id
 
   def user
-    object.modifier.nickname
+    object.modifier.blank? ? t('unknown') : object.modifier.nickname
   end
 
   def updated_at

@@ -1,5 +1,5 @@
 class Admin::ReportsController < Admin::BaseController
-  before_action     :set_report, only: [:show, :treat]
+  before_action     :set_report, only: [:show, :treat, :changes]
 
   def index
     @reports = Report.desc(:created_at)
