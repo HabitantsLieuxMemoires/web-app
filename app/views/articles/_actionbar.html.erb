@@ -1,16 +1,19 @@
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-tabs">
   <li>
     <button href="#content" data-toggle="tab" class="btn btn-default btn-lg">
       <span class="glyphicon glyphicon-list"></span>
     </button>
   </li>
-  <br>
   <li>
     <button href="#images" id="show_images" data-toggle="tab" data-tab-url="<%= article_images_path(@article.id) %>" class="btn btn-default btn-lg">
       <span class="glyphicon glyphicon-picture"></span>
     </button>
   </li>
-  <br>
+  <li class="visible-sm visible-xs">
+    <button id="show_info" data-toggle="tab" data-target="#article-info" class="btn btn-default btn-lg mobile-toggle-button">
+      <span class="glyphicon glyphicon-info-sign"></span>
+    </button>
+  </li>
   <li>
     <button href="#videos" id="show_videos" data-toggle="tab" data-tab-url="<%= article_videos_path(@article.id) %>" class="btn btn-default btn-lg">
       <span class="glyphicon glyphicon-facetime-video"></span>

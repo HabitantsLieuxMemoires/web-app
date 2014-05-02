@@ -8,6 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <button type="button" class="navbar-toggle navbar-icon map-mobile-toggle mobile-toggle-button" data-target="#business-header" data-callback="mapController.mobileToggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-map-marker"></span>
+      </button>
+      <button type="button" class="navbar-toggle navbar-icon search-toggle mobile-toggle-button" data-target="#search-column">
+        <span class="sr-only">Toggle search</span>
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
       <a class="navbar-brand" href="<%= root_path %>">
         <img src="<%= asset_path 'logo.jpg' %>" alt="hlm">
       </a>
@@ -29,7 +37,7 @@
   </div>
 </nav>
 
-<div class="business-header" id="business-header">
-  <div class="container">
+<div class="business-header hidden-xs hidden-sm" id="business-header">
+  <div class="container ">
   </div>
 </div>
