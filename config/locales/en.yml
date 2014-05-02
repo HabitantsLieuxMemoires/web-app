@@ -18,6 +18,7 @@ en:
   search:       "Search"
   all:          "All"
   add:          "Add"
+  actions:      "Actions"
 
   errors:
     messages:
@@ -79,8 +80,14 @@ en:
       go_to:           "Go to article"
       summary:         "Summary"
       search:          "Search article"
+      author:          "Author"
+      history:         "Article history"
+      date:            "Date"
+      changes:         "Changes"
       link:
         insert:        "Insert Link"
+      tracks:
+        none:          "No track"
     comment:
       create:          "Create comment"
       none:            "No comment for this article"
@@ -96,6 +103,7 @@ en:
     report:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"
+      created_at:      "Created at"
       list:            "Article reports list"
       state:           "Status"
       treat:           "Treat report"
@@ -104,3 +112,10 @@ en:
       addressed:       "Addressed"
       not_addressed:   "Not addressed"
       details:         "Report details"
+      changes:         "Changes"
+      see_changes:     "See changes"
+    user:
+      warn:            "Warn"
+      warned:          "User successfully warned"
+      ban:             "Ban"
+      banned:          "User successfully banned"

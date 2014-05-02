@@ -23,7 +23,7 @@
           </tr>
           <% @reports.each do |r| %>
             <tr class="report">
-              <td><%= link_to r.article.title, admin_report_path(r.id) %></td>
+              <td><%= link_to r.article_title, admin_report_path(r.id) %></td>
               <td><%= r.state %></td>
               <td><%= r.created_at %></td>
             </tr>
@@ -36,7 +36,7 @@
       </div>
     <% else %>
       <div class="callout callout-info">
-        <p><%= t('models.report.none') %></p
+        <p><%= t('models.report.none') %></p>
       </div>
     <% end %>
   </div>

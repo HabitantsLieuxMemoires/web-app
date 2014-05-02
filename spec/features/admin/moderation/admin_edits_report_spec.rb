@@ -23,7 +23,32 @@ feature 'Admin edits report' do
     expect(current_path).to eql(edit_article_path(r.article.slug))
   end
 
+  scenario 'and can see differences of each update', js: true, feature: true do
+    pending 'Find a way to test history tracking'
+    # a = create(:article, title: 'Old title')
+    # a.update_attribute(:title, 'New title')
+
+    # r = create(:report, article: a)
+    # visit admin_report_path(r.id)
+
+    # within '#articles-updates' do
+    #   changes = all('.changes')
+
+    #   expect(changes.size).to eq(1)
+    #   click_on I18n.t('models.report.see_changes')
+
+    #   within '#modal-see-changes' do
+    #     expect(page).to have_css('.del')
+    #     expect(page).to have_css('.ins')
+    #   end
+    # end
+  end
+
   scenario 'and can warn an article modifier about the content' do
+    pending 'implement article history'
+  end
+
+  scenario 'and can ban an article modifier' do
     pending 'implement article history'
   end
 

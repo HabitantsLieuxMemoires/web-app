@@ -4,8 +4,9 @@ class Article
 
   include Mongoid::Taggable           # Tag management support
   include Mongoid::MagicCounterCache  # Counter cache support (allowing queries based on counter)
-  include Mongoid::Audit::Trackable   # History tracking support
   include Mongoid::Slug               # Slug support
+
+  include Trackable                   # History tracking support
 
   field :title,     type: String
   slug  :title

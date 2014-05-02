@@ -2,10 +2,13 @@
 
 <div class="box">
   <div class="box-header">
+    <%= fa_icon "list-ul" %>
     <h3 class="box-title"><%= t('models.report.details') %></h3>
   </div>
   <div class="box-body">
     <dl class="dl-horizontal">
+      <dt><%= t('models.report.created_at') %></dt>
+      <dd><%= @report.created_at %></dd>
       <dt><%= t('models.article.title') %></dt>
       <dd><%= @report.article.title %></dd>
       <dt><%= t('models.report.description') %></dt>
@@ -17,3 +20,56 @@
     <%= link_to t('models.report.treat'),  treat_admin_report_path(@report.id),   class: 'btn btn-primary' %>
   </div>
 </div>
+
+<div class="box box" id="article-updates">
+  <div class="box-header">
+    <%= fa_icon "edit" %>
+    <h3 class="box-title"><%= t('models.article.history') %></h3>
+  </div>
+  <div class="box-body">
+    <% if @report.article.history_tracks.any? %>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th><%= t('models.article.author') %></th>
+            <th><%= t('models.article.date') %></th>
+            <th><%= t('models.article.changes') %></th>
+            <th><%= t('actions') %></th>
+          </tr>
+          <% @report.article.history_tracks.drop(1).each do |t| %>
+            <tr class="change">
+              <td><%= t.user %></td>
+              <td><%= t.updated_at %></td>
+              <td>
+                  <span class="label label-success"><%= t.changes %></span>
+                  &nbsp;
+                  <%= link_to admin_report_track_path(@report, t),
+                          class: "btn btn-default btn-sm",
+                          data: {
+                            toggle: 'modal',
+                            target: '#modal-see-changes'
+                          }  do %>
+                      <%= fa_icon 'eye', text: t('models.report.see_changes'), right: true %>
+                  <% end %>
+              </td>
+              <td>
+                <%= link_to warn_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-warning btn-sm" do %>
+                  <%= fa_icon 'warning', text: t('models.user.warn'), right: true %>
+                <% end %>
+                <%= link_to ban_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-danger btn-sm" do %>
+                  <%= fa_icon 'minus-circle', text: t('models.user.ban'), right: true %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="callout callout-info">
+        <p><%= t('models.article.tracks.none') %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'modals' %>

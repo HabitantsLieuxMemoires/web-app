@@ -23,6 +23,7 @@ Spork.prefork do
   require 'email_spec'
   require 'coffee_script'
   require 'sass'
+  require 'mongoid-audit'
 
   RSpec.configure do |config|
     config.mock_with :rspec
