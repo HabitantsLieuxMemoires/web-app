@@ -6,7 +6,8 @@ class User
 
   authenticates_with_sorcery!
 
-  field :nickname, type: String
+  field :nickname,    type: String
+  field :warn_count,  type: Integer, default: 0
 
   has_many :reports
   has_many :comments

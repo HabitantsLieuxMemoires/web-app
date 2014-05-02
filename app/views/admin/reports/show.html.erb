@@ -37,14 +37,13 @@
             <th><%= t('actions') %></th>
           </tr>
           <% @report.article.history_tracks.drop(1).each do |t| %>
-            <tr>
+            <tr class="change">
               <td><%= t.user %></td>
               <td><%= t.updated_at %></td>
               <td>
                   <span class="label label-success"><%= t.changes %></span>
                   &nbsp;
                   <%= link_to admin_report_track_path(@report, t),
-                          id: "see_changes",
                           class: "btn btn-default btn-sm",
                           data: {
                             toggle: 'modal',
@@ -54,9 +53,9 @@
                   <% end %>
               </td>
               <td>
-                <a href="#" class="btn btn-warning btn-sm">
-                  <%= fa_icon 'warning' %>
-                </a>
+                <%= link_to warn_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-warning btn-sm" do %>
+                  <%= fa_icon 'warning', text: t('models.user.warn'), right: true %>
+                <% end %>
                 <a href="#" class="btn btn-danger btn-sm">
                   <%= fa_icon 'minus-circle' %>
                 </a>

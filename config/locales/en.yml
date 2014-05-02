@@ -114,3 +114,7 @@ en:
       details:         "Report details"
       changes:         "Changes"
       see_changes:     "See changes"
+    user:
+      warn:            "Warn"
+      warned:          "User successfully warned"
+      ban:             "Ban"

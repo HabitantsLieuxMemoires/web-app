@@ -41,6 +41,11 @@ Hlm::Application.routes.draw do
 
       resources :tracks, only: [:show]
     end
+
+    resources :users, only: [] do
+      get 'warn',   on: :member
+      get 'ban',    on: :member
+    end
   end
 
 end

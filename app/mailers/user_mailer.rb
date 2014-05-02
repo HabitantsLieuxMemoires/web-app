@@ -7,4 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(to: user.email,
          subject: "Your password has been reset")
   end
+
+  def warn_email(user, article)
+    @user     = user
+    @article  = article.title
+    mail(to: user.email,
+         subject: "You have been warned")
+  end
 end
