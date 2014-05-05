@@ -10,7 +10,6 @@
 #= require shared/remote-tabs
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
-#= require editor/custom-wysihtml5-options
 #= require editor/custom-wysihtml5-image
 #= require editor/custom-wysihtml5-link
 #= require editor/custom-wysihtml5-templates
@@ -29,21 +28,18 @@ window['articles#show'] = (data) ->
   UI.infineComments()
 
 UI =
-  initEditor: (editor) ->
-    editor = editor.wysihtml5(
-      $.extend(wysiwygOptions,
-        {
-          link: true,
-          html:false,
-          color:false,
-          customTemplates: wysiwygTemplates,
-          "events": {
-            "load": ->
-              $('iframe.wysihtml5-sandbox').wysihtml5_size_matters();
+  initEditor: (@editor) ->
+    editor = @editor.wysihtml5('deepExtend', {
+        customTemplates: wysiwygTemplates,
+        parserRules: {
+          classes: {
+            "wysiwyg-image": 1
+          },
+          tags: {
+            "div": 1
           }
         }
-      )
-    )
+    })
 
   initTagsSelector: (@component, @delimiter = ',') ->
     @component.selectize

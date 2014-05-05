@@ -19,6 +19,7 @@ en:
   all:          "All"
   add:          "Add"
   actions:      "Actions"
+  select:       "Select"
 
   errors:
     messages:
@@ -93,6 +94,7 @@ en:
       none:            "No comment for this article"
       loading:         "Loading comments..."
     image:
+      select:          "Select image"
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
       none:            "No image for this article"

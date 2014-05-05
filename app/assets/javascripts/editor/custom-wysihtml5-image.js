@@ -2,11 +2,10 @@ wysiImageHelpers = {
   getImageTemplate: function() {
     /* this is what goes in the wysiwyg content after the image has been chosen */
     var tmpl;
-    var imgEntry = "<img src='<%= url %>' alt='<%= caption %>'>";
-    tmpl = _.template("<div class='shrink_wrap'>" +
+    var imgEntry = "<img src='<%= url %>' alt='<%= caption %>' >";
+    tmpl = _.template("<div class='wysiwyg-image'>" +
                       imgEntry +
-                      "</div>" +
-                      "<br/>");
+                      "</div>");
     return tmpl;
   }
 };
@@ -30,8 +29,9 @@ bootWysiImageOverrides = {
 
     selectImageModal.on('loaded.bs.modal', function() {
       var chooser = selectImageModal.find('#image_chooser');
-      chooser.on('click', '.thumbnail', function(e) {
-        var $row = $(e.currentTarget);
+      chooser.on('click', '.thumbnail .btn-primary', function(e) {
+        var $row = $(e.currentTarget).parents('.thumbnail');
+        // var $row = $(e.delegateTarget).find('.thumbnail');
 
         insertImage($row.data());
         selectImageModal.modal('hide');
