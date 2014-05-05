@@ -1,0 +1,12 @@
+<div class="well sidebar-box" id="sidebar-news">
+  <h4><%= t('nav.news') %></h4>
+  <ul class="nav nav-pills nav-stacked">
+    <% @news.each do |n| %>
+      <li>
+        <%= link_to article_path(n.slug), class: 'new' do %>
+          <%= n.title %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

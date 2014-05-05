@@ -39,6 +39,9 @@ class Article
   # ElasticSearch indexing
   searchkick    autocomplete: ['title']
 
+  # Search scopes
+  scope :newest, -> { desc(:created_at).limit(5) }
+
   # Filter fields to be indexed
   def search_data
     as_json only: [:_id, :title]
