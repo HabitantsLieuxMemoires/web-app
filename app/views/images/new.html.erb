@@ -3,7 +3,7 @@
   <h4 id="modal-add-image-label"><%= t('models.image.add') %></h4>
 </div>
 <div class="modal-body">
-  <%= bootstrap_form_for [@article, Image.new], url: {action: "create"}, html: {:multipart => true}, remote: true, layout: :horizontal do |f| %>
+  <%= bootstrap_form_for [@article, Image.new], url: {action: "create"}, html: {:multipart => true}, layout: :horizontal do |f| %>
 
     <%= f.text_field :title %>
 

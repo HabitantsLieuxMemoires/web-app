@@ -22,13 +22,16 @@ class Article
   belongs_to    :chronology, dependent: :nullify
   counter_cache :chronology
 
-  has_many :images,   autosave: true
-  has_many :videos,   autosave: true
-  has_many :comments
-  has_many :reports
+  embeds_many :images
+  embeds_many :videos
+
+  has_many :comments, dependent: :delete
+  has_many :reports,  dependent: :delete
 
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }
+  validates :images,     associated: true
+  validates :videos,     associated: true
 
   # History tracking
   track_history on: [:title, :body], track_create: true

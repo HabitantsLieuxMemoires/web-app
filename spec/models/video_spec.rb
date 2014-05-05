@@ -6,16 +6,16 @@ describe Video do
     it { should validate_length_of(:title).within(4..80) }
     it { should validate_presence_of(:url) }
     it { should validate_length_of(:url).within(16..256) }
+    it { should be_embedded_in(:article) }
   end
 
   it 'belongs to article' do
     a = create(:article)
-    v = create(:video)
+    v = build(:video)
     a.videos << v
     a.save
 
     expect(a.videos.size).to eq(1)
-    expect(Video.count).to eq(1)
   end
 
   it 'is valid with youtube url' do

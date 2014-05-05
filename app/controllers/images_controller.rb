@@ -13,13 +13,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = @article.images.create!(image_params)
-    @article.save
+    image = Image.new(image_params)
+    @article.images << image
 
-    #TODO: Add support for validation errors when publishing image
-
-    respond_to do |format|
-      format.js
+    if @article.save
+      redirect_to edit_article_path(@article.slug), notice: t('models.image.uploaded')
+    else
+      flash[:error] = t('models.image.upload_error')
+      redirect_to edit_article_path(@article.slug)
     end
   end
 

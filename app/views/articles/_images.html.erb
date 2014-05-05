@@ -1,25 +1,22 @@
 <% edit_mode = false if local_assigns[:edit_mode].nil? %>
 
-<div class="tab-pane" id="images">
-  <ul class="list-group">
-    <li class="list-group-item clearfix">
-      <h4>
-        <%= t('models.article.images') %>
-        <span class="pull-right">
-          <% if edit_mode %>
-            <%= link_to new_article_image_path(@article.id),
-                    class: "thumbnail",
-                    id: "add_image",
-                    class: "btn btn-primary btn-sm",
-                    data: {
-                      toggle: 'modal',
-                      target: '#modal-add-image'
-                    }  do %>
-                <%= fa_icon "cloud-upload", text: t('models.image.upload'), right: true %>
-            <% end %>
-          <% end %>
-        </span>
-      </h4>
-    </li>
-  </ul>
+<div class="tab-pane clearfix" id="images">
+  <h4>
+    <%= t('models.article.images') %>
+    <small class="pull-right">
+      <% if edit_mode %>
+        <%= link_to new_article_image_path(@article.id),
+                class: "thumbnail",
+                id: "add_image",
+                class: "btn btn-primary btn-sm",
+                data: {
+                  toggle: 'modal',
+                  target: '#modal-add-image'
+                }  do %>
+            <%= fa_icon "cloud-upload", text: t('models.image.upload'), right: true %>
+        <% end %>
+      <% end %>
+    </small>
+  </h4>
+  <hr>
 </div>

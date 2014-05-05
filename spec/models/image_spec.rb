@@ -4,16 +4,16 @@ describe Image do
   describe 'contains validators' do
     it { should validate_presence_of(:title) }
     it { should validate_length_of(:title).within(4..80) }
+    it { should be_embedded_in(:article) }
   end
 
   it 'belongs to article' do
     a = create(:article)
-    i = create(:image)
+    i = build(:image)
     a.images << i
     a.save
 
     expect(a.images.size).to eq(1)
-    expect(Image.count).to eq(1)
   end
 
   it 'is valid with image of good size' do

@@ -13,13 +13,14 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = @article.videos.create!(video_params)
-    @article.save
+    video = Video.new(video_params)
+    @article.videos << video
 
-    #TODO: Add support for validation errors when adding video
-
-    respond_to do |format|
-      format.js
+    if @article.save
+      redirect_to edit_article_path(@article.slug), notice: t('models.video.added')
+    else
+      flash[:error] = t('models.video.add_error')
+      redirect_to edit_article_path(@article.slug)
     end
   end
 

@@ -6,7 +6,10 @@ describe Article do
     it { should validate_presence_of(:body) }
     it { should be_timestamped_document }
     it { should validate_length_of(:title).within(4..80) }
-    it { should have_many(:images).with_autosave }
+    it { should embed_many(:images) }
+    it { should validate_associated(:images) }
+    it { should embed_many(:videos) }
+    it { should validate_associated(:videos) }
     it { should have_many(:comments) }
     it { should have_many(:reports) }
     it { should belong_to(:theme) }

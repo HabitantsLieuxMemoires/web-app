@@ -97,10 +97,13 @@ en:
       select:          "Select image"
       upload:          "Upload image"
       uploaded:        "Image successfully uploaded"
+      upload_error:    "Unable to upload image"
       none:            "No image for this article"
       none_hint:       "No image found for article. Please add one before process"
     video:
       add:             "Add video"
+      added:           "Video successfully added"
+      add_error:       "Unable to add video"
       none:            "No video for this article"
     report:
       created:         "Article content successfully reported"
