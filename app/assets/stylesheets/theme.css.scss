@@ -4,8 +4,16 @@
   -webkit-border-radius: $radius;
 }
 
-body {
-  margin-top: 50px;
+.navbar {
+  margin-bottom: 0px !important;
+  border-bottom: 1px #F5F5F5;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 115px;
+    height: 115px;
+    padding-top: 0;
 }
 
 .business-header {
@@ -30,12 +38,6 @@ body {
 
 .business-header .heightToggle .glyphicon {
   cursor:pointer;
-}
-
-.sidebar-box {
-  ul > li > a {
-    padding: 0px;
-  }
 }
 
 .leaflet-center {

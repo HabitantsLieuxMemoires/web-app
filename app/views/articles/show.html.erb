@@ -7,7 +7,10 @@
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="pull-left">
-          <h3 class="panel-title"><%= @article.title %></h3>
+          <h3 class="panel-title">
+            <%= fa_icon "edit" %>
+            <%= @article.title %>
+          </h3>
         </div>
         <div class="pull-right">
           <%= @article.visibility %>

@@ -1,24 +1,28 @@
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+<nav class="navbar navbar-static-top" role="navigation">
   <div class="container">
 
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-hlm-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-hlm-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'HLM', root_url, class: 'navbar-brand' %>
+      <a class="navbar-brand" href="#">
+        <img src="<%= asset_path 'logo.jpg' %>" alt="hlm">
+      </a>
     </div>
 
-    <div class="collapse navbar-collapse navbar-hlm-collapse">
+    <div class="collapse navbar-collapse" id="navbar-hlm-collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-            <p class="navbar-text"><%= t('logged_in_as') %> <%= current_user.email %></p>
-            <li><%= link_to t('logout'), logout_path %></li>
+            <li><%= link_to t('nav.home').upcase,     root_url %></li>
+            <li><%= link_to t('nav.about').upcase,    root_url %></li>
+            <li><%= link_to t('nav.contact').upcase,  root_url %></li>
+            <li><%= link_to t('logout').upcase,       logout_path %></li>
         <% else %>
-            <li><%= link_to t('signup'), signup_path %></li>
-            <li><%= link_to t('login'), login_path %></li>
+            <li><%= link_to t('signup').upcase,       signup_path %></li>
+            <li><%= link_to t('login').upcase,        login_path %></li>
         <% end %>
       </ul>
     </div>

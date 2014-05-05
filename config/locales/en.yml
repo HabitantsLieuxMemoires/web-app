@@ -37,6 +37,11 @@ en:
       short:   "%H:%M"
       notime:  "%m/%d/%Y"
 
+  nav:
+    home:      "Home"
+    about:     "About"
+    contact:   "Contact"
+
   password:
     reset:                    "Reset password"
     update:                   "Update password"
