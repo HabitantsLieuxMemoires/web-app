@@ -46,6 +46,8 @@ Hlm::Application.routes.draw do
       get 'warn',   on: :member
       get 'ban',    on: :member
     end
+
+    resources :features,  only: [:index, :update]
   end
 
 end

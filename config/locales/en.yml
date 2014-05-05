@@ -20,6 +20,7 @@ en:
   add:          "Add"
   actions:      "Actions"
   select:       "Select"
+  unknown:      "Unknown"
 
   errors:
     messages:
@@ -56,6 +57,7 @@ en:
     dashboard:         "Dashboard"
     dashboard_full:    "Dashboard control panel"
     editorial:         "Editorial"
+    editorial_full:    "Manage featured articles"
     alert:             "Alert"
     moderation:        "Moderation"
     moderation_full:   "Manage article reports"
@@ -129,3 +131,9 @@ en:
       warned:          "User successfully warned"
       ban:             "Ban"
       banned:          "User successfully banned"
+    feature:
+      hero:          "Hero content"
+      articles:      "Featured articles"
+      no_article:    "No article featured yet"
+      saved:         "Feature successfully saved"
+      save_error:    "Unable to save feature"
