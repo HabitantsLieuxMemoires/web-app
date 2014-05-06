@@ -2,24 +2,31 @@
 
 <% if current_user %>
   <div class="well" id="article-actions">
-    <%= link_to t('models.article.update'), edit_article_path(article.slug),
+    <%= link_to edit_article_path(article.slug),
                                      class: 'btn btn-success btn-block',
-                                     type: 'button' %>
+                                     type: 'button' do %>
+      <%= fa_icon "edit", text: t('models.article.update') %>
+    <% end %>
 
-    <%= link_to t('models.article.report'), new_article_report_path(article.id),
+    <%= link_to new_article_report_path(article.id),
               id: 'create_report',
               class: "btn btn-danger btn-block",
               data: {
                 toggle: 'modal',
                 target: '#modal-report-article'
-              } %>
+              } do %>
+      <%= fa_icon "thumbs-down", text: t('models.article.report') %>
+    <% end %>
   </div>
 <% end %>
 
 <%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8" do |f| %>
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
-      <%= t('article.details') %>
+      <h4 class="panel-title">
+        <%= fa_icon "list" %>
+        <%= t('article.details') %>
+      </h4>
     </div>
     <div class="panel-body">
       <%= f.static_control nil, label: t('models.article.theme') do %>
@@ -36,7 +43,10 @@
 
   <div class="panel panel-default" id="article-metadatas">
     <div class="panel-heading">
-      <%= t('article.metadatas') %>
+      <h4 class="panel-title">
+        <%= fa_icon "tag" %>
+        <%= t('article.metadatas') %>
+      </h4>
     </div>
     <div class="panel-body">
       <%= f.static_control nil, label: t('models.article.revision') do %>

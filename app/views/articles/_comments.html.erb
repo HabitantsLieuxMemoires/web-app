@@ -8,13 +8,15 @@
     </div>
     <div class="pull-right">
       <% if current_user %>
-        <%= link_to t('models.comment.create'), new_article_comment_path(article.id),
+        <%= link_to new_article_comment_path(article.id),
                   class: "btn btn-default btn-sm",
                   id: "create_comment",
                   data: {
                     toggle: 'modal',
                     target: '#modal-create-comment'
-                  } %>
+                  } do %>
+          <%= fa_icon 'comment', text: t('models.comment.create') %>
+        <% end %>
       <% end %>
     </div>
   </div>

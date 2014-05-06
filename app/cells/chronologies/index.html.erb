@@ -1,6 +1,9 @@
 <div class="panel panel-default" id="sidebar-chronologies">
   <div class="panel-heading">
-    <h4 class="panel-title"><%= t('nav.chronology') %></h4>
+    <h4 class="panel-title">
+      <%= fa_icon "clock-o" %>
+      <%= t('nav.chronology') %>
+    </h4>
   </div>
   <div class="list-group">
     <% @chronologies.each do |c| %>

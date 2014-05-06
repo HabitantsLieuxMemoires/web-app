@@ -1,6 +1,9 @@
 <div class="panel panel-default" id="sidebar-themes">
   <div class="panel-heading">
-    <h4 class="panel-title"><%= t('nav.themes') %></h4>
+    <h4 class="panel-title">
+      <%= fa_icon "sitemap" %>
+      <%= t('nav.themes') %>
+    </h4>
   </div>
   <div class="list-group">
     <% @themes.each do |t| %>

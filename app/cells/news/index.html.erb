@@ -1,11 +1,24 @@
 <div class="panel panel-default" id="sidebar-news">
   <div class="panel-heading">
-    <h4 class="panel-title"><%= t('nav.news') %></h4>
+    <h4 class="panel-title">
+      <%= fa_icon "bolt" %>
+      <%= t('nav.news') %>
+    </h4>
   </div>
   <div class="list-group">
     <% @news.each do |n| %>
-      <%= link_to article_path(n.slug), class: 'new list-group-item' do %>
+      <%= link_to article_path(n.slug), class: 'new list-group-item location', data: {
+          :latlng => n.location,
+          :title  => n.title,
+          :uri    => article_path(n.slug)
+        } do %>
         <%= n.title %>
+
+        <% unless n.location.blank? %>
+          <span class="pull-right">
+            <%= fa_icon "map-marker" %>
+          </span>
+        <% end %>
       <% end %>
     <% end %>
   </div>

@@ -1,4 +1,4 @@
-class FeaturesCell < Cell::Rails
+class FeaturesCell < BaseCell
 
   def index
     @feature = Feature.last

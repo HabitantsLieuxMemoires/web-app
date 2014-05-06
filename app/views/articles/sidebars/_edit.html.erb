@@ -5,7 +5,10 @@
 
 <div class="panel panel-default" id="article-details">
   <div class="panel-heading">
-    <%= t('article.details') %>
+    <h4 class="panel-title">
+      <%= fa_icon "list" %>
+      <%= t('article.details') %>
+    </h4>
   </div>
   <div class="panel-body">
     <%= f.collection_select :theme_id, Theme.all, :id, :title %>
@@ -20,7 +23,10 @@
 
 <div class="panel panel-default" id="article-metadatas">
   <div class="panel-heading">
-    <%= t('article.metadatas') %>
+    <h4 class="panel-title">
+      <%= fa_icon "tag" %>
+      <%= t('article.metadatas') %>
+    </h4>
   </div>
   <div class="panel-body">
     <!-- TODO: Waiting for bootstrap-rails-form to implement append-prepend buttons -->

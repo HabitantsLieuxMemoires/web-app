@@ -1,4 +1,4 @@
-class NewsCell < Cell::Rails
+class NewsCell < BaseCell
 
   def index
     @news = Article.newest

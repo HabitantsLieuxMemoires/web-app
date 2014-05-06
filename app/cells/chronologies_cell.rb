@@ -1,4 +1,4 @@
-class ChronologiesCell < Cell::Rails
+class ChronologiesCell < BaseCell
 
   cache :index, :expires_in => 6.hours
 

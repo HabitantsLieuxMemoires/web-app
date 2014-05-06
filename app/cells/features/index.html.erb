@@ -1,6 +1,9 @@
 <div class="panel panel-default" id="main-featured">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= t('home.featured_stories') %></h3>
+    <h3 class="panel-title">
+      <%= fa_icon "star" %>
+      <%= t('home.featured_stories') %>
+    </h3>
   </div>
   <div class="panel-body">
     <% unless @feature.blank? %>
@@ -15,9 +18,9 @@
             </a>
             <div class="media-body">
               <%= link_to article_path(article.slug) do %>
-                <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
+                <h5 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h5>
               <% end %>
-              <%= truncate(article.body, length: 140) %>
+              <%= raw(article.body.truncate(140)) %>
             </div>
           </li>
         <% end %>

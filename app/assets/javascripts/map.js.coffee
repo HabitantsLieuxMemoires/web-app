@@ -192,12 +192,14 @@ window.mapController =
     markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
     debug markers.length + " markers found"
     markers.each ->
-      latlng = $(this).data("latlng").split ', '
-      mapController.addMarker
-        latitude: latlng[0]
-        longitude: latlng[1]
-        text: $(this).data "title"
-        uri: $(this).data "uri"
+      dataLocation = $(this).data("latlng")
+      if dataLocation
+        latlng = dataLocation.split ', '
+        mapController.addMarker
+          latitude: latlng[0]
+          longitude: latlng[1]
+          text: $(this).data "title"
+          uri: $(this).data "uri"
 
   # Erase all markers
   deleteMarkers: ->

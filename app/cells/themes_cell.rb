@@ -1,4 +1,4 @@
-class ThemesCell < Cell::Rails
+class ThemesCell < BaseCell
 
   cache :index, :expires_in => 6.hours
 
