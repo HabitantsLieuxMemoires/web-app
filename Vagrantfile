@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |vb|
      vb.memory = 1024
-     vb.cpus   = 2
+     vb.cpus   = 1
   end
 
   # Enable provisioning with Puppet stand alone.

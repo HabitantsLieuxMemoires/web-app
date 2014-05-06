@@ -1,33 +1,27 @@
 #= require typeahead
 
-window.Search =
-  init: ->
-    debug 'Initializing typeahead'
-    articlesRemote = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: '/articles/autocomplete?query=%QUERY'
-    })
-
-    articlesRemote.initialize()
-
-    elements = $('.typeahead')
-    elements.each (index, element) =>
-      redirect = $(element).data('redirect')
-
-      typeahead = $(element).typeahead({
-        minLength: 2,
-        highlight: true
-      }, {
-        name: 'articles',
-        displayKey: 'title',
-        source: articlesRemote.ttAdapter()
-      })
-
-      if redirect
-        typeahead.on 'typeahead:selected', (e, data, suggestion) ->
-          window.location.href = "/articles/" + encodeURIComponent(data.id)
+# Will be executed on every pages (excepting admin ones)
 
 $(document).ready ->
-  Search.init()
+  typeahead     = $('#search-article')
 
+  # Redirect on show article page when clicked (data.id contains article' slug)
+  redirectOnClick = (data) ->
+    window.location.href = "/articles/" + encodeURIComponent(data.id)
+
+  Typeahead.init(typeahead, 'search', redirectOnClick)
+
+  # Extend size of search input container when appended button clicked
+  $('#bt-search').on 'click', ->
+
+    showExtendedSearch = (parent) ->
+      $('#bt-search-extended')
+        .appendTo('.search-container')
+        .removeClass('hidden', 500, "easeOutQuint")
+
+    $('#sidebar-actions')
+      .css('z-index', 10)
+      .animate({
+        width: '+=220px',
+        duration: 1000
+      }, showExtendedSearch)

@@ -1,0 +1,12 @@
+var results   = $('#search-results');
+var noResults = $('#no-result');
+
+// Emptying first
+results.empty();
+
+<% if @articles.any? %>
+  noResults.addClass('hidden');
+  $('<%= j(render @articles) %>').appendTo(results);
+<% else %>
+  noResults.removeClass('hidden');
+<% end %>
