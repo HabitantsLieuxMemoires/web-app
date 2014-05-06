@@ -6,12 +6,12 @@
     <small class="pull-right">
       <% if edit_mode %>
         <%= link_to new_article_video_path(@article.id),
-            id: "add_video",
-            class: "btn btn-primary btn-sm",
-            data: {
-              toggle: 'modal',
-              target: '#modal-add-video'
-            }  do %>
+                id: "add_video",
+                class: "btn btn-primary btn-sm",
+                data: {
+                  toggle: 'modal',
+                  target: '#modal-add-video'
+                }  do %>
             <%= fa_icon "cloud-upload", text: t('models.video.add'), right: true %>
         <% end %>
       <% end %>
