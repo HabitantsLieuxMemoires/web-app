@@ -1,0 +1,30 @@
+<%= render 'header' %>
+
+<div id="feature-data" data-id="<%= @feature.id %>"></div>
+
+<%= bootstrap_form_for @feature, url: admin_feature_path(@feature) do |f| %>
+  <div class="box">
+    <div class="box-header">
+      <%= fa_icon "edit" %>
+      <h3 class="box-title"><%= t('models.feature.hero') %></h3>
+    </div>
+    <div class="box-body">
+      <%= f.text_field :title %>
+      <%= f.text_area  :description, rows: 8 %>
+    </div>
+    <div class="box-footer">
+      <%= f.primary %>
+    </div>
+  </div>
+<% end %>
+
+<div class="box">
+  <div class="box-header">
+    <%= fa_icon "star" %>
+    <h3 class="box-title"><%= t('models.feature.articles') %></h3>
+  </div>
+  <div class="box-body">
+    <%= render 'admin/articles/articles', articles: @feature.articles %>
+  </div>
+</div>
+

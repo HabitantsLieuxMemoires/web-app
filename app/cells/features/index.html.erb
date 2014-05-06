@@ -1,0 +1,29 @@
+<div class="panel panel-default" id="main-featured">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t('home.featured_stories') %></h3>
+  </div>
+  <div class="panel-body">
+    <% unless @feature.blank? %>
+      <h4><%= @feature.title %></h4>
+      <p class="text-justify"><%=raw @feature.description %></p>
+      <hr>
+      <ul class="media-list">
+        <% @feature.articles.each do |article| %>
+          <li class="media feature">
+            <a class="pull-right" href="#">
+              <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
+            </a>
+            <div class="media-body">
+              <%= link_to article_path(article.slug) do %>
+                <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
+              <% end %>
+              <%= truncate(article.body, length: 140) %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="bg-info"><%= t('models.feature.no_article') %></p>
+    <% end %>
+  </div>
+</div>

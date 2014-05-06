@@ -22,6 +22,8 @@ class Article
   belongs_to    :chronology, dependent: :nullify
   counter_cache :chronology
 
+  belongs_to :feature
+
   embeds_many :images
   embeds_many :videos
 

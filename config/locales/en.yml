@@ -1,7 +1,7 @@
 en:
-  signup:       "Sign up"
-  login:        "Log in"
-  logout:       "Log out"
+  signup:       "SIGN IP"
+  login:        "LOG IN"
+  logout:       "LOG OUT"
   signed_up:    "Account successfully created"
   logged_in:    "Successfully logged in"
   logged_in_as: "Logged in as"
@@ -18,8 +18,10 @@ en:
   search:       "Search"
   all:          "All"
   add:          "Add"
+  delete:       "Delete"
   actions:      "Actions"
   select:       "Select"
+  unknown:      "Unknown"
 
   errors:
     messages:
@@ -38,9 +40,9 @@ en:
       notime:  "%m/%d/%Y"
 
   nav:
-    home:      "Home"
-    about:     "About"
-    contact:   "Contact"
+    home:      "HOME"
+    about:     "ABOUT"
+    contact:   "CONTACT"
 
   password:
     reset:                    "Reset password"
@@ -56,6 +58,7 @@ en:
     dashboard:         "Dashboard"
     dashboard_full:    "Dashboard control panel"
     editorial:         "Editorial"
+    editorial_full:    "Manage featured articles"
     alert:             "Alert"
     moderation:        "Moderation"
     moderation_full:   "Manage article reports"
@@ -129,3 +132,10 @@ en:
       warned:          "User successfully warned"
       ban:             "Ban"
       banned:          "User successfully banned"
+    feature:
+      hero:           "Hero content"
+      articles:       "Featured articles"
+      no_article:     "No article featured yet"
+      select_article: "Select article"
+      saved:          "Feature successfully saved"
+      save_error:     "Unable to save feature"
