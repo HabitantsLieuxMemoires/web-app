@@ -16,13 +16,13 @@
     <div class="collapse navbar-collapse" id="navbar-hlm-collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-            <li><%= link_to t('nav.home').upcase,     root_url %></li>
-            <li><%= link_to t('nav.about').upcase,    root_url %></li>
-            <li><%= link_to t('nav.contact').upcase,  root_url %></li>
-            <li><%= link_to t('logout').upcase,       logout_path %></li>
+            <li><%= link_to t('nav.home'),     root_url %></li>
+            <li><%= link_to t('nav.about'),    root_url %></li>
+            <li><%= link_to t('nav.contact'),  root_url %></li>
+            <li><%= link_to t('logout'),       logout_path %></li>
         <% else %>
-            <li><%= link_to t('signup').upcase,       signup_path %></li>
-            <li><%= link_to t('login').upcase,        login_path %></li>
+            <li><%= link_to t('signup'),       signup_path %></li>
+            <li><%= link_to t('login'),        login_path %></li>
         <% end %>
       </ul>
     </div>

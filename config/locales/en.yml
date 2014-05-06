@@ -1,7 +1,7 @@
 en:
-  signup:       "Sign up"
-  login:        "Log in"
-  logout:       "Log out"
+  signup:       "SIGN IP"
+  login:        "LOG IN"
+  logout:       "LOG OUT"
   signed_up:    "Account successfully created"
   logged_in:    "Successfully logged in"
   logged_in_as: "Logged in as"
@@ -22,6 +22,11 @@ en:
   actions:      "Actions"
   select:       "Select"
   unknown:      "Unknown"
+
+  nav:
+    home:       "HOME"
+    about:      "ABOUT"
+    contact:    "CONTACT"
 
   errors:
     messages:
