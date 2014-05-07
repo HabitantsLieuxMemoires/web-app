@@ -52,10 +52,10 @@ class ArticlesController < ApplicationController
       misspellings: {distance: 2},
       operator: "or",
       limit: 20,
-      where: {
+      where: ({
         theme: [params[:themes]],
-        tags:  [params[:tags]]
-      }
+        tags:  ([params[:tags]] unless params[:tags].empty?)
+      }).reject{ |k,v| v.nil?}
     )
 
     respond_to do |format|

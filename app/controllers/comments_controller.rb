@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
       .desc(:created_at)
       .page(params[:page])
       .per(10)
+      .decorate()
 
     render layout: false
   end

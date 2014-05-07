@@ -10,6 +10,14 @@ class ArticleDecorator < ApplicationDecorator
     object.history_tracks.count
   end
 
+  def theme
+    object.theme_fields["title"]
+  end
+
+  def chronology
+    object.chronology_fields["title"]
+  end
+
   def visibility
     h.content_tag(:span, class: "label label-default") do
       object.public? ? t('models.article.public') : t('models.article.private')

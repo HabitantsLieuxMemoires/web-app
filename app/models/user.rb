@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  include Mongoid::Alize
 
   include Roleable
 
