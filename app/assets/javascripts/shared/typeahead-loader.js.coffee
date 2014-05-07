@@ -1,7 +1,7 @@
 #= require typeahead
 
 @Typeahead =
-  init: (@component, name, callback = null, minLength = 2) ->
+  init: (@component, name, onSelected = null, minLength = 2) ->
     articlesRemote = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -24,7 +24,7 @@
     typeahead.on 'typeahead:selected', (e, data, suggestion) ->
       if redirect
         window.location.href = "/articles/" + encodeURIComponent(data.id)
-      else if callback
-        callback(data)
+      else if onSelected
+        onSelected(data)
 
     return typeahead

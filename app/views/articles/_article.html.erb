@@ -1,11 +1,22 @@
+<hr>
 <li class="media">
   <a class="pull-left" href="#">
     <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
   </a>
   <div class="media-body">
-    <%= link_to article_path(article.slug) do %>
-      <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
-    <% end %>
-    <%=raw article.body.split('<br>').first %>
+    <div class="row">
+      <div class="col-md-9">
+        <%= link_to article_path(article.slug) do %>
+          <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
+        <% end %>
+        <%= strip_tags(article.body).truncate(140) %>
+      </div>
+      <div class="col-md-3">
+        <div class="well text-center">
+          <%= fa_icon "comments-o lg", text: article.comments.count %>
+          <%= fa_icon "share-square-o lg", text: "0" %>
+        </div>
+      </div>
+    </div>
   </div>
 </li>

@@ -20,7 +20,7 @@
               <%= link_to article_path(article.slug) do %>
                 <h5 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h5>
               <% end %>
-              <%= raw(article.body.truncate(140)) %>
+              <%= strip_tags(article.body).truncate(140) %>
             </div>
           </li>
         <% end %>

@@ -1,20 +1,22 @@
 node "vagrant.hlm.local" {
   # Packages
-  $packages = ['git-core', 'curl', 'xvfb', 'libqtwebkit-dev', 'imagemagick', 'unzip']
+  $packages = ['curl', 'xvfb', 'libqtwebkit-dev', 'imagemagick', 'unzip']
   package { $packages:
     ensure => present,
   }
 
-  # User
-  account { 'hlm':
-    ensure    => present,
-    comment   => 'HLM user',
+  # Locale
+  class { 'locales':
+    default_value  => "en_US.UTF-8",
+    available      => ["en_US.UTF-8 UTF-8", "en_GB.UTF-8 UTF-8"],
   }
 
   # RBEnv
-  class { 'rbenv': }
-  rbenv::plugin { 'sstephenson/ruby-build': }
-  rbenv::build { '2.1.1': global => true }
+  rbenv::install { 'vagrant':
+  }
+  rbenv::compile { '2.1.1':
+    user => 'vagrant',
+  }
 
   # Java
   class { 'java': }
@@ -41,6 +43,4 @@ node "vagrant.hlm.local" {
     require => Class['java'],
    }
   }
-
-  realize Account['hlm']
 }

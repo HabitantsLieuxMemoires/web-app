@@ -1,13 +1,6 @@
 <div class="well" id="sidebar-actions">
 
-  <div class="input-group">
-    <input type="text" name="query" id="search-article" class="form-control typeahead" placeholder="Search article..." data-redirect="true">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">
-        <span class="glyphicon glyphicon-search"></span>
-      </button>
-    </span>
-  </div>
+  <%= render 'shared/search_bar' %>
 
   <% if logged_in? %>
     <br>

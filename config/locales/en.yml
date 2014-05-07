@@ -22,6 +22,7 @@ en:
   actions:      "Actions"
   select:       "Select"
   unknown:      "Unknown"
+  or:           "or"
 
   errors:
     messages:
@@ -43,6 +44,11 @@ en:
     home:      "HOME"
     about:     "ABOUT"
     contact:   "CONTACT"
+
+  search:
+    do:        "Search"
+    extended:  "Extended search"
+    no:        "No result found for given query"
 
   password:
     reset:                    "Reset password"

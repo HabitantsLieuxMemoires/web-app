@@ -39,14 +39,19 @@ class Article
   track_history on: [:title, :body], track_create: true
 
   # ElasticSearch indexing
-  searchkick    autocomplete: ['title']
+  searchkick    word_start: [:title], autocomplete: [:title]
 
   # Search scopes
   scope :newest, -> { desc(:created_at).limit(5) }
 
   # Filter fields to be indexed
   def search_data
-    as_json only: [:_id, :title]
+    {
+      _id:      _id,
+      title:    title,
+      tags:     tags_array,
+      theme:    theme_id.to_s
+    }
   end
 
 end

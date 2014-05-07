@@ -4,6 +4,12 @@
   -webkit-border-radius: $radius;
 }
 
+.vertical-center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 .navbar {
   margin-bottom: 0px !important;
   border-bottom: 1px #F5F5F5;
@@ -28,6 +34,10 @@
     background: url(http://placehold.it/240x320) center center no-repeat;
     background-size: cover;
   }
+}
+
+#sidebar-actions {
+  position: relative;
 }
 
 .business-header .heightToggle {

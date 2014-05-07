@@ -5,12 +5,15 @@ Hlm::Application.routes.draw do
   get "login",  to: "sessions#new",      as: "login"
   get "signup", to: "users#new",         as: "signup"
 
+  get "search", to: "search#index",      as: "search"
+
   resources :users,           only: [:new, :create]
   resources :sessions,        only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :articles do
-    get :autocomplete, on: :collection
+    get  :autocomplete, on: :collection
+    post :search,       on: :collection
 
     resources :reports,  only: [:new, :create]
     resources :videos,   only: [:index, :new, :create]

@@ -18,3 +18,7 @@
 .idea/
 public/uploads/
 provisioning/.librarian/
+.bash_history
+.cache
+.profile
+.ruby-version
