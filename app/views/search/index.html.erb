@@ -1,50 +1,72 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title">
-      <%= fa_icon "search" %>
-      <%= t('search.extended') %>
-    </h4>
-  </div>
-  <%= bootstrap_form_tag url: search_articles_path, remote: true do |f| %>
-    <div class="panel-body">
-      <%= f.search_field :query, hide_label: true, placeholder: 'Search content...' %>
-
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h5>By theme</h5>
-            </div>
-            <div class="panel-body">
-                <%= f.collection_select :theme_id, Theme.all, :id, :title, hide_label: true %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 panel">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h5>By tags</h5>
-            </div>
-            <div class="panel-body">
-                <%= f.text_field :tags, hide_label: true, placeholder: 'Search tags...' %>
-            </div>
-          </div>
-        </div>
+<%= bootstrap_form_tag url: search_articles_path, remote: true do |f| %>
+  <div class="panel panel-default" id="search-page">
+    <div class="panel-heading clearfix">
+      <div class="pull-left">
+        <h4 class="panel-title">
+          <%= fa_icon "search" %>
+          <%= t('search.extended') %>
+        </h4>
       </div>
+      <div class="pull-right">
+        <%= f.submit t('search.do'), class: 'btn btn-primary btn-sm' %>
+      </div>
+    </div>
 
-      <div id="search-results">
+      <div class="panel-body">
+        <%= f.search_field :query, hide_label: true, placeholder: 'Search content...' %>
+
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h5>By theme</h5>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-4 vertical-center">
+                    <button role="button" class="btn btn-block btn-sm btn-default themes-all">
+                      <%= fa_icon "circle", text: 'All' %>
+                    </button>
+                     <button role="button" class="btn btn-block btn-sm btn-warning themes-none">
+                      <%= fa_icon "circle-o", text: 'None' %>
+                    </button>
+                  </div>
+                  <div class="col-md-7 vertical-center">
+                    <%= collection_check_boxes @article, :themes, Theme.all, :id, :title do |cb| %>
+                      <div class="checkbox">
+                        <%= cb.label %>
+                        <%= cb.check_box %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 panel">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h5>By tags</h5>
+              </div>
+              <div class="panel-body">
+                  <%= f.text_field :tags, hide_label: true, placeholder: 'Search tags...' %>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div id="no-result" class="hidden">
           <p class="bg-info">
             <%= t('search.no_result') %>
           </p>
         </div>
+
+        <ul class="media-list" id="search-results">
+
+        </ul>
+
       </div>
 
-    </div>
-    <div class="panel-footer">
-      <%= f.primary 'Search' %>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

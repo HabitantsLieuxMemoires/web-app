@@ -46,6 +46,7 @@ en:
     contact:   "CONTACT"
 
   search:
+    do:        "Search"
     extended:  "Extended search"
     no:        "No result found for given query"
 

@@ -46,7 +46,18 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:query], limit: 20)
+    @articles = Article.search(
+      params[:query],
+      fields: [{title: :word_start}],
+      misspellings: {distance: 2},
+      operator: "or",
+      limit: 20,
+      where: {
+        theme: [params[:themes]],
+        tags:  [params[:tags]]
+      }
+    )
+
     respond_to do |format|
       format.js
     end
