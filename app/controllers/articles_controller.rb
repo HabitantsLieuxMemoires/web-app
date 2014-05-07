@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action   :require_login, only: [:show, :autocomplete, :search]
-  before_action        :set_article,   only: [:show, :edit, :update]
+  before_action        :set_article,   only: [:show, :edit, :update, :share]
 
   layout               'empty',        only: [:new, :edit]
 
@@ -63,6 +63,14 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  def share
+    @article.inc(share_count: 1)
+
+    respond_to do |format|
+      format.json { render json: @article.share_count }
     end
   end
 

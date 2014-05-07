@@ -10,10 +10,12 @@
       <% @populars.each do |p| %>
         <div class="col-md-4 popular">
           <img class="img-rounded" alt="80x80" src="http://placehold.it/80x80">
-          <%= link_to p.url do %>
-            <h5 data-latlng="<%= p.location %>" data-title="<%= p.title %>" data-uri="<%= p.url %>">
-              <%= p.title %>
-            </h5>
+          <%= link_to p.url, class: 'location', data: {
+              :latlng => p.location,
+              :title  => p.title,
+              :uri    => p.url
+            } do %>
+            <h5><%= p.title %></h5>
           <% end %>
           <p><%= p.body(140) %></p>
         </div>

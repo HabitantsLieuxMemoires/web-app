@@ -2,6 +2,9 @@
   <%= render partial: 'articles/sidebars/show', locals: {article: @article} %>
 <% end %>
 
+<!-- Could be used on JS to build AJax URLs -->
+<div class="article-data" data-uri="<%= @article.url %>"></div>
+
 <div class="row">
   <div class="col-lg-11">
     <div class="panel panel-default">

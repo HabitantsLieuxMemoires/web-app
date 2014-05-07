@@ -14,6 +14,7 @@ Hlm::Application.routes.draw do
   resources :articles do
     get  :autocomplete, on: :collection
     post :search,       on: :collection
+    get  :share,        on: :member
 
     resources :reports,  only: [:new, :create]
     resources :videos,   only: [:index, :new, :create]

@@ -65,6 +65,16 @@ window.socialControllers =
       if response?
         debug "Shared successfully on "+service+", response="
         debug response
+
+        # Incrementing share counter
+        articleURL = $('.article-data').data('uri')
+        if articleURL
+          $.ajax articleURL + '/share',
+            type: 'GET',
+            dataType: 'json',
+            success: (data, textStatus, jqXHR) ->
+              debug "Share counter incremented to " + data
+
       else
         debug "Share cancelled for "+service
 
@@ -80,4 +90,5 @@ window.gTestCB= (json)->
   debug json
 
 $(document).ready ->
-  socialControllers.init()
+  if $('.social-buttons').length
+    socialControllers.init()
