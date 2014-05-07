@@ -9,7 +9,8 @@ class Article
 
   include Trackable                   # History tracking support
 
-  field :title,     type: String
+  # Slug
+  field :title,         type: String
   slug  :title
 
   field :body,          type: String
@@ -17,6 +18,7 @@ class Article
   field :locked,        type: Boolean, default: false
   field :location,      type: String
   field :comment_count, type: Integer, default: 0 # Counter cache
+  field :share_count,   type: Integer, default: 0
 
   # Theme
   belongs_to    :theme, dependent: :nullify
@@ -41,6 +43,9 @@ class Article
   # Reports
   has_many :reports,  dependent: :delete
 
+  # Indexes
+  index({ share_count: 1 }, { background: true })
+
   # Validation
   validates :title,      presence: true, length: { in: 4..80 }
   validates :body,       presence: true, length: { maximum: 26000 }
@@ -50,19 +55,19 @@ class Article
   # History tracking
   track_history on: [:title, :body], track_create: true
 
+  # Search scopes
+  scope :newest,      -> { desc(:created_at) }
+  scope :most_shared, -> { desc(:share_count) }
+
   # ElasticSearch indexing
   searchkick    word_start: [:title], autocomplete: [:title]
-
-  # Search scopes
-  scope :newest, -> { desc(:created_at).limit(5) }
-
-  # Filter fields to be indexed
   def search_data
     {
-      _id:      _id,
-      title:    title,
-      tags:     tags_array,
-      theme:    theme_id.to_s
+      _id:          _id,
+      title:        title,
+      tags:         tags_array,
+      theme:        theme_id.to_s,
+      share_count:  share_count
     }
   end
 

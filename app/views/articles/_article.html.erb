@@ -9,12 +9,12 @@
         <%= link_to article_path(article.slug) do %>
           <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
         <% end %>
-        <%= strip_tags(article.body).truncate(140) %>
+        <%= article.body(140) %>
       </div>
       <div class="col-md-3">
         <div class="well text-center">
           <%= fa_icon "comments-o lg", text: article.comment_count %>
-          <%= fa_icon "share-square-o lg", text: "0" %>
+          <%= fa_icon "share-square-o lg", text: article.share_count %>
         </div>
       </div>
     </div>

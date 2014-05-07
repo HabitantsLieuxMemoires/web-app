@@ -46,17 +46,20 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(
+    articles = Article.search(
       params[:query],
       fields: [{title: :word_start}],
       misspellings: {distance: 2},
       operator: "or",
-      limit: 20,
+      boost: "share_count",
       where: ({
         theme: [params[:themes]],
         tags:  ([params[:tags]] unless params[:tags].empty?)
-      }).reject{ |k,v| v.nil?}
+      }).reject{ |k,v| v.nil?},
+      limit: 20
     )
+
+    @articles = ArticleDecorator.decorate_collection(articles)
 
     respond_to do |format|
       format.js
