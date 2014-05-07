@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action   :require_login, only: [:show, :autocomplete, :search]
-  before_action        :set_article,   only: [:show, :edit, :update]
+  before_action        :set_article,   only: [:show, :edit, :update, :share]
 
   layout               'empty',        only: [:new, :edit]
 
@@ -46,20 +46,31 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(
+    articles = Article.search(
       params[:query],
       fields: [{title: :word_start}],
       misspellings: {distance: 2},
       operator: "or",
-      limit: 20,
-      where: {
+      boost: "share_count",
+      where: ({
         theme: [params[:themes]],
-        tags:  [params[:tags]]
-      }
+        tags:  ([params[:tags]] unless params[:tags].empty?)
+      }).reject{ |k,v| v.nil?},
+      limit: 20
     )
+
+    @articles = ArticleDecorator.decorate_collection(articles)
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  def share
+    @article.inc(share_count: 1)
+
+    respond_to do |format|
+      format.json { render json: @article.share_count }
     end
   end
 

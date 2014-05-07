@@ -11,7 +11,8 @@ after "development:users", "development:themes", "development:chronologies" do
       theme:        Theme.skip(rand(Theme.count)).first,
       chronology:   Chronology.skip(rand(Chronology.count)).first,
       tags_array:   Faker::Lorem.words(2, true),
-      modifier:     User.skip(rand(User.count)).first
+      modifier:     User.skip(rand(User.count)).first,
+      share_count:  (0..60).to_a.sample
     )
   end
 end

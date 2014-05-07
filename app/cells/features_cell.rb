@@ -1,7 +1,7 @@
 class FeaturesCell < BaseCell
 
   def index
-    @feature = Feature.last
+    @feature = Feature.last.decorate
     render
   end
 

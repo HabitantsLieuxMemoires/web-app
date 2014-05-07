@@ -1,13 +1,22 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :location
-
-  delegate :title, to: :theme,      prefix: true
-  delegate :title, to: :chronology, prefix: true
+  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :location, :comment_count, :share_count
 
   decorates_association :history_tracks
 
   def history
     object.history_tracks.count
+  end
+
+  def theme
+    object.theme_fields["title"]
+  end
+
+  def chronology
+    object.chronology_fields["title"]
+  end
+
+  def url
+    article_path(object.slug)
   end
 
   def visibility
@@ -45,6 +54,15 @@ class ArticleDecorator < ApplicationDecorator
         concat(content_tag(:li, head.text))
       end
     end
+  end
+
+  def body(truncate = nil)
+    body = strip_tags(object.body)
+    body.truncate(truncate) unless truncate.nil?
+  end
+
+  def full_body
+    raw(object.body)
   end
 
 end

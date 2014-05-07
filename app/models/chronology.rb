@@ -1,6 +1,7 @@
 class Chronology
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Alize
 
   field :title, type: String
   slug  :title

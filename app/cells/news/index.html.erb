@@ -7,10 +7,10 @@
   </div>
   <div class="list-group">
     <% @news.each do |n| %>
-      <%= link_to article_path(n.slug), class: 'new list-group-item location', data: {
+      <%= link_to n.url, class: 'new list-group-item location', data: {
           :latlng => n.location,
           :title  => n.title,
-          :uri    => article_path(n.slug)
+          :uri    => n.url
         } do %>
         <%= n.title %>
 

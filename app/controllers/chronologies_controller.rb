@@ -3,7 +3,10 @@ class ChronologiesController < ApplicationController
   before_action      :set_chronology, only: [:show]
 
   def show
-    @articles = @chronology.articles.desc(:created_at).page(params[:page])
+    @articles = @chronology.articles
+                           .most_shared
+                           .page(params[:page])
+                           .decorate
   end
 
   private

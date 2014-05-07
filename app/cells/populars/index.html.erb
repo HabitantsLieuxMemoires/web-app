@@ -1,0 +1,26 @@
+<div class="panel panel-default" id="main-popular">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= fa_icon "share-square-o" %>
+      <%= t('home.popular_stories') %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <% @populars.each do |p| %>
+        <div class="col-md-4 popular">
+          <img class="img-rounded" alt="80x80" src="http://placehold.it/80x80">
+          <%= link_to p.url, class: 'location', data: {
+              :latlng => p.location,
+              :title  => p.title,
+              :uri    => p.url
+            } do %>
+            <h5><%= p.title %></h5>
+          <% end %>
+          <p><%= p.body(140) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
