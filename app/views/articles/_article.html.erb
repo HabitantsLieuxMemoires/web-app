@@ -1,22 +1,19 @@
-<hr>
-<li class="media">
-  <a class="pull-left" href="#">
-    <img class="media-object" src="http://placehold.it/64x64" alt="64x64">
-  </a>
-  <div class="media-body">
-    <div class="row">
-      <div class="col-md-9">
-        <%= link_to article_path(article.slug) do %>
-          <h4 class="media-heading" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.title %></h4>
-        <% end %>
-        <%= article.body(140) %>
-      </div>
-      <div class="col-md-3">
-        <div class="well text-center">
-          <%= fa_icon "comments-o lg", text: article.comment_count %>
-          <%= fa_icon "share-square-o lg", text: article.share_count %>
-        </div>
-      </div>
-    </div>
+<div class="article row">
+  <div class="col-xs-12 col-sm-12 col-md-3">
+    <a href="#" title="<%= article.title %>" class="thumbnail">
+      <img src="http://lorempixel.com/250/140/nature" alt="Lorem ipsum" />
+    </a>
   </div>
-</li>
+  <div class="col-xs-12 col-sm-12 col-md-2">
+    <ul class="meta-search">
+      <li><%= fa_icon "calendar", text: article.created_at %></li>
+      <li><%= fa_icon "comments", text: article.comment_count %></li>
+      <li><%= fa_icon "star", text: article.share_count %></li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+    <h3><%= link_to article.title, article.url %></h3>
+    <p><%= article.body(200) %></p>
+  </div>
+  <span class="clearfix"></span>
+</div>

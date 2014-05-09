@@ -6,7 +6,7 @@ feature 'Visitor lists articles for chronology' do
     chronology = create(:chronology)
     visit chronology_path(chronology.id)
 
-    expect(page).not_to have_css('.media-list')
+    expect(page).not_to have_css('.articles')
   end
 
   scenario 'with articles and no pagination' do
@@ -16,7 +16,7 @@ feature 'Visitor lists articles for chronology' do
     visit chronology_path(chronology.id)
 
     within '#chronology-articles' do
-      expect(all('li').size).to eq(10)
+      expect(all('.article').size).to eq(10)
     end
   end
 
@@ -27,13 +27,13 @@ feature 'Visitor lists articles for chronology' do
     visit chronology_path(chronology.id)
 
     within '#chronology-articles' do
-      expect(all('li').size).to eq(10)
+      expect(all('.article').size).to eq(10)
     end
 
     page.find('.next_page a').click
 
     within '#chronology-articles' do
-      expect(all('li').size).to eq(5)
+      expect(all('.article').size).to eq(5)
     end
   end
 

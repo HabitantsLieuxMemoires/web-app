@@ -48,7 +48,7 @@ $(document).ready ->
     showExtendedSearch = (parent) ->
       $('#bt-search-extended')
         .appendTo('.search-container')
-        .removeClass('hidden', 500, "easeOutQuint")
+        .removeClass('hidden')
 
     $('#sidebar-actions')
       .css('z-index', 10)

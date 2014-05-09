@@ -1,7 +1,7 @@
 en:
-  signup:       "SIGN UP"
-  login:        "LOG IN"
-  logout:       "LOG OUT"
+  signup:       "Sign up"
+  login:        "Login"
+  logout:       "Logout"
   signed_up:    "Account successfully created"
   logged_in:    "Successfully logged in"
   logged_in_as: "Logged in as"
@@ -41,14 +41,15 @@ en:
       notime:  "%m/%d/%Y"
 
   nav:
-    home:      "HOME"
-    about:     "ABOUT"
-    contact:   "CONTACT"
+    home:      "Home"
+    about:     "About"
+    contact:   "Contact"
 
   search:
-    do:        "Search"
-    extended:  "Extended search"
-    no:        "No result found for given query"
+    do:             "Search"
+    extended:       "Extended search"
+    no:             "No result found for given query"
+    results_for:    "result(s) found for search with query"
 
   password:
     reset:                    "Reset password"

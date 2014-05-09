@@ -1,22 +1,32 @@
-<ul class="nav nav-tabs" id="article-actionbar">
-  <li>
-    <button href="#content" data-toggle="tab" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-list"></span>
-    </button>
-  </li>
-  <li>
-    <button href="#images" id="show_images" data-toggle="tab" data-tab-url="<%= article_images_path(@article.id) %>" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-picture"></span>
-    </button>
-  </li>
-  <li class="visible-sm visible-xs">
-    <button href="#info" id="show_info" data-target="#article-info" class="btn btn-default btn-lg mobile-toggle-button">
-      <span class="glyphicon glyphicon-info-sign"></span>
-    </button>
-  </li>
-  <li>
-    <button href="#videos" id="show_videos" data-toggle="tab" data-tab-url="<%= article_videos_path(@article.id) %>" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-facetime-video"></span>
-    </button>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 col-xs-12 nav-row center-block">
+    <div class="nav-col col-md-4 col-xs-3 active">
+      <a href="#content" data-toggle="tab">
+        <span class="glyphicon glyphicon-home"></span>
+        <p>Content</p>
+      </a>
+    </div>
+    <div class="nav-col visible-sm visible-xs col-xs-3">
+      <a href="#info" id="show_info" class="mobile-toggle-button" data-target="#article-info">
+        <span class="glyphicon glyphicon-info-sign"></span>
+        <p>Details</p>
+      </a>
+    </div>
+    <div class="nav-col col-md-4 col-xs-3">
+      <a href="#images" id="show_images" data-toggle="tab" data-tab-url="<%= article_images_path(@article.id) %>">
+        <span class="glyphicon glyphicon-picture"></span>
+        <p>Pictures</p>
+      </a>
+    </div>
+    <div class="nav-col col-md-4 col-xs-3">
+      <a href="#videos" id="show_videos" data-toggle="tab" data-tab-url="<%= article_videos_path(@article.id) %>">
+        <span class="glyphicon glyphicon-facetime-video"></span>
+        <p>Videos</p>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+

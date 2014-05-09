@@ -63,7 +63,7 @@ describe Article do
   it 'has index on title' do
     a = create(:article)
 
-    expect(a.search_data).to include('title' => a.title)
+    expect(a.search_data).to include(:title => a.title)
   end
 
 end

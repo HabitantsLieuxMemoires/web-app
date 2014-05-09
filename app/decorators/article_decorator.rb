@@ -3,6 +3,10 @@ class ArticleDecorator < ApplicationDecorator
 
   decorates_association :history_tracks
 
+  def created_at
+    object.created_at.strftime("%m/%d/%y")
+  end
+
   def history
     object.history_tracks.count
   end

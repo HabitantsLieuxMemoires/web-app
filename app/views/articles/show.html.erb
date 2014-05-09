@@ -5,46 +5,44 @@
 <!-- Could be used on JS to build AJax URLs -->
 <div class="article-data" data-uri="<%= @article.url %>"></div>
 
-<div class="row">
-  <div class="col-lg-11" id="article-control">
-    <%= render 'actionbar', article: @article %>
-  </div>
+<div id="article-control">
+  <%= render 'actionbar', article: @article %>
+</div>
 
-  <div class="col-lg-11" id="article-container">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <div class="pull-left">
-          <h3 class="panel-title">
-            <%= fa_icon "edit" %>
-            <%= @article.title %>
-          </h3>
-        </div>
-        <div class="pull-right">
-          <%= @article.visibility %>
-        </div>
+<div id="article-container">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <div class="pull-left">
+        <h3 class="panel-title">
+          <%= fa_icon "edit" %>
+          <%= @article.title %>
+        </h3>
       </div>
-
-      <div class="panel-body">
-        <div class="tab-content">
-          <div class="tab-pane active" id="content">
-            <%= render 'summary', article: @article %>
-
-            <%= @article.full_body %>
-          </div>
-
-          <%= render 'articles/images' %>
-          <%= render 'articles/videos' %>
-        </div>
-      </div>
-      <div class="panel-footer">
-        <div class="text-center">
-          <%= render 'social',   article: @article %>
-        </div>
+      <div class="pull-right">
+        <%= @article.visibility %>
       </div>
     </div>
 
-    <%= render 'comments', article: @article %>
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="content">
+          <%= render 'summary', article: @article %>
 
+          <%= @article.full_body %>
+        </div>
+
+        <%= render 'articles/images' %>
+        <%= render 'articles/videos' %>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="text-center">
+        <%= render 'social',   article: @article %>
+      </div>
+    </div>
   </div>
-  <%= render 'articles/modals/show' %>
 </div>
+
+  <%= render 'comments', article: @article %>
+  <%= render 'articles/modals/show' %>
+

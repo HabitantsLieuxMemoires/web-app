@@ -6,7 +6,7 @@ results.empty();
 
 <% if @articles.any? %>
   noResults.addClass('hidden');
-  $('<%= j(render @articles) %>').appendTo(results);
+  $('<%= j(render "articles/search_results", articles: @articles) %>').appendTo(results);
 <% else %>
   noResults.removeClass('hidden');
 <% end %>

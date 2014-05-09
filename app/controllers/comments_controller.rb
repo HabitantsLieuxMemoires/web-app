@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     @comment.user     = current_user
 
     if @comment.save
+      @comment = @comment.decorate
       respond_to do |format|
         format.js
       end

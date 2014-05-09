@@ -16,7 +16,7 @@ feature 'Visitor lists articles for theme' do
     visit theme_path(theme.id)
 
     within '#theme-articles' do
-      expect(all('li').size).to eq(10)
+      expect(all('.article').size).to eq(10)
     end
   end
 
@@ -27,13 +27,13 @@ feature 'Visitor lists articles for theme' do
     visit theme_path(theme.id)
 
     within '#theme-articles' do
-      expect(all('li').size).to eq(10)
+      expect(all('.article').size).to eq(10)
     end
 
     page.find('.next_page a').click
 
     within '#theme-articles' do
-      expect(all('li').size).to eq(5)
+      expect(all('.article').size).to eq(5)
     end
   end
 

@@ -28,7 +28,7 @@ module Features
 
     def logout
       visit root_path
-      click_on I18n.t('logout')
+      click_on I18n.t('logout').upcase
     end
 
     def reset_password_with(identity)

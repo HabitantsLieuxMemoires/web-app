@@ -33,7 +33,7 @@ feature 'Admin lists reports' do
 
     visit admin_reports_path
     select I18n.t('models.report.addressed'), from: '[state]'
-    click_on I18n.t('search')
+    click_on I18n.t('search.do')
 
     reports = page.all('.report')
     expect(reports.size).to eq(10)
@@ -45,7 +45,7 @@ feature 'Admin lists reports' do
 
     visit admin_reports_path
     fill_in 'date', with: '03/01/2014 - 03/30/2014'
-    click_on I18n.t('search')
+    click_on I18n.t('search.do')
 
     reports = page.all('.report')
     expect(reports.size).to eq(10)
