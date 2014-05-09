@@ -26,6 +26,7 @@ window['articles#edit'] = (data) ->
 window['articles#show'] = (data) ->
   UI.initTabs()
   UI.infineComments()
+  UI.initMobileUI()
 
 UI =
   initEditor: (@editor) ->
@@ -40,6 +41,16 @@ UI =
           }
         }
     })
+
+  # On mobile device, article's actions are moved to the top
+  initMobileUI: ->
+    mobileWidth = document.documentElement.clientWidth
+    mobileHeight = document.documentElement.clientHeight
+    if (Modernizr.touch || $('body').data 'env' == "development") && (mobileWidth < 768 || mobileHeight < 768)
+      $('#article-control>ul').insertAfter "body>.container hr:nth(0)"
+      # Mobile Fix : When showing article-info deselect previous tab
+      $('#show_info').click ->
+        $('.nav-tabs li.active').removeClass('active')
 
   initTagsSelector: (@component, @delimiter = ',') ->
     @component.selectize
@@ -57,6 +68,8 @@ UI =
       $.waypoints('refresh')
 
     $('[data-toggle=tab]').on 'show.bs.tab', (e) ->
+      if $('#show_info').hasClass 'mobile-toggle-button-active'
+        ButtonToggle.Hide $('#show_info').data 'target'
       RemoteTabs.triggerTabChanged(e, callback)
 
   infineComments: ->
