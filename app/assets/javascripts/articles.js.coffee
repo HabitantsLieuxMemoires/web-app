@@ -45,8 +45,7 @@ UI =
   # On mobile device, article's actions are moved to the top
   initMobileUI: ->
     mobileWidth = document.documentElement.clientWidth
-    mobileHeight = document.documentElement.clientHeight
-    if (Modernizr.touch || $('body').data 'env' == "development") && (mobileWidth < 768 || mobileHeight < 768)
+    if (Modernizr.touch || $('body').data 'env' == "development") && mobileWidth < 768
       $('#article-control>ul').insertAfter "body>.container hr:nth(0)"
       # Mobile Fix : When showing article-info deselect previous tab
       $('#show_info').click ->
