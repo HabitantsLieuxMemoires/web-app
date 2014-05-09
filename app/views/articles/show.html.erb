@@ -6,7 +6,11 @@
 <div class="article-data" data-uri="<%= @article.url %>"></div>
 
 <div class="row">
-  <div class="col-lg-11">
+  <div class="col-lg-11" id="article-control">
+    <%= render 'actionbar', article: @article %>
+  </div>
+
+  <div class="col-lg-11" id="article-container">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="pull-left">
@@ -42,9 +46,5 @@
     <%= render 'comments', article: @article %>
 
   </div>
-  <div class="col-lg-1" id="article-control">
-    <%= render 'actionbar', article: @article %>
-  </div>
-
   <%= render 'articles/modals/show' %>
 </div>

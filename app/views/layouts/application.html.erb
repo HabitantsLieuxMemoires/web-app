@@ -3,8 +3,11 @@
     <head>
       <title>Hlm</title>
       <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <%= stylesheet_link_tag    "application", media: "all" %>
       <%= javascript_include_tag "application" %>
+      <%= javascript_include_tag "debug" %>
       <%= csrf_meta_tags %>
     </head>
     <body data-env="<%= Rails.env %>">
@@ -18,7 +21,9 @@
             <% if content_for?(:sidebar) %>
               <%= yield(:sidebar) %>
             <% else %>
+              <div id="search-column" class="hidden-xs hidden-sm">
               <%= render 'shared/sidebar' %>
+              </div>
             <% end %>
           </div>
           <div class="col-lg-9">

@@ -1,10 +1,12 @@
+<div id="search-column" class="hidden-xs hidden-sm">
 <%= render 'shared/sidebar_actions' %>
+</div>
 
 <% if current_user %>
-  <div class="well" id="article-actions">
+  <div class="well hidden-xs hidden-sm" id="article-actions">
     <%= link_to edit_article_path(article.slug),
-                                     class: 'btn btn-success btn-block',
-                                     type: 'button' do %>
+                class: 'btn btn-success btn-block',
+                type: 'button' do %>
       <%= fa_icon "edit", text: t('models.article.update') %>
     <% end %>
 
@@ -21,6 +23,7 @@
 <% end %>
 
 <%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8" do |f| %>
+<div id="article-info" class="hidden-xs hidden-sm">
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -60,4 +63,5 @@
       <% end %>
     </div>
   </div>
+</div>
 <% end %>

@@ -60,13 +60,24 @@ window.mapController =
     #$('.leaflet-control-search').appendTo('.leaflet-control-position-picker').removeClass('leaflet-control')
 
     # Centered on rive droite
-    mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
-    $('.leaflet-control-position-picker').show();
+    mapController.setCentered()
+    $('.leaflet-control-position-picker').show()
     # Bind map click to add marker
     mapController.mapInstance.on 'click', (e) ->
       if mapController.positionPickerActive == false
         return
-      mapController.addPosition(e.latlng)
+      mapController.addPosition e.latlng
+
+  setCentered: ->
+    if mapController.markerCluster?
+      # TODO ? Better fix ?
+      # Without set timeout it didn't worked on my N5...
+      mapController.mapInstance.invalidateSize()
+      mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
+        padding: [130,130]
+    else
+      mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+      mapController.mapInstance.invalidateSize()
 
   disablePositionPicker: (action) ->
     mapController.positionPickerActive = false
@@ -109,6 +120,7 @@ window.mapController =
       maxNE = new L.LatLng maxBounds.northEast[0], maxBounds.northEast[1]
       map = new L.Map el,
         maxBounds: new L.LatLngBounds maxSW, maxNE
+        zoomControl: !Modernizr.touch
 
       # Search plugin
       searchControl = new L.Control.Search({
@@ -174,6 +186,7 @@ window.mapController =
           control= L.DomUtil.create('div', 'heightToggle leaflet-bar')
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
           control.onclick = mapController.heightToggle
+          control.className = 'hidden-xs hidden-sm'
           control
 
       map.addControl(new heightControl());
@@ -227,6 +240,14 @@ window.mapController =
       'height':targetHeight+'px'
     ,500
     $('#'+mapSettings.el).find('.heightToggle span.glyphicon').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus')
+
+  mobileToggle: ->
+      # Full height display on mobile
+      fullHeight = $(window).height()
+      $('#'+mapSettings.el).animate
+        'height':fullHeight+'px'
+      ,500, ->
+          mapController.setCentered()
 
 
 $(document).ready -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
