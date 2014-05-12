@@ -20,6 +20,11 @@
       </a>
       <ul class="treeview-menu">
           <li>
+            <%= link_to admin_articles_path do %>
+              <i class="fa fa-angle-double-right"></i> <%= t('admin.articles') %>
+            <% end %>
+          </li>
+          <li>
             <%= link_to admin_comments_path do %>
               <i class="fa fa-angle-double-right"></i> <%= t('admin.comments') %>
             <% end %>

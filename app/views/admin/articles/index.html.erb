@@ -1,0 +1,28 @@
+<%= render 'header' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="timeline">
+      <% @articles.each do |a| %>
+        <li class="time-label"><span class="bg-red"><%= a[0] %></span></li>
+        <% a[1].each do |article| %>
+          <li class="article">
+            <i class="fa fa-envelope bg-blue"></i>
+            <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                <h3 class="timeline-header"><%= t('models.article.created_on', user: article.author, article: article.title) %></h3>
+                <div class="timeline-body"><%= article.body(360) %></div>
+                <div class="timeline-footer">
+                  <%= link_to t('models.article.read_more'), article.url, class: "btn btn-primary btn-xs" %>
+                </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <div class="text-center">
+      <%= paginate @articles, :theme => 'twitter-bootstrap-3' %>
+    </div>
+  </div>
+</div>

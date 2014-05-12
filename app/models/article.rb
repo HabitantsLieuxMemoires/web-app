@@ -52,9 +52,6 @@ class Article
   validates :images,     associated: true
   validates :videos,     associated: true
 
-  # History tracking
-  track_history on: [:title, :body], track_create: true
-
   # Search scopes
   scope :newest,      -> { desc(:created_at) }
   scope :most_shared, -> { desc(:share_count) }

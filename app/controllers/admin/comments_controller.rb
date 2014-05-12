@@ -1,7 +1,7 @@
 class Admin::CommentsController < Admin::BaseController
 
   def index
-    comments = Comment.desc(:created_at).group_by(&:created_at)
+    comments = Comment.desc(:created_at).group_by{|c| c.created_at.strftime("%m/%d/%y")}
 
     # Decorates comments and make array paginable
     @comments = Kaminari.paginate_array(decorate_comments(comments)).page(params[:page]).per(10)

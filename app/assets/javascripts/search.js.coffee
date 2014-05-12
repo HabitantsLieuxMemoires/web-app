@@ -1,4 +1,4 @@
-#= require typeahead
+#= require shared/typeahead-loader
 #= require selectize
 
 # Will be executed on search article page only

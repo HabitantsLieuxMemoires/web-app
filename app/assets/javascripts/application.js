@@ -19,5 +19,4 @@
 //= require leaflet.markercluster.js
 //= require modernizr
 //= require_directory
-//= require_directory ./admin
 

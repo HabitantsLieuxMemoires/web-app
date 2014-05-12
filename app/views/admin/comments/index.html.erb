@@ -4,19 +4,18 @@
   <div class="col-md-12">
     <ul class="timeline">
       <% @comments.each do |c| %>
-        <li class="time-label"><span class="bg-red"><%= c[0].strftime("%m/%d/%y") %></span></li>
+        <li class="time-label"><span class="bg-red"><%= c[0] %></span></li>
         <% c[1].each do |comment| %>
           <li class="comment">
             <i class="fa fa-comments bg-yellow"></i>
             <div class="timeline-item">
                 <span class="time"><i class="fa fa-clock-o"></i> <%= comment.created_at %></span>
                 <h3 class="timeline-header">
-                  <a href="#"><%= comment.user %></a>
-                   <%= t('models.article.commented_on') << ' ' << comment.article %>
+                  <%= t('models.article.commented_on', user: comment.user, article: comment.article) %>
                 </h3>
                 <div class="timeline-body"><%= comment.content %></div>
                 <div class="timeline-footer">
-                    <%= link_to t('models.article.view'), comment.article_url, class: "btn btn-warning btn-flat btn-xs" %>
+                    <%= link_to t('models.article.view'), comment.article_url, class: "btn btn-primary btn-flat btn-xs" %>
                     <%= link_to t('models.comment.delete'), admin_comment_path(comment.id), method: :delete, class: "btn btn-danger btn-flat btn-xs" %>
                 </div>
             </div>

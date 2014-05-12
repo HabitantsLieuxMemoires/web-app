@@ -7,7 +7,7 @@ window['admin/features#index'] = (data) ->
 
   # Initializing typeahead
   typeaheadCallback = (data) ->
-    url = '/admin/features/' + featureData.data('id') + '/articles/' + data.id + '/feature'
+    url = '/admin/articles/' + data.id + '/feature'
 
   Typeahead.init(typeahead, 'articles', typeaheadCallback)
 

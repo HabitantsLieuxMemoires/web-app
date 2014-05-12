@@ -7,6 +7,10 @@ class ArticleDecorator < ApplicationDecorator
     object.created_at.strftime("%m/%d/%y")
   end
 
+  def author
+    object.modifier.nickname
+  end
+
   def history
     object.history_tracks.count
   end

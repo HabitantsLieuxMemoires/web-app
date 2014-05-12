@@ -1,7 +1,5 @@
 <%= render 'header' %>
 
-<div id="feature-data" data-id="<%= @feature.id %>"></div>
-
 <%= bootstrap_form_for @feature, url: admin_feature_path(@feature) do |f| %>
   <div class="box">
     <div class="box-header">

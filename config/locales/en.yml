@@ -70,6 +70,8 @@ en:
     moderation:        "Moderation"
     moderation_full:   "Manage article reports"
     import_export:     "Import/Export"
+    articles:          "Articles"
+    articles_full:     "Manage recent articles"
     comments:          "Comments"
     comments_full:     "Manage recent comments"
 
@@ -102,7 +104,9 @@ en:
       history:         "Article history"
       date:            "Date"
       changes:         "Changes"
-      commented_on:    "commented on"
+      created_on:      "%{user} created article %{article}"
+      commented_on:    "%{user} commented on %{article}"
+      read_more:       "Read more"
       view:            "View article"
       link:
         insert:        "Insert Link"
