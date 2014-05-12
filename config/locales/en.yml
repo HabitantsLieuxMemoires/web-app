@@ -70,6 +70,8 @@ en:
     moderation:        "Moderation"
     moderation_full:   "Manage article reports"
     import_export:     "Import/Export"
+    comments:          "Comments"
+    comments_full:     "Manage recent comments"
 
   models:
     article:
@@ -100,6 +102,8 @@ en:
       history:         "Article history"
       date:            "Date"
       changes:         "Changes"
+      commented_on:    "commented on"
+      view:            "View article"
       link:
         insert:        "Insert Link"
       tracks:
@@ -108,6 +112,9 @@ en:
       create:          "Create comment"
       none:            "No comment for this article"
       loading:         "Loading comments..."
+      delete:          "Delete comment"
+      deleted:         "Comment successfully deleted"
+      delete_error:    "Unable to delete comment"
     image:
       select:          "Select image"
       upload:          "Upload image"

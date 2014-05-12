@@ -23,7 +23,7 @@ feature 'Admin edits report' do
     expect(current_path).to eql(edit_article_path(r.article.slug))
   end
 
-  scenario 'and can see differences of each update', js: true, feature: true do
+  scenario 'and can see differences of each update', js: true do
     pending 'Find a way to test history tracking'
     # a = create(:article, title: 'Old title')
     # a.update_attribute(:title, 'New title')

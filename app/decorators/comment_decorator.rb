@@ -1,8 +1,16 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :content
+  delegate :id, :content
 
   def user
     object.user_fields["nickname"]
+  end
+
+  def article
+    object.article_fields["title"]
+  end
+
+  def article_url
+    article_path(object.article_fields["slug"])
   end
 
   def created_at

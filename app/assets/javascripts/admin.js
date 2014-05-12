@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require debug
+//= require admin-lte/app
 //= require_directory ./admin

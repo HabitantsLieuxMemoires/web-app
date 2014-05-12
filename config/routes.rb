@@ -39,6 +39,10 @@ Hlm::Application.routes.draw do
   namespace :admin do
     root to: "dashboard#index"
 
+    resources :comments, only: [:index, :destroy] do
+      get 'page/:page', action: :index, on: :collection
+    end
+
     resources :reports,   only: [:index, :show] do
       get   'page/:page',   action: :index, on: :collection
       get   'treat',        on: :member

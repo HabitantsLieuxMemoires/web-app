@@ -10,7 +10,7 @@ describe Comment do
   it 'belongs to article' do
     a = create(:article)
     c = create(:comment)
-    a.comments << c
+    a.comments.push(c)
     a.save
 
     expect(a.comments.size).to eq(1)

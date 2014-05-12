@@ -12,11 +12,19 @@
         <span><%= t('admin.editorial') %></span>
       <% end %>
     </li>
-    <li>
+    <li class="treeview active">
       <a href="#">
-        <i class="fa fa-warning"></i>
-        <span><%= t('admin.alert') %></span>
+          <i class="fa fa-warning"></i>
+          <span><%= t('admin.alert') %></span>
+          <i class="fa pull-right fa-angle-down"></i>
       </a>
+      <ul class="treeview-menu">
+          <li>
+            <%= link_to admin_comments_path do %>
+              <i class="fa fa-angle-double-right"></i> <%= t('admin.comments') %>
+            <% end %>
+          </li>
+      </ul>
     </li>
     <li>
       <%= link_to admin_reports_path do %>
