@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :edit, :update]
 
   def new
+    render layout: 'empty'
   end
 
   def create

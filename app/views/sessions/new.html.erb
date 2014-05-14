@@ -1,28 +1,41 @@
-<div class="panel panel-default" id="login">
-  <div class="panel-heading">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
-      hoc responsum. Ita prorsus, inquam; </p>
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login">
+  <%= bootstrap_form_tag url: sessions_path, method: :post, inline_errors: false do |f| %>
 
-    <p>Quid iudicant sensus? Duo Reges: constructio interrete. Sed residamus, inquit, si placet. Praeclare hoc
-      quidem. </p>
-  </div>
-  <div class="panel-body">
-    <%= bootstrap_form_tag url: sessions_path,
-                           layout: :horizontal,
-                           label_col: "col-lg-4",
-                           control_col: "col-lg-8" do |f| %>
+    <h2><%= raw t('auth.please_login') %></h2>
+    <hr>
 
-        <%= f.text_field     :identity %>
-        <%= f.password_field :password %>
+    <%= f.alert_message t('auth.invalid_credentials'), error_summary: false %>
 
-        <%= f.form_group do %>
-          <%= f.submit t('login') %>
-        <% end %>
-    <% end %>
-  </div>
-  <div class="panel-footer">
-    <div class="pull-left"><%= link_to t('signup'), signup_path, class: 'pull-left' %></div>
-    <div class="pull-right"><%= link_to t('password.reset'), new_password_reset_path %></div>
-    <div class="clearfix"></div>
-  </div>
+    <%= f.text_field :identity,
+                      hide_label: true,
+                      placeholder: t('auth.identity'),
+                      class: "input-lg" %>
+
+    <%= f.password_field :password,
+                          hide_label: true,
+                          placeholder: User.human_attribute_name(:password),
+                          class: "input-lg" %>
+
+    <span class="button-checkbox">
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.check_box :remember_me, label: t('auth.remember_me') %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to t('password.forgot?'), new_password_reset_path, class: "btn btn-link pull-right" %>
+          </div>
+        </div>
+    </span>
+
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <%= f.submit t('do.login'), class: "btn btn-success btn-block btn-lg" %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <%= link_to t('auth.signup'), new_user_path, class: "btn btn-primary btn-block btn-lg" %>
+      </div>
+    </div>
+
+  <% end %>
 </div>

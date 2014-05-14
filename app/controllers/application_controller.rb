@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    redirect_to login_url, alert: t('authentication.not_authenticated')
+    redirect_to login_url, alert: t('auth.not_authenticated')
   end
 
   def js?
