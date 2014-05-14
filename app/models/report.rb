@@ -1,6 +1,7 @@
 class Report
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  include Mongoid::Alize
 
   include SearchableByDateRange
 
@@ -12,7 +13,10 @@ class Report
   field :state,       type: String, default: STATES[:not_addressed]
 
   belongs_to :article
+  alize      :article, :title, :slug
+
   belongs_to :user
+  alize      :user, :nickname
 
   validates :description,  presence: true, length: { in: 4..1024 }
   validates :state,        presence: true, inclusion: { in: STATES.values }

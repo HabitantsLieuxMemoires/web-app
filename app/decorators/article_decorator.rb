@@ -8,7 +8,7 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def author
-    object.modifier.nickname
+    object.author_fields['nickname'] || t('unknown')
   end
 
   def history

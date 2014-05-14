@@ -20,7 +20,7 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def set_feature
-    @feature = Feature.last
+    @feature = Feature.last.decorate
   end
 
 end

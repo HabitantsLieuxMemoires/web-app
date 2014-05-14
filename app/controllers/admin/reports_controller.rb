@@ -10,7 +10,8 @@ class Admin::ReportsController < Admin::BaseController
   end
 
   def show
-    @report = @report.decorate unless @report.nil?
+    @tracks = ArticleHistoryTracker.where(association_chain: { 'name' => Article.name, 'id' => @report.article_id }).decorate
+    @report = @report.decorate
   end
 
   def treat

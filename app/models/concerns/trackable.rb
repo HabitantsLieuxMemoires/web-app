@@ -3,8 +3,12 @@ module Trackable
 
   included do
     include Mongoid::Audit::Trackable
+    include Mongoid::Alize
 
-    track_history on: [:title, :body], track_create: true
+    track_history on: [:title, :body], modifier_field: :author
+
+    # Denormalize author fields
+    alize :author, :nickname
   end
 
   module ClassMethods

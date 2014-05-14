@@ -27,7 +27,6 @@ window['articles#show'] = (data) ->
   UI.initTabs()
   UI.infineComments()
   UI.initMobileUI()
-  UI.initHistoryPopover()
 
 UI =
   initEditor: (@editor) ->
@@ -78,12 +77,3 @@ UI =
       more: '.more-comments-link'
       items: '.comment'
       loadingClass: 'comments-loader'
-
-  initHistoryPopover: ->
-    $('.history-po-link').popover
-      trigger: 'hover'
-      html: true
-      container: 'body'
-      placement: 'right'
-      title: () -> return $(this).parents('.history').find('.history-po-title').html()
-      content: () -> return $(this).parents('.history').find('.history-po-body').html()

@@ -18,12 +18,14 @@
         <tbody data-link="row" class="rowlink">
           <tr>
             <th><%= t('models.article.name') %></th>
+            <th><%= t('models.report.author') %></th>
             <th><%= t('models.report.state') %></th>
             <th><%= t('models.report.date') %></th>
           </tr>
           <% @reports.each do |r| %>
             <tr class="report">
-              <td><%= link_to r.article_title, admin_report_path(r.id) %></td>
+              <td><%= link_to r.article, admin_report_path(r.id) %></td>
+              <td><%= r.author %></td>
               <td><%= r.state %></td>
               <td><%= r.created_at %></td>
             </tr>

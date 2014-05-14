@@ -71,6 +71,7 @@ en:
     moderation_full:   "Manage article reports"
     import_export:     "Import/Export"
     articles:          "Articles"
+    updates:           "Updates"
     articles_full:     "Manage recent articles"
     comments:          "Comments"
     comments_full:     "Manage recent comments"
@@ -106,6 +107,7 @@ en:
       changes:         "Changes"
       created_on:      "%{user} created article %{article}"
       commented_on:    "%{user} commented on %{article}"
+      updated_on:      "%{user} edited article %{article}"
       read_more:       "Read more"
       view:            "View article"
       link:
@@ -135,6 +137,7 @@ en:
       created:         "Article content successfully reported"
       creation_error:  "Unable to report article content"
       created_at:      "Created at"
+      created_by:      "Created by"
       list:            "Article reports list"
       state:           "Status"
       treat:           "Treat report"
@@ -145,6 +148,7 @@ en:
       details:         "Report details"
       changes:         "Changes"
       see_changes:     "See changes"
+      author:          "Author"
     user:
       warn:            "Warn"
       warned:          "User successfully warned"

@@ -11,7 +11,7 @@ after "development:users", "development:features", "development:themes", "develo
       theme:        Theme.skip(rand(Theme.count)).first,
       chronology:   Chronology.skip(rand(Chronology.count)).first,
       tags_array:   Faker::Lorem.words(2, true),
-      modifier:     User.skip(rand(User.count)).first,
+      author:       User.skip(rand(User.count)).first,
       share_count:  (0..60).to_a.sample,
       created_at:   Date.today-(10000*rand())
     )
@@ -25,7 +25,7 @@ after "development:users", "development:features", "development:themes", "develo
       theme:        Theme.skip(rand(Theme.count)).first,
       chronology:   Chronology.skip(rand(Chronology.count)).first,
       tags_array:   Faker::Lorem.words(2, true),
-      modifier:     User.skip(rand(User.count)).first,
+      author:       User.skip(rand(User.count)).first,
       share_count:  (0..60).to_a.sample,
       created_at:   Date.today-(10000*rand()),
       feature:      Feature.first

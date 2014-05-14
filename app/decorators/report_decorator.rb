@@ -1,11 +1,20 @@
 class ReportDecorator < ApplicationDecorator
-  delegate :id, :description
-  delegate :title, to: :article, prefix: true
-
-  decorates_association :article
+  delegate :id, :description, :article_id
 
   def created_at
     object.created_at.strftime("%a %m/%d/%y")
+  end
+
+  def author
+    object.user_fields['nickname']
+  end
+
+  def article
+    object.article_fields['title']
+  end
+
+  def article_url
+    article_path(object.article_fields['slug'])
   end
 
   def state

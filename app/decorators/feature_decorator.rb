@@ -1,5 +1,5 @@
 class FeatureDecorator < ApplicationDecorator
-  delegate :title
+  delegate :title, :to_key, :persisted?
   decorates_association :articles
 
   def description

@@ -1,0 +1,28 @@
+<%= render 'header' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="timeline">
+      <% @updates.each do |u| %>
+        <li class="time-label"><span class="bg-red"><%= u[0] %></span></li>
+        <% u[1].each do |update| %>
+          <li class="update">
+            <i class="fa fa-edit bg-aqua"></i>
+            <div class="timeline-item">
+                <h3 class="timeline-header"><%= t('models.article.updated_on', user: update.author, article: update.title) %></h3>
+                <div class="timeline-body">
+
+                </div>
+                <div class="timeline-footer">
+                </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <div class="text-center">
+      <%= paginate @updates, :theme => 'twitter-bootstrap-3' %>
+    </div>
+  </div>
+</div>

@@ -55,20 +55,7 @@
       <div class="history">
         <%= f.static_control nil, label: t('models.article.revision') do %>
           <%= article.history %>
-          <a href="#" class="history-po-link btn btn-sm">
-            <%= fa_icon "eye" %>
-          </a>
         <% end %>
-        <div class="history-po-content hidden">
-          <div class="history-po-title"><%= t('models.article.changes') %></div>
-          <div class="history-po-body">
-            <ul>
-              <% article.history_tracks.each do |ht| %>
-                <li><%= ht.user %> - <%= ht.updated_at %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
       </div>
       <%= f.static_control nil, label: t('models.article.url') do %>
         <%= link_to article.display_slug, article.url %>

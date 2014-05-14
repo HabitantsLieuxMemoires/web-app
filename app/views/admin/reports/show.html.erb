@@ -9,14 +9,16 @@
     <dl class="dl-horizontal">
       <dt><%= t('models.report.created_at') %></dt>
       <dd><%= @report.created_at %></dd>
+      <dt><%= t('models.report.created_by') %></dt>
+      <dd><%= @report.author %></dd>
       <dt><%= t('models.article.title') %></dt>
-      <dd><%= @report.article.title %></dd>
+      <dd><%= @report.article %></dd>
       <dt><%= t('models.report.description') %></dt>
       <dd><%= @report.description %></dd>
     </dl>
   </div>
   <div class="box-footer">
-    <%= link_to t('models.article.go_to'), edit_article_path(@report.article.slug), class: 'btn btn-default' %>
+    <%= link_to t('models.article.go_to'), @report.article_url, class: 'btn btn-default' %>
     <%= link_to t('models.report.treat'),  treat_admin_report_path(@report.id),   class: 'btn btn-primary' %>
   </div>
 </div>
@@ -27,7 +29,7 @@
     <h3 class="box-title"><%= t('models.article.history') %></h3>
   </div>
   <div class="box-body">
-    <% if @report.article.history_tracks.any? %>
+    <% if @tracks.any? %>
       <table class="table table-hover">
         <tbody>
           <tr>
@@ -36,9 +38,9 @@
             <th><%= t('models.article.changes') %></th>
             <th><%= t('actions') %></th>
           </tr>
-          <% @report.article.history_tracks.drop(1).each do |t| %>
+          <% @tracks.each do |t| %>
             <tr class="change">
-              <td><%= t.user %></td>
+              <td><%= t.author %></td>
               <td><%= t.updated_at %></td>
               <td>
                   <span class="label label-success"><%= t.changes %></span>
@@ -53,10 +55,10 @@
                   <% end %>
               </td>
               <td>
-                <%= link_to warn_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-warning btn-sm" do %>
+                <%= link_to warn_admin_user_path(t.modifier_id, :article_id => @report.article), class: "btn btn-warning btn-sm" do %>
                   <%= fa_icon 'warning', text: t('models.user.warn'), right: true %>
                 <% end %>
-                <%= link_to ban_admin_user_path(t.modifier, :article_id => @report.article.id), class: "btn btn-danger btn-sm" do %>
+                <%= link_to ban_admin_user_path(t.modifier_id, :article_id => @report.article), class: "btn btn-danger btn-sm" do %>
                   <%= fa_icon 'minus-circle', text: t('models.user.ban'), right: true %>
                 <% end %>
               </td>
