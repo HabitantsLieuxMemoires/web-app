@@ -3,8 +3,8 @@ class ArticleDecorator < ApplicationDecorator
 
   decorates_association :history_tracks
 
-  def created_at
-    object.created_at.strftime("%m/%d/%y")
+  def created_at(format = :short)
+    l(object.created_at, format: format)
   end
 
   def author

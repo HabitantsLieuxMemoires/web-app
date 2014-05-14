@@ -58,6 +58,7 @@ gem 'cells',                        "~> 3.10.1" # Cell view components
 gem 'nokogiri',                     "~> 1.6.1"  # HTML Parsing
 gem 'video_info',                   "~> 2.3.1"  # Video embedding
 gem 'diffy',                        "~> 3.0.4"  # Diffing
+gem 'rails-i18n',                   "~> 4.0.2"  # I18n
 
 group :development do
   gem 'better_errors'

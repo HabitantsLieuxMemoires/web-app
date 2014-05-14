@@ -1,8 +1,7 @@
 <div class="hgroup mb20">
   <h2 class="lead">
-    <strong class="text-info"><%= articles.size %></strong>
-    <%= t('search.results_for') %>
-    <strong class="text-info"><%= params[:query] %></strong></h2>
+    <%=raw t('search.results_for', count: articles.size) %>
+  </h2>
 </div>
 
 <div class="col-md-12">

@@ -8,19 +8,19 @@
         </h4>
       </div>
       <div class="pull-right">
-        <%= f.submit t('search.do'), class: 'btn btn-primary btn-sm' %>
+        <%= f.submit t('do.search'), class: 'btn btn-primary btn-sm' %>
       </div>
     </div>
 
       <div class="panel-body">
-        <%= f.search_field :query, hide_label: true, placeholder: 'Search content...' %>
+        <%= f.search_field :query, hide_label: true, placeholder: t('search.title_placeholder') %>
 
         <hr>
         <div class="row">
           <div class="col-md-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h5>By theme</h5>
+                <h5><%= t('search.by_themes') %></h5>
               </div>
               <div class="panel-body">
                 <div class="row">
@@ -47,7 +47,7 @@
           <div class="col-md-6 panel">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h5>By tags</h5>
+                <h5><%= t('search.by_tags') %></h5>
               </div>
               <div class="panel-body">
                   <%= f.text_field :tags, hide_label: true, placeholder: 'Search tags...' %>
