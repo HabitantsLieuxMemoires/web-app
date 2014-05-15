@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
   <h4 id="modal-create-comment-label">
     <%= fa_icon "comment" %>
-    <%= t('models.comment.create') %>
+    <%= t('article.comment.title.create') %>
   </h4>
 </div>
 <%= bootstrap_form_for [@article, Comment.new],
@@ -13,6 +13,6 @@
     <%= f.text_area   :content %>
   </div>
 <div class="modal-footer">
-  <%= f.primary t('create'), id: 'submit_comment' %>
+  <%= f.primary t('article.comment.do.create'), id: 'submit_comment' %>
 </div>
 <% end %>

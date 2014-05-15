@@ -1,4 +1,9 @@
 fr:
+  none:         "Aucun"
+
   form:
     errors:
-      correct: "Veuillez corriger les erreurs suivantes"
+      correct:  "Veuillez corriger les erreurs suivantes"
+
+  do:
+    cancel:     "Annuler"

@@ -1,0 +1,20 @@
+fr:
+  mongoid:
+    models:
+      article: "Contenu"
+    attributes:
+      article:
+        title:          "Titre"
+        body:           "Contenu"
+        theme_id:       "Thème"
+        chronology_id:  "Chronologie"
+        tags:           "Tags"
+        public:         "Publique"
+        locked:         "Vérouillé"
+        location:       "GPS"
+        revision:       "Révision"
+        slug:           "Lien"
+    errors:
+      models:
+        article:
+          attributes:

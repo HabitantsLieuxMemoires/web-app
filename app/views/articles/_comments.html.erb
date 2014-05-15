@@ -3,7 +3,7 @@
     <div class="pull-left">
       <h3 class="panel-title">
         <%= fa_icon "comments-o" %>
-        <%= t('models.article.comments') %>
+        <%= t('article.comment.list') %>
       </h3>
     </div>
     <div class="pull-right">
@@ -15,7 +15,7 @@
                     toggle: 'modal',
                     target: '#modal-create-comment'
                   } do %>
-          <%= fa_icon 'comment', text: t('models.comment.create') %>
+          <%= fa_icon 'comment', text: t('article.comment.do.create') %>
         <% end %>
       <% end %>
     </div>

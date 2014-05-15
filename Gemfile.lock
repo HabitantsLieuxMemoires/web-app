@@ -177,7 +177,7 @@ GEM
     mongoid-grid_fs (2.1.0)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 5.0)
-    mongoid_alize (0.4.2)
+    mongoid_alize (0.4.3)
       mongoid (>= 2.4)
     mongoid_magic_counter_cache (1.1.0)
       mongoid
@@ -344,7 +344,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.5.1)
   mongoid!
   mongoid-audit (~> 0.3.2)
-  mongoid_alize (~> 0.4.2)
+  mongoid_alize (~> 0.4.3)
   mongoid_magic_counter_cache (~> 1.1.0)
   mongoid_slug (~> 3.2.1)
   mongoid_taggable (~> 1.1.1)

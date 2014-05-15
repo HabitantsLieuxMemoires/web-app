@@ -29,7 +29,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def visibility
     h.content_tag(:span, class: "label label-default") do
-      object.public? ? t('models.article.public') : t('models.article.private')
+      object.public? ? t('article.public') : t('article.private')
     end
   end
 

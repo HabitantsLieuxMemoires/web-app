@@ -1,0 +1,12 @@
+fr:
+  mongoid:
+    models:
+      video:      "Vidéo"
+    attributes:
+      video:
+        title:    "Titre"
+        url:      "Lien"
+    errors:
+      models:
+        video:
+          attributes:
