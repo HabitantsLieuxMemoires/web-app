@@ -7,7 +7,7 @@
     <%= link_to edit_article_path(article.slug),
                 class: 'btn btn-success btn-block',
                 type: 'button' do %>
-      <%= fa_icon "edit", text: t('models.article.update') %>
+      <%= fa_icon "edit", text: t('article.do.update') %>
     <% end %>
 
     <%= link_to new_article_report_path(article.id),
@@ -17,7 +17,7 @@
                 toggle: 'modal',
                 target: '#modal-report-article'
               } do %>
-      <%= fa_icon "thumbs-down", text: t('models.article.report') %>
+      <%= fa_icon "thumbs-down", text: t('article.do.report') %>
     <% end %>
   </div>
 <% end %>
@@ -32,13 +32,13 @@
       </h4>
     </div>
     <div class="panel-body">
-      <%= f.static_control nil, label: t('models.article.theme') do %>
+      <%= f.static_control nil, label: Article.human_attribute_name(:theme_id) do %>
         <%= article.theme %>
       <% end %>
-      <%= f.static_control nil, label: t('models.article.chronology') do %>
+      <%= f.static_control nil, label: Article.human_attribute_name(:chronology_id) do %>
         <%= article.chronology %>
       <% end %>
-      <%= f.static_control nil, label: t('models.article.tags') do %>
+      <%= f.static_control nil, label: Article.human_attribute_name(:tags) do %>
         <%= article.tags %>
       <% end %>
     </div>
@@ -53,14 +53,14 @@
     </div>
     <div class="panel-body">
       <div class="history">
-        <%= f.static_control nil, label: t('models.article.revision') do %>
+        <%= f.static_control nil, label: Article.human_attribute_name(:revision) do %>
           <%= article.history %>
         <% end %>
       </div>
-      <%= f.static_control nil, label: t('models.article.url') do %>
+      <%= f.static_control nil, label: Article.human_attribute_name(:slug) do %>
         <%= link_to article.display_slug, article.url %>
       <% end %>
-      <%= f.static_control nil, label: t('models.article.location') do %>
+      <%= f.static_control nil, label: Article.human_attribute_name(:location) do %>
         <span id="article-location" class="location" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.display_location %></span>
       <% end %>
     </div>

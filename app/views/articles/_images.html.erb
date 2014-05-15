@@ -2,7 +2,7 @@
 
 <div class="tab-pane clearfix" id="images">
   <h4>
-    <%= t('models.article.images') %>
+    <%= t('article.image.list') %>
     <small class="pull-right">
       <% if edit_mode %>
         <%= link_to new_article_image_path(@article.id),
@@ -12,7 +12,7 @@
                   toggle: 'modal',
                   target: '#modal-add-image'
                 }  do %>
-            <%= fa_icon "cloud-upload", text: t('models.image.upload'), right: true %>
+            <%= fa_icon "cloud-upload", text: t('article.image.do.upload'), right: true %>
         <% end %>
       <% end %>
     </small>

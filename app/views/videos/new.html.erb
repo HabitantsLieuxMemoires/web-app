@@ -3,10 +3,11 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h4 id="modal-add-video-label">
       <%= fa_icon "video-camera" %>
-      <%= t('models.video.add') %>
+      <%= t('article.video.title.add') %>
     </h4>
   </div>
   <div class="modal-body">
+    <div class="alert alert-info"><%= t('article.video_welcome') %></div>
     <div class="row">
       <div class="col-md-4">
         <a href="#" class="thumbnail">
@@ -31,6 +32,6 @@
 
   </div>
   <div class="modal-footer">
-      <%= f.primary t('add'), id: 'add_video' %>
+      <%= f.primary t('article.video.do.add'), id: 'add_video' %>
   </div>
 <% end %>

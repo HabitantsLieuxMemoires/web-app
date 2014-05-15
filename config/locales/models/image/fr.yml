@@ -1,0 +1,11 @@
+fr:
+  mongoid:
+    models:
+      image:      "Photo"
+    attributes:
+      image:
+        title:    "Titre"
+    errors:
+      models:
+        image:
+          attributes:

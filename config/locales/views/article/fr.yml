@@ -1,0 +1,86 @@
+fr:
+  article:
+    create_welcome: "Bienvenue dans l'assistant de création de contenu. Remplissez les champs présents puis cliquez sur Publier l'article"
+    report_welcome: "Bienvenue dans le formulaire de signalement de contenu. Remplissez les champs suivants pour signaler un contenu inapproprié"
+    video_welcome:  "Bienvenue dans le formulaire d'ajout de vidéo. Veuillez entrer un lien vers une vidéo hébergée par un des fournisseurs listés ci-dessous"
+
+    content:        "Contenu"
+    details:        "Détails"
+    pictures:       "Photos"
+    videos:         "Vidéos"
+    metadatas:      "Métadonnées"
+    public:         "Publique"
+    private:        "Privé"
+    edit:           "Edition du contenu"
+
+    created:        "Contenu créé avec succès"
+    creation_error: "Une erreur est survenue pendant la création du contenu"
+    created_by:     "%{user} a ajouté le contenu %{article}"
+    updated:        "Contenu mis à jour avec succès"
+    update_error:   "Une erreur est survenue pendant la mise à jour du contenu"
+    updated_by:     "%{user} a contribué au contenu %{article}"
+    reported:       "Contenu a été signalé avec succès"
+    report_error:   "Une erreur est survenue pendant le signalement du contenu"
+    commented_by:   "%{user} a commenté le contenu %{article}"
+
+    do:
+      create:       "Créer un contenu"
+      publish:      "Publier le contenu"
+      update:       "Modifier le contenu"
+      report:       "Signaler le contenu"
+      view:         "Voir l'article"
+      see_changes:  "Voir les modifications"
+
+    title:
+      report:       "Signalement de contenu"
+
+    # Comments
+    comment:
+      list:         "Liste des commentaires"
+
+      deleted:      "Commentaire supprimé avec succès"
+      delete_error: "Une erreur est survenue pendant la suppression du commentaire"
+
+      do:
+        create:     "Commenter le contenu"
+        delete:     "Supprimer le commentaire"
+
+      title:
+        create:     "Création d'un commentaire"
+
+    # Pictures
+    image:
+      none:         "Aucune photo publiée pour ce contenu"
+
+      uploaded:     "Photo publiée avec succès"
+      upload_error: "Une erreur est survenue pendant la publication de la photo"
+
+      list:         "Liste des photos"
+
+      do:
+        upload:     "Publier une photo"
+        select:     "Sélectionner une photo"
+        change:     "Changer de photo"
+        remove:     "Supprimer la photo"
+
+      title:
+        upload:    "Publication de photo"
+
+    # Video
+    video:
+      none:        "Aucune vidéo publiée pour ce contenu"
+
+      added:       "Vidéo ajoutée avec succès"
+      add_error:   "Une erreur est survenue pendant l'ajout de la vidéo"
+
+      list:        "Liste des vidéos"
+
+      do:
+        add:       "Ajouter une vidéo"
+
+      title:
+        add:       "Ajout de vidéo"
+
+    track:
+      none:        "Aucune contribution pour ce contenu"
+

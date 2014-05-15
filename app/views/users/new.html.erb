@@ -1,29 +1,45 @@
-<div class="panel panel-default" id="signup">
-  <div class="panel-heading">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ad illum redeo. Efficiens dici potest. Satis est ad
-      hoc responsum. Ita prorsus, inquam; </p>
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="signup">
+  <%= bootstrap_form_for @user, inline_errors: false do |f| %>
 
-    <p>Quid iudicant sensus? Duo Reges: constructio interrete. Sed residamus, inquit, si placet. Praeclare hoc
-      quidem. </p>
+    <h2><%= raw t('auth.please_signup') %></h2>
+    <hr>
+
+    <%= f.alert_message t('form.errors.correct'), error_summary: false %>
+
+    <%= f.email_field :email,
+                       hide_label: true,
+                       placeholder: User.human_attribute_name(:email),
+                       class: "input-lg" %>
+
+    <%= f.text_field :nickname,
+                      hide_label: true,
+                      placeholder: User.human_attribute_name(:nickname),
+                      class: "input-lg" %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <%= f.password_field :password,
+                              hide_label: true,
+                              placeholder: User.human_attribute_name(:password),
+                              class: "input-lg" %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= f.password_field :password_confirmation,
+                            hide_label: true,
+                            placeholder: User.human_attribute_name(:password_confirmation),
+                            class: "input-lg" %>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <%= f.submit t('do.signup'), class: "btn btn-success btn-block btn-lg" %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <%= link_to t('auth.login'), new_session_path, class: "btn btn-primary btn-block btn-lg" %>
+      </div>
   </div>
-  <div class="panel-body">
-    <%= bootstrap_form_for @user,
-                            layout: :horizontal,
-                            inline_errors: false,
-                            label_col: "col-lg-4",
-                            control_col: "col-lg-8" do |f| %>
-        <% if @user.errors.any? %>
-            <%= f.error_summary %>
-        <% end %>
 
-        <%= f.email_field :email %>
-        <%= f.text_field :nickname %>
-        <%= f.password_field :password %>
-        <%= f.password_field :password_confirmation %>
-
-        <%= f.form_group do %>
-          <%= f.submit t('signup') %>
-        <% end %>
-    <% end %>
-  </div>
+  <% end %>
 </div>

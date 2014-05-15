@@ -11,9 +11,9 @@ class ReportsController < ApplicationController
     report.user     = current_user
 
     if report.save
-      redirect_to article_path(@article.slug), notice: t('models.report.created')
+      redirect_to article_path(@article.slug), notice: t('article.reported')
     else
-      flash[:error] = t('models.report.creation_error')
+      flash[:error] = t('article.report_error')
       redirect_to article_path(@article.slug)
     end
   end

@@ -1,0 +1,16 @@
+fr:
+  auth:
+    signup:             "Créer un compte"
+    signed_up:          "Compte créé avec succès"
+    please_signup:      "Créez un compte <small>c'est gratuit et ça le sera toujours</small>"
+    login:              "Connexion"
+    please_login:       "Authentifiez vous"
+    logout:             "Déconnexion"
+    logged_out:         "Vous avez été deconnecté avec succès"
+    identity:           "Pseudo / Mail"
+    remember_me:        "Rester connecté"
+    not_authenticated:  "Vous devez être connecté pour accéder à cette page"
+
+  do:
+    signup:           "Créer"
+    login:            "Connecter"

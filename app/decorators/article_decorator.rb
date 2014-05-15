@@ -3,8 +3,12 @@ class ArticleDecorator < ApplicationDecorator
 
   decorates_association :history_tracks
 
-  def created_at
-    object.created_at.strftime("%m/%d/%y")
+  def created_at(format = :short)
+    l(object.created_at, format: format)
+  end
+
+  def updated_at(format = :short)
+    l(object.updated_at, format: format)
   end
 
   def author
@@ -29,7 +33,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def visibility
     h.content_tag(:span, class: "label label-default") do
-      object.public? ? t('models.article.public') : t('models.article.private')
+      object.public? ? t('article.public') : t('article.private')
     end
   end
 

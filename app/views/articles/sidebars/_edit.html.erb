@@ -1,6 +1,6 @@
 <div class="well" id="article-actions">
-  <%= f.submit t('publish'), class: 'btn btn-primary btn-block' %>
-  <%= link_to t('cancel'), :back, class: 'btn btn-danger btn-block' %>
+  <%= f.submit t('article.do.publish'), class: 'btn btn-primary btn-block' %>
+  <%= link_to t('do.cancel'), :back, class: 'btn btn-danger btn-block' %>
 </div>
 
 <div class="panel panel-default" id="article-details">
@@ -31,7 +31,7 @@
   <div class="panel-body">
     <!-- TODO: Waiting for bootstrap-rails-form to implement append-prepend buttons -->
     <div class="form-group">
-      <label class="control-label col-sm-4" for="article_location">Location</label>
+      <label class="control-label col-sm-4" for="article_location"><%= Article.human_attribute_name(:location) %></label>
       <div class="col-sm-8">
         <div class="input-group">
           <input class="form-control location" data-latlng="<%= @article.location %>" readonly="readonly" id="article_location" name="article[location]" type="text">

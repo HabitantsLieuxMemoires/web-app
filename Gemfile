@@ -45,7 +45,7 @@ gem 'carrierwave-mongoid',          "~> 0.7.1"
 gem 'mongoid_magic_counter_cache',  "~> 1.1.0"
 gem 'mongoid-audit',                "~> 0.3.2"
 gem 'mongoid_slug',                 "~> 3.2.1"
-gem 'mongoid_alize',                "~> 0.4.2"
+gem 'mongoid_alize',                "~> 0.4.3"
 
 # Misc gems
 gem 'sorcery',                      "~> 0.8.5"  # Authentication
@@ -58,6 +58,7 @@ gem 'cells',                        "~> 3.10.1" # Cell view components
 gem 'nokogiri',                     "~> 1.6.1"  # HTML Parsing
 gem 'video_info',                   "~> 2.3.1"  # Video embedding
 gem 'diffy',                        "~> 3.0.4"  # Diffing
+gem 'rails-i18n',                   "~> 4.0.2"  # I18n
 
 group :development do
   gem 'better_errors'

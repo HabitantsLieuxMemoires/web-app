@@ -4,9 +4,9 @@
     <span class="fileinput-filename"></span>
   </div>
   <span class="input-group-addon btn btn-default btn-file">
-    <span class="fileinput-new"><%= t('select_file') %></span>
-    <span class="fileinput-exists"><%= t('change') %></span>
+    <span class="fileinput-new"><%= t('article.image.do.select') %></span>
+    <span class="fileinput-exists"><%= t('article.image.do.change') %></span>
     <input type="file" name="image[article_image]">
   </span>
-  <%= link_to t('remove'), "#", class: "input-group-addon btn btn-default fileinput-exists", "data-dismiss" => "fileinput" %>
+  <%= link_to t('article.image.do.remove'), "#", class: "input-group-addon btn btn-default fileinput-exists", "data-dismiss" => "fileinput" %>
 </div>

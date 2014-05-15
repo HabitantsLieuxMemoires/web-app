@@ -2,7 +2,7 @@
 
 <div class="tab-pane clearfix" id="videos">
   <h4>
-    <%= t('models.article.videos') %>
+    <%= t('article.video.list') %>
     <small class="pull-right">
       <% if edit_mode %>
         <%= link_to new_article_video_path(@article.id),
@@ -12,7 +12,7 @@
                   toggle: 'modal',
                   target: '#modal-add-video'
                 }  do %>
-            <%= fa_icon "cloud-upload", text: t('models.video.add'), right: true %>
+            <%= fa_icon "cloud-upload", text: t('article.video.do.add'), right: true %>
         <% end %>
       <% end %>
     </small>

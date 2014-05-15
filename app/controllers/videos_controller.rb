@@ -12,14 +12,15 @@ class VideosController < ApplicationController
     render layout: false
   end
 
+  #TODO: Add UJS support (js rendering)
   def create
     video = Video.new(video_params)
     @article.videos << video
 
     if @article.save
-      redirect_to edit_article_path(@article.slug), notice: t('models.video.added')
+      redirect_to edit_article_path(@article.slug), notice: t('article.video.added')
     else
-      flash[:error] = t('models.video.add_error')
+      flash[:error] = t('article.video.add_error')
       redirect_to edit_article_path(@article.slug)
     end
   end

@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
   <h4 id="modal-add-image-label">
     <%= fa_icon "picture-o" %>
-    <%= t('models.image.upload') %>
+    <%= t('article.image.title.upload') %>
   </h4>
 </div>
   <%= bootstrap_form_for [@article, Image.new],
@@ -19,6 +19,6 @@
       <% end %>
   </div>
   <div class="modal-footer">
-    <%= f.primary t('upload'), id: 'upload_image' %>
+    <%= f.primary t('article.image.do.upload'), id: 'upload_image' %>
   </div>
 <% end %>

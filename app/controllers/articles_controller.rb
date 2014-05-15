@@ -17,9 +17,9 @@ class ArticlesController < ApplicationController
     @article.chronology = chronology
 
     if @article.save
-      redirect_to article_path(@article.slug), notice: t('models.article.created')
+      redirect_to article_path(@article.slug), notice: t('article.created')
     else
-      flash[:error] = t('models.article.creation_error')
+      flash[:error] = t('article.creation_error')
       render :new
     end
   end
@@ -29,9 +29,9 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(article_params)
-      redirect_to article_path(@article.slug), :notice => t('models.article.updated')
+      redirect_to article_path(@article.slug), :notice => t('article.updated')
     else
-      flash[:error] = t('models.article.update_error')
+      flash[:error] = t('article.update_error')
       render :edit
     end
   end
@@ -40,6 +40,7 @@ class ArticlesController < ApplicationController
     @article = @article.decorate
   end
 
+  #TODO: Externalize autocomplete and search in own concern
   def autocomplete
     articles = Article.search(params[:query], autocomplete: true, limit: 10)
     render json: articles.map{|a| { :id => a.slug, :title => a.title, :full_url => article_url(a) }}

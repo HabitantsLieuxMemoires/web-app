@@ -6,9 +6,9 @@ class Admin::FeaturesController < Admin::BaseController
 
   def update
     if @feature.update_attributes(feature_params)
-      redirect_to admin_features_path, notice: t('models.feature.saved')
+      redirect_to admin_features_path, notice: t('admin.editorial.feature.saved')
     else
-      flash[:error] = t('model.feature.save_error')
+      flash[:error] = t('admin.editorial.feature.save_error')
       render :index
     end
   end

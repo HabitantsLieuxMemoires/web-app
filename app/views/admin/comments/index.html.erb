@@ -10,12 +10,12 @@
             <i class="fa fa-comments bg-yellow"></i>
             <div class="timeline-item">
                 <h3 class="timeline-header">
-                  <%= t('models.article.commented_on', user: comment.user, article: comment.article) %>
+                  <%= t('article.commented_by', user: comment.user, article: comment.article) %>
                 </h3>
                 <div class="timeline-body"><%= comment.content %></div>
                 <div class="timeline-footer">
-                    <%= link_to t('models.article.view'), comment.article_url, class: "btn btn-primary btn-flat btn-xs" %>
-                    <%= link_to t('models.comment.delete'), admin_comment_path(comment.id), method: :delete, class: "btn btn-danger btn-flat btn-xs" %>
+                    <%= link_to t('article.do.view'), comment.article_url, class: "btn btn-primary btn-flat btn-xs" %>
+                    <%= link_to t('article.comment.do.delete'), admin_comment_path(comment.id), method: :delete, class: "btn btn-danger btn-flat btn-xs" %>
                 </div>
             </div>
           </li>

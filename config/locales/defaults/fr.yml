@@ -1,0 +1,20 @@
+fr:
+  none:         "Aucun"
+  all:          "Tous"
+  actions:      "Actions disponibles"
+  read_more:    "Lire plus"
+
+  form:
+    errors:
+      correct:  "Veuillez corriger les erreurs suivantes"
+
+  do:
+    cancel:     "Annuler"
+
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: "Dernière &raquo;"
+      previous: "&lsaquo; Précédente"
+      next: "Suivante &rsaquo;"
+      truncate: "&hellip;"

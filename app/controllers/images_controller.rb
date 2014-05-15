@@ -12,14 +12,15 @@ class ImagesController < ApplicationController
     render layout: false
   end
 
+  #TODO: Use UJS capabilities (with js rendering)
   def create
     image = Image.new(image_params)
     @article.images << image
 
     if @article.save
-      redirect_to edit_article_path(@article.slug), notice: t('models.image.uploaded')
+      redirect_to edit_article_path(@article.slug), notice: t('image.uploaded')
     else
-      flash[:error] = t('models.image.upload_error')
+      flash[:error] = t('image.upload_error')
       redirect_to edit_article_path(@article.slug)
     end
   end

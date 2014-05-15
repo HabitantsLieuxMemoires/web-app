@@ -2,6 +2,6 @@
   <td><%= article.title %></td>
   <td><%= article.author %></td>
   <td>
-    <%= link_to t('delete'), unfeature_admin_article_path(article.id), class: 'btn btn-danger btn-sm' %>
+    <%= link_to t('admin.editorial.feature.do.delete_article'), unfeature_admin_article_path(article.id), class: 'btn btn-danger btn-sm' %>
   </td>
 </tr>

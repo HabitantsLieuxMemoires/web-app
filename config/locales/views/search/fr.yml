@@ -1,0 +1,12 @@
+fr:
+  search:
+    article_placeholder: "Chercher un article..."
+    title_placeholder:   "Saisissez un titre..."
+    extended:            "Recherche étendue"
+    by_themes:           "Par thème(s)"
+    by_tags:             "Par tag(s)"
+    results_for:         "<strong class='text-info'>%{count}</strong> resultat(s) trouvés pour cette recherche"
+    no_result:           "Aucun résultat trouvé avec les critères spécifiés"
+
+  do:
+    search:              "Rechercher"

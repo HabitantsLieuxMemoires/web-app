@@ -5,30 +5,29 @@
   </div>
 
   <div class="col-lg-9">
-    <div class="row">
-      <div class="col-lg-11">
-          <div class="panel panel-default" id="article-content">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <%= fa_icon "edit" %>
-                <%= t('models.article.edit') %>
-              </h3>
-            </div>
-            <div class="panel-body">
-              <div class="tab-content">
-                <div class="tab-pane active" id="content">
-                  <%= f.text_field  :title %>
-                  <%= f.text_area   :body, rows: 32 %>
-                </div>
+    <div id="article-control">
+      <%= render 'actionbar', article: @article %>
+    </div>
 
-                <%= render 'articles/images', edit_mode: true %>
-                <%= render 'articles/videos', edit_mode: true %>
-              </div>
+    <div id="article-container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= fa_icon "edit" %>
+            <%= t('article.edit') %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="tab-content">
+            <div class="tab-pane active" id="content">
+              <%= f.text_field  :title %>
+              <%= f.text_area   :body, rows: 32 %>
             </div>
+
+            <%= render 'articles/images', edit_mode: true %>
+            <%= render 'articles/videos', edit_mode: true %>
           </div>
-      </div>
-      <div class="col-lg-1" id="article-control">
-        <%= render 'actionbar', article: @article %>
+        </div>
       </div>
     </div>
   </div>

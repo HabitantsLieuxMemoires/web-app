@@ -1,8 +1,12 @@
 class ReportDecorator < ApplicationDecorator
   delegate :id, :description, :article_id
 
-  def created_at
-    object.created_at.strftime("%a %m/%d/%y")
+  def created_at(format = :short)
+    l(object.created_at, format: format)
+  end
+
+  def updated_at(format = :short)
+    l(object.created_at, format: format)
   end
 
   def author
@@ -20,11 +24,11 @@ class ReportDecorator < ApplicationDecorator
   def state
     if object.state.eql?(Report::STATES[:addressed]) then
       h.content_tag(:span, class: "label label-primary") do
-        t('models.report.addressed')
+        t('admin.moderation.report.addressed')
       end
     else
       h.content_tag(:span, class: "label label-danger") do
-        t('models.report.not_addressed')
+        t('admin.moderation.report.not_addressed')
       end
     end
 
