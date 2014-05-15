@@ -47,7 +47,7 @@ UI =
   initMobileUI: ->
     mobileWidth = document.documentElement.clientWidth
     if (Modernizr.touch || $('body').data 'env' == "development") && mobileWidth < 768
-      $('#article-control>ul').insertAfter "body>.container hr:nth(0)"
+      $('#article-control').insertAfter "body>.container hr:nth(0)"
       # Mobile Fix : When showing article-info deselect previous tab
       $('#show_info').click ->
         $('.nav-tabs li.active').removeClass('active')
