@@ -7,6 +7,10 @@ class ArticleDecorator < ApplicationDecorator
     l(object.created_at, format: format)
   end
 
+  def updated_at(format = :short)
+    l(object.updated_at, format: format)
+  end
+
   def author
     object.author_fields['nickname'] || t('unknown')
   end

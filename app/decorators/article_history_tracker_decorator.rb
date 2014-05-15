@@ -9,8 +9,8 @@ class ArticleHistoryTrackerDecorator < ApplicationDecorator
     object.original['title']
   end
 
-  def updated_at
-    object.updated_at.strftime("%a %m/%d/%y")
+  def updated_at(format = :short)
+    l(object.updated_at, format: format)
   end
 
   def changes

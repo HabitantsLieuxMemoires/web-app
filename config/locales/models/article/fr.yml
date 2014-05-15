@@ -4,6 +4,8 @@ fr:
       article: "Contenu"
     attributes:
       article:
+        created_at:     "Date de création"
+        updated_at:     "Date de modification"
         title:          "Titre"
         body:           "Contenu"
         theme_id:       "Thème"
@@ -14,6 +16,8 @@ fr:
         location:       "GPS"
         revision:       "Révision"
         slug:           "Lien"
+        author:         "Auteur"
+        changes:        "Contributions"
     errors:
       models:
         article:

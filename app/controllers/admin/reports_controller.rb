@@ -16,9 +16,9 @@ class Admin::ReportsController < Admin::BaseController
 
   def treat
     if @report.update_attributes(state: Report::STATES[:addressed])
-      redirect_to admin_reports_path, notice: t('models.report.treated')
+      redirect_to admin_reports_path, notice: t('admin.moderation.report.treated')
     else
-      flash[:error] = t('models.report.treat_error')
+      flash[:error] = t('admin.moderation.report.treat_error')
       render :show
     end
   end

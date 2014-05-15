@@ -1,0 +1,8 @@
+fr:
+  user:
+    warned: "Utilisateur averti avec succès"
+    banned: "Utilisateur banni avec succès"
+
+    do:
+      warn: "Avertir"
+      ban:  "Bannir"

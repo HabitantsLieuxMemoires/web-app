@@ -2,13 +2,13 @@
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><%= t('models.report.list') %></h3>
+    <h3 class="box-title"><%= t('admin.moderation.report.list') %></h3>
     <div class="box-tools pull-right">
       <%= bootstrap_form_tag url: '/admin/reports', method: 'get', layout: :inline do |f| %>
         <%= f.text_field :date, id: 'report_date_range' %>
-        <%= f.select :state, options_for_report_state %>
+        <%= f.select :state, options_for_report_state, label: Report.human_attribute_name(:state) %>
 
-        <%= f.submit t('search.do') %>
+        <%= f.submit t('do.search') %>
       <% end %>
     </div>
   </div>
@@ -17,10 +17,10 @@
       <table class="table table-hover">
         <tbody data-link="row" class="rowlink">
           <tr>
-            <th><%= t('models.article.name') %></th>
-            <th><%= t('models.report.author') %></th>
-            <th><%= t('models.report.state') %></th>
-            <th><%= t('models.report.date') %></th>
+            <th><%= Article.human_attribute_name(:title) %></th>
+            <th><%= Article.human_attribute_name(:author) %></th>
+            <th><%= Report.human_attribute_name(:state) %></th>
+            <th><%= Report.human_attribute_name(:date) %></th>
           </tr>
           <% @reports.each do |r| %>
             <tr class="report">

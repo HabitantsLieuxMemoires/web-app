@@ -4,15 +4,15 @@
   <div class="col-md-12">
     <ul class="timeline">
       <% @articles.each do |a| %>
-        <li class="time-label"><span class="bg-red"><%= a[0] %></span></li>
+        <li class="time-label"><span class="bg-red"><%= l(a[0]) %></span></li>
         <% a[1].each do |article| %>
           <li class="article">
             <i class="fa fa-envelope bg-blue"></i>
             <div class="timeline-item">
-                <h3 class="timeline-header"><%= t('models.article.created_on', user: article.author, article: article.title) %></h3>
+                <h3 class="timeline-header"><%= t('article.created_by', user: article.author, article: article.title) %></h3>
                 <div class="timeline-body"><%= article.body(360) %></div>
                 <div class="timeline-footer">
-                  <%= link_to t('models.article.read_more'), article.url, class: "btn btn-primary btn-xs" %>
+                  <%= link_to t('read_more'), article.url, class: "btn btn-primary btn-xs" %>
                 </div>
             </div>
           </li>

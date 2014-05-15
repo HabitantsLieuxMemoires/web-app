@@ -8,7 +8,7 @@ class Admin::UsersController < Admin::BaseController
 
     UserMailer.warn_email(@user, @article).deliver
 
-    redirect_to :back, notice: t('models.user.warned')
+    redirect_to :back, notice: t('user.warned')
   end
 
   def ban
@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::BaseController
 
     UserMailer.ban_email(@user, @article).deliver
 
-    redirect_to :back, notice: t('models.user.banned')
+    redirect_to :back, notice: t('user.banned')
   end
 
   private

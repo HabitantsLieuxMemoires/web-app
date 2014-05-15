@@ -4,12 +4,12 @@
   <div class="col-md-12">
     <ul class="timeline">
       <% @updates.each do |u| %>
-        <li class="time-label"><span class="bg-red"><%= u[0] %></span></li>
+        <li class="time-label"><span class="bg-red"><%= l(u[0]) %></span></li>
         <% u[1].each do |update| %>
           <li class="update">
             <i class="fa fa-edit bg-aqua"></i>
             <div class="timeline-item">
-                <h3 class="timeline-header"><%= t('models.article.updated_on', user: update.author, article: update.title) %></h3>
+                <h3 class="timeline-header"><%= t('article.updated_by', user: update.author, article: update.title) %></h3>
                 <div class="timeline-body">
 
                 </div>

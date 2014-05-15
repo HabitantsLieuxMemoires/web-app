@@ -1,0 +1,12 @@
+fr:
+  mongoid:
+    models:
+      feature:        "Contenu à découvrir"
+    attributes:
+      feature:
+        title:        "Titre"
+        description:  "Description"
+    errors:
+      models:
+        feature:
+          attributes:

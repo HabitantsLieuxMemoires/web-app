@@ -11,9 +11,9 @@ class Admin::CommentsController < Admin::BaseController
     comment = Comment.find(params[:id])
 
     if comment.destroy
-      redirect_to admin_comments_path, notice: t('models.comment.deleted')
+      redirect_to admin_comments_path, notice: t('article.comment.deleted')
     else
-      flash[:error] = t('models.comment.delete_error')
+      flash[:error] = t('article.comment.delete_error')
       render :index
     end
   end

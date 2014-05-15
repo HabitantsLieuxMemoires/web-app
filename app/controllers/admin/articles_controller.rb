@@ -2,14 +2,14 @@ class Admin::ArticlesController < Admin::BaseController
   before_action :set_article, only: [:feature, :unfeature]
 
   def index
-    articles = Article.desc(:created_at).group_by{|a| a.created_at.strftime("%m/%d/%y")}
+    articles = Article.desc(:created_at).group_by{|a| a.created_at}
 
     # Decorates articles and make array paginable
     @articles = Kaminari.paginate_array(decorate_articles(articles)).page(params[:page]).per(10)
   end
 
   def updates
-    updates = ArticleHistoryTracker.desc(:updated_at).group_by{|t| t.updated_at.strftime("%m/%d/%y")}
+    updates = ArticleHistoryTracker.desc(:updated_at).group_by{|t| t.updated_at}
 
     # Decorates updates and make array paginable
     @updates = Kaminari.paginate_array(decorate_updates(updates)).page(params[:page]).per(10)

@@ -11,19 +11,25 @@ fr:
     metadatas:      "Métadonnées"
     public:         "Publique"
     private:        "Privé"
+    edit:           "Edition du contenu"
 
     created:        "Contenu créé avec succès"
     creation_error: "Une erreur est survenue pendant la création du contenu"
+    created_by:     "%{user} a ajouté le contenu %{article}"
     updated:        "Contenu mis à jour avec succès"
     update_error:   "Une erreur est survenue pendant la mise à jour du contenu"
+    updated_by:     "%{user} a contribué au contenu %{article}"
     reported:       "Contenu a été signalé avec succès"
     report_error:   "Une erreur est survenue pendant le signalement du contenu"
+    commented_by:   "%{user} a commenté le contenu %{article}"
 
     do:
       create:       "Créer un contenu"
       publish:      "Publier le contenu"
       update:       "Modifier le contenu"
       report:       "Signaler le contenu"
+      view:         "Voir l'article"
+      see_changes:  "Voir les modifications"
 
     title:
       report:       "Signalement de contenu"
@@ -32,8 +38,12 @@ fr:
     comment:
       list:         "Liste des commentaires"
 
+      deleted:      "Commentaire supprimé avec succès"
+      delete_error: "Une erreur est survenue pendant la suppression du commentaire"
+
       do:
         create:     "Commenter le contenu"
+        delete:     "Supprimer le commentaire"
 
       title:
         create:     "Création d'un commentaire"
@@ -56,6 +66,7 @@ fr:
       title:
         upload:    "Publication de photo"
 
+    # Video
     video:
       none:        "Aucune vidéo publiée pour ce contenu"
 
@@ -69,4 +80,7 @@ fr:
 
       title:
         add:       "Ajout de vidéo"
+
+    track:
+      none:        "Aucune contribution pour ce contenu"
 

@@ -1,5 +1,8 @@
 fr:
   none:         "Aucun"
+  all:          "Tous"
+  actions:      "Actions disponibles"
+  read_more:    "Lire plus"
 
   form:
     errors:
