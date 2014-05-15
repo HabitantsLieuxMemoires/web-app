@@ -69,11 +69,12 @@ window.mapController =
       mapController.addPosition e.latlng
 
   setCentered: ->
-    if mapController.markerCluster?
+    bounds = mapController.markerCluster.getBounds() if mapController.markerCluster?
+    if mapController.markerCluster? && bounds._northEast
       # TODO ? Better fix ?
       # Without set timeout it didn't worked on my N5...
       mapController.mapInstance.invalidateSize()
-      mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
+      mapController.mapInstance.fitBounds bounds,
         padding: [130,130]
     else
       mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
