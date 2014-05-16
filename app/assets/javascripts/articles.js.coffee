@@ -1,7 +1,6 @@
 #= require selectize
 #= require jasny-bootstrap.min
 #= require ekko-lightbox.min
-#= require bootstrap-wysihtml5/b3
 #= require wysihtml5.autoresize
 #= require socialite.min
 #= require social
@@ -10,6 +9,10 @@
 #= require shared/remote-tabs
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
+#= require wysihtml5-0.4.0pre
+#= require prettify
+#= require bootstrap3-wysihtml5
+#= require editor/custom-wysihtml5-buttons
 #= require editor/custom-wysihtml5-image
 #= require editor/custom-wysihtml5-link
 #= require editor/custom-wysihtml5-templates
@@ -31,16 +34,38 @@ window['articles#show'] = (data) ->
 UI =
   initEditor: (@editor) ->
     editor = @editor.wysihtml5('deepExtend', {
-        customTemplates: wysiwygTemplates,
+        customTemplates: wysiwygTemplates
+        useLineBreaks: false
+        stylesheets: ["/assets/editor.css"]
         parserRules: {
           classes: {
             "wysiwyg-image": 1
           },
           tags: {
-            "div": 1
+            "div": {
+              "check_attributes": {
+                "class": "alt"
+              }
+            }
+            "p": {
+              "check_attributes": {
+                "class": "alt"
+              }
+            }
+            "img": {
+              "check_attributes": {
+                "width": "numbers"
+                "alt": "alt"
+                "src": "url"
+                "height": "numbers"
+                "id": "alt"
+                "class": "alt"
+              }
+            }
           }
         }
     })
+    $(document).trigger 'editorInitialized'
 
   # On mobile device, article's actions are moved to the top
   initMobileUI: ->

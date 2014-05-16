@@ -1,7 +1,7 @@
 var wysiwygTemplates = {
   "font-styles": function(locale) {
       return "<li class='dropdown'>" +
-        "<a class='btn btn-default dropdown-toggle' data-toggle='dropdown' href='#'>" +
+        "<a class='btn btn-sm btn-default dropdown-toggle' data-toggle='dropdown' href='#'>" +
         "<i class='glyphicon glyphicon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
         "</a>" +
         "<ul class='dropdown-menu'>" +

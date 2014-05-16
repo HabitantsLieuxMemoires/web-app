@@ -30,6 +30,7 @@ fr:
       report:       "Signaler le contenu"
       view:         "Voir l'article"
       see_changes:  "Voir les modifications"
+      search:       "Chercher un contenu"
 
     title:
       report:       "Signalement de contenu"
@@ -59,12 +60,13 @@ fr:
 
       do:
         upload:     "Publier une photo"
-        select:     "Sélectionner une photo"
+        select:     "Sélectionner la photo"
         change:     "Changer de photo"
         remove:     "Supprimer la photo"
 
       title:
         upload:    "Publication de photo"
+        insert:    "Insertion d'une photo"
 
     # Video
     video:
@@ -81,6 +83,12 @@ fr:
       title:
         add:       "Ajout de vidéo"
 
+    # Track
     track:
       none:        "Aucune contribution pour ce contenu"
+
+    # Link
+    link:
+      title:
+        insert:    "Insertion d'un lien interne"
 

@@ -62,8 +62,6 @@ GEM
       rails (>= 3.1)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
-    bootstrap-wysihtml5-rails (0.3.1.24)
-      railties (>= 3.0)
     bootstrap_form (2.1.1)
     bson (2.2.3)
     bson_ext (1.5.1)
@@ -321,7 +319,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-kaminari-views (~> 0.0.3)
   bootstrap-sass (~> 3.1.1)
-  bootstrap-wysihtml5-rails (~> 0.3.1.23)
   bootstrap_form (~> 2.1.0)
   bson_ext
   capybara
