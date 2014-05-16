@@ -18,5 +18,7 @@
 //= require leaflet
 //= require leaflet.markercluster.js
 //= require modernizr
+//= require jquery.spin
+//= require ajaxspin
 //= require_directory
 
