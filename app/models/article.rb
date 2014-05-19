@@ -19,6 +19,7 @@ class Article
   field :location,      type: String
   field :comment_count, type: Integer, default: 0 # Counter cache
   field :share_count,   type: Integer, default: 0
+  field :published,     type: Boolean, default: false
 
   # Theme
   belongs_to    :theme, dependent: :nullify
@@ -54,7 +55,8 @@ class Article
   validates :images,     associated: true
   validates :videos,     associated: true
 
-  # Search scopes
+  # Scopes
+  default_scope       -> { where(published: true) }
   scope :newest,      -> { desc(:created_at) }
   scope :most_shared, -> { desc(:share_count) }
 

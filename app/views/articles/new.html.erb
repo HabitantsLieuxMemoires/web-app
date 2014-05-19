@@ -1,4 +1,4 @@
-<%= bootstrap_form_for @article, url: {action: "create"}, layout: :horizontal do |f| %>
+<%= bootstrap_form_for Article.new, url: {action: "create"}, layout: :horizontal do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <p class="panel-title"><%= t('article.title.create') %></p>
