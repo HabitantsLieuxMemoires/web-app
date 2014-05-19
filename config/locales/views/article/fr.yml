@@ -1,6 +1,6 @@
 fr:
   article:
-    create_welcome: "Bienvenue dans l'assistant de création de contenu. Remplissez les champs présents puis cliquez sur Publier l'article"
+    create_welcome: "Bienvenue dans l'assistant de création de contenu. Remplissez les champs présents puis cliquez sur créer pour accéder à l'éditeur de contenu"
     report_welcome: "Bienvenue dans le formulaire de signalement de contenu. Remplissez les champs suivants pour signaler un contenu inapproprié"
     video_welcome:  "Bienvenue dans le formulaire d'ajout de vidéo. Veuillez entrer un lien vers une vidéo hébergée par un des fournisseurs listés ci-dessous"
 
@@ -33,10 +33,12 @@ fr:
       search:       "Chercher un contenu"
 
     title:
+      create:       "Création de contenu"
       report:       "Signalement de contenu"
 
     # Comments
     comment:
+      none:         "Aucun commentaire pour ce contenu"
       list:         "Liste des commentaires"
 
       deleted:      "Commentaire supprimé avec succès"

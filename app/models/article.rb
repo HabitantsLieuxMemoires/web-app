@@ -19,6 +19,7 @@ class Article
   field :location,      type: String
   field :comment_count, type: Integer, default: 0 # Counter cache
   field :share_count,   type: Integer, default: 0
+  field :published,     type: Boolean, default: false
 
   # Theme
   belongs_to    :theme, dependent: :nullify
@@ -35,6 +36,8 @@ class Article
 
   # Media
   embeds_many :images
+  accepts_nested_attributes_for :images
+
   embeds_many :videos
 
   # Comments
@@ -48,11 +51,12 @@ class Article
 
   # Validation
   validates :title,      presence: true, length: { in: 4..80 }
-  validates :body,       presence: true, length: { maximum: 26000 }
+  validates :body,       presence: true, length: { maximum: 26000 }, on: :update
   validates :images,     associated: true
   validates :videos,     associated: true
 
-  # Search scopes
+  # Scopes
+  default_scope       -> { where(published: true) }
   scope :newest,      -> { desc(:created_at) }
   scope :most_shared, -> { desc(:share_count) }
 

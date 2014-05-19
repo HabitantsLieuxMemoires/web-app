@@ -1,18 +1,27 @@
-<%= bootstrap_form_for @article, url: {action: "create"} do |f| %>
-
-  <div class="col-lg-3">
-    <%= render 'articles/sidebars/edit', f: f %>
-  </div>
-
-  <div class="col-lg-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p class="panel-title"><%= t('article.create_welcome') %></p>
+<%= bootstrap_form_for Article.new, url: {action: "create"}, layout: :horizontal do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title"><%= t('article.title.create') %></p>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-info">
+        <%= t('article.create_welcome') %>
       </div>
-      <div class="panel-body">
-        <%= f.text_field  :title %>
-        <%= f.text_area   :body, rows: 32 %>
-      </div>
+
+      <%= f.text_field  :title %>
+      <%= f.collection_select :theme_id, Theme.all, :id, :title %>
+      <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
+      <%= f.text_field :tags %>
+      <%= f.form_group do %>
+        <%= f.check_box  :public, inline: true %>
+      <% end %>
+      <%= f.form_group do %>
+        <%= f.check_box  :locked, inline: true %>
+      <% end %>
+
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-right"><%= f.submit t('article.do.create'), class: "btn btn-primary" %></div>
     </div>
   </div>
 <% end %>
