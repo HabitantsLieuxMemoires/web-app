@@ -35,6 +35,8 @@ gem 'bootstrap-wysihtml5-rails',    "~> 0.3.1.23"
 gem 'leaflet-rails',                "~> 0.7.2"
 gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
+gem 'spinjs-rails'
+gem 'ajaxspin'
 
 # Mongoid gems
 gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.beta1"
