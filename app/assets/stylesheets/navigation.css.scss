@@ -10,13 +10,11 @@
   border: 1px solid #e0e1db;
   border-right: none;
 }
-.nav-row .nav-col:last-child {
-  border: 1px solid #e0e1db;
-}
 .nav-row .nav-col:first-child {
   border-radius: 5px 0 0 5px;
 }
 .nav-row .nav-col:last-child {
+  border-right: 1px solid #e0e1db;
   border-radius: 0 5px 5px 0;
 }
 .nav-row .nav-col:hover {

@@ -35,6 +35,7 @@ UI =
     editor = @editor.wysihtml5('deepExtend', {
         customTemplates: wysiwygTemplates
         useLineBreaks: false
+        html: true
         stylesheets: ["/assets/editor.css"]
         parserRules: {
           classes: {
