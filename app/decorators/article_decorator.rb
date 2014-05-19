@@ -70,11 +70,11 @@ class ArticleDecorator < ApplicationDecorator
 
   def body(truncate = nil)
     body = strip_tags(object.body)
-    body.truncate(truncate) unless truncate.nil?
+    body.truncate(truncate) unless truncate.nil? || body.nil?
   end
 
   def full_body
-    raw(object.body)
+    raw(object.body) unless body.nil?
   end
 
 end

@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   skip_before_action   :require_login, only: [:show, :autocomplete, :search]
   before_action        :set_article,   only: [:show, :edit, :update, :share]
 
-  layout               'empty',        only: [:new, :edit]
+  layout               'empty',        only: [:edit]
 
   def new
     @article = Article.new
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     @article.chronology = chronology
 
     if @article.save
-      redirect_to article_path(@article.slug), notice: t('article.created')
+      redirect_to edit_article_path(@article.slug), notice: t('article.created')
     else
       flash[:error] = t('article.creation_error')
       render :new
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
       redirect_to article_path(@article.slug), :notice => t('article.updated')
     else
       flash[:error] = t('article.update_error')
-      render :edit
+      render :edit, layout: 'empty'
     end
   end
 

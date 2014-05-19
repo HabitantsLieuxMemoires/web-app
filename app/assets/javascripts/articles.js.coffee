@@ -18,7 +18,6 @@
 #= require editor/custom-wysihtml5-templates
 
 window['articles#new'] = (data) ->
-  UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
 
 window['articles#edit'] = (data) ->
