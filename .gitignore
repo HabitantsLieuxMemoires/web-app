@@ -14,11 +14,15 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore Vagrant and provisioning files
 .vagrant/
+
+# Ignore IDE related files
 .idea/
 public/uploads/
 provisioning/.librarian/
 .bash_history
 .cache
 .profile
-.ruby-version
+.env.production

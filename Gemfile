@@ -1,16 +1,17 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
 gem 'rails',                        "4.0.4"
 
 # Environment variables management (before any other gems)
-gem 'dotenv-rails',                 "~> 0.10.0", group: [:development, :test]
+gem 'dotenv-rails',                 "~> 0.10.0", group: [:development, :test, :production]
+gem 'dotenv-deployment',            "~> 0.0.2"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',                 "~> 4.0.2"
+  gem 'sass-rails',                 "~> 4.0.3"
   gem 'coffee-rails',               "~> 4.0.1"
   gem 'uglifier',                   "~> 2.5.0"
 
@@ -25,13 +26,12 @@ gem 'jquery-rails',                 "~> 3.1.0"
 gem 'bootstrap-sass',               "~> 3.1.1"
 gem 'jbuilder',                     "~> 2.0.5"
 gem 'pluggable_js',                 "~> 2.0.0"
-gem 'bootstrap_form',               "~> 2.1.0"
+gem 'bootstrap_form',               "~> 2.1.1"
 gem 'remotipart',                   "~> 1.2"
 gem 'selectize-rails',              "~> 0.9.0"
 gem 'font-awesome-rails',           "~> 4.0.3.1"
 gem 'momentjs-rails',               "~> 2.5.1"
 gem 'underscore-rails',             "~> 1.6.0"
-#gem 'bootstrap-wysihtml5-rails',    "~> 0.3.1.23"
 gem 'leaflet-rails',                "~> 0.7.2"
 gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
@@ -55,13 +55,20 @@ gem 'seedbank',                     "~> 0.3.0"  # Seeding
 gem 'kaminari',                     "~> 0.15.1" # Pagination
 gem 'bootstrap-kaminari-views',     "~> 0.0.3"  # Bootstrap Pagination
 gem 'draper',                       "~> 1.3.0"  # ViewModels
-gem 'searchkick',                   "~> 0.7.2"  # Search (ElasticSearch)
+gem 'searchkick',                   "~> 0.7.6"  # Search (ElasticSearch)
 gem 'cells',                        "~> 3.10.1" # Cell view components
 gem 'nokogiri',                     "~> 1.6.1"  # HTML Parsing
 gem 'video_info',                   "~> 2.3.1"  # Video embedding
 gem 'diffy',                        "~> 3.0.4"  # Diffing
 gem 'rails-i18n',                   "~> 4.0.2"  # I18n
 gem 'nested_form',                  "~> 0.3.2"  # Nested forms
+gem 'fog',                          "~> 1.22.0" # Amazon S3 (file storing)
+
+# Deployment
+gem 'capistrano',                   "~> 3.2.1", require: false
+gem 'capistrano-bundler',           "~> 1.1.2", require: false
+gem 'capistrano-rails',             "~> 1.1.1", require: false
+gem 'capistrano-rbenv',             "~> 2.0.2", require: false
 
 group :development do
   gem 'better_errors'
@@ -84,4 +91,7 @@ group :test do
   gem 'email_spec',                 "~> 1.5.0"
   gem 'glebtv-mongoid-rspec',       "~> 1.12.0"
   gem 'launchy',                    "~> 2.4.2"
+end
+
+group :production, :staging do
 end

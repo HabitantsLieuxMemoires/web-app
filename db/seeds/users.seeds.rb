@@ -1,8 +1,6 @@
-require 'factory_girl_rails'
-
 puts 'DEFAULT USERS'
 
-user = FactoryGirl.create(:user,
+user = User.create(
   nickname: ENV['USER_NAME'].dup,
   email: ENV['USER_EMAIL'].dup,
   password: ENV['USER_PASSWORD'].dup,

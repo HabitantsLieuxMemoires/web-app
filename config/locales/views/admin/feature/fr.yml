@@ -6,6 +6,7 @@ fr:
       content:          "Texte de présentation"
 
       feature:
+        none:           "Aucun article sélectionné par la rédaction"
         articles:       "Liste des articles à mettre en avant"
 
         saved:          "Texte de l'accueil publié avec succès"

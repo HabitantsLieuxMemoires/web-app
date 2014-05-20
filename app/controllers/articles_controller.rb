@@ -1,31 +1,30 @@
 class ArticlesController < ApplicationController
-  skip_before_action   :require_login, only: [:show, :autocomplete, :search]
-  before_action        :set_article,   only: [:show, :update, :share]
+  skip_before_action   :require_login,              only: [:show, :autocomplete, :search, :share]
+  before_action        :set_article,                only: [:show, :share]
+  before_action        :set_unpublished_article,    only: [:edit, :update]
 
-  layout               'empty',        only: [:edit]
+  layout               'empty',                     only: [:edit]
 
   def new
+    @article = Article.new
   end
 
   def create
-    article = Article.create(article_params.merge(published: false))
-    if article
-      redirect_to edit_article_path(article.slug), notice: t('article.created')
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to edit_article_path(@article.slug), notice: t('article.created')
     else
-      flash[:error] = t('article.creation_error')
       render :new
     end
   end
 
   def edit
-    @article = Article.unscoped.find(params[:id])
   end
 
   def update
-    if @article.update_attributes(article_params.merge(published: true))
+    if @article.update_attributes(article_params)
       redirect_to article_path(@article.slug), :notice => t('article.updated')
     else
-      flash[:error] = t('article.update_error')
       render :edit, layout: 'empty'
     end
   end
@@ -72,11 +71,15 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :tags, :location, :theme_id, :chronology_id, :public, :locked)
+    params.require(:article).permit(:title, :body, :tags, :location, :theme_id, :chronology_id, :public, :locked, :published)
   end
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def set_unpublished_article
+    @article = Article.unscoped.find(params[:id])
   end
 
 end

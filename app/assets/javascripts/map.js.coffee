@@ -22,24 +22,35 @@ mapSettings =
 window.mapController =
   currentMarker:null,
   positionPickerActive:false,
+  locate: ->
+    mapController.mapInstance.locate
+      setView: true
+      maxZoom: 13
+      minZoom: 13
+    mapController.mapInstance.on 'locationerror',
+      debug 'Location error'
+      # Berk! 
+      # @todo find a better fix
+      cb = ->
+        mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+      setTimeout cb, 2000
+
+  locateOnViewReset: ->
+    mapController.mapInstance.on('viewreset', mapController.locate);
+
   addPosition: (latlng) ->
     debug "New marker added on "+latlng
-
-    # Popup button
-    btn = document.createElement 'button'
-    btn.innerHTML = '<span class="glyphicon glyphicon-ok"></span> Valider cet emplacement'
-    btn.className = 'btn btn-success btn-xs'
-    btn.type = 'button'
-    btn.onclick = ->
-      mapController.disablePositionPicker 'save'
-
-    # Add new marker & destroy previous one
+    # Delete old markers
+    mapController.markerCluster.clearLayers()
+    # Add new marker
     if mapController.currentMarker?
       mapController.mapInstance.removeLayer mapController.currentMarker
     mapController.currentMarker = new L.marker new L.LatLng(latlng.lat, latlng.lng),
       draggable:true
-    .addTo( mapController.mapInstance).bindPopup(btn).openPopup()
-    # Marker drag
+    .addTo( mapController.mapInstance)
+    # Show popup
+    mapController.showMarkerAddPopup mapController.currentMarker
+    # Marker moved
     mapController.currentMarker.on 'dragend', (e) ->
       debug "Marker moved to "+e.target.getLatLng()
       e.target.openPopup()
@@ -56,11 +67,14 @@ window.mapController =
     ,1000, 'swing', ->
         mapController.mapInstance.invalidateSize()
 
-    # Custom search field
-    #$('.leaflet-control-search').appendTo('.leaflet-control-position-picker').removeClass('leaflet-control')
+    # Editing mode
+    if mapController.isEditing()
+      layers = mapController.markerCluster.getLayers()
+      if layers?
+        marker = layers[0]
+      if marker?
+        mapController.showMarkerEditPopup marker
 
-    # Centered on rive droite
-    mapController.setCentered()
     $('.leaflet-control-position-picker').show()
     # Bind map click to add marker
     mapController.mapInstance.on 'click', (e) ->
@@ -68,25 +82,52 @@ window.mapController =
         return
       mapController.addPosition e.latlng
 
+  generateButtonElement: (icoClass, btnClass, btnText) ->
+    btn = document.createElement 'button'
+    btn.innerHTML = '<span class="glyphicon '+icoClass+'"></span> '+btnText
+    btn.className = 'btn '+btnClass+' btn-xs'
+    btn.type = 'button'
+    btn
+
+  showMarkerEditPopup:(marker) ->
+    btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
+    btnRemove = mapController.generateButtonElement 'glyphicon-remove', 'btn-danger', 'Supprimer ce point'
+    btnRemove.onclick = ->
+      debug "ok1"
+      mapController.markerCluster.removeLayer marker 
+      debug "ok2"
+      #mapController.disablePositionPicker 'delete', marker
+    btnAdd.onclick = ->
+      mapController.disablePositionPicker 'save', marker
+    div = document.createElement 'div'
+    div.innerHTML = marker._popup._content+'<br>'
+    div.appendChild btnAdd
+    marker.bindPopup(div).openPopup()
+
+  showMarkerAddPopup:(marker) ->
+    btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
+    btnAdd.onclick = ->
+      mapController.disablePositionPicker 'save', marker
+    marker.bindPopup(btnAdd).openPopup()
+
   setCentered: ->
     bounds = mapController.markerCluster.getBounds() if mapController.markerCluster?
     if mapController.markerCluster? && bounds._northEast
-      # TODO ? Better fix ?
-      # Without set timeout it didn't worked on my N5...
-      mapController.mapInstance.invalidateSize()
+      mapController.mapInstance.invalidateSize(false)
       mapController.mapInstance.fitBounds bounds,
         padding: [130,130]
     else
       mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
-      mapController.mapInstance.invalidateSize()
+      mapController.mapInstance.invalidateSize(false)
 
-  disablePositionPicker: (action) ->
+  disablePositionPicker: (action, selectedMarker) ->
     mapController.positionPickerActive = false
     # Populate GPS field
     if action == 'save'
-      gps = mapController.currentMarker.getLatLng()
-      $('#article_location').val(gps.lat+', '+gps.lng)
-    else
+      gps = selectedMarker.getLatLng()
+      $('#article_location').val gps.lat+', '+gps.lng
+      selectedMarker.closePopup()
+    else if action == 'delete'
       $('#article_location').val ''
     # Hide position picker
     $('.leaflet-control-position-picker').hide()
@@ -97,10 +138,7 @@ window.mapController =
     ,500, 'swing', ->
       mapController.mapInstance.invalidateSize()
       # Scroll back to article
-      $('html,body').animate({ scrollTop: $('#article-content').offset().top }, 'slow')
-    # Destroy marker
-    if mapController.currentMarker?
-      mapController.mapInstance.removeLayer mapController.currentMarker
+      $('html,body').animate({ scrollTop: $('#article-container').offset().top }, 'slow')
 
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
@@ -136,7 +174,7 @@ window.mapController =
         minLength: 2,
         zoom:14,
         text:'Recherche...',
-        textCancel:'Annuler',
+        textCancel:'Fermer',
         textErr:'Aucun résultat',
         position:'topleft'
       })
@@ -156,7 +194,7 @@ window.mapController =
       $('.business-header').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
       $('.business-header').append '<div class="leaflet-control-position-picker buttons"></div>'
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
-      $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Annuler</button></div>')
+      $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
       # Location picket
       $('#bt_fill_location').click (e) ->
         mapController.enablePositionPicker()
@@ -190,7 +228,7 @@ window.mapController =
           control.className = 'hidden-xs hidden-sm'
           control
 
-      map.addControl(new heightControl());
+      map.addControl(new heightControl())
 
     # Refresh markers
     @refresh()
@@ -203,7 +241,15 @@ window.mapController =
   # Load all markers contained into the current page
   loadMarkers: ->
     debug "Loading markers from the current page"
-    markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
+    markersLoaded = {}
+    markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]').filter ->
+      # Remove duplicates element
+      txt = $(this).data('title')
+      if (markersLoaded[txt])
+        false
+      else
+        markersLoaded[txt] = true
+        true
     debug markers.length + " markers found"
     markers.each ->
       dataLocation = $(this).data("latlng")
@@ -220,6 +266,9 @@ window.mapController =
     debug 'Map:: Deleting all markers'
     @markerCluster.clearLayers();
 
+  isEditing: ->
+    $('.edit_article').length > 0
+
   # Add Marker Handlers
   addMarkersHandler: (e, dataArr) ->
     debug 'Map:: New data'
@@ -230,7 +279,9 @@ window.mapController =
     mapController.addMarker(data)
   addMarker: (data) ->
     text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
-    mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude]).bindPopup(text))
+    mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
+      draggable:mapController.isEditing()
+    ).bindPopup(text))
     mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
       padding: [70,70]
 

@@ -14,7 +14,7 @@ node "vagrant.hlm.local" {
   # RBEnv
   rbenv::install { 'vagrant':
   }
-  rbenv::compile { '2.1.1':
+  rbenv::compile { '2.1.2':
     user => 'vagrant',
   }
 

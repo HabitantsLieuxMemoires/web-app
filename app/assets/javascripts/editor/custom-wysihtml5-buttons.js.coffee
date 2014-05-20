@@ -44,7 +44,7 @@ window.customWysihtml5Buttons =
 		container = customWysihtml5Buttons.getContainer(anchorNode);
 		# Parent found
 		if container?
-			# Set an unique ID on its parent (for further)
+			# Set an unique ID on its parent (for further use)
 			container.attr 'id','editorEl'+uniqId
 			id = $(container).attr('id')
 			# Find its parent container

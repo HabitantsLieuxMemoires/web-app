@@ -14,22 +14,24 @@ class Article
   slug  :title
 
   field :body,          type: String
-  field :public,        type: Boolean, default: true
-  field :locked,        type: Boolean, default: false
   field :location,      type: String
   field :comment_count, type: Integer, default: 0 # Counter cache
   field :share_count,   type: Integer, default: 0
-  field :published,     type: Boolean, default: false
+  field :public,        type: Mongoid::Boolean, default: true
+  field :locked,        type: Mongoid::Boolean, default: false
+  field :published,     type: Mongoid::Boolean, default: false
 
   # Theme
   belongs_to    :theme, dependent: :nullify
-  counter_cache :theme
   alize         :theme, :title
+  counter_cache :theme, :if        => Proc.new { |article| article.published },
+                        :if_update => Proc.new { |article| article.published_changed? }
 
   # Chronology
   belongs_to    :chronology, dependent: :nullify
-  counter_cache :chronology
   alize         :chronology, :title
+  counter_cache :chronology, :if        => Proc.new { |article| article.published },
+                             :if_update => Proc.new { |article| article.published_changed? }
 
   # Feature (optional)
   belongs_to :feature

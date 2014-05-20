@@ -1,7 +1,7 @@
 <%= bootstrap_form_for @article do |f| %>
 
   <div class="col-lg-3">
-    <%= render 'articles/sidebars/edit', f: f %>
+    <%= render 'articles/sidebars/edit', f: f, article: @article %>
   </div>
 
   <div class="col-lg-9">
@@ -14,7 +14,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <%= fa_icon "edit" %>
-            <%= t('article.edit') %>
+            <%= t('article.title.edit') %>
           </h3>
         </div>
         <div class="panel-body">
@@ -22,6 +22,7 @@
             <div class="tab-pane active" id="content">
               <%= f.text_field  :title %>
               <%= f.text_area   :body, rows: 32 %>
+              <%= f.hidden_field :published, value: '1' %>
             </div>
 
             <%= render 'articles/images', edit_mode: true %>

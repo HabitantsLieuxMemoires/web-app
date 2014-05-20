@@ -1,4 +1,4 @@
-puts 'DEVELOPMENT THEMES'
+puts 'PRODUCTION THEMES'
 
 Theme.create!(title: 'Nature')
 Theme.create!(title: 'Loisirs')

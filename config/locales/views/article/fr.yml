@@ -11,7 +11,6 @@ fr:
     metadatas:      "Métadonnées"
     public:         "Publique"
     private:        "Privé"
-    edit:           "Edition du contenu"
 
     created:        "Contenu créé avec succès"
     creation_error: "Une erreur est survenue pendant la création du contenu"
@@ -34,7 +33,17 @@ fr:
 
     title:
       create:       "Création de contenu"
+      edit:         "Edition du contenu"
       report:       "Signalement de contenu"
+
+    popular:
+      none:         "Aucun article populaire publié"
+
+    chronologies:
+      none:         "Aucun article publié pour cette chronologie"
+
+    themes:
+      none:         "Aucun article publié pour ce thème"
 
     # Comments
     comment:

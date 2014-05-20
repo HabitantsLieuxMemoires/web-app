@@ -1,4 +1,4 @@
-puts 'DEVELOPMENT CHRONOLOGIES'
+puts 'PRODUCTION CHRONOLOGIES'
 
 Chronology.create!(title: '2014')
 Chronology.create!(title: '2013')

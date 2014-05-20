@@ -18,9 +18,9 @@ class ImagesController < ApplicationController
     @article.images << image
 
     if @article.save
-      redirect_to edit_article_path(@article.slug), notice: t('image.uploaded')
+      redirect_to edit_article_path(@article.slug), notice: t('article.image.uploaded')
     else
-      flash[:error] = t('image.upload_error')
+      flash[:error] = t('article.image.upload_error')
       redirect_to edit_article_path(@article.slug)
     end
   end
@@ -36,6 +36,6 @@ class ImagesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:article_id])
+    @article = Article.unscoped.find(params[:article_id])
   end
 end

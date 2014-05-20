@@ -1,7 +1,6 @@
 #= require selectize
 #= require jasny-bootstrap.min
 #= require ekko-lightbox.min
-#= require wysihtml5.autoresize
 #= require socialite.min
 #= require social
 #= require waypoints
@@ -9,9 +8,11 @@
 #= require shared/remote-tabs
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
-#= require wysihtml5-0.4.0pre
+#= require wysihtml5/wysihtml5-0.4.0pre
+#= require wysihtml5/wysihtml5.autoresize
 #= require prettify
-#= require bootstrap3-wysihtml5
+#= require wysihtml5/bootstrap3-wysihtml5
+#= require wysihtml5/locales/bootstrap-wysihtml5.fr-FR
 #= require editor/custom-wysihtml5-buttons
 #= require editor/custom-wysihtml5-image
 #= require editor/custom-wysihtml5-link
@@ -36,7 +37,8 @@ UI =
         customTemplates: wysiwygTemplates
         useLineBreaks: false
         html: true
-        stylesheets: ["/assets/editor.css"]
+        stylesheets: ["<%= asset_path('editor.css') %>"]
+        locale: 'fr-FR'
         parserRules: {
           classes: {
             "wysiwyg-image": 1

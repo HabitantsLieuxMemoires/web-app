@@ -46,6 +46,14 @@
   text-align: center;
 }
 
+#footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  height: 180px;
+  background-color: #F8F8F8;
+}
+
 .leaflet-center {
   width: 40%;
   margin-left: auto;
@@ -81,6 +89,9 @@
 
 .leaflet-control-position-picker button.cancel {
   width:100px
+}
+.leaflet-popup-content button {
+  width:100%
 }
 
 .bg-info {

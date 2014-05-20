@@ -12,7 +12,7 @@ fr:
         chronology_id:  "Chronologie"
         tags:           "Tags"
         public:         "Publique"
-        locked:         "Vérouillé"
+        locked:         "Verrouillé"
         location:       "GPS"
         revision:       "Révision"
         slug:           "Lien"
