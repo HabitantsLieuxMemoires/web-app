@@ -65,7 +65,7 @@ class ArticleDecorator < ApplicationDecorator
       heads.collect do |head|
         concat(content_tag(:li, head.text))
       end
-    end
+    end unless heads.empty?
   end
 
   def body(truncate = nil)

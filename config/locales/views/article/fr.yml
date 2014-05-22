@@ -11,6 +11,7 @@ fr:
     metadatas:      "Métadonnées"
     public:         "Publique"
     private:        "Privé"
+    summary:        "Sommaire"
 
     created:        "Contenu créé avec succès"
     creation_error: "Une erreur est survenue pendant la création du contenu"
