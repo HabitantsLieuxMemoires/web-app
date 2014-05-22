@@ -73,6 +73,9 @@ fr:
       do:
         upload:     "Publier une photo"
         select:     "Sélectionner la photo"
+        select_thumb:   "Petite"
+        select_normal:  "Moyenne"
+        select_large:   "Grande"
         change:     "Changer de photo"
         remove:     "Supprimer la photo"
 

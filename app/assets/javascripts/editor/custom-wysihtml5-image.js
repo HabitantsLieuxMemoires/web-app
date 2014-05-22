@@ -33,7 +33,10 @@ bootWysiImageOverrides = {
         var $row = $(e.currentTarget).parents('.thumbnail');
         // var $row = $(e.delegateTarget).find('.thumbnail');
 
-        insertImage($row.data());
+        insertImage({
+          url: $(this).data('url'),
+          caption: $row.data('caption')
+        })
         selectImageModal.modal('hide');
       });
     });
