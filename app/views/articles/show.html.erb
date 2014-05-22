@@ -28,7 +28,17 @@
         <div class="tab-pane active" id="content">
           <%= render 'summary', article: @article %>
 
-          <%= @article.full_body %>
+          <div class="article-body">
+            <%= @article.full_body %>
+          </div>
+
+          <% if @article.images.any? %>
+            <div class="well article-featured-images">
+              <div class="row row-centered">
+                <%= @article.featured_images %>
+              </div>
+            </div>
+          <% end %>
         </div>
 
         <%= render 'articles/images' %>

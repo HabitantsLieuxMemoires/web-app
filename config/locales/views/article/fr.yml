@@ -78,6 +78,7 @@ fr:
         select_large:   "Grande"
         change:     "Changer de photo"
         remove:     "Supprimer la photo"
+        see_all:    "Voir toutes les photos"
 
       title:
         upload:    "Publication de photo"

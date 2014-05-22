@@ -1,6 +1,6 @@
 <div class="well" id="article-actions">
   <%= f.submit t('article.do.publish'), class: 'btn btn-primary btn-block' %>
-  <%= link_to t('do.cancel'), :back, class: 'btn btn-danger btn-block' %>
+  <%= link_to t('article.do.view'), article_path(article.slug), class: 'btn btn-default btn-block' %>
 </div>
 
 <div class="panel panel-default" id="article-details">
