@@ -30,14 +30,16 @@ window.mapController =
         minZoom: 13
       mapController.mapInstance.on 'locationerror',
         debug 'Location error'
-        # Berk! 
+        # Berk!
         # @todo find a better fix
         cb = ->
           mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
         setTimeout cb, 2000
+      # Unbind after 1st localization
+      # mapController.mapInstance.off 'viewreset', mapController.locate
 
   locateOnViewReset: ->
-    mapController.mapInstance.on('viewreset', mapController.locate);
+    mapController.mapInstance.on 'viewreset', mapController.locate
 
   addPosition: (latlng) ->
     debug "New marker added on "+latlng
@@ -95,7 +97,7 @@ window.mapController =
     btnRemove = mapController.generateButtonElement 'glyphicon-remove', 'btn-danger', 'Supprimer ce point'
     btnRemove.onclick = ->
       debug "ok1"
-      mapController.markerCluster.removeLayer marker 
+      mapController.markerCluster.removeLayer marker
       debug "ok2"
       #mapController.disablePositionPicker 'delete', marker
     btnAdd.onclick = ->
@@ -223,10 +225,16 @@ window.mapController =
           position: 'topright'
         ,
         onAdd: (map) ->
-          control= L.DomUtil.create('div', 'heightToggle leaflet-bar')
+          control= L.DomUtil.create 'div', ''
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
-          control.onclick = mapController.heightToggle
-          control.className = 'hidden-xs hidden-sm'
+          control.onclick = ->
+            # On mobile, hide the map
+            if Modernizr.touch
+              $('.map-mobile-toggle').click()
+            # On desktop, toggle height
+            else
+              mapController.heightToggle
+          control.className = 'heightToggle leaflet-bar'
           control
 
       map.addControl(new heightControl())
