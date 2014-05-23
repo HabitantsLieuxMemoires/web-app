@@ -91,6 +91,9 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def body(truncate = nil)
+    # Force HTML tag to be prefixed by a space
+    # (proper display once tags has been stripped)
+    object.body.gsub! '<', ' <'
     body = strip_tags(object.body)
     body.truncate(truncate).html_safe unless truncate.nil?
   end
