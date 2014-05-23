@@ -23,17 +23,18 @@ window.mapController =
   currentMarker:null,
   positionPickerActive:false,
   locate: ->
-    mapController.mapInstance.locate
-      setView: true
-      maxZoom: 13
-      minZoom: 13
-    mapController.mapInstance.on 'locationerror',
-      debug 'Location error'
-      # Berk! 
-      # @todo find a better fix
-      cb = ->
-        mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
-      setTimeout cb, 2000
+    if Modernizr.geolocation
+      mapController.mapInstance.locate
+        setView: true
+        maxZoom: 13
+        minZoom: 13
+      mapController.mapInstance.on 'locationerror',
+        debug 'Location error'
+        # Berk! 
+        # @todo find a better fix
+        cb = ->
+          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+        setTimeout cb, 2000
 
   locateOnViewReset: ->
     mapController.mapInstance.on('viewreset', mapController.locate);
