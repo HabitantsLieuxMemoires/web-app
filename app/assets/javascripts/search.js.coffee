@@ -1,34 +1,41 @@
 #= require shared/typeahead-loader
 #= require selectize
 
-# Will be executed on search article page only
-window['search#index'] = (data) ->
-  checkboxes = $("#search-page input[type='checkbox']")
+# Will be executed on search articles page only
+SearchController=
+  init:(data) ->
+    checkboxes = $("#search-page input[type='checkbox']")
 
-  markCheckboxes = (value) ->
-    checkboxes.prop("checked", value)
+    markCheckboxes = (value) ->
+      checkboxes.prop("checked", value)
 
-  # Checkboxes are selected by default
-  markCheckboxes(true)
-
-  # Selectize tags
-  $('#tags').selectize
-        plugins: ['remove_button']
-        persist: false
-        create: (input) ->
-          return {
-            value: input,
-            text: input
-          }
-
-  # Binding events
-  $('.themes-all').on 'click', (e) ->
+    # Checkboxes are selected by default
     markCheckboxes(true)
-    e.preventDefault()
 
-  $('.themes-none').on 'click', (e) ->
-    markCheckboxes(false)
-    e.preventDefault()
+    # Selectize tags
+    $('#tags').selectize
+          plugins: ['remove_button']
+          persist: false
+          create: (input) ->
+            return {
+              value: input,
+              text: input
+            }
+
+    # Binding events
+    $('.themes-all').on 'click', (e) ->
+      markCheckboxes(true)
+      e.preventDefault()
+
+    $('.themes-none').on 'click', (e) ->
+      markCheckboxes(false)
+      e.preventDefault()
+
+window['articles#search'] = (data) ->
+  SearchController.init(data);
+
+window['search#index'] = (data) ->
+  SearchController.init(data)
 
 
 # Will be executed on every pages (excepting admin ones)
@@ -44,7 +51,7 @@ $(document).ready ->
 
   # Extend size of search input container when appended button clicked
   $('#bt-search').on 'click', ->
-
+    ###
     showExtendedSearch = (parent) ->
       $('#bt-search-extended')
         .appendTo('.search-container')
@@ -56,6 +63,8 @@ $(document).ready ->
         width: '+=220px',
         duration: 1000
       }, showExtendedSearch)
+    ###
+    $("#search-column form").submit()
 
   # On mobile, when search input focuses, scroll to !
   if Modernizr.touch

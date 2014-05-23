@@ -1,3 +1,5 @@
+require 'pp'
+
 class ArticlesController < ApplicationController
   include ActionView::Helpers::TextHelper
   skip_before_action   :require_login,              only: [:show, :autocomplete, :search, :share]
@@ -38,11 +40,21 @@ class ArticlesController < ApplicationController
 
   #TODO: Externalize autocomplete and search in own concern
   def autocomplete
-    articles = Article.search(params[:query], autocomplete: true, limit: 10)
-    render json: articles.map{|a| { :id => a.slug, :title => a.title, :author => 'Unknow', :random_thumb => "http://lorempixel.com/30/30/nature", :summary => truncate(a.body, length: 70, separator: '...'), :full_url => article_url(a) }}
+    articles = ArticleDecorator.decorate_collection(Article.search(params[:query], autocomplete: true, limit: 10))
+
+    render json: articles.map{|a| {
+      :id => a.slug,
+      :title => a.title,
+      :author => a.author,
+      :thumb => "http://lorempixel.com/30/30/nature",
+      :summary => a.body(70),
+      :full_url => a.url }
+    }
   end
 
   def search
+    pp params
+
     articles = Article.search(
       params[:query],
       fields: [{title: :word_start}],
@@ -50,7 +62,7 @@ class ArticlesController < ApplicationController
       operator: "or",
       boost: "share_count",
       where: ({
-        theme: [params[:themes]],
+        theme: ([params[:themes]] unless params[:themes].empty?),
         tags:  ([params[:tags]] unless params[:tags].empty?)
       }).reject{ |k,v| v.nil?},
       limit: 20
@@ -60,6 +72,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.js
+      format.html { render '/search/index' }
     end
   end
 

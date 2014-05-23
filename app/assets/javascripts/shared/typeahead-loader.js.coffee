@@ -23,7 +23,7 @@
         empty: '<div class="no-results">No results</div>'
 
         suggestion: (obj) ->
-          html = '<img src="'+obj.random_thumb+'" class="img-rounded">'
+          html = '<img src="'+obj.thumb+'" class="img-rounded">'
           html+= '<span class="author">par '+obj.author+'</span>'
           html+= '<span class="title">'+obj.title+'</span>'
           html+= '<div class="summary">'+obj.summary+'</div>'
