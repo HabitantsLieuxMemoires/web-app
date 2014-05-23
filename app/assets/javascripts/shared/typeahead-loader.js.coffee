@@ -20,6 +20,8 @@
       displayKey: 'title',
       source: articlesRemote.ttAdapter(),
       templates:
+        empty: '<div class="no-results">No results</div>'
+
         suggestion: (obj) ->
           html = '<img src="'+obj.random_thumb+'" class="img-rounded">'
           html+= '<span class="author">par '+obj.author+'</span>'
