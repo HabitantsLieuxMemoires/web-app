@@ -56,3 +56,10 @@ $(document).ready ->
         width: '+=220px',
         duration: 1000
       }, showExtendedSearch)
+
+  # On mobile, when search input focuses, scroll to !
+  if Modernizr.touch
+    $('#search-article').on 'focus', ->
+      $('html, body').animate({
+        scrollTop: $('#search-article').offset().top
+    }, 500);

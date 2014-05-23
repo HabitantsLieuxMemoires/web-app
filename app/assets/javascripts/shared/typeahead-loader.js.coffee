@@ -18,7 +18,14 @@
     }, {
       name: name,
       displayKey: 'title',
-      source: articlesRemote.ttAdapter()
+      source: articlesRemote.ttAdapter(),
+      templates:
+        suggestion: (obj) ->
+          html = '<img src="'+obj.random_thumb+'" class="img-rounded">'
+          html+= '<span class="author">par '+obj.author+'</span>'
+          html+= '<span class="title">'+obj.title+'</span>'
+          html+= '<div class="summary">'+obj.summary+'</div>'
+          return html
     })
 
     typeahead.on 'typeahead:selected', (e, data, suggestion) ->

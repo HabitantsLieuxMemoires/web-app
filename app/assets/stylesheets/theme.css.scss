@@ -1,3 +1,11 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 @mixin rounded-corners($radius) {
   border-radius: $radius;
   -moz-border-radius: $radius;
@@ -138,4 +146,44 @@
   .business-header {
     z-index: 99999;
   }
+}
+
+
+.tt-dropdown-menu {
+  width:500px !important;
+}
+@media (max-width:767px)
+{
+  .tt-dropdown-menu {
+    width:300px !important;
+  }
+}
+.tt-suggestion {
+  padding:2px !important;
+  cursor:pointer;
+  border-bottom: 1px dashed #E7E7E7;
+  @include clearfix;
+}
+.tt-suggestion img {
+  float:left;
+  height:30px;
+  width:30px;
+}
+.tt-suggestion span.title {
+  padding-left: 5px;
+  font-size: 12px;
+}
+.tt-suggestion span.author {
+  display:block;
+  font-style: italic;
+  text-align: center;
+  font-size:10px;
+  float:right;
+}
+.tt-suggestion div.summary {
+  line-height: 14px;
+  text-align: justify;
+  text-indent: 5px;
+  font-size: 12px;
+  @include clearfix;
 }
