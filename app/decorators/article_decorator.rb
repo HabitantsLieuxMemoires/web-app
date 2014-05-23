@@ -60,10 +60,11 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def summary
-    heads = Nokogiri::HTML(object.body).css('h4')
-    h.content_tag(:ul) do
+    heads = Nokogiri::HTML(object.body).css('h1, h2, h3, h4, h5, h6').sort()
+    h.content_tag(:ol) do
       heads.collect do |head|
-        concat(content_tag(:li, head.text))
+        link = '<a href="#'+head+'" data-level="'+head.name[1]+'">'+head.text+'</a>'
+        concat(content_tag(:li, raw(link)))
       end
     end unless heads.empty?
   end
