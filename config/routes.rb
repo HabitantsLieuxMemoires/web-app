@@ -59,7 +59,9 @@ Hlm::Application.routes.draw do
       get   'page/:page',   action: :index, on: :collection
       get   'treat',        on: :member
 
-      resources :tracks, only: [:show]
+      resources :tracks, only: [:show] do
+        get 'image',        on: :member
+      end
     end
 
     resources :features, only: [:index, :update]

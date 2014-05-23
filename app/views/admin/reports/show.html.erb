@@ -23,55 +23,5 @@
   </div>
 </div>
 
-<div class="box box" id="article-updates">
-  <div class="box-header">
-    <%= fa_icon "edit" %>
-    <h3 class="box-title"><%= t('admin.moderation.report.history') %></h3>
-  </div>
-  <div class="box-body">
-    <% if @tracks.any? %>
-      <table class="table table-hover">
-        <tbody>
-          <tr>
-            <th><%= Article.human_attribute_name(:author) %></th>
-            <th><%= Article.human_attribute_name(:updated_at) %></th>
-            <th><%= Article.human_attribute_name(:changes) %></th>
-            <th><%= t('actions') %></th>
-          </tr>
-          <% @tracks.each do |t| %>
-            <tr class="change">
-              <td><%= t.author %></td>
-              <td><%= t.updated_at %></td>
-              <td>
-                  <span class="label label-success"><%= t.changes %></span>
-                  &nbsp;
-                  <%= link_to admin_report_track_path(@report, t),
-                          class: "btn btn-default btn-sm",
-                          data: {
-                            toggle: 'modal',
-                            target: '#modal-see-changes'
-                          }  do %>
-                      <%= fa_icon 'eye', text: t('article.do.see_changes'), right: true %>
-                  <% end %>
-              </td>
-              <td>
-                <%= link_to warn_admin_user_path(t.modifier_id, :article_id => @report.article_id), class: "btn btn-warning btn-sm" do %>
-                  <%= fa_icon 'warning', text: t('user.do.warn'), right: true %>
-                <% end %>
-                <%= link_to ban_admin_user_path(t.modifier_id, :article_id => @report.article_id), class: "btn btn-danger btn-sm" do %>
-                  <%= fa_icon 'minus-circle', text: t('user.do.ban'), right: true %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <div class="callout callout-info">
-        <p><%= t('article.track.none') %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+<%= render partial: 'history', locals: {report: @report, tracks: @tracks} %>
 <%= render 'modals' %>

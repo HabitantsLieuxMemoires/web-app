@@ -71,18 +71,23 @@ fr:
       list:         "Liste des photos"
 
       do:
-        upload:     "Publier une photo"
-        select:     "Sélectionner la photo"
+        upload:         "Publier une photo"
+        select:         "Sélectionner la photo"
         select_thumb:   "Petite"
         select_normal:  "Moyenne"
         select_large:   "Grande"
-        change:     "Changer de photo"
-        remove:     "Supprimer la photo"
-        see_all:    "Voir toutes les photos"
+        change:         "Changer de photo"
+        remove:         "Supprimer la photo"
+        see_all:        "Voir toutes les photos"
+        view:           "Voir la photo"
 
       title:
         upload:    "Publication de photo"
         insert:    "Insertion d'une photo"
+        view:      "Visualisation de la photo"
+
+      track:
+        new:       "Nouvelle photo"
 
     # Video
     video:
@@ -102,6 +107,7 @@ fr:
     # Track
     track:
       none:        "Aucune contribution pour ce contenu"
+      updates:     "%{count} modification(s)"
 
     # Link
     link:

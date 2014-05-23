@@ -2,6 +2,8 @@ class Image
   include Mongoid::Document
   include Mongoid::Timestamps::Created
 
+  include Image::Trackable
+
   field :title, type: String
 
   mount_uploader :article_image, ArticleImageUploader

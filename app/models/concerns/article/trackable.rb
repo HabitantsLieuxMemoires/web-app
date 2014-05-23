@@ -1,4 +1,4 @@
-module Trackable
+module Article::Trackable
   extend ActiveSupport::Concern
 
   included do
