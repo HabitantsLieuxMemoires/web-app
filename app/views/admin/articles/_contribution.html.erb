@@ -1,0 +1,53 @@
+<tr class="contribution">
+  <td>
+    <%= contribution.author %>
+    &nbsp;
+    <%= link_to warn_admin_user_path(contribution.modifier_id, :article_id => contribution.article_id), class: "btn btn-warning btn-xs" do %>
+      <%= fa_icon 'warning', text: t('user.do.warn'), right: true %>
+    <% end %>
+    <%= link_to ban_admin_user_path(contribution.modifier_id, :article_id => contribution.article_id), class: "btn btn-danger btn-xs" do %>
+      <%= fa_icon 'minus-circle', text: t('user.do.ban'), right: true %>
+    <% end %>
+  </td>
+  <td><%= contribution.updated_at %></td>
+  <% if contribution.is_added_image? %>
+    <td><span class="label label-success"><%= t('article.image.track.added') %></span></td>
+    <td>
+      <%= link_to admin_article_image_path(contribution.article_id, contribution.image_id),
+              class: "btn btn-default btn-xs",
+              data: {
+                toggle: 'modal',
+                target: '#modal-view-image'
+              }  do %>
+          <%= fa_icon 'eye', text: t('article.image.do.view'), right: true %>
+      <% end %>
+    </td>
+  <% elsif contribution.is_removed_image? %>
+    <td><span class="label label-danger"><%= t('article.image.track.removed') %></span></td>
+    <td>
+      <%= link_to admin_article_image_path(contribution.article_id, contribution.image_id),
+              class: "btn btn-default btn-xs",
+              data: {
+                toggle: 'modal',
+                target: '#modal-view-image'
+              }  do %>
+          <%= fa_icon 'eye', text: t('article.image.do.view'), right: true %>
+      <% end %>
+      <%= link_to restore_admin_article_image_path(contribution.article_id, contribution.image_id), class: "btn btn-primary btn-xs" do %>
+          <%= fa_icon 'undo', text: t('article.image.do.restore'), right: true %>
+      <% end %>
+    </td>
+  <% else %>
+    <td><span class="label label-success"><%= t('article.track.updates', count: contribution.changes) %></span></td>
+    <td>
+      <%= link_to admin_track_path(contribution),
+              class: "btn btn-default btn-xs",
+              data: {
+                toggle: 'modal',
+                target: '#modal-see-changes'
+              }  do %>
+          <%= fa_icon 'eye', text: t('article.do.see_changes'), right: true %>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

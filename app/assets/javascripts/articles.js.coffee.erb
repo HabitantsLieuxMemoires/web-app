@@ -90,13 +90,12 @@ UI =
           }
 
   initTabs: ->
-    callback = ->
+    $('[data-toggle=tab]').on 'shown.bs.tab', (e) ->
+      # Loading comments if they appear
       $.waypoints('refresh')
 
-    $('[data-toggle=tab]').on 'show.bs.tab', (e) ->
       if $('#show_info').hasClass 'mobile-toggle-button-active'
         ButtonToggle.Hide $('#show_info').data 'target'
-      RemoteTabs.triggerTabChanged(e, callback)
 
   infineComments: ->
     debug 'Initializing infinite comments...'

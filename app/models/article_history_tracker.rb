@@ -2,8 +2,6 @@ class ArticleHistoryTracker
   include Mongoid::Audit::Tracker
   include Mongoid::Alize
 
-  alize :modifier, :nickname
-
   def tracked_changes
     @tracked_changes ||= (modified.keys | original.keys).inject(HashWithIndifferentAccess.new) do |h, k|
       h[k] = { from: original[k], to: modified[k] }.delete_if { |_, vv| vv.nil? }
@@ -34,6 +32,16 @@ class ArticleHistoryTracker
       end
       h
     end
+  end
+
+  def article_id
+    association = association_chain.find { |ac| ac['name'] == Article.name }
+    association['id'] unless association.nil?
+  end
+
+  def image_id
+    association = association_chain.find { |ac| ac['name'] == Image.name.pluralize.downcase }
+    association['id'] unless association.nil?
   end
 
   private

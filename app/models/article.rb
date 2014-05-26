@@ -38,8 +38,6 @@ class Article
 
   # Media
   embeds_many :images
-  accepts_nested_attributes_for :images
-
   embeds_many :videos
 
   # Comments

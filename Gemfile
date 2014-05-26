@@ -48,6 +48,7 @@ gem 'mongoid_magic_counter_cache',  "~> 1.1.0"
 gem 'mongoid-audit',                "~> 0.3.2"
 gem 'mongoid_slug',                 "~> 3.2.1"
 gem 'mongoid_alize',                "~> 0.4.3"
+gem 'mongoid-paranoia',             github: "simi/mongoid-paranoia"
 
 # Misc gems
 gem 'sorcery',                      "~> 0.8.5"  # Authentication

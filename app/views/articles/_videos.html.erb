@@ -18,4 +18,12 @@
     </small>
   </h4>
   <hr>
+
+  <% if @article.videos.any? %>
+    <div class="row" id="videos-list">
+      <%= render partial: '/videos/video', collection: @article.videos, locals: {article: @article, edit_mode: edit_mode} %>
+    </div>
+  <% else %>
+    <p class="bg-info"><%= t('article.video.none') %></p>
+  <% end %>
 </div>

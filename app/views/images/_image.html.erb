@@ -2,4 +2,7 @@
     <a class="thumbnail" href="<%= image.article_image_url %>" data-title="<%= image.title %>" data-toggle="lightbox" data-gallery="article-images">
         <img class="img-responsive" src="<%= image.article_image_url(:thumb) %>">
     </a>
+    <% if edit_mode %>
+      <%= link_to t('article.image.do.remove'), article_image_path(article, image), method: :delete, class: "btn btn-danger btn-block btn-sm" %>
+    <% end %>
 </div>
