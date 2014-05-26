@@ -1,5 +1,5 @@
 class ArticleHistoryTrackerDecorator < ApplicationDecorator
-  delegate :id, :modifier_id
+  delegate :id, :modifier_id, :article_id, :image_id
 
   def author
     object.modifier.nickname

@@ -1,13 +1,7 @@
 class Admin::TracksController < Admin::BaseController
-  before_action :set_track, only: [:show, :image]
+  before_action :set_track, only: [:show]
 
   def show
-    render layout: false
-  end
-
-  def image
-    @image = Article.find(@track.article_id).images.find(@track.image_id)
-
     render layout: false
   end
 

@@ -17,6 +17,13 @@ GIT
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
+GIT
+  remote: git://github.com/simi/mongoid-paranoia.git
+  revision: bf0ee2f3bf10770298a24a6a5a86edec8bdcfdd1
+  specs:
+    mongoid-paranoia (0.1)
+      mongoid (> 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -396,6 +403,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.5.1)
   mongoid!
   mongoid-audit (~> 0.3.2)
+  mongoid-paranoia!
   mongoid_alize (~> 0.4.3)
   mongoid_magic_counter_cache (~> 1.1.0)
   mongoid_slug (~> 3.2.1)

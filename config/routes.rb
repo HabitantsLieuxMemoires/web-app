@@ -39,32 +39,33 @@ Hlm::Application.routes.draw do
   namespace :admin do
     root to: "dashboard#index"
 
-    resources :users, only: [] do
+    resources :users,     only: [] do
       get 'warn',           on: :member
       get 'ban',            on: :member
     end
 
-    resources :articles, only: [:index] do
+    resources :articles,  only: [:index] do
       get 'page/:page',     action: :index, on: :collection
       get 'updates',        on: :collection
       get 'feature',        on: :member
       get 'unfeature',      on: :member
-    end
 
-    resources :comments, only: [:index, :destroy] do
-      get 'page/:page',     action: :index, on: :collection
-    end
-
-    resources :reports, only: [:index, :show] do
-      get   'page/:page',   action: :index, on: :collection
-      get   'treat',        on: :member
-
-      resources :tracks, only: [:show] do
-        get 'image',        on: :member
+      resources :images,  only: [:show] do
+        get 'restore',      on: :member
       end
     end
 
-    resources :features, only: [:index, :update]
+    resources :comments,  only: [:index, :destroy] do
+      get 'page/:page',     action: :index, on: :collection
+    end
+
+    resources :reports,   only: [:index, :show] do
+      get   'page/:page',   action: :index, on: :collection
+      get   'treat',        on: :member
+    end
+
+    resources :features,  only: [:index, :update]
+    resources :tracks,    only: [:show]
   end
 
 end

@@ -1,5 +1,6 @@
 class Image
   include Mongoid::Document
+  include Mongoid::Paranoia
   include Mongoid::Timestamps::Created
 
   include Trackable
