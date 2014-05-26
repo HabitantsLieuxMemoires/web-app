@@ -2,7 +2,7 @@ class Image
   include Mongoid::Document
   include Mongoid::Timestamps::Created
 
-  include Image::Trackable
+  include Trackable
 
   field :title, type: String
 

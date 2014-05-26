@@ -18,4 +18,12 @@
     </small>
   </h4>
   <hr>
+
+  <% if @article.images.any? %>
+    <div class="row" id="images-list">
+      <%= render partial: '/images/image', collection: @article.images, locals: {article: @article, edit_mode: edit_mode} %>
+    </div>
+  <% else %>
+    <p class="bg-info"><%= t('article.image.none') %></p>
+  <% end %>
 </div>

@@ -7,7 +7,7 @@ class Article
   include Mongoid::Slug               # Slug support
   include Mongoid::Alize              # Denormalization
 
-  include Article::Trackable          # History tracking support
+  include Trackable                   # History tracking support
 
   # Slug
   field :title,         type: String

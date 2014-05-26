@@ -13,7 +13,11 @@ class ArticleHistoryTrackerDecorator < ApplicationDecorator
     object.tracked_edits.size
   end
 
-  def is_new_image?
-    object.image_id.present?
+  def is_added_image?
+    object.image_id.present? && object.action == 'create'
+  end
+
+  def is_removed_image?
+    object.image_id.present? && object.action == 'destroy'
   end
 end

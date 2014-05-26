@@ -17,13 +17,13 @@ Hlm::Application.routes.draw do
     get  :share,        on: :member
 
     resources :reports,  only: [:new, :create]
-    resources :videos,   only: [:index, :new, :create]
+    resources :videos,   only: [:new, :create]
 
     resources :comments, only: [:index, :new, :create] do
       get   'page/:page',   action: :index, on: :collection
     end
 
-    resources :images,   only: [:index, :new, :create] do
+    resources :images,   only: [:new, :create, :destroy] do
       get 'select', on: :collection
     end
   end

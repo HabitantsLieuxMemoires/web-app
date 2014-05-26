@@ -67,6 +67,8 @@ fr:
 
       uploaded:     "Photo publiée avec succès"
       upload_error: "Une erreur est survenue pendant la publication de la photo"
+      removed:      "Photo supprimée avec succès"
+      remove_error: "Une erreur est survenue pendant la suppression de la photo"
 
       list:         "Liste des photos"
 
@@ -87,7 +89,8 @@ fr:
         view:      "Visualisation de la photo"
 
       track:
-        new:       "Nouvelle photo"
+        added:       "Photo ajoutée"
+        removed:     "Photo supprimée"
 
     # Video
     video:

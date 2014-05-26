@@ -1,12 +1,5 @@
 class ImagesController < ApplicationController
-  before_action        :set_article,   only: [:index, :create, :select]
-  skip_before_action   :require_login, only: [:index]
-
-  def index
-    @images = @article.images.desc(:created_at)
-
-    render layout: false
-  end
+  before_action        :set_article,   only: [:create, :select, :destroy]
 
   def new
     render layout: false
@@ -29,6 +22,17 @@ class ImagesController < ApplicationController
     render layout: false
   end
 
+  def destroy
+    image = @article.images.find(params[:id])
+    if image.destroy
+      flash[:notice]  = t('article.image.removed')
+    else
+      falsh[:error]   = t('article.image.remove_error')
+    end
+
+    redirect_to edit_article_path(@article)
+  end
+
   private
 
   def image_params
@@ -38,4 +42,5 @@ class ImagesController < ApplicationController
   def set_article
     @article = Article.unscoped.find(params[:article_id])
   end
+
 end

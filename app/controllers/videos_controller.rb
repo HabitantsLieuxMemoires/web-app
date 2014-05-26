@@ -1,12 +1,5 @@
 class VideosController < ApplicationController
-  before_action        :set_article,   only: [:index, :new, :create]
-  skip_before_action   :require_login, only: [:index]
-
-  def index
-    @videos = @article.videos.desc(:created_at)
-
-    render layout: false
-  end
+  before_action        :set_article,   only: [:new, :create]
 
   def new
     render layout: false

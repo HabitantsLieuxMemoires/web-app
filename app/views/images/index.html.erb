@@ -1,7 +1,0 @@
-<% if @images.any? %>
-  <div class="row" id="images-list">
-    <%= render partial: 'image', collection: @images %>
-  </div>
-<% else %>
-  <p class="bg-info"><%= t('article.image.none') %></p>
-<% end %>

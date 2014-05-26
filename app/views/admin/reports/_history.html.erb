@@ -18,8 +18,8 @@
               <td><%= t.author %></td>
               <td><%= t.updated_at %></td>
               <td>
-                  <% if t.is_new_image? %>
-                    <span class="label label-success"><%= t('article.image.track.new') %></span>
+                  <% if t.is_added_image? %>
+                    <span class="label label-success"><%= t('article.image.track.added') %></span>
                     &nbsp;
                     <%= link_to image_admin_report_track_path(report, t),
                             class: "btn btn-default btn-xs",
@@ -29,6 +29,8 @@
                             }  do %>
                         <%= fa_icon 'eye', text: t('article.image.do.view'), right: true %>
                     <% end %>
+                  <% elsif t.is_removed_image? %>
+                    <span class="label label-danger"><%= t('article.image.track.removed') %></span>
                   <% else %>
                     <span class="label label-success"><%= t('article.track.updates', count: t.changes) %></span>
                     &nbsp;
