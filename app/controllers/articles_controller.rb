@@ -23,6 +23,12 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(article_params)
+
+      # Creating associated activity
+      @article.create_activity key:     'article.update',
+                               author:  current_user.nickname,
+                               title:   @article.title
+
       redirect_to article_path(@article.slug), :notice => t('article.updated')
     else
       render :edit, layout: 'empty'

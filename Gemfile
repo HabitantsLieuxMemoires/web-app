@@ -64,6 +64,7 @@ gem 'diffy',                        "~> 3.0.4"  # Diffing
 gem 'rails-i18n',                   "~> 4.0.2"  # I18n
 gem 'nested_form',                  "~> 0.3.2"  # Nested forms
 gem 'fog',                          "~> 1.22.0" # Amazon S3 (file storing)
+gem 'public_activity',              "~> 1.4.1"  # Public activity tracking
 
 # Deployment
 gem 'capistrano',                   "~> 3.2.1", require: false

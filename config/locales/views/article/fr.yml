@@ -67,8 +67,10 @@ fr:
 
       uploaded:       "Photo publiée avec succès"
       upload_error:   "Une erreur est survenue pendant la publication de la photo"
+      uploaded_by:    "%{user} a ajouté une photo au contenu %{article}"
       removed:        "Photo supprimée avec succès"
       remove_error:   "Une erreur est survenue pendant la suppression de la photo"
+      removed_by:     "%{user} a supprimé une photo du contenu %{article}"
       restored:       "Photo restaurée avec succès"
       restore_error:  "Une erreur est survenue pendant la restauration de la photo"
 

@@ -3,9 +3,11 @@ class Article
     extend ActiveSupport::Concern
 
     included do
-      include Mongoid::Audit::Trackable
+      include Mongoid::Audit::Trackable   # History tracking support
       include Mongoid::Alize
+      include PublicActivity::Common
 
+      # Track title and body changes
       track_history on: [:title, :body], modifier_field: :author
 
       # Denormalize author fields

@@ -11,6 +11,8 @@ class ImagesController < ApplicationController
     @article.images << image
 
     if @article.save
+      create_activity(image, 'article.add_image')
+
       redirect_to edit_article_path(@article.slug), notice: t('article.image.uploaded')
     else
       flash[:error] = t('article.image.upload_error')
@@ -25,6 +27,8 @@ class ImagesController < ApplicationController
   def destroy
     image = @article.images.find(params[:id])
     if image.destroy
+      create_activity(image, 'article.remove_image')
+
       flash[:notice]  = t('article.image.removed')
     else
       falsh[:error]   = t('article.image.remove_error')
@@ -41,6 +45,13 @@ class ImagesController < ApplicationController
 
   def set_article
     @article = Article.unscoped.find(params[:article_id])
+  end
+
+  def create_activity(image, key)
+    @article.create_activity key:     key,
+                             author:  current_user.nickname,
+                             title:   @article.title,
+                             url:     image.article_image_url(:thumb)
   end
 
 end

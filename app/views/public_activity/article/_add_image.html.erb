@@ -1,0 +1,14 @@
+<li>
+    <i class="fa fa-camera bg-purple"></i>
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> <%= l(a.created_at) %></span>
+        <h3 class="timeline-header"><%= t('article.image.uploaded_by', user: a.author, article: a.title) %></h3>
+        <div class="timeline-body">
+            <img src="<%= a.url %>" class="margin">
+        </div>
+        <div class="timeline-footer">
+            <%= link_to t('article.do.view'), article_path(a.trackable_id), class: 'btn btn-xs btn-primary' %>
+            <%= link_to t('article.do.see_changes'), article_path(a.trackable_id), class: 'btn btn-xs btn-warning' %>
+        </div>
+    </div>
+</li>

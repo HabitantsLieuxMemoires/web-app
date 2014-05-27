@@ -1,6 +1,5 @@
 class ArticleHistoryTracker
   include Mongoid::Audit::Tracker
-  include Mongoid::Alize
 
   def tracked_changes
     @tracked_changes ||= (modified.keys | original.keys).inject(HashWithIndifferentAccess.new) do |h, k|

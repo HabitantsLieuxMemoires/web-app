@@ -46,7 +46,6 @@ Hlm::Application.routes.draw do
 
     resources :articles,  only: [:index] do
       get 'page/:page',     action: :index, on: :collection
-      get 'updates',        on: :collection
       get 'feature',        on: :member
       get 'unfeature',      on: :member
 
