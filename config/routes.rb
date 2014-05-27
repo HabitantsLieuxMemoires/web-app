@@ -17,7 +17,7 @@ Hlm::Application.routes.draw do
     get  :share,        on: :member
 
     resources :reports,  only: [:new, :create]
-    resources :videos,   only: [:new, :create]
+    resources :videos,   only: [:new, :create, :destroy]
 
     resources :comments, only: [:index, :new, :create] do
       get   'page/:page',   action: :index, on: :collection

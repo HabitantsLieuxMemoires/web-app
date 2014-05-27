@@ -3,7 +3,12 @@ class Admin::ArticlesController < Admin::BaseController
 
   def index
     @activities = PublicActivity::Activity
-                      .in(key: ['article.update', 'article.add_image', 'article.remove_image'])
+                      .in(key: [
+                        'article.update',
+                        'article.add_image',
+                        'article.remove_image',
+                        'article.add_video',
+                        'article.remove_video'])
                       .desc(:created_at)
                       .page(params[:page])
                       .per(20)
