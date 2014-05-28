@@ -4,6 +4,8 @@ class Comment
   include Mongoid::MagicCounterCache
   include Mongoid::Alize
 
+  include Trackable
+
   field :content, type: String
 
   belongs_to    :article

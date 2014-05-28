@@ -3,28 +3,11 @@
 <div class="row">
   <div class="col-md-12">
     <ul class="timeline">
-      <% @comments.each do |c| %>
-        <li class="time-label"><span class="bg-red"><%= c[0] %></span></li>
-        <% c[1].each do |comment| %>
-          <li class="comment">
-            <i class="fa fa-comments bg-yellow"></i>
-            <div class="timeline-item">
-                <h3 class="timeline-header">
-                  <%= t('article.commented_by', user: comment.user, article: comment.article) %>
-                </h3>
-                <div class="timeline-body"><%= comment.content %></div>
-                <div class="timeline-footer">
-                    <%= link_to t('article.do.view'), comment.article_url, class: "btn btn-primary btn-flat btn-xs" %>
-                    <%= link_to t('article.comment.do.delete'), admin_comment_path(comment.id), method: :delete, class: "btn btn-danger btn-flat btn-xs" %>
-                </div>
-            </div>
-          </li>
-        <% end %>
-      <% end %>
+      <%= render_activities(@activities) %>
     </ul>
 
     <div class="text-center">
-      <%= paginate @comments, :theme => 'twitter-bootstrap-3' %>
+      <%= paginate @activities, :theme => 'twitter-bootstrap-3' %>
     </div>
   </div>
 </div>

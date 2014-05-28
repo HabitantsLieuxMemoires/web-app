@@ -52,12 +52,4 @@ class Admin::ArticlesController < Admin::BaseController
      @article = Article.find(params[:id])
   end
 
-  def decorate_articles(articles)
-    articles.collect{ |a| [a[0], ArticleDecorator.decorate_collection(a[1])] }
-  end
-
-  def decorate_updates(updates)
-    updates.collect{ |u| [u[0], ArticleHistoryTrackerDecorator.decorate_collection(u[1])] }
-  end
-
 end
