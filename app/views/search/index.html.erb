@@ -13,7 +13,7 @@
     </div>
 
       <div class="panel-body">
-        <%= f.search_field :query, hide_label: true, placeholder: t('search.title_placeholder') %>
+        <%= f.search_field :query, value:params[:query], hide_label: true, placeholder: t('search.title_placeholder') %>
 
         <hr>
         <div class="row">
@@ -63,7 +63,9 @@
         </div>
 
         <ul class="media-list" id="search-results">
-
+          <% if @articles.any? %>
+            <%= render "/articles/search_results", articles: @articles %>
+          <% end %>
         </ul>
 
       </div>
