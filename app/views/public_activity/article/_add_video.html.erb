@@ -1,0 +1,11 @@
+<li>
+    <i class="fa fa-video-camera bg-maroon"></i>
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> <%= l(a.created_at) %></span>
+        <h3 class="timeline-header"><%= t('article.video.added_by', user: a.author, article: a.title) %></h3>
+        <div class="timeline-body">
+            <%=raw VideoInfo.new(a.url).embed_code %>
+        </div>
+        <%= render 'public_activity/article/footer', a: a %>
+    </div>
+</li>

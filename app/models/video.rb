@@ -1,8 +1,10 @@
 class Video
   include Mongoid::Document
+  include Mongoid::Paranoia
   include Mongoid::Timestamps::Created
 
   include VideoEmbeddable
+  include Trackable
 
   field :title, type: String
   field :url,   type: String

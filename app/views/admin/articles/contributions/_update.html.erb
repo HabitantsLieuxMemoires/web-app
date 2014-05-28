@@ -1,0 +1,11 @@
+<td><span class="label label-success"><%= t('article.track.updates', count: contribution.changes) %></span></td>
+<td>
+  <%= link_to admin_track_path(contribution),
+          class: "btn btn-default btn-xs",
+          data: {
+            toggle: 'modal',
+            target: '#modal-see-changes'
+          }  do %>
+      <%= fa_icon 'eye', text: t('article.do.see_changes'), right: true %>
+  <% end %>
+</td>

@@ -1,4 +1,4 @@
-class Image
+class Video
   module Trackable
     extend ActiveSupport::Concern
 

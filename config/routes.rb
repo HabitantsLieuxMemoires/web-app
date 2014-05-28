@@ -17,7 +17,7 @@ Hlm::Application.routes.draw do
     get  :share,        on: :member
 
     resources :reports,  only: [:new, :create]
-    resources :videos,   only: [:new, :create]
+    resources :videos,   only: [:new, :create, :destroy]
 
     resources :comments, only: [:index, :new, :create] do
       get   'page/:page',   action: :index, on: :collection
@@ -44,13 +44,16 @@ Hlm::Application.routes.draw do
       get 'ban',            on: :member
     end
 
-    resources :articles,  only: [:index] do
+    resources :articles,  only: [:index, :show, :destroy] do
       get 'page/:page',     action: :index, on: :collection
-      get 'updates',        on: :collection
       get 'feature',        on: :member
       get 'unfeature',      on: :member
 
       resources :images,  only: [:show] do
+        get 'restore',      on: :member
+      end
+
+      resources :videos,  only: [:show] do
         get 'restore',      on: :member
       end
     end

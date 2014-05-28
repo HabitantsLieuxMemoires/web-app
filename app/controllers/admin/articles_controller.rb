@@ -1,18 +1,32 @@
 class Admin::ArticlesController < Admin::BaseController
-  before_action :set_article, only: [:feature, :unfeature]
+  before_action :set_article, only: [:show, :destroy, :feature, :unfeature]
 
   def index
-    articles = Article.desc(:created_at).group_by{|a| a.created_at}
-
-    # Decorates articles and make array paginable
-    @articles = Kaminari.paginate_array(decorate_articles(articles)).page(params[:page]).per(10)
+    @activities = PublicActivity::Activity
+                      .in(key: [
+                        'article.update',
+                        'article.add_image',
+                        'article.remove_image',
+                        'article.add_video',
+                        'article.remove_video'])
+                      .desc(:created_at)
+                      .page(params[:page])
+                      .per(20)
   end
 
-  def updates
-    updates = ArticleHistoryTracker.desc(:updated_at).group_by{|t| t.updated_at}
+  def show
+    @tracks  = ArticleHistoryTracker.where(association_chain: { 'name' => Article.name, 'id' => @article._id }).decorate
+    @article = @article.decorate
+  end
 
-    # Decorates updates and make array paginable
-    @updates = Kaminari.paginate_array(decorate_updates(updates)).page(params[:page]).per(10)
+  def destroy
+    if @article.destroy
+      flash[:notice] = t('article.removed')
+    else
+      flash[:error] = t('article.remove_error')
+    end
+
+    redirect_to admin_root_path
   end
 
   def feature

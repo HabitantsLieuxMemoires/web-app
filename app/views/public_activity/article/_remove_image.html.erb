@@ -1,0 +1,11 @@
+<li>
+    <i class="fa fa-camera bg-red"></i>
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> <%= l(a.created_at) %></span>
+        <h3 class="timeline-header"><%= t('article.image.removed_by', user: a.author, article: a.title) %></h3>
+        <div class="timeline-body">
+            <img src="<%= a.url %>" class="margin">
+        </div>
+        <%= render 'public_activity/article/footer', a: a %>
+    </div>
+</li>

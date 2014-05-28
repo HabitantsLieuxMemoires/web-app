@@ -22,6 +22,8 @@ fr:
     reported:       "Contenu a été signalé avec succès"
     report_error:   "Une erreur est survenue pendant le signalement du contenu"
     commented_by:   "%{user} a commenté le contenu %{article}"
+    removed:        "Contenu supprimé avec succès"
+    remove_error:   "Une erreur est survenue pendant la suppression du contenu"
 
     do:
       create:       "Créer un contenu"
@@ -31,11 +33,14 @@ fr:
       view:         "Voir l'article"
       see_changes:  "Voir les modifications"
       search:       "Chercher un contenu"
+      remove:       "Supprimer le contenu"
 
     title:
       create:       "Création de contenu"
       edit:         "Edition du contenu"
       report:       "Signalement de contenu"
+      details:      "Détails du contenu"
+      remove:       "Contenu supprimé"
 
     popular:
       none:         "Aucun article populaire publié"
@@ -67,8 +72,10 @@ fr:
 
       uploaded:       "Photo publiée avec succès"
       upload_error:   "Une erreur est survenue pendant la publication de la photo"
+      uploaded_by:    "%{user} a ajouté une photo au contenu %{article}"
       removed:        "Photo supprimée avec succès"
       remove_error:   "Une erreur est survenue pendant la suppression de la photo"
+      removed_by:     "%{user} a supprimé une photo du contenu %{article}"
       restored:       "Photo restaurée avec succès"
       restore_error:  "Une erreur est survenue pendant la restauration de la photo"
 
@@ -97,18 +104,32 @@ fr:
 
     # Video
     video:
-      none:        "Aucune vidéo publiée pour ce contenu"
+      none:           "Aucune vidéo publiée pour ce contenu"
 
-      added:       "Vidéo ajoutée avec succès"
-      add_error:   "Une erreur est survenue pendant l'ajout de la vidéo"
+      added:          "Vidéo ajoutée avec succès"
+      add_error:      "Une erreur est survenue pendant l'ajout de la vidéo"
+      added_by:       "%{user} a ajouté une vidéo au contenu %{article}"
+      removed:        "Vidéo supprimée avec succès"
+      remove_error:   "Une erreur est survenue pendant la suppression de la vidéo"
+      removed_by:     "%{user} a supprimé une vidéo du contenu %{article}"
+      restored:       "Vidéo restaurée avec succès"
+      restore_error:  "Une erreur est survenue pendant la restauration de la vidéo"
 
-      list:        "Liste des vidéos"
+      list:           "Liste des vidéos"
 
       do:
         add:       "Ajouter une vidéo"
+        remove:    "Supprimer la vidéo"
+        view:      "Voir la vidéo"
+        restore:   "Restaurer la vidéo"
 
       title:
         add:       "Ajout de vidéo"
+        view:      "Visualisation de la vidéo"
+
+      track:
+        added:     "Vidéo ajoutée"
+        removed:   "Vidéo supprimée"
 
     # Track
     track:

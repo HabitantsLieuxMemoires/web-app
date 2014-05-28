@@ -6,8 +6,10 @@ class Article
   include Mongoid::MagicCounterCache  # Counter cache support (allowing queries based on counter)
   include Mongoid::Slug               # Slug support
   include Mongoid::Alize              # Denormalization
+  include Mongoid::Paranoia           # Avoid destruction
 
-  include Trackable                   # History tracking support
+  include Trackable
+  include Searchable
 
   # Slug
   field :title,         type: String
@@ -41,13 +43,13 @@ class Article
   embeds_many :videos
 
   # Comments
-  has_many :comments, dependent: :delete
+  has_many :comments, dependent: :destroy
 
   # Reports
-  has_many :reports,  dependent: :delete
+  has_many :reports,  dependent: :destroy
 
   # Indexes
-  index({ share_count: 1 }, { background: true })
+  index({ share_count: 1, published: 1 }, { background: true })
 
   # Validation
   validates :title,      presence: true, length: { in: 4..80 }
@@ -59,17 +61,5 @@ class Article
   default_scope       -> { where(published: true) }
   scope :newest,      -> { desc(:created_at) }
   scope :most_shared, -> { desc(:share_count) }
-
-  # ElasticSearch indexing
-  searchkick    word_start: [:title], autocomplete: [:title]
-  def search_data
-    {
-      _id:          _id,
-      title:        title,
-      tags:         tags_array,
-      theme:        theme_id.to_s,
-      share_count:  share_count
-    }
-  end
 
 end
