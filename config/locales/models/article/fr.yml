@@ -6,6 +6,7 @@ fr:
       article:
         created_at:     "Date de création"
         updated_at:     "Date de modification"
+        created_by:     "Créé par"
         title:          "Titre"
         body:           "Contenu"
         theme_id:       "Thème"

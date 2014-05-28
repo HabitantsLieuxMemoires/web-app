@@ -44,7 +44,7 @@ Hlm::Application.routes.draw do
       get 'ban',            on: :member
     end
 
-    resources :articles,  only: [:index] do
+    resources :articles,  only: [:index, :show, :destroy] do
       get 'page/:page',     action: :index, on: :collection
       get 'feature',        on: :member
       get 'unfeature',      on: :member

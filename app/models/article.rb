@@ -6,6 +6,7 @@ class Article
   include Mongoid::MagicCounterCache  # Counter cache support (allowing queries based on counter)
   include Mongoid::Slug               # Slug support
   include Mongoid::Alize              # Denormalization
+  include Mongoid::Paranoia           # Avoid destruction
 
   include Trackable
   include Searchable
@@ -42,13 +43,13 @@ class Article
   embeds_many :videos
 
   # Comments
-  has_many :comments, dependent: :delete
+  has_many :comments, dependent: :destroy
 
   # Reports
-  has_many :reports,  dependent: :delete
+  has_many :reports,  dependent: :destroy
 
   # Indexes
-  index({ share_count: 1 }, { background: true })
+  index({ share_count: 1, published: 1 }, { background: true })
 
   # Validation
   validates :title,      presence: true, length: { in: 4..80 }

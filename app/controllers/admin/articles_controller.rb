@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-  before_action :set_article, only: [:feature, :unfeature]
+  before_action :set_article, only: [:show, :destroy, :feature, :unfeature]
 
   def index
     @activities = PublicActivity::Activity
@@ -12,6 +12,21 @@ class Admin::ArticlesController < Admin::BaseController
                       .desc(:created_at)
                       .page(params[:page])
                       .per(20)
+  end
+
+  def show
+    @tracks  = ArticleHistoryTracker.where(association_chain: { 'name' => Article.name, 'id' => @article._id }).decorate
+    @article = @article.decorate
+  end
+
+  def destroy
+    if @article.destroy
+      flash[:notice] = t('article.removed')
+    else
+      flash[:error] = t('article.remove_error')
+    end
+
+    redirect_to admin_root_path
   end
 
   def feature

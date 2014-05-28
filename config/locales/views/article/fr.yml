@@ -22,6 +22,8 @@ fr:
     reported:       "Contenu a été signalé avec succès"
     report_error:   "Une erreur est survenue pendant le signalement du contenu"
     commented_by:   "%{user} a commenté le contenu %{article}"
+    removed:        "Contenu supprimé avec succès"
+    remove_error:   "Une erreur est survenue pendant la suppression du contenu"
 
     do:
       create:       "Créer un contenu"
@@ -31,11 +33,14 @@ fr:
       view:         "Voir l'article"
       see_changes:  "Voir les modifications"
       search:       "Chercher un contenu"
+      remove:       "Supprimer le contenu"
 
     title:
       create:       "Création de contenu"
       edit:         "Edition du contenu"
       report:       "Signalement de contenu"
+      details:      "Détails du contenu"
+      remove:       "Contenu supprimé"
 
     popular:
       none:         "Aucun article populaire publié"
