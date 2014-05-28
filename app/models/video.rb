@@ -4,6 +4,7 @@ class Video
   include Mongoid::Timestamps::Created
 
   include VideoEmbeddable
+  include Trackable
 
   field :title, type: String
   field :url,   type: String

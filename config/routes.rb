@@ -52,6 +52,10 @@ Hlm::Application.routes.draw do
       resources :images,  only: [:show] do
         get 'restore',      on: :member
       end
+
+      resources :videos,  only: [:show] do
+        get 'restore',      on: :member
+      end
     end
 
     resources :comments,  only: [:index, :destroy] do

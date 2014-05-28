@@ -1,5 +1,5 @@
 class ArticleHistoryTrackerDecorator < ApplicationDecorator
-  delegate :id, :modifier_id, :article_id, :image_id
+  delegate :id, :modifier_id, :article_id, :image_id, :video_id
 
   def author
     object.modifier.nickname
@@ -19,5 +19,13 @@ class ArticleHistoryTrackerDecorator < ApplicationDecorator
 
   def is_removed_image?
     object.image_id.present? && object.action == 'destroy'
+  end
+
+  def is_added_video?
+    object.video_id.present? && object.action == 'create'
+  end
+
+  def is_removed_video?
+    object.video_id.present? && object.action == 'destroy'
   end
 end

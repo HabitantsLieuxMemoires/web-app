@@ -1,0 +1,14 @@
+<td><span class="label label-danger"><%= t('article.image.track.removed') %></span></td>
+<td>
+  <%= link_to admin_article_image_path(contribution.article_id, contribution.image_id),
+          class: "btn btn-default btn-xs",
+          data: {
+            toggle: 'modal',
+            target: '#modal-view-image'
+          }  do %>
+      <%= fa_icon 'eye', text: t('article.image.do.view'), right: true %>
+  <% end %>
+  <%= link_to restore_admin_article_image_path(contribution.article_id, contribution.image_id), class: "btn btn-primary btn-xs" do %>
+      <%= fa_icon 'undo', text: t('article.image.do.restore'), right: true %>
+  <% end %>
+</td>

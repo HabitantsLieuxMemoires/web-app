@@ -107,15 +107,24 @@ fr:
       removed:        "Vidéo supprimée avec succès"
       remove_error:   "Une erreur est survenue pendant la suppression de la vidéo"
       removed_by:     "%{user} a supprimé une vidéo du contenu %{article}"
+      restored:       "Vidéo restaurée avec succès"
+      restore_error:  "Une erreur est survenue pendant la restauration de la vidéo"
 
       list:           "Liste des vidéos"
 
       do:
         add:       "Ajouter une vidéo"
         remove:    "Supprimer la vidéo"
+        view:      "Voir la vidéo"
+        restore:   "Restaurer la vidéo"
 
       title:
         add:       "Ajout de vidéo"
+        view:      "Visualisation de la vidéo"
+
+      track:
+        added:     "Vidéo ajoutée"
+        removed:   "Vidéo supprimée"
 
     # Track
     track:
