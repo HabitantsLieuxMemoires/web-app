@@ -6,6 +6,6 @@ fr:
       alert:          "Actualité"
       moderation:     "Modération"
       import_export:  "Import / Export"
-      articles:       "Derniers contenus"
       updates:        "Dernières contributions"
       comments:       "Derniers commentaires"
+      shares:         "Derniers partages"

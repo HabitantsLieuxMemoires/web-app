@@ -23,11 +23,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(article_params)
-
-      # Creating associated activity
-      @article.create_activity key:     'article.update',
-                               author:  current_user.nickname,
-                               title:   @article.title
+      create_activity('article.update')
 
       redirect_to article_path(@article.slug), :notice => t('article.updated')
     else
@@ -68,6 +64,7 @@ class ArticlesController < ApplicationController
 
   def share
     @article.inc(share_count: 1)
+    create_activity('article.share')
 
     respond_to do |format|
       format.json { render json: @article.share_count }
@@ -86,6 +83,12 @@ class ArticlesController < ApplicationController
 
   def set_unpublished_article
     @article = Article.unscoped.find(params[:id])
+  end
+
+  def create_activity(key)
+    @article.create_activity key:     key,
+                             author:  current_user.nickname,
+                             title:   @article.title
   end
 
 end

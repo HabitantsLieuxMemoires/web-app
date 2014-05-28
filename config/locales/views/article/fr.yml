@@ -22,6 +22,7 @@ fr:
     reported:       "Contenu a été signalé avec succès"
     report_error:   "Une erreur est survenue pendant le signalement du contenu"
     commented_by:   "%{user} a commenté le contenu %{article}"
+    shared_by:      "%{user} a partagé le contenu %{article}"
     removed:        "Contenu supprimé avec succès"
     remove_error:   "Une erreur est survenue pendant la suppression du contenu"
 

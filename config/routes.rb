@@ -62,6 +62,10 @@ Hlm::Application.routes.draw do
       get 'page/:page',     action: :index, on: :collection
     end
 
+    resources :shares,    only: [:index] do
+      get 'page/:page',     action: :index, on: :collection
+    end
+
     resources :reports,   only: [:index, :show] do
       get   'page/:page',   action: :index, on: :collection
       get   'treat',        on: :member

@@ -7,3 +7,7 @@ fr:
     comment:
       title:            "Actualité des commentaires"
       title_extended:   "Gérez les nouveaux commentaires postés par les utilisateurs"
+
+    share:
+      title:            "Actualité des partages"
+      title_extended:   "Gérez les nouveaux partages sur les réseaux sociaux"
