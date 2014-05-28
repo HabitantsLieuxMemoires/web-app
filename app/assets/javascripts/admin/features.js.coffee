@@ -1,6 +1,6 @@
 #= require shared/typeahead-loader
 
-window['admin/features#index'] = (data) ->
+window['admin/features#edit'] = (data) ->
   typeahead     = $('.select-article-url')
   featureData   = $('#feature-data')
   url           = null

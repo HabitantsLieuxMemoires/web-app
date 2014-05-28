@@ -71,7 +71,7 @@ Hlm::Application.routes.draw do
       get   'treat',        on: :member
     end
 
-    resources :features,  only: [:index, :update]
+    resources :features,  only: [:index, :new, :create, :edit, :update]
     resources :tracks,    only: [:show]
   end
 

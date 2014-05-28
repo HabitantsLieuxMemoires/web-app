@@ -30,9 +30,11 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def feature
-    feature = Feature.find(params[:feature_id])
+    feature = Feature.last
     feature.articles << @article
     feature.save!
+
+    @article = @article.decorate
 
     respond_to do |format|
       format.js {}
