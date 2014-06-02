@@ -41,6 +41,8 @@ class Article
   # Media
   embeds_many :images
   embeds_many :videos
+  embeds_many :links
+  accepts_nested_attributes_for :links, :allow_destroy => true
 
   # Comments
   has_many :comments, dependent: :destroy
@@ -53,7 +55,7 @@ class Article
 
   # Validation
   validates :title,      presence: true, length: { in: 4..80 }
-  validates :body,       presence: true, length: { maximum: 26000 }, on: :update
+  validates :body,       presence: true, length: { maximum: 160000 }, on: :update
   validates :images,     associated: true
   validates :videos,     associated: true
 

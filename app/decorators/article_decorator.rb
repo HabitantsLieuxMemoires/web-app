@@ -2,6 +2,7 @@ class ArticleDecorator < ApplicationDecorator
   delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :location, :comment_count, :share_count, :images, :videos
 
   decorates_association :history_tracks
+  decorates_association :links
 
   def created_at(format = :short)
     l(object.created_at, format: format)

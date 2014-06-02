@@ -44,5 +44,27 @@
   </div>
 </div>
 
+<div class="panel panel-default" id="article-external-notes">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <%= fa_icon "link" %>
+      <%= t('article.external_links') %>
+      <div class="pull-right">
+        <%= f.link_to_add t('article.link.do.add') , :links, wrapper: false, class: "btn btn-xs btn-primary", :data => { :target => "#article-links" } %>
+      </div>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <table class="table table-condensed" id="article-links" >
+      <%= f.fields_for :links, wrapper: false do |link_form| %>
+        <tr class="fields">
+          <td><%= link_form.text_field :url, hide_label: true, placeholder: t('article.link.placeholder.url') %></td>
+          <td><%= link_form.link_to_remove("x", class: 'btn btn-sm btn-danger') %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
 
 

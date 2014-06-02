@@ -5,6 +5,7 @@ bootWysiLinkOverrides = {
     var urlInput = insertLinkModal.find('.insert-link-url');
 
     var insertLink = function(linkData) {
+      console.log(linkData);
       if(linkData) {
         self.editor.currentView.element.focus();
         self.editor.composer.commands.exec("createLink", {
@@ -17,26 +18,8 @@ bootWysiLinkOverrides = {
       }
     };
 
-    // Initializing typeahead (to be refactored)
-    var articlesRemote = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: '/articles/autocomplete?query=%QUERY'
-    });
-    articlesRemote.initialize();
-
-    var typeahead = urlInput.typeahead({
-      minLength: 2,
-      highlight: true
-    }, {
-      name: 'article-links',
-      displayKey: 'title',
-      source: articlesRemote.ttAdapter()
-    })
-
-    typeahead.on('typeahead:selected', function(e, data, suggestion) {
-      insertLink(data);
-    });
+    // Initializing typeahead
+    Typeahead.init(urlInput, 'search', insertLink);
 
     insertLinkModal.on('hidden.bs.modal', function() {
       urlInput.val('');
