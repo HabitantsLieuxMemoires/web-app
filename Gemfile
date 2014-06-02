@@ -37,6 +37,7 @@ gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
 gem 'spinjs-rails'
 gem 'ajaxspin'
+gem 'ionicons-rails'
 
 # Mongoid gems
 gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.beta1"

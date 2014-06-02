@@ -3,3 +3,8 @@ fr:
     dashboard:
       title:              "Tableau de Bord"
       title_extended:     "Tous les indicateurs clés de votre plateforme"
+
+      registrations:        "Comptes créés"
+      articles:             "Contenus ajoutés"
+      comments:             "Commentaires utilisateur"
+      shares:               "Partage sur les réseaux sociaux"
