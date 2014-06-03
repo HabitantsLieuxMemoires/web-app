@@ -11,3 +11,6 @@ fr:
     content:    "Mon profil"
     security:   "Sécurité"
     activity:   "Mon activité"
+
+    activities:
+      none:     "Aucune activité récente"

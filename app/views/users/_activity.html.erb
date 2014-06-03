@@ -1,3 +1,30 @@
 <div class="tab-pane" id="activity">
-  Activity
+  <% if @articles.any? %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= Article.human_attribute_name(:title) %></th>
+          <th><%= Article.human_attribute_name(:created_at) %></th>
+          <th><%= Article.human_attribute_name(:status) %></th>
+          <th><%= t('actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |a| %>
+          <tr>
+            <td><%= a.title %></td>
+            <td><%= a.created_at %></td>
+            <td><%= a.status %></td>
+            <td>
+              <%= link_to edit_article_path(a.slug), class: "btn btn-primary btn-xs" do %>
+                <% fa_icon "chevron-circle-right", text: t('article.do.update'), right: true %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="bg-info"><%= t('profile.activities.none') %></p>
+  <% end %>
 </div>

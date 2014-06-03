@@ -17,6 +17,20 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Loading activities for current user
+    activities = PublicActivity::Activity
+      .where(author: @current_user.nickname)
+      .in(key: [
+        'article.create',
+        'article.update',
+        'article.add_image',
+        'article.remove_image',
+        'article.add_video',
+        'article.remove_video'])
+      .desc(:created_at)
+      .group_by(&:trackable_id)
+
+    @articles  = Article.unscoped.in(id: activities.keys).decorate
   end
 
   private

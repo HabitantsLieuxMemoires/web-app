@@ -1,6 +1,8 @@
 <div class="well" id="article-actions">
   <%= f.submit t('article.do.publish'), class: 'btn btn-primary btn-block' %>
-  <%= link_to t('article.do.view'), article_path(article.slug), class: 'btn btn-default btn-block' %>
+  <% if article.published? %>
+    <%= link_to t('article.do.view'), article_path(article.slug), class: 'btn btn-default btn-block' %>
+  <% end %>
 </div>
 
 <div class="panel panel-default" id="article-details">
