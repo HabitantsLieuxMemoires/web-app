@@ -6,3 +6,8 @@ fr:
     do:
       warn: "Avertir"
       ban:  "Bannir"
+
+  profile:
+    content:    "Mon profil"
+    security:   "Sécurité"
+    activity:   "Mon activité"
