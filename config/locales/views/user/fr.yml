@@ -12,5 +12,8 @@ fr:
     security:   "Sécurité"
     activity:   "Mon activité"
 
+    manage_password:   "Gérez votre mot de passe"
+
     activities:
       none:     "Aucune activité récente"
+      manage:   "Gérez vos contributions"

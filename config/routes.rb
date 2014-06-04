@@ -8,9 +8,12 @@ Hlm::Application.routes.draw do
 
   get "search", to: "search#index",      as: "search"
 
-  resources :users,           only: [:new, :create, :show]
   resources :sessions,        only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  resources :users,           only: [:new, :create, :show] do
+    post :change_password,    on: :member
+  end
 
   resources :articles do
     get  :autocomplete, on: :collection

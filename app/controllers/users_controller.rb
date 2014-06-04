@@ -33,8 +33,26 @@ class UsersController < ApplicationController
     @articles  = Article.unscoped.in(id: activities.keys).decorate
   end
 
+  def change_password
+    change_password = ChangePassword.new(password_params)
+    if change_password.valid?
+      @current_user.password_confirmation = change_password.password_confirmation
+      @current_user.change_password!(change_password.password)
+
+      flash[:notice] = t('password.updated')
+    else
+      flash[:error]  = t('password.update_error')
+    end
+
+    redirect_to profile_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:email, :nickname, :password, :password_confirmation)
+    end
+
+    def password_params
+      params.permit(:password, :password_confirmation)
     end
 end
