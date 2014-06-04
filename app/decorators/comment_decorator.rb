@@ -5,6 +5,10 @@ class CommentDecorator < ApplicationDecorator
     object.user_fields["nickname"]
   end
 
+  def user_avatar
+    object.user_fields["avatar_url"]
+  end
+
   def article
     object.article_fields["title"]
   end

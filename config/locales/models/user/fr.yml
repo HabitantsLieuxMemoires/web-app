@@ -8,6 +8,7 @@ fr:
         nickname:               "Pseudo"
         password:               "Mot de passe"
         password_confirmation:  "Confirmez le mot de passe"
+        since:                  "Membre depuis"
     errors:
       models:
         user:

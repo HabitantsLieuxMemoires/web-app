@@ -13,6 +13,7 @@ Hlm::Application.routes.draw do
 
   resources :users,           only: [:new, :create, :show] do
     post :change_password,    on: :member
+    post :change_avatar,      on: :member
   end
 
   resources :articles do

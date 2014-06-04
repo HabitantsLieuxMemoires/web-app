@@ -30,7 +30,12 @@ class UsersController < ApplicationController
       .desc(:created_at)
       .group_by(&:trackable_id)
 
+    # Loading articles/comments for current user
+    articles_count = Article.where(author_id: @current_user.id).count
+    comments_count = Comment.where(user_id: @current_user.id).count
+
     @articles  = Article.unscoped.in(id: activities.keys).decorate
+    @profile   = { :articles => articles_count, :contributions => activities.count, :comments => comments_count }
   end
 
   def change_password
@@ -47,6 +52,17 @@ class UsersController < ApplicationController
     redirect_to profile_path
   end
 
+  def change_avatar
+    avatar = Avatar.new(avatar_params)
+    if avatar.valid? && @current_user.update_attribute(:avatar, avatar.avatar)
+      flash[:notice] = t('profile.avatar.changed')
+    else
+      flash[:error] = t('profile.avatar.change_error')
+    end
+
+    redirect_to profile_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:email, :nickname, :password, :password_confirmation)
@@ -54,5 +70,9 @@ class UsersController < ApplicationController
 
     def password_params
       params.permit(:password, :password_confirmation)
+    end
+
+    def avatar_params
+      params.permit(:avatar, :avatar_cache)
     end
 end

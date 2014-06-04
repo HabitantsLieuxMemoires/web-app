@@ -59,5 +59,5 @@ module Hlm
   end
 
   # Constants
-  ROLES = {:admin => 'admin', :user => 'user'}.freeze
+  ROLES = {:admin => 'admin', :moderator => 'moderator', :user => 'user'}.freeze
 end

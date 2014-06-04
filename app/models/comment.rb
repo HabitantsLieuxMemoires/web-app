@@ -14,7 +14,7 @@ class Comment
 
   # Denormalize user
   belongs_to  :user
-  alize       :user, :nickname
+  alize       :user, :nickname, :avatar_url
 
   validates :content, presence: true, length: { in: 4..1024 }
 end
