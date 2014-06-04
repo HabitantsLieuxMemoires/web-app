@@ -1,15 +1,20 @@
 Hlm::Application.routes.draw do
   root "home#index"
 
-  get "logout", to: "sessions#destroy",  as: "logout"
-  get "login",  to: "sessions#new",      as: "login"
-  get "signup", to: "users#new",         as: "signup"
+  get "logout",   to: "sessions#destroy",  as: "logout"
+  get "login",    to: "sessions#new",      as: "login"
+  get "signup",   to: "users#new",         as: "signup"
+  get "profile",  to: "users#show",        as: "profile"
 
   get "search", to: "search#index",      as: "search"
 
-  resources :users,           only: [:new, :create]
   resources :sessions,        only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  resources :users,           only: [:new, :create, :show] do
+    post :change_password,    on: :member
+    post :change_avatar,      on: :member
+  end
 
   resources :articles do
     get  :autocomplete, on: :collection

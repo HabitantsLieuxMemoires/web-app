@@ -15,6 +15,8 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
+      create_activity('article.create')
+
       redirect_to edit_article_path(@article.slug), notice: t('article.created')
     else
       render :new

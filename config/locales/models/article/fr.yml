@@ -19,6 +19,7 @@ fr:
         slug:           "Lien"
         author:         "Auteur"
         changes:        "Contributions"
+        status:         "Statut"
     errors:
       models:
         article:

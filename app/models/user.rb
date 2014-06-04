@@ -10,8 +10,9 @@ class User
   field :nickname,    type: String
   field :warn_count,  type: Integer, default: 0
 
-  has_many :articles
+  mount_uploader :avatar, AvatarUploader
 
+  has_many :articles
   has_many :reports
   has_many :comments
 

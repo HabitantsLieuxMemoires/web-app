@@ -1,0 +1,41 @@
+<div id="modal-change-avatar" class="modal" aria-labelledby="modal-change-avatar-label" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="modal-change-avatar-label">
+          <%= fa_icon "picture-o" %>
+          <%= t('profile.avatar.title.change') %>
+        </h4>
+      </div>
+        <%= bootstrap_form_tag url: change_avatar_user_path(@current_user), method: :post,
+                               html: {:multipart => true},
+                               layout: :horizontal do |f| %>
+
+        <div class="modal-body">
+            <%= f.form_group do %>
+              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                <div class="form-control" data-trigger="fileinput">
+                  <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                  <span class="fileinput-filename"></span>
+                </div>
+                <span class="input-group-addon btn btn-default btn-file">
+                  <span class="fileinput-new"><%= t('profile.avatar.do.select') %></span>
+                  <span class="fileinput-exists"><%= t('profile.avatar.do.change') %></span>
+                  <input type="file" name="avatar">
+                </span>
+                <%= link_to t('profile.avatar.do.remove'), "#", class: "input-group-addon btn btn-default fileinput-exists", "data-dismiss" => "fileinput" %>
+              </div>
+
+              <%= f.hidden_field :avatar_cache %>
+            <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= f.primary t('profile.avatar.do.upload'), id: 'upload_image' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

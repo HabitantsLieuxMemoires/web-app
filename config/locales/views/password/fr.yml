@@ -4,5 +4,9 @@ fr:
     please_reset:             "Mot de passe oublié ? <small>demandez en un nouveau</small>"
     reset_instructions_sent:  "Les instructions de réinitialisation de votre mot de passe ont été envoyées par mail"
 
+    updated:                  "Mot de passe mis à jour avec succès"
+    update_error:             "Une erreur est survenue pendant la mise à jour de votre mot de passe"
+
   do:
-    reset:          "Réinitialiser"
+    reset:                    "Réinitialiser"
+    change_password:          "Changer le mot de passe"

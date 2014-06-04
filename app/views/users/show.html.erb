@@ -1,0 +1,20 @@
+<div id="profile-control">
+  <%= render 'actionbar' %>
+</div>
+
+<div id="profile-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title"><%= @current_user.nickname %></h4>
+    </div>
+    <div class="panel-body">
+      <div class="tab-content">
+        <%= render 'users/profile',   user: @current_user %>
+        <%= render 'users/security',  user: @current_user %>
+        <%= render 'users/activity',  user: @current_user %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'users/modals/change_avatar' %>
