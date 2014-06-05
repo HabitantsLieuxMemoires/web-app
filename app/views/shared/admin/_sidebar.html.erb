@@ -43,6 +43,12 @@
       <% end %>
     </li>
     <li>
+      <%= link_to admin_users_path do %>
+        <i class="fa fa-users"></i>
+        <span><%= t('nav.admin.users') %></span>
+      <% end %>
+    </li>
+    <li>
       <a href="#">
         <i class="fa fa-exchange"></i>
         <span><%= t('nav.admin.import_export') %></span>

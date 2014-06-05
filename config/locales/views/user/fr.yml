@@ -3,6 +3,11 @@ fr:
     warned: "Utilisateur averti avec succès"
     banned: "Utilisateur banni avec succès"
 
+    role:
+      user:       "Utilisateur"
+      moderator:  "Modérateur"
+      admin:      "Administrateur"
+
     do:
       warn: "Avertir"
       ban:  "Bannir"

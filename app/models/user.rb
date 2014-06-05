@@ -7,8 +7,13 @@ class User
 
   authenticates_with_sorcery!
 
-  field :nickname,    type: String
-  field :warn_count,  type: Integer, default: 0
+  paginates_per 25
+
+  field :nickname,      type: String
+
+  field :warn_count,    type: Integer, default: 0
+  field :article_count, type: Integer, default: 0
+  field :comment_count, type: Integer, default: 0
 
   mount_uploader :avatar, AvatarUploader
 

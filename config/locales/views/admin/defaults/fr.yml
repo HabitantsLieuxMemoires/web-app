@@ -5,6 +5,7 @@ fr:
       editorial:      "Gestion éditoriale"
       alert:          "Actualité"
       moderation:     "Modération"
+      users:          "Utilisateurs"
       import_export:  "Import / Export"
       updates:        "Dernières contributions"
       comments:       "Derniers commentaires"

@@ -44,7 +44,7 @@ Hlm::Application.routes.draw do
   namespace :admin do
     root to: "dashboard#index"
 
-    resources :users,     only: [] do
+    resources :users,     only: [:index] do
       get 'warn',           on: :member
       get 'ban',            on: :member
     end

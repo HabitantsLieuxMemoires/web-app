@@ -1,0 +1,5 @@
+fr:
+  admin:
+    users:
+      title:            "Gestion des utilisateurs"
+      title_extended:   "Gérez tous les utilisateurs de la plateforme"
