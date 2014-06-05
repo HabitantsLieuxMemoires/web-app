@@ -1,5 +1,4 @@
 class UserMailer < ActionMailer::Base
-  default from: "notifications@hlm.fr"
 
   def reset_password_email(user)
     @user = user

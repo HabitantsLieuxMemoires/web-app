@@ -1,5 +1,7 @@
 fr:
   password:
+    reset_welcome:            "Vous avez demandé à réinitialiser votre mot de passe. Veuillez remplir les champs suivants pour finaliser la procédure."
+
     forgot?:                  "Mot de passe oublié ?"
     please_reset:             "Mot de passe oublié ? <small>demandez en un nouveau</small>"
     reset_instructions_sent:  "Les instructions de réinitialisation de votre mot de passe ont été envoyées par mail"
