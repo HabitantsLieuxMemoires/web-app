@@ -80,4 +80,11 @@ Hlm::Application.routes.draw do
     resources :tracks,    only: [:show]
   end
 
+  # Development only routes
+  if Rails.env.development?
+
+    # Emails visualisation
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 end

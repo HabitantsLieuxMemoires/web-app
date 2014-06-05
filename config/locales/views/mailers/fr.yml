@@ -1,0 +1,8 @@
+fr:
+  user_mailer:
+    reset_password:
+      subject:        "Demande de réinitialisation de mot de passe"
+    warn:
+      subject:        "Avertissement pour contenu innaproprié"
+    ban:
+      subject:        "Bannissement pour contenu innaproprié"
