@@ -1,5 +1,7 @@
 class Admin::ReportsController < Admin::BaseController
-  before_action     :set_report, only: [:show, :treat, :changes]
+  skip_before_action  :require_admin_login
+  before_action       :require_moderator_login
+  before_action       :set_report, only: [:show, :treat, :changes]
 
   def index
     @reports = Report.desc(:created_at)
