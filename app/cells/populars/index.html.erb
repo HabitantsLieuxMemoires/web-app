@@ -10,7 +10,7 @@
       <div class="row">
         <% @populars.each do |p| %>
           <div class="col-md-4 popular">
-            <img class="img-rounded" alt="80x80" src="http://lorempixel.com/80/80/nature">
+            <img class="img-thumbnail article-popular-image" alt="80x80" src="<%= p.image %>">
             <%= link_to p.url, class: 'location', data: {
                 :latlng => p.location,
                 :title  => p.title,

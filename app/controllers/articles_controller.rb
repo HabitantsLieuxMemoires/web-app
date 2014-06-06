@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
       :id => a.slug,
       :title => a.title,
       :author => a.author,
-      :thumb => "http://lorempixel.com/30/30/nature",
+      :thumb => a.image,
       :summary => a.body(70),
       :full_url => a.url }
     }

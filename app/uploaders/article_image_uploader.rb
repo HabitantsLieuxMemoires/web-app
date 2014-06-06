@@ -13,6 +13,10 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [150, 150]
   end
 
+  def default_url
+    ActionController::Base.helpers.asset_path("article/default.png")
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list

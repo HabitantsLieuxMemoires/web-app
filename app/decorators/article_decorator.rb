@@ -91,6 +91,11 @@ class ArticleDecorator < ApplicationDecorator
     raw(object.body)
   end
 
+  def image
+    image = object.images.first
+    image.nil? ? ActionController::Base.helpers.asset_path("article/default.png") : image.article_image_url(:thumb)
+  end
+
   def featured_images
     images = object.images.take(4)
     images.collect { |img| featured_image('col-md-3 col-centered', img.article_image_url(:thumb)) }.join.html_safe
