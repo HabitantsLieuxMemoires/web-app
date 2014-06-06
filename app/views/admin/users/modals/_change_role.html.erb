@@ -1,0 +1,27 @@
+<div id="modal-change-role" class="modal" aria-labelledby="modal-change-role-label" aria-hidden="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="modal-change-role-label">
+          <%= fa_icon "unlock" %>
+          <%= t('admin.users.role.title.change') %>
+        </h4>
+      </div>
+        <%= bootstrap_form_tag url: change_role_admin_users_path, method: :post do |f| %>
+
+          <div class="modal-body">
+            <%= f.hidden_field :user_id %>
+            <%= f.select       :role, options_for_user_role, label: User.human_attribute_name(:role) %>
+          </div>
+
+          <div class="modal-footer">
+            <%= f.primary t('admin.users.role.do.change') %>
+          </div>
+
+        <% end %>
+
+    </div>
+  </div>
+</div>

@@ -3,3 +3,13 @@ fr:
     users:
       title:            "Gestion des utilisateurs"
       title_extended:   "Gérez tous les utilisateurs de la plateforme"
+
+      role:
+        changed:        "Rôle utilisateur mis à jour avec succès"
+        change_error:   "Une erreur est survenue pendant la mise à jour du rôle utilisateur"
+
+        title:
+          change:       "Changement du rôle utilisateur"
+
+        do:
+          change:       "Changer le rôle"

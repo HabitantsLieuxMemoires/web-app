@@ -5,4 +5,6 @@ window['admin/users#index'] = (data) ->
     # Loading associated user id
     user = $(this).data('user')
 
-    # Launching modal
+    # Updating modal field
+    $('#modal-change-role').find('#_user_id').val(user)
+

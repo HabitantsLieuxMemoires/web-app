@@ -1,4 +1,3 @@
-#TODO: Add error handling support
 class Admin::UsersController < Admin::BaseController
   before_action :set_user,    only: [:warn, :ban]
   before_action :set_article, only: [:warn, :ban]
@@ -23,6 +22,18 @@ class Admin::UsersController < Admin::BaseController
     UserMailer.ban_email(@user, @article).deliver
 
     redirect_to :back, notice: t('user.banned')
+  end
+
+  def change_role
+    user = User.find(params[:user_id])
+    role = Hlm::ROLES[params[:role].to_sym]
+
+    if user.update_attribute(:roles, [role])
+      redirect_to admin_users_path, notice: t('admin.users.role.changed')
+    else
+      flash[:error] = t('admin.users.role.change_error')
+      render :index
+    end
   end
 
   private

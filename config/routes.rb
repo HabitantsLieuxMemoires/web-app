@@ -45,8 +45,9 @@ Hlm::Application.routes.draw do
     root to: "dashboard#index"
 
     resources :users,     only: [:index] do
-      get 'warn',           on: :member
-      get 'ban',            on: :member
+      get   'warn',           on: :member
+      get   'ban',            on: :member
+      post  'change_role',    on: :collection
     end
 
     resources :articles,  only: [:index, :show, :destroy] do
