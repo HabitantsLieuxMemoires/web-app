@@ -11,7 +11,8 @@ class Article
       track_history on: [:title, :body], modifier_field: :author
 
       # Denormalize author fields
-      alize :author, :nickname
+      counter_cache :author
+      alize         :author, :nickname
     end
 
     module ClassMethods

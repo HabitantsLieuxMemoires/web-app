@@ -30,12 +30,12 @@ class UsersController < ApplicationController
       .desc(:created_at)
       .group_by(&:trackable_id)
 
-    # Loading articles/comments for current user
-    articles_count = Article.where(author_id: @current_user.id).count
-    comments_count = Comment.where(user_id: @current_user.id).count
-
     @articles  = Article.unscoped.in(id: activities.keys).decorate
-    @profile   = { :articles => articles_count, :contributions => activities.count, :comments => comments_count }
+    @profile   = {
+      :articles       => @current_user.article_count,
+      :contributions  => activities.count,
+      :comments       => @current_user.comment_count
+    }
   end
 
   def change_password

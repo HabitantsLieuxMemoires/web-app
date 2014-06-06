@@ -13,8 +13,9 @@ class Comment
   alize         :article, :title, :slug
 
   # Denormalize user
-  belongs_to  :user
-  alize       :user, :nickname, :avatar_url
+  belongs_to    :user
+  counter_cache :user
+  alize         :user, :nickname, :avatar_url
 
   validates :content, presence: true, length: { in: 4..1024 }
 end
