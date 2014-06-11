@@ -20,6 +20,8 @@
  *= require leaflet.markercluster.css
  *= require leaflet.markercluster.default.css
  *= require leaflet-search.css.erb
+ *= require bootstrap/bootstrap-validator
+ *= require rails_bootstrap_forms
  */
 
 @import 'bootstrap';

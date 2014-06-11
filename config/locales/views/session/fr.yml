@@ -1,0 +1,3 @@
+fr:
+  auth:
+    invalid_credentials: "Identifiant ou mot de passe incorrect."

@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/fnando/i18n-js.git
+  revision: 4b79c0e99505eda1b51597d7019b83e4b0f820b4
+  tag: v3.0.0.rc5
+  specs:
+    i18n-js (3.0.0.rc5)
+      i18n
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: aaa075e0c573bf88998f6c9d20d27bf59bcf47a2
   tag: v4.0.0.rc1
@@ -397,6 +405,7 @@ DEPENDENCIES
   fog (~> 1.22.1)
   font-awesome-rails (~> 4.1.0.0)
   glebtv-mongoid-rspec (~> 1.12.0)
+  i18n-js!
   ionicons-rails (~> 1.4.1.0)
   jbuilder (~> 2.0.7)
   jquery-rails (~> 3.1.0)

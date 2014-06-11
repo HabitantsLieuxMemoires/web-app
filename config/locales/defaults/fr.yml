@@ -4,9 +4,11 @@ fr:
   actions:      "Actions disponibles"
   read_more:    "Lire plus"
 
-  form:
-    errors:
-      correct:  "Veuillez corriger les erreurs suivantes"
+  errors:
+    messages:
+      invalid_email:            "n'est pas une adresse mail valide"
+      invalid_uri:              "n'est pas une addresse web valide"
+      invalid_video_provider:   "n'est pas un fournisseur vidéo valide"
 
   do:
     cancel:     "Annuler"

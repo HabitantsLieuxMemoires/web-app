@@ -5,8 +5,8 @@ ruby '2.1.2'
 gem 'rails',                        "4.0.4"
 
 # Environment variables management (before any other gems)
-gem 'dotenv-rails',                 "~> 0.11.1", group: [:development, :test, :production]
 gem 'dotenv-deployment',            "~> 0.0.2"
+gem 'dotenv-rails',                 "~> 0.11.1", group: [:development, :test, :production]
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -66,6 +66,7 @@ gem 'nested_form',                  "~> 0.3.2"    # Nested forms
 gem 'fog',                          "~> 1.22.1"   # Amazon S3 (file storing)
 gem 'public_activity',              "~> 1.4.1"    # Public activity tracking
 gem 'mini_magick',                  "~> 3.7.0"    # Images manipulation
+gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc5"    # JS i18n
 
 # Deployment
 gem 'capistrano',                   "~> 3.2.1", require: false

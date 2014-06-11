@@ -1,24 +1,22 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h4 id="modal-add-image-label">
-    <%= fa_icon "picture-o" %>
-    <%= t('article.image.title.upload') %>
-  </h4>
-</div>
-  <%= bootstrap_form_for [@article, Image.new],
-                         url: {action: "create"},
-                         html: {:multipart => true},
-                         layout: :horizontal do |f| %>
+<%= bootstrap_form_for [@article, Image.new], url: {action: "create"}, html: {:multipart => true}, layout: :horizontal do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="modal-add-image-label">
+      <%= fa_icon "picture-o" %>
+      <%= t('article.image.title.upload') %>
+    </h4>
+  </div>
   <div class="modal-body">
-      <%= f.text_field :title %>
+    <%= f.text_field :title %>
 
-      <%= f.form_group do %>
-        <%= render partial: 'file_upload', locals: {f: f} %>
+    <%= f.form_group do %>
+      <%= render partial: 'file_upload', locals: {f: f} %>
 
-        <%= f.hidden_field :article_image_cache %>
-      <% end %>
+      <%= f.hidden_field :article_image_cache %>
+    <% end %>
   </div>
   <div class="modal-footer">
     <%= f.primary t('article.image.do.upload'), id: 'upload_image' %>
   </div>
 <% end %>
+

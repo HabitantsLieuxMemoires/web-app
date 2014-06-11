@@ -5,12 +5,16 @@
 #= require social
 #= require waypoints
 #= require waypoints-infinite
+#= require prettify
+#= require bootstrap/bootstrap-validator
 #= require shared/remote-tabs
 #= require shared/ekko-lightbox-loader
 #= require shared/modal-form-cleaner
+#= require shared/toggle-button
+#= require shared/article-summary
+#= require shared/bootstrap-video-validator
 #= require wysihtml5/wysihtml5-0.4.0pre
 #= require wysihtml5/wysihtml5.autoresize
-#= require prettify
 #= require wysihtml5/bootstrap3-wysihtml5
 #= require wysihtml5/locales/bootstrap-wysihtml5.fr-FR
 #= require editor/custom-wysihtml5-buttons
@@ -20,16 +24,34 @@
 
 window['articles#new'] = (data) ->
   UI.initTagsSelector($('#article_tags'))
+  UI.initThemeAndChronologySelects()
+  Form.initCreateForm()
 
 window['articles#edit'] = (data) ->
   UI.initTabs()
   UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
+  UI.initThemeAndChronologySelects()
+
+  Form.initEditForm()
+
+  # Binding validation on modals
+  $('#modal-add-image').on 'loaded.bs.modal', ->
+    Form.initAddImageForm()
+
+  $('#modal-add-video').on 'loaded.bs.modal', ->
+    Form.initAddVideoForm()
 
 window['articles#show'] = (data) ->
   UI.initTabs()
   UI.infineComments()
   UI.initMobileUI()
+
+  $('#modal-create-comment').on 'loaded.bs.modal', ->
+    Form.initAddCommentForm()
+
+  $('#modal-report-article').on 'loaded.bs.modal', ->
+    Form.initCreateReportForm()
 
 UI =
   initEditor: (@editor) ->
@@ -103,3 +125,102 @@ UI =
       more: '.more-comments-link'
       items: '.comment'
       loadingClass: 'comments-loader'
+
+  initThemeAndChronologySelects: ->
+    $('#article_theme_id').selectize()
+    $('#article_chronology_id').selectize()
+
+Form =
+  initCreateForm: ->
+    $('#new_article').bootstrapValidator
+      live: 'enabled'
+      feedbackIcons:
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      fields:
+        'article[title]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})
+
+  initEditForm: ->
+    $('.edit_article').bootstrapValidator
+      fields:
+        'article[title]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})
+
+  initAddImageForm: ->
+    $('#new_image').bootstrapValidator
+      live: 'enabled'
+      fields:
+        'image[title]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})
+        'image[article_image]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+
+  initAddVideoForm: ->
+    $("#new_video").bootstrapValidator
+      live: 'enabled'
+      feedbackIcons:
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      fields:
+        'video[title]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})
+        'video[url]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 16
+              message: I18n.t("errors.messages.too_short.other", {count: "16"})
+            uri:
+              message: I18n.t("errors.messages.invalid_uri")
+            videoProvider:
+              message: I18n.t("errors.messages.invalid_video_provider")
+
+  initAddCommentForm: ->
+    $('#new_comment').bootstrapValidator
+      live: 'enabled'
+      fields:
+        'comment[content]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})
+
+  initCreateReportForm: ->
+    $('#new_report').bootstrapValidator
+      live: 'enabled'
+      fields:
+        'report[description]':
+          validators:
+            notEmpty:
+              message: I18n.t("errors.messages.blank")
+            stringLength:
+              min: 4
+              message: I18n.t("errors.messages.too_short.other", {count: "4"})

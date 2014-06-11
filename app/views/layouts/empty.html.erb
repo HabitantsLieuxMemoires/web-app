@@ -6,6 +6,9 @@
       <meta charset="utf-8">
       <%= stylesheet_link_tag    "application", media: "all" %>
       <%= javascript_include_tag "application" %>
+
+      <%= render 'layouts/js_locales' %>
+
       <%= csrf_meta_tags %>
     </head>
     <body data-env="<%= Rails.env %>">

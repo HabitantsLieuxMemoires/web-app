@@ -7,12 +7,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    #TODO: Add support for banned users
-    #TODO: Add support for validation in associated view
     user = login(params[:identity], params[:password], params[:remember_me])
     if user
       redirect_to root_url
     else
+      flash[:error] = t('auth.invalid_credentials')
       render :new, layout: 'empty'
     end
   end

@@ -1,3 +1,6 @@
+#= require jquery.spin
+#= require ajaxspin
+
 $(document).ready ->
 	# Ajax Loader
 	$('.navbar').ajaxSpin

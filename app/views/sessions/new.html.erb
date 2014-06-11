@@ -4,8 +4,6 @@
     <h2><%= raw t('auth.please_login') %></h2>
     <hr>
 
-    <%= f.alert_message t('auth.invalid_credentials'), error_summary: false %>
-
     <%= f.text_field :identity,
                       hide_label: true,
                       placeholder: t('auth.identity'),

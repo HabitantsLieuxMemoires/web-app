@@ -13,4 +13,5 @@ class Image
 
   validates :title, presence: true, length: { in: 4..80 }
   validates :article_image, presence: true  #, file_size: { maximum: 0.5.megabytes.to_i }
+
 end
