@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
-    <head>
-      <title>Hlm</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta charset="utf-8">
-      <%= stylesheet_link_tag    "application", media: "all" %>
-      <%= javascript_include_tag "application" %>
+  <%= render 'layouts/head' %>
 
-      <%= render 'layouts/js_locales' %>
+  <body data-env="<%= Rails.env %>">
+    <%= render 'shared/header' %>
 
-      <%= csrf_meta_tags %>
-    </head>
-    <body data-env="<%= Rails.env %>">
-      <%= render 'shared/header' %>
-
-      <div class="container">
-        <hr>
-        <%= render 'shared/messages' %>
-        <div class="row">
-          <%= yield %>
-        </div>
+    <div class="container">
+      <hr>
+      <%= render 'shared/messages' %>
+      <div class="row">
+        <%= yield %>
       </div>
+    </div>
 
-      <%= render 'shared/footer' %>
+    <%= render 'shared/footer' %>
 
-      <%= javascript_pluggable_tag %>
-    </body>
+    <%= javascript_pluggable_tag %>
+  </body>
 </html>

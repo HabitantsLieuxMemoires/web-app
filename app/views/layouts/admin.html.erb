@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
     <head>
-      <title>Hlm</title>
+      <title>Habitants Lieux Mémoires :: Administration</title>
+
       <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
       <%= stylesheet_link_tag    "admin/admin", media: "all" %>
       <%= javascript_include_tag "admin/admin" %>
       <%= csrf_meta_tags %>
@@ -10,7 +14,7 @@
     <body class="skin-blue" data-env="<%= Rails.env %>">
 
       <header class="header">
-        <a href="#" class="logo">Hlm</a>
+        <a href="#" class="logo">Administration</a>
         <%= render 'shared/admin/navbar' %>
       </header>
 

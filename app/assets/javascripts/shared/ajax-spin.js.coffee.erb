@@ -1,0 +1,43 @@
+#= require jquery.spin
+#= require ajaxspin
+
+$(document).ready ->
+  # Ajax Loader
+  $('.navbar').ajaxSpin
+      spinjsOpts:
+        shadow: true
+        color: '#C0C0C0'
+
+  # Modal Form loader
+  $('[data-toggle="modal"]').each ->
+    target = $($(@).data('target'))
+    # Modal Loaded
+    target.on 'loaded.bs.modal', ->
+      checkValidationBeforeSubmit = (form, e) ->
+        # Cancelling submit if form is not valid
+        bootstrapValidator = $(form).data('bootstrapValidator')
+        if bootstrapValidator && !bootstrapValidator.isValid()
+          e.preventDefault()
+          return false
+
+        target.find('.loader').show()
+
+      # Prepending loader
+      loader = "<%= asset_path('ajax-loader.gif') %>"
+      target.find('.modal-footer').prepend '<img class="loader" src="' + loader + '">'
+
+      # Submit
+      target.find('form').on
+        'submit': (e) ->
+          return checkValidationBeforeSubmit(this, e)
+
+        'ajax:before': (e) ->
+          return checkValidationBeforeSubmit(this, e)
+
+    # Modal Hide
+    target.on 'hidden.bs.modal', ->
+      target.find('.loader').hide()
+    # Modal Open
+    target.on 'show.bs.modal', ->
+      # Enable submit button
+      target.find('[type=submit]').prop 'disabled', false
