@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
     @user = User.new
@@ -17,24 +17,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    # Loading activities for current user
-    activities = PublicActivity::Activity
-      .where(author: @current_user.nickname)
-      .in(key: [
-        'article.create',
-        'article.update',
-        'article.add_image',
-        'article.remove_image',
-        'article.add_video',
-        'article.remove_video'])
-      .desc(:created_at)
-      .group_by(&:trackable_id)
+    @user, @edit = !params[:id].nil? ? [User.find(params[:id]), false] : [current_user, true]
+
+    activities = activities_for_user(@user).desc(:created_at).group_by(&:trackable_id)
 
     @articles  = Article.unscoped.in(id: activities.keys).decorate
     @profile   = {
-      :articles       => @current_user.article_count,
+      :articles       => @user.article_count,
       :contributions  => activities.count,
-      :comments       => @current_user.comment_count
+      :comments       => @user.comment_count
     }
   end
 
@@ -74,5 +65,18 @@ class UsersController < ApplicationController
 
     def avatar_params
       params.permit(:avatar, :avatar_cache)
+    end
+
+    def activities_for_user(user)
+      PublicActivity::Activity
+      .where(author: user.nickname)
+      .in(key: [
+        'article.create',
+        'article.update',
+        'article.add_image',
+        'article.remove_image',
+        'article.add_video',
+        'article.remove_video']
+      )
     end
 end

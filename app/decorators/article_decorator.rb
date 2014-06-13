@@ -1,5 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :location, :comment_count, :share_count, :images, :videos
+  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos
 
   decorates_association :history_tracks
   decorates_association :links
@@ -75,10 +75,10 @@ class ArticleDecorator < ApplicationDecorator
   def summary
     heads = Nokogiri::HTML(object.body).css('h1, h2, h3, h4, h5, h6').sort()
     h.content_tag(:ol) do
-      heads.collect do |head|
-        link = '<a href="#'+head+'" data-level="'+head.name[1]+'">'+head.text+'</a>'
-        concat(content_tag(:li, raw(link)))
-      end
+      heads.reject { |h| h.text.empty? }.collect do |head|
+        link = '<a href="%s" data-level="%s">%s</a>' % [head, head.name[1], head.text]
+        h.content_tag(:li, raw(link))
+      end.join.html_safe
     end unless heads.empty?
   end
 

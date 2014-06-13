@@ -44,10 +44,11 @@ class VideosController < ApplicationController
   end
 
   def create_activity(video, key)
-    @article.create_activity key:     key,
-                             author:  current_user.nickname,
-                             title:   @article.title,
-                             url:     video.url
+    @article.create_activity key:       key,
+                             author_id: current_user.id,
+                             author:    current_user.nickname,
+                             title:     @article.title,
+                             url:       video.url
   end
 
 end

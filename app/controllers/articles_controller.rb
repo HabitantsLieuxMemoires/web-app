@@ -37,7 +37,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = @article.decorate
+    @article       = @article.decorate
+    @contributors  = get_contributors(@article)
   end
 
   #TODO: Externalize autocomplete and search in own concern
@@ -105,9 +106,25 @@ class ArticlesController < ApplicationController
   end
 
   def create_activity(key)
-    @article.create_activity key:     key,
-                             author:  current_user.nickname,
-                             title:   @article.title
+    @article.create_activity key:       key,
+                             author_id: current_user.id,
+                             author:    current_user.nickname,
+                             title:     @article.title
+  end
+
+  def get_contributors(article)
+    # Loading article activities
+    activities = PublicActivity::Activity.where(trackable_id: article.id)
+
+    # Mapping for display
+    activities
+      .map{|a| create_contributor(a.author_id, a.author)}
+      .push(create_contributor(article.author_id, article.author))
+      .uniq
+  end
+
+  def create_contributor(id, nickname)
+    OpenStruct.new(:id => id, :nickname => nickname)
   end
 
 end

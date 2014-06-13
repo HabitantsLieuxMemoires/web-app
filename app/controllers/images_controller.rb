@@ -48,10 +48,11 @@ class ImagesController < ApplicationController
   end
 
   def create_activity(image, key)
-    @article.create_activity key:     key,
-                             author:  current_user.nickname,
-                             title:   @article.title,
-                             url:     image.article_image_url(:thumb)
+    @article.create_activity key:       key,
+                             author_id: current_user.id,
+                             author:    current_user.nickname,
+                             title:     @article.title,
+                             url:       image.article_image_url(:thumb)
   end
 
 end

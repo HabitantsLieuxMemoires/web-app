@@ -13,9 +13,9 @@ fr:
       ban:  "Bannir"
 
   profile:
-    content:    "Mon profil"
-    security:   "Ma sécurité"
-    activity:   "Mon activité"
+    content:    "Profil"
+    security:   "Sécurité"
+    activity:   "Activité"
 
     manage_content:    "Gérez votre identité sur la plateforme"
     manage_password:   "Gérez votre mot de passe"

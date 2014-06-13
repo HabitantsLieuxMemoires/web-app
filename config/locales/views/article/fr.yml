@@ -13,6 +13,7 @@ fr:
     private:        "Privé"
     summary:        "Sommaire"
     external_links: "Liens externes"
+    contributors:   "Contributeurs"
 
     published:      "Publié"
     unpublished:    "En attente"

@@ -7,12 +7,14 @@
         <p><%= t('profile.content') %></p>
       </a>
     </div>
-    <div class="nav-col col-md-4 col-xs-3">
-      <a href="#security" data-toggle="tab">
-        <span class="glyphicon glyphicon-lock"></span>
-        <p><%= t('profile.security') %></p>
-      </a>
-    </div>
+    <% if edit %>
+      <div class="nav-col col-md-4 col-xs-3">
+        <a href="#security" data-toggle="tab">
+          <span class="glyphicon glyphicon-lock"></span>
+          <p><%= t('profile.security') %></p>
+        </a>
+      </div>
+    <% end %>
     <div class="nav-col col-md-4 col-xs-3">
       <a href="#activity" data-toggle="tab">
         <span class="glyphicon glyphicon-tasks"></span>

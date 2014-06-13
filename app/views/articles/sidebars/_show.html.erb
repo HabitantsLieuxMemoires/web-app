@@ -22,7 +22,7 @@
   </div>
 <% end %>
 
-<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8" do |f| %>
+<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>
 <div id="article-info" class="hidden-xs hidden-sm">
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
@@ -63,6 +63,22 @@
       <%= f.static_control nil, label: Article.human_attribute_name(:location) do %>
         <span id="article-location" class="location" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.display_location %></span>
       <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-default" id="article-contributors">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <%= fa_icon "users" %>
+        <%= t('article.contributors') %>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% @contributors.each do |c| %>
+          <li><%= link_to c.nickname, user_path(c.id) %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 

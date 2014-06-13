@@ -1,5 +1,5 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :id, :content
+  delegate :id, :content, :user_id
 
   def user
     object.user_fields["nickname"]

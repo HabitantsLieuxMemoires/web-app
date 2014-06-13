@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps::Created
   include Mongoid::Alize
+  include Mongoid::Slug
 
   include Roleable
 
@@ -10,6 +11,7 @@ class User
   paginates_per 25
 
   field :nickname,      type: String
+  slug  :nickname
 
   field :warn_count,    type: Integer, default: 0
   field :article_count, type: Integer, default: 0

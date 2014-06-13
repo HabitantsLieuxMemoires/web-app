@@ -9,7 +9,7 @@
           <%= t('profile.avatar.title.change') %>
         </h4>
       </div>
-        <%= bootstrap_form_tag url: change_avatar_user_path(@current_user), method: :post,
+        <%= bootstrap_form_tag url: change_avatar_user_path(user), method: :post,
                                html: {:multipart => true},
                                layout: :horizontal do |f| %>
 
