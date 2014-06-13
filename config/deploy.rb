@@ -6,7 +6,7 @@ set :stages, ['staging', 'production']
 
 # Repository
 set :scm, :git
-set :repo_url, 'git@bitbucket.org:innovantic/hlm.git'
+set :repo_url, 'git@github.com:HabitantsLieuxMemoires/web-app.git'
 
 set :deploy_to, '/home/hlm/app'
 
