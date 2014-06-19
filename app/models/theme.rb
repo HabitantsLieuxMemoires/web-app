@@ -12,5 +12,5 @@ class Theme
 
   validates :title, presence: true, uniqueness: true, length: { in: 6..50 }
 
-  scope :by_articles_count, -> { desc(:article_count).limit(5) }
+  scope :by_articles_count, -> { desc(:article_count).limit(20) }
 end

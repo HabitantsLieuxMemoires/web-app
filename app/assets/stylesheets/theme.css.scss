@@ -11,6 +11,18 @@
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
+@mixin box-shadow($shadowSettings) {
+  -webkit-box-shadow: $shadowSettings;
+  -moz-box-shadow: $shadowSettings;
+  box-shadow: $shadowSettings;
+
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -kthtml-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
 
 .vertical-center {
     display: inline-block;
@@ -47,12 +59,24 @@
 
 .business-header {
   height: 240px;
-  background: url(http://placehold.it/1920x240) center center no-repeat;
-  background-size: cover;
+}
+.slideshow {
+  border-top: 9px solid #2b2b2b;
+  border-bottom: 9px solid #00993c;
+  background-color:#262626;
+  height:123px;
 }
 
 #sidebar-actions {
   position: relative;
+}
+
+.searchbox {
+  height:195px;
+  width:278px;
+  top:-90px;
+  background-color:white;
+  padding:15px 5px 0px 5px;
 }
 
 .business-header .heightToggle {
@@ -75,14 +99,6 @@ html.touch .heightToggle
 
 .popular {
   text-align: center;
-}
-
-#footer {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-top: 50px;
-  height: 180px;
-  background-color: #F8F8F8;
 }
 
 .leaflet-center {
@@ -155,4 +171,271 @@ html.touch .heightToggle
   .business-header {
     z-index: 99999;
   }
+}
+
+/**********/
+/* DESIGN */
+/**********/
+/* Default font */
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+/* Title Font */
+@font-face {
+    font-family: 'freeroadregular';
+    src: url('fonts/freeroad-webfont.eot');
+    src: url('fonts/freeroad-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freeroad-webfont.woff') format('woff'),
+         url('fonts/freeroad-webfont.ttf') format('truetype'),
+         url('fonts/freeroad-webfont.svg#freeroadregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  font-family:"Droid Sans",Tahoma;
+}
+
+/* Left bar */
+.panel-title {
+  font-size:14px;
+  font-weight:bold;
+  color:#777777;
+}
+
+/* Top Buttons */
+.navbar-nav>li {
+  background-color: #2b2b2b;
+  height: 36px;
+  margin-left:10px;
+  @include rounded-corners(10px);
+}
+.navbar-nav>li:hover {
+  @include box-shadow(black 2px 2px 5px);
+}
+.navbar-nav>li>a {
+  padding-top:10px;
+  color:#fff !important;
+  font-size: 12px;
+  font-weight: bold;
+}
+.navbar-brand {
+  float:right;
+}
+.navbar-title {
+  width:870px;
+  font-size:54px;
+  font-family: "freeroadregular","Droid Sans",Tahoma;
+  text-transform: uppercase;
+  color:#777;
+}
+.navbar-subtitle {
+  color:#bfbfbf;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 50px;
+  width: 755px;
+  text-transform: uppercase;
+}
+.navbar-subtitle strong {
+  color:#777;
+}
+
+footer {
+  background-color:#ededed;
+  color:#777;
+}
+footer,footer a {
+  color:#777;
+}
+footer.footer-nav {
+  font-size:13px;
+  height: 74px;
+  padding-top: 20px;
+  background-color: #f6f6f6;
+}
+footer.footer-nav .list-inline {
+   padding-top:15px;
+}
+footer.footer-nav img {
+  margin:0px 0px 15px 15px;
+}
+footer.footer-legals {
+  text-align: right;
+  font-size:12px;
+  height: 72px;
+  padding-top: 30px;
+}
+footer.footer-legals a {
+  font-weight:700;
+}
+footer.footer-nav .pull-right
+{
+  font-size:11px;
+  color:#b7b7b7;
+}
+footer.footer-nav .pull-right a
+{
+  color:#b7b7b7;
+}
+footer .license {
+  font-size:9px;
+  display:block;
+}
+
+#search-column .panel-heading {
+  background-repeat: no-repeat;
+  background-position: 25px;
+  padding-left: 70px;
+  height: 70px;
+}
+#search-column .panel-heading h4 {
+  padding-top: 20px;
+  letter-spacing: 1px;
+}
+#search-column .panel, #search-column .panel-heading, #search-column .list-group-item {
+  border:none;
+  background-color:transparent;
+}
+#search-column .list-group {
+  background-color: #f6f6f6;
+  font-size:15px;
+}
+#search-column .list-group-item .badge {
+  width: 44px;
+  height: 29px;
+  background-color: white;
+  color: #777;
+  padding-top: 10px;
+  letter-spacing: 1px;
+}
+#sidebar-themes .panel-heading {
+  background-image: url('/assets/navIconThemes.png');
+}
+
+#sidebar-chronologies .panel-heading {
+  background-image: url('/assets/navIconTimes.png');
+}
+
+#sidebar-news .panel-heading {
+  background-image: url('/assets/navIconNews.png');
+}
+
+
+#search-column .list-group-item {
+  height:40px;
+  margin-left:-25px;
+}
+#search-column .list-group-item:hover {
+  margin-left:-15px;
+
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -kthtml-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#search-column .list-group-item>div {
+  height: 29px;
+  background-repeat: no-repeat;
+  float: left;
+  padding-left: 70px;
+
+  line-height: 15px;
+  width: 180px;
+
+  position: absolute; 
+  display: table;
+}
+#search-column .list-group-item>div>p {
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: left;
+}
+#search-column .badge {
+  color: #aeaeae;
+  font-weight: normal;
+  font-size:10px;
+} 
+
+#sidebar-themes .list-group-item>div {
+  background-image: url('/assets/themesIcons.png');
+}
+.theme-patrimoine {
+  background-position: -5px -6px;
+}
+.theme-personnalites {
+  background-position: -5px -44px;
+}
+.theme-habitants {
+  background-position: -5px -81px;
+}
+.theme-lieux {
+  background-position: -5px -118px;
+}
+.theme-economie-slash-industrie {
+  background-position: -5px -154px;
+}
+.theme-nature {
+  background-position: -5px -190px;
+}
+.theme-sports {
+  background-position: -5px -228px;
+}
+.theme-culture {
+  background-position: -5px -265px;
+}
+.theme-histoire {
+  background-position: -5px -302px;
+}
+.theme-ville,.theme-actualite {
+  background-position: -5px -338px;
+}
+.theme-rive-droite,.theme-multimedia {
+  background-position: -5px -375px;
+}
+
+#sidebar-news .list-group-item>div {
+  width:100%;
+  font-size:11px;
+  text-align: justify;
+  line-height:12px;
+}
+#sidebar-news .list-group-item>div {
+  background-image: url('/assets/newsIcons.png');
+}
+.news-level0 {
+  background-position: -2px -2px;
+}
+.news-level1 {
+  background-position: -2px -40px;
+}
+.news-level2 {
+  background-position: -2px -77px;
+}
+.news-level3 {
+  background-position: -2px -114px;
+}
+.news-level4 {
+  background-position: -2px -150px;
+}
+
+
+#sidebar-chronologies .list-group-item>div {
+  background-image: url('/assets/timesIcons.png');
+}
+.chronology-level0 {
+  background-position: -1px -1px;
+}
+.chronology-level1 {
+  background-position: -1px -39px;
+}
+.chronology-level2 {
+  background-position: -1px -76px;
+}
+.chronology-level3 {
+  background-position: -1px -113px;
+}
+.chronology-level4 {
+  background-position: -1px -149px;
 }

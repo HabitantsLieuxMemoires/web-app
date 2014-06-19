@@ -20,7 +20,8 @@
               <%= link_to f.url, class: 'location', data: {
                   :latlng => f.location,
                   :title  => f.title,
-                  :uri    => f.url
+                  :uri    => f.url,
+                  :theme  => f.theme.downcase
                 } do %>
                 <h5><%= f.title %></h5>
               <% end %>

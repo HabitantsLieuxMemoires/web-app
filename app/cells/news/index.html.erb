@@ -1,18 +1,20 @@
 <div class="panel panel-default" id="sidebar-news">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <%= fa_icon "bolt" %>
       <%= t('cells.news.title') %>
     </h4>
   </div>
   <div class="list-group">
-    <% @news.each do |n| %>
+    <% @news.each_with_index do |n, index| %>
       <%= link_to n.url, class: 'new list-group-item location', data: {
           :latlng => n.location,
           :title  => n.title,
-          :uri    => n.url
+          :uri    => n.url,
+          :theme  => n.theme.downcase
         } do %>
-        <%= n.title %>
+        <div class="news-level<%= index %>">
+          <p><%= n.body(70) %></p>
+        </div>
 
         <% unless n.location.blank? %>
           <span class="pull-right">

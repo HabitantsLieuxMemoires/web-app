@@ -1,21 +1,40 @@
-<footer id="footer">
+<footer id="footer" class="footer-nav">
+
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="#" class="pull-right">Habitants Lieux Mémoires by GIP GPV</a>
-        <ul class="list-inline">
-          <li><a href="#">GitHub Project</a></li>
-          <li><%= link_to "Conditions d'utilisation", page_path('cgu') %></li>
-        </ul>
-      </div>
-    </div>
 
     <div class="row">
       <div class="col-sm-12">
         <div class="pull-right">
-          Apache 2.0 Licence - Powered by <a href="http://www.innovantic.fr">Innovantic</a>
+          <a href="#">Mentions légales</a> /
+          <a href="#">Charte</a> /
+          <a href="#">CGU</a> /
+          <a href="#">Plan du site</a> /
+          <a href="#">Contacts</a>
+          <img src="/assets/twitter.png">
+          <img src="/assets/facebook.png">
+        </div>
+        <ul class="list-inline">
+          <li><strong>Habitants Lieux Mémoires</strong> / Projet du Groupement d’Interêt Public : Grand Projet des Villes / Lormont, Bassens, Cenon & Floirac
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<footer id="footer" class="footer-legals">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <a href="#">GitHub Project</a> : <%= link_to "Conditions d'utilisation", page_path('cgu') %>
+          <span class="license">Apache 2.0 Licence - Powered by <a href="http://www.innovantic.fr">Innovantic</a></span>
         </div>
       </div>
     </div>
+
   </div>
 </footer>

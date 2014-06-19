@@ -6,18 +6,23 @@ mapSettings =
   maxBounds:
     southWest: [44.80254, -0.6439],
     northEast: [44.87327, -0.42984]
-  osmProviders:{
-    osm:{
+  osmProviders:
+    osm:
       url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    },
   # For testing purposes only
   # Mapbox is not free and limited to 3 000view/month (1 view = 15 tiles)
-    mapbox:{
+    mapbox:
       url:'https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    }
-  }
+  icons: (theme) ->
+    L.icon(
+      iconUrl: '/assets/map_icons/'+theme+'.png'
+
+      iconSize:     [35, 50], # size of the icon
+      iconAnchor:   [17, 48], # point of the icon which will correspond to marker's location
+      popupAnchor:  [-3, -76] # point from which the popup should open relative to the iconAnchor
+    )
 
 window.mapController =
   currentMarker:null,
@@ -264,6 +269,7 @@ window.mapController =
     debug markers.length + " markers found"
     markers.each ->
       dataLocation = $(this).data("latlng")
+      dataTheme = $(this).data("theme")
       if dataLocation
         latlng = dataLocation.split ', '
         mapController.addMarker
@@ -271,6 +277,7 @@ window.mapController =
           longitude: latlng[1]
           text: $(this).data "title"
           uri: $(this).data "uri"
+          theme: dataTheme
 
   # Erase all markers
   deleteMarkers: ->
@@ -291,7 +298,8 @@ window.mapController =
   addMarker: (data) ->
     text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
     mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
-      draggable:mapController.isEditing()
+      draggable:mapController.isEditing(),
+      icon: mapSettings.icons data.theme 
     ).bindPopup(text))
     mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
       padding: [70,70]
