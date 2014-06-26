@@ -7,7 +7,7 @@
   <div class="list-group">
     <% @chronologies.each_with_index do |c, index| %>
       <%= link_to chronology_path(c.slug), class: 'chronology list-group-item' do %>
-        <div class="chronology-level<%= index %>">
+        <div class="level<%= index %>">
           <p><%= c.title %></p>
         </div>
         <span class="badge"><%= c.article_count %></span>

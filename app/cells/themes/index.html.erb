@@ -7,7 +7,7 @@
   <div class="list-group">
     <% @themes.each do |t| %>
       <%= link_to theme_path(t.slug), class: 'theme list-group-item' do %>
-        <div class="theme-<%= t.slug %>">
+        <div class="<%= t.slug %>">
           <p><%= t.title %></p>
         </div>
         <span class="badge"><%= t.article_count %></span>

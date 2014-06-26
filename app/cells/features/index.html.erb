@@ -1,7 +1,6 @@
 <div class="panel panel-default" id="main-featured">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= fa_icon "star" %>
       <%= t('cells.featured.title') %>
     </h3>
   </div>
@@ -13,20 +12,34 @@
       <ul class="media-list">
         <% @feature.articles.each do |f| %>
           <li class="media feature">
-            <a class="pull-right" href="#">
-              <img class="media-object img-thumbnail article-featured-image" src="<%= f.image %>" alt="64x64">
-            </a>
-            <div class="media-body">
+            <img class="author" src="http://lorempixel.com/53/53/people/?<%= f.url %>">
+            <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+            <div class="title color<%= rand(1..5) %>">
               <%= link_to f.url, class: 'location', data: {
                   :latlng => f.location,
                   :title  => f.title,
                   :uri    => f.url,
                   :theme  => f.theme.downcase
                 } do %>
-                <h5><%= f.title %></h5>
+                <%= f.title %>
               <% end %>
-              <%= f.body(140) %>
+              <div>
+
+              Par <span class="author">Laurence</span>
+              <!-- In case of multiple author, add authorSeparator.png between
+              each span.author -->
+              </div>
             </div>
+
+            <a class="pull-left thumbnail" href="#">
+              <img class="media-object img-thumbnail article-featured-image" src="<%= f.image %>" alt="64x64">
+            </a>
+            <div class="media-body">
+              <%= f.body(350) %>
+            </div>
+            <div class="shareAndComments">
+              <div class="share"><span>15</span></div>
+              <div class="comments"><span>48</span></div>
           </li>
         <% end %>
       </ul>

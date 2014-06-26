@@ -32,7 +32,7 @@ fr:
     remove_error:   "Une erreur est survenue pendant la suppression du contenu"
 
     do:
-      create:       "Créer un contenu"
+      create:       "Je publie mon article"
       publish:      "Publier le contenu"
       update:       "Modifier le contenu"
       report:       "Signaler le contenu"

@@ -22,5 +22,6 @@
 //= require shared/ajax-spin
 //= require i18n
 //= require i18n/translations
+//= require jquery.simplyscroll.min.js
 //= require_directory
 

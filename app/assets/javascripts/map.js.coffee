@@ -38,7 +38,7 @@ window.mapController =
         # Berk!
         # @todo find a better fix
         cb = ->
-          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 13)
         setTimeout cb, 2000
       # Unbind after 1st localization
       # mapController.mapInstance.off 'viewreset', mapController.locate
