@@ -1,31 +1,41 @@
 <div class="panel panel-default" id="main-popular">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= fa_icon "share-square-o" %>
       <%= t('cells.popular.title') %>
     </h3>
   </div>
   <div class="panel-body">
     <% if @populars.any? %>
-      <div class="row">
+      <ul class="media-list">
         <% @populars.each do |p| %>
-          <div class="col-md-4 popular">
-            <img class="img-thumbnail article-popular-image" alt="80x80" src="<%= p.image %>">
-            <%= link_to p.url, class: 'location', data: {
-                :latlng => p.location,
-                :title  => p.title,
-                :uri    => p.url,
-                :theme  => p.theme.downcase
-              } do %>
-              <h5><%= p.title %></h5>
-            <% end %>
-            <p><%= p.body(120) %></p>
-          </div>
+          <li class="media popular">
+            <img class="author" src="http://lorempixel.com/53/53/people/?<%= p.url %>">
+            <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+            <div class="title color<%= rand(1..5) %>">
+              <%= link_to p.url, class: 'location', data: {
+                  :latlng => p.location,
+                  :title  => p.title,
+                  :uri    => p.url,
+                  :theme  => p.theme.downcase
+                } do %>
+                <%= p.title %>
+              <% end %>
+              <div>
+
+              Par <span class="author">Laurence</span>
+              <!-- In case of multiple author, add authorSeparator.png between
+              each span.author -->
+              </div>
+            </div>
+            
+            <div class="shareAndComments">
+              <div class="share"><span>7</span></div>
+              <div class="comments"><span>3</span></div>
+          </li>
         <% end %>
-      </div>
+      </ul>
     <% else %>
-      <p class="bg-info"><%= t('article.popular.none') %></p>
+      <p class="bg-info"><%= t('admin.editorial.feature.none') %></p>
     <% end %>
   </div>
-
 </div>

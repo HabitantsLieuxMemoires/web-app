@@ -82,6 +82,7 @@
   }
 }
 
+
 /** Header - Mobile */
 html.touch .heightToggle
 {
@@ -91,11 +92,8 @@ html.touch .heightToggle
   right:20px;
 }
 
-.popular {
-  text-align: center;
-}
 
-
+/** Misc **/
 .bg-info {
   padding: 15px;
 }
@@ -123,7 +121,7 @@ html.touch .heightToggle
 }
 
 .leaflet-control-position-picker>span, .leaflet-control-position-picker>button {
-  border-radius: 7px;
+  @include rounded-corners(7px);
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
   padding: 5px;
   height: auto;
@@ -565,8 +563,8 @@ fieldset[disabled] .btn-article-create.active {
 
 
 
-/** Featured **/
-#main-featured {
+/** Featured/Popular **/
+#main-featured, #main-popular {
   border:none;
 
   .panel-heading {
@@ -589,6 +587,7 @@ fieldset[disabled] .btn-article-create.active {
 
     a {
       display:block;
+      color:#666666;
 
       &:hover {
         text-decoration: none;
@@ -625,15 +624,19 @@ fieldset[disabled] .btn-article-create.active {
     }
   }
 
+  li.media:hover>img.author {
+    @include box-shadow(#C0C0C0 2px 2px 2px);
+  }
+
   img.author {
     float: left;
     margin: 0 20px 10px 0px;
-    border-radius: 50px;
+    @include rounded-corners(50px);
   }
 
   img.themeIco {
     float:right;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   a.thumbnail {
@@ -664,6 +667,10 @@ fieldset[disabled] .btn-article-create.active {
       border: 1px solid #f6f6f6;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      -moz-border-top-right-radius: 5px;
+      -moz-border-top-right-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
       margin-left:15px;
       float:left;
 
@@ -687,20 +694,7 @@ fieldset[disabled] .btn-article-create.active {
     }
   }
 }
-
-
-/** Popular **/
-#main-popular {
-  border:none;
-
-  .panel-heading {
-    border:none;
-    background-color: #f6f6f6;
-  }
-
-  .panel-title {
-    color:#777777;
-    font-weight: 700;
-    font-size:15px;
-  }
+#main-popular .shareAndComments 
+{
+  margin-left:55px;
 }
