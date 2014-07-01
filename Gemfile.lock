@@ -8,12 +8,12 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: aaa075e0c573bf88998f6c9d20d27bf59bcf47a2
-  tag: v4.0.0.rc1
+  revision: 124c600930fd05dc75e5ef4a77a4b5ae12e64825
+  tag: v4.0.0.rc2
   specs:
-    mongoid (4.0.0.rc1)
-      activemodel (~> 4.0.0)
-      moped (~> 2.0.0.rc1)
+    mongoid (4.0.0.rc2)
+      activemodel (~> 4.0)
+      moped (~> 2.0.0.rc2)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
@@ -181,6 +181,7 @@ GEM
       rake
       rspec (>= 2.14)
     hashie (2.1.1)
+    high_voltage (2.2.0)
     hike (1.2.3)
     htmlentities (4.3.1)
     i18n (0.6.9)
@@ -237,7 +238,7 @@ GEM
     mongoid_taggable (1.1.1)
       mongoid (>= 3)
       rake
-    moped (2.0.0.rc1)
+    moped (2.0.0)
       bson (~> 2.2)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
@@ -405,6 +406,7 @@ DEPENDENCIES
   fog (~> 1.22.1)
   font-awesome-rails (~> 4.1.0.0)
   glebtv-mongoid-rspec (~> 1.12.0)
+  high_voltage (~> 2.2.0)
   i18n-js!
   ionicons-rails (~> 1.4.1.0)
   jbuilder (~> 2.0.7)

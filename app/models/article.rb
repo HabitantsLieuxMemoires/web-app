@@ -26,14 +26,12 @@ class Article
   # Theme
   belongs_to    :theme, dependent: :nullify
   alize         :theme, :title
-  counter_cache :theme, :if        => Proc.new { |article| article.published },
-                        :if_update => Proc.new { |article| article.published_changed? }
+  counter_cache :theme
 
   # Chronology
   belongs_to    :chronology, dependent: :nullify
   alize         :chronology, :title
-  counter_cache :chronology, :if        => Proc.new { |article| article.published },
-                             :if_update => Proc.new { |article| article.published_changed? }
+  counter_cache :chronology
 
   # Feature (optional)
   belongs_to :feature

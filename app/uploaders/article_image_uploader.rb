@@ -8,13 +8,14 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fit: [150, 150]
-  end
-
   def default_url
     ActionController::Base.helpers.asset_path("article/default.png")
+  end
+
+  process :resize_to_fit => [800, 800]
+
+  version :thumb do
+    process resize_to_fit: [150, 150]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

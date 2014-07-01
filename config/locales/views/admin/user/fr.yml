@@ -3,6 +3,7 @@ fr:
     users:
       title:            "Gestion des utilisateurs"
       title_extended:   "Gérez tous les utilisateurs de la plateforme"
+      list:             "Liste des utilisateurs"
 
       role:
         changed:        "Rôle utilisateur mis à jour avec succès"

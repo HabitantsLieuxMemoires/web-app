@@ -84,7 +84,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def body(truncate = nil)
     body = strip_tags(object.body)
-    body.truncate(truncate) unless truncate.nil?
+    body.truncate(truncate).html_safe unless truncate.nil?
   end
 
   def full_body

@@ -13,7 +13,9 @@
 
 #article-details {
   .tag {
-    margin-left: 10px;
+    margin-left: 5px;
+    float: left;
+    margin-top: 5px;
   }
 }
 
@@ -31,11 +33,6 @@
 
 .comment-avatar {
   max-width: 50px;
-}
-
-.tag {
-  float: left;
-  margin-top: 5px;
 }
 
 @media (max-width: 767px) {

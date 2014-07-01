@@ -1,5 +1,3 @@
-require 'pp'
-
 class ArticlesController < ApplicationController
   include ActionView::Helpers::TextHelper
   skip_before_action   :require_login,              only: [:show, :autocomplete, :search, :share]
@@ -56,8 +54,6 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    pp params
-
     articles = Article.search(
       params[:query],
       fields: [{title: :word_start}],
@@ -86,6 +82,12 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.json { render json: @article.share_count }
     end
+  end
+
+  def tags
+    tags = Article.tags
+
+     render json: tags
   end
 
   private
@@ -119,8 +121,7 @@ class ArticlesController < ApplicationController
     # Mapping for display
     activities
       .map{|a| create_contributor(a.author_id, a.author)}
-      .push(create_contributor(article.author_id, article.author))
-      .uniq
+      .uniq{|a| a.id}
   end
 
   def create_contributor(id, nickname)

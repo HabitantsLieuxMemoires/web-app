@@ -40,7 +40,7 @@ gem 'ajaxspin',                     "~> 1.1.1"
 gem 'ionicons-rails',               "~> 1.4.1.0"
 
 # Mongoid gems
-gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.rc1"
+gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.rc2"
 gem 'bson_ext'
 gem 'mongoid_taggable',             "~> 1.1.1"
 gem 'carrierwave-mongoid',          "~> 0.7.1"
@@ -66,6 +66,7 @@ gem 'nested_form',                  "~> 0.3.2"    # Nested forms
 gem 'fog',                          "~> 1.22.1"   # Amazon S3 (file storing)
 gem 'public_activity',              "~> 1.4.1"    # Public activity tracking
 gem 'mini_magick',                  "~> 3.7.0"    # Images manipulation
+gem 'high_voltage',                 "~> 2.2.0"    # Static page serving
 gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc5"    # JS i18n
 
 # Deployment
