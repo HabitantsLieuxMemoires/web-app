@@ -33,7 +33,8 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def visibility
-    h.content_tag(:span, class: "label label-default") do
+    # Remoded class "label label-default"
+    h.content_tag(:span, class: " ") do
       object.public? ? t('article.public') : t('article.private')
     end
   end
@@ -52,7 +53,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def tags
     if object.tags_array.any?
-      object.tags_array.collect { |tag| h.content_tag(:span, tag, class: "label label-primary tag") }.join.html_safe
+      object.tags_array.collect { |tag| h.content_tag(:span, tag, class: "label label-normal tag") }.join.html_safe
     else
       h.content_tag(:span, t('none'), class: "label label-warning")
     end

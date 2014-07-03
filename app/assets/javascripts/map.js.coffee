@@ -1,7 +1,7 @@
 #= require leaflet-search.min
 
 mapSettings =
-  el:'business-header',
+  el:'mapContainer',
   defaultPosition:[44.857981, -0.530777],
   maxBounds:
     southWest: [44.80254, -0.6439],
@@ -151,9 +151,9 @@ window.mapController =
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
     # Already initialized?
-    if $('#business-header').hasClass('leaflet-container') == false
+    if $('#mapContainer').hasClass('leaflet-container') == false
       debug "Map:: Initialization..."
-      mapSettings.originalHeight = $('#business-header').height()
+      mapSettings.originalHeight = $('#mapContainer').height()
 
       # Marker cluster
       @markerCluster = new L.MarkerClusterGroup
@@ -201,8 +201,8 @@ window.mapController =
       map.addLayer @markerCluster
 
       # Position picker
-      $('.business-header').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
-      $('.business-header').append '<div class="leaflet-control-position-picker buttons"></div>'
+      $('#mapContainer').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
+      $('#mapContainer').append '<div class="leaflet-control-position-picker buttons"></div>'
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
       # Location picket
@@ -235,12 +235,15 @@ window.mapController =
           control= L.DomUtil.create 'div', ''
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
           control.onclick = ->
+            debug "click!"
             # On mobile, hide the map
             if Modernizr.touch
+              debug "AAA"
               $('.map-mobile-toggle').click()
             # On desktop, toggle height
             else
-              mapController.heightToggle
+              debug "BBB"
+              mapController.heightToggle()
           control.className = 'heightToggle leaflet-bar'
           control
 

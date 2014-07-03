@@ -1,3 +1,5 @@
+<%= render 'shared/sidebar_searchbox' %>
+
 <div id="search-column" class="hidden-xs hidden-sm">
 <%= render 'shared/sidebar_actions' %>
 </div>
@@ -28,12 +30,14 @@
   <div class="panel panel-default" id="article-details">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <%= fa_icon "list" %>
         <%= t('article.details') %>
       </h4>
     </div>
-    <div class="panel-body">
-      <%= f.static_control nil, label: Article.human_attribute_name(:theme_id) do %>
+    <div class="list-group">
+      <a class="list-group-item theme patrimoine"><div><%= article.theme %></div></a>
+      <a class="list-group-item chronology"><div><%= article.chronology %></div></a>
+      <a class="list-group-item tags"><div><%= article.tags %></div></a>
+      <!--<%= f.static_control nil, label: Article.human_attribute_name(:theme_id) do %>
         <%= article.theme %>
       <% end %>
       <%= f.static_control nil, label: Article.human_attribute_name(:chronology_id) do %>
@@ -41,18 +45,21 @@
       <% end %>
       <%= f.static_control nil, label: Article.human_attribute_name(:tags) do %>
         <%= article.tags %>
-      <% end %>
+      <% end %>-->
     </div>
   </div>
 
   <div class="panel panel-default" id="article-metadatas">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <%= fa_icon "tag" %>
         <%= t('article.metadatas') %>
       </h4>
     </div>
-    <div class="panel-body">
+    <div class="list-group">
+      <a class="list-group-item revision"><div><p>pwet</p></div><span class="badge">123</span></a>
+      <a class="list-group-item title"><div><p>sdf sf sdf</p></div></a>
+      <a class="list-group-item gps"><div><p>XX.XXXX, -X.XXXX</p></div></a>
+    <!--
       <div class="history">
         <%= f.static_control nil, label: Article.human_attribute_name(:revision) do %>
           <%= article.history %>
@@ -64,6 +71,7 @@
       <%= f.static_control nil, label: Article.human_attribute_name(:location) do %>
         <span id="article-location" class="location" data-theme="<%= article.theme.downcase %>" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.display_location %></span>
       <% end %>
+    -->
     </div>
   </div>
 

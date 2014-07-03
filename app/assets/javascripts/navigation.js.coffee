@@ -10,6 +10,6 @@ $(document).ready ->
   	$('.article-creation-button>a').removeClass 'active'
 
   # Image slideshow
-  $('.slideshow>.images').simplyScroll 
+  $('.slideshow').simplyScroll 
   	pauseOnHover: false
   	pauseOnTouch: false

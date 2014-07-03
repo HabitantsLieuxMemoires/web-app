@@ -12,14 +12,23 @@
 <div id="article-container">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
-      <div class="pull-left">
-        <h3 class="panel-title">
-          <%= fa_icon "edit" %>
-          <%= article.title %>
-        </h3>
+      <img class="author" src="http://lorempixel.com/53/53/people/?<%= article.url %>">
+      <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+      <div class="title color<%= rand(1..5) %>">
+        <%= article.title %>
+        <div>
+          Par <span class="author">Laurence</span>
+          <!-- In case of multiple author, add authorSeparator.png between
+          each span.author -->
+          le <span class="datetime">XX/XX/XXX</span>
+          -
+          <%= article.visibility %>
+        </div>
       </div>
-      <div class="pull-right">
-        <%= article.visibility %>
+
+      <div class="shareAndComments">
+        <div class="share"><span>15</span></div>
+        <div class="comments"><span>48</span></div>
       </div>
     </div>
 
@@ -45,6 +54,7 @@
         <%= render 'articles/videos' %>
       </div>
     </div>
+
     <div class="panel-footer">
       <div class="text-center">
         <%= render 'social',   article: article %>

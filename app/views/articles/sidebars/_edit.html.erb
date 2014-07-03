@@ -36,7 +36,7 @@
     <div class="form-group">
       <label class="control-label" for="article_location"><%= Article.human_attribute_name(:location) %></label>
       <div class="input-group">
-        <input class="form-control location" data-theme="<%= article.theme %>" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>" readonly="readonly" id="article_location" name="article[location]" type="text" value="<%= article.location %>">
+        <input class="form-control location" data-theme="<%= article.theme.slug %>" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>" readonly="readonly" id="article_location" name="article[location]" type="text" value="<%= article.location %>">
         <span class="input-group-btn">
           <a class="btn btn-default" href="#" id="bt_fill_location">
             <i class="fa fa-map-marker"></i>

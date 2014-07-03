@@ -1,11 +1,11 @@
-<div class="panel panel-default" id="article-comments" data-load="<%= article_comments_path(article.id) %>">
+<div class="panel panel-default color<%= rand(1..5) %>" id="article-comments" data-load="<%= article_comments_path(article.id) %>">
   <div class="panel-heading clearfix">
     <div class="pull-left">
       <h3 class="panel-title">
-        <%= fa_icon "comments-o" %>
         <%= t('article.comment.list') %>
       </h3>
     </div>
+    <!--
     <div class="pull-right">
       <% if current_user %>
         <%= link_to new_article_comment_path(article.id),
@@ -19,6 +19,7 @@
         <% end %>
       <% end %>
     </div>
+    -->
   </div>
 
   <div class="panel-body" id="comments-list">
