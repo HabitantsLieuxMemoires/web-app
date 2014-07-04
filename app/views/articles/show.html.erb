@@ -1,12 +1,12 @@
 <% content_for :sidebar do %>
-  <%= render partial: 'articles/sidebars/show', locals: {article: @article} %>
+  <%= render 'articles/sidebars/show', article: article %>
 <% end %>
 
 <!-- Could be used on JS to build AJax URLs -->
-<div class="article-data" data-uri="<%= @article.url %>"></div>
+<div class="article-data" data-uri="<%= article.url %>"></div>
 
 <div id="article-control">
-  <%= render 'actionbar', article: @article %>
+  <%= render 'actionbar', article: article %>
 </div>
 
 <div id="article-container">
@@ -15,27 +15,45 @@
       <div class="pull-left">
         <h3 class="panel-title">
           <%= fa_icon "edit" %>
-          <%= @article.title %>
+          <%= article.title %>
         </h3>
       </div>
       <div class="pull-right">
-        <%= @article.visibility %>
+        <%= article.visibility %>
       </div>
     </div>
 
     <div class="panel-body">
       <div class="tab-content">
         <div class="tab-pane active" id="content">
-          <%= render 'summary', article: @article %>
+          <%= render 'summary', article: article %>
 
           <div class="article-body">
-            <%= @article.full_body %>
+            <%= article.full_body %>
           </div>
 
           <% if @article.images.any? %>
             <div class="well article-featured-images">
               <div class="row row-centered">
-                <%= @article.featured_images %>
+                <%= article.featured_images %>
+              </div>
+            </div>
+          <% end %>
+
+          <% if article.links.any? %>
+            <div class="panel panel-default" id="article-external-notes">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <%= fa_icon "link" %>
+                  <%= t('article.external_links') %>
+                </h4>
+              </div>
+              <div class="panel-body">
+                <ul>
+                  <% article.links.each do |link| %>
+                    <li><%= link.url %></li>
+                  <% end %>
+                </ul>
               </div>
             </div>
           <% end %>
@@ -47,12 +65,12 @@
     </div>
     <div class="panel-footer">
       <div class="text-center">
-        <%= render 'social',   article: @article %>
+        <%= render 'social',   article: article %>
       </div>
     </div>
   </div>
 </div>
 
-  <%= render 'comments', article: @article %>
+  <%= render 'comments', article: article %>
   <%= render 'articles/modals/show' %>
 

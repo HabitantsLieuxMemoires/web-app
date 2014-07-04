@@ -69,14 +69,14 @@ class UsersController < ApplicationController
 
     def activities_for_user(user)
       PublicActivity::Activity
-      .where(author: user.nickname)
-      .in(key: [
-        'article.create',
-        'article.update',
-        'article.add_image',
-        'article.remove_image',
-        'article.add_video',
-        'article.remove_video']
+        .where(author: user.nickname)
+        .in(key: [
+          'article.create',
+          'article.update',
+          'article.add_image',
+          'article.remove_image',
+          'article.add_video',
+          'article.remove_video']
       )
     end
 end

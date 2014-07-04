@@ -163,6 +163,8 @@ window.mapController =
       map = new L.Map el,
         maxBounds: new L.LatLngBounds maxSW, maxNE
         zoomControl: !Modernizr.touch
+        maxZoom: 19
+        minZoom: 13
 
       # Search plugin
       searchControl = new L.Control.Search({

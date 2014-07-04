@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails',                        "4.0.4"
+gem 'rails',                        "4.0.8"
 
 # Environment variables management (before any other gems)
 gem 'dotenv-deployment',            "~> 0.0.2"
@@ -22,7 +22,7 @@ group :assets do
 end
 
 # Assets gems
-gem 'jquery-rails',                 "~> 3.1.0"
+gem 'jquery-rails',                 "~> 3.1.1"
 gem 'bootstrap-sass',               "~> 3.1.1.1"
 gem 'jbuilder',                     "~> 2.0.7"
 gem 'pluggable_js',                 "~> 2.0.0"

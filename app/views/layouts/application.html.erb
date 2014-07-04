@@ -10,7 +10,7 @@
       <hr>
       <%= render 'shared/messages' %>
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-md-3">
           <% if content_for?(:sidebar) %>
             <%= yield(:sidebar) %>
           <% else %>
@@ -19,7 +19,7 @@
             </div>
           <% end %>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9">
           <%= yield %>
         </div>
       </div>

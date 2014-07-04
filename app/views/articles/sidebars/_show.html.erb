@@ -81,23 +81,5 @@
       </ul>
     </div>
   </div>
-
-  <% if article.links.any? %>
-    <div class="panel panel-default" id="article-external-notes">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <%= fa_icon "link" %>
-          <%= t('article.external_links') %>
-        </h4>
-      </div>
-      <div class="panel-body">
-        <ul>
-          <% article.links.each do |link| %>
-            <li><%= link.url %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
 </div>
 <% end %>

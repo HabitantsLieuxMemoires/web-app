@@ -1,5 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos
+  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos, :published?
 
   decorates_association :history_tracks
   decorates_association :links
@@ -99,6 +99,14 @@ class ArticleDecorator < ApplicationDecorator
   def featured_images
     images = object.images.take(4)
     images.collect { |img| featured_image('col-md-3 col-centered', img.article_image_url(:thumb)) }.join.html_safe
+  end
+
+  def images_count
+    object.images.count
+  end
+
+  def videos_count
+    object.videos.count
   end
 
   private

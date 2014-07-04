@@ -19,11 +19,11 @@
   </h4>
   <hr>
 
-  <% if @article.images.any? %>
-    <div class="row" id="images-list">
+  <div class="row" id="images-list">
+    <% if @article.images.any? %>
       <%= render partial: '/images/image', collection: @article.images, locals: {article: @article, edit_mode: edit_mode} %>
-    </div>
-  <% else %>
-    <p class="bg-info"><%= t('article.image.none') %></p>
-  <% end %>
+    <% else %>
+      <p class="bg-info no-image"><%= t('article.image.none') %></p>
+    <% end %>
+  </div>
 </div>

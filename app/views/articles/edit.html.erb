@@ -1,12 +1,12 @@
 <%= bootstrap_nested_form_for @article do |f| %>
 
-  <div class="col-lg-3">
-    <%= render 'articles/sidebars/edit', f: f, article: @article %>
+  <div class="col-md-3">
+    <%= render 'articles/sidebars/edit', f: f, article: article %>
   </div>
 
-  <div class="col-lg-9">
+  <div class="col-md-9">
     <div id="article-control">
-      <%= render 'actionbar', article: @article %>
+      <%= render 'actionbar', article: article %>
     </div>
 
     <div id="article-container">

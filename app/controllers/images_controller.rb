@@ -5,18 +5,16 @@ class ImagesController < ApplicationController
     render layout: false
   end
 
-  #TODO: Use UJS capabilities (with js rendering)
   def create
-    image = Image.new(image_params)
-    @article.images << image
+    @image = Image.new(image_params)
+    @article.images << @image
 
-    if @article.save
-      create_activity(image, 'article.add_image')
-
-      redirect_to edit_article_path(@article.slug), notice: t('article.image.uploaded')
-    else
-      flash[:error] = t('article.image.upload_error')
-      redirect_to edit_article_path(@article.slug)
+    respond_to do |format|
+      if @article.save && create_activity(@image, 'article.add_image')
+        format.js
+      else
+        format.json { render :json => @image.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -25,16 +23,15 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    image = @article.images.find(params[:id])
-    if image.destroy
-      create_activity(image, 'article.remove_image')
+    @image = @article.images.find(params[:id])
 
-      flash[:notice]  = t('article.image.removed')
-    else
-      falsh[:error]   = t('article.image.remove_error')
+    respond_to do |format|
+      if @image.destroy
+        format.js
+      else
+        format.json { render :json => @image.errors, :status => :unprocessable_entity }
+      end
     end
-
-    redirect_to edit_article_path(@article)
   end
 
   private

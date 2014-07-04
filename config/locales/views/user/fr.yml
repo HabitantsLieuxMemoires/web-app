@@ -17,12 +17,12 @@ fr:
     security:   "Sécurité"
     activity:   "Activité"
 
-    manage_content:    "Gérez votre identité sur la plateforme"
+    manage_content:    "Identité et informations sur la plateforme"
     manage_password:   "Gérez votre mot de passe"
 
     activities:
       none:     "Aucune activité récente"
-      manage:   "Gérez vos contributions"
+      manage:   "Contributions aux articles de la plateforme"
 
     details:
       articles:       "Articles"

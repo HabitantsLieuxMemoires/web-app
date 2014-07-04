@@ -2,4 +2,9 @@
 
 <%= render_cell :themes,        :index %>
 <%= render_cell :chronologies,  :index %>
-<%= render_cell :news,          :index %>
+
+<% if content_for?(:last_cell) %>
+  <%= yield(:last_cell) %>
+<% else %>
+  <%= render_cell :news, :index %>
+<% end %>

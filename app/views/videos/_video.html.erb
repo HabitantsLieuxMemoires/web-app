@@ -1,10 +1,10 @@
-<div class="col-md-6 col-xs-12 video">
+<div class="col-md-6 col-xs-12 video" data-id="<%= video.id %>">
   <div class="text-center">
     <%=raw video.embedded %>
   </div>
   <% if edit_mode %>
     <div class="text-center">
-      <%= link_to t('article.video.do.remove'), article_video_path(article, video), method: :delete, class: "btn btn-danger btn-sm" %>
+      <%= link_to t('article.video.do.remove'), article_video_path(article, video), method: :delete, remote: true, class: "btn btn-danger btn-sm" %>
     </div>
   <% end %>
 </div>

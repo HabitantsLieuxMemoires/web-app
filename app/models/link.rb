@@ -6,5 +6,5 @@ class Link
 
   embedded_in :article
 
-  validates :url, presence: true, length: { in: 8..80 }
+  validates :url, presence: true, length: { in: 8..2000 }
 end

@@ -1,9 +1,7 @@
-Summary = 
+Summary =
 	bind: ->
 		debug "Summary initialized"
 		$('.well-sm a').each ->
-			debug "Done : "
-			debug $(@).text()
 			$(@).on 'click', Summary.linkClicked
 
 	linkClicked:(e) ->

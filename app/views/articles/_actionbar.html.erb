@@ -16,13 +16,13 @@
     <div class="nav-col col-md-4 col-xs-3">
       <a href="#images" id="show_images" data-toggle="tab">
         <span class="glyphicon glyphicon-picture"></span>
-        <p><%= t('article.pictures') %></p>
+        <p><%= t('article.pictures') %><span class="badge pull-right images-count"><%= article.images_count %></span></p>
       </a>
     </div>
     <div class="nav-col col-md-4 col-xs-3">
       <a href="#videos" id="show_videos" data-toggle="tab">
         <span class="glyphicon glyphicon-facetime-video"></span>
-        <p><%= t('article.videos') %></p>
+        <p><%= t('article.videos') %><span class="badge pull-right videos-count"><%= article.videos_count %></span></p>
       </a>
     </div>
   </div>

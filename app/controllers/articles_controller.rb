@@ -4,6 +4,8 @@ class ArticlesController < ApplicationController
   before_action        :set_article,                only: [:show, :share]
   before_action        :set_unpublished_article,    only: [:edit, :update]
 
+  decorates_assigned   :article
+
   layout               'empty',                     only: [:edit]
 
   def new
@@ -11,7 +13,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article        = Article.new(article_params)
+    @article.author = current_user
+
     if @article.save
       create_activity('article.create')
 
@@ -35,7 +39,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article       = @article.decorate
     @contributors  = get_contributors(@article)
   end
 

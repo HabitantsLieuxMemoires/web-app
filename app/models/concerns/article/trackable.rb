@@ -11,6 +11,7 @@ class Article
       track_history on: [:title, :body], modifier_field: :author
 
       # Denormalize author fields
+      belongs_to    :author, :class_name => 'User'
       counter_cache :author
       alize         :author, :nickname
     end

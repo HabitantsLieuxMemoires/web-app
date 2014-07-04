@@ -11,6 +11,7 @@ $(document).ready ->
   # Modal Form loader
   $('[data-toggle="modal"]').each ->
     target = $($(@).data('target'))
+
     # Modal Loaded
     target.on 'loaded.bs.modal', ->
       checkValidationBeforeSubmit = (form, e) ->
@@ -29,10 +30,10 @@ $(document).ready ->
       # Submit
       target.find('form').on
         'submit': (e) ->
-          return checkValidationBeforeSubmit(this, e)
+          checkValidationBeforeSubmit(this, e)
 
         'ajax:before': (e) ->
-          return checkValidationBeforeSubmit(this, e)
+          checkValidationBeforeSubmit(this, e)
 
     # Modal Hide
     target.on 'hidden.bs.modal', ->
