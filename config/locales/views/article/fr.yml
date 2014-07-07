@@ -40,6 +40,7 @@ fr:
       see_changes:  "Voir les modifications"
       search:       "Chercher un contenu"
       remove:       "Supprimer le contenu"
+      save:         "Sauvegarder le contenu"
 
     title:
       create:       "Création de contenu"
@@ -47,6 +48,9 @@ fr:
       report:       "Signalement de contenu"
       details:      "Détails du contenu"
       remove:       "Contenu supprimé"
+
+    tooltip:
+      save:         "Sauvegardez le contenu pour une publication ultérieure"
 
     popular:
       none:         "Aucun article populaire publié"
@@ -144,12 +148,20 @@ fr:
 
     # Link
     link:
+      explain:     "Liste des ressources externes du contenu. Cliquez sur ajouter et précisez le titre et l'URL du lien avant de publier."
+
       title:
         insert:    "Insertion d'un lien interne"
 
       do:
         add:       "Ajouter"
+        delete:    "Supprimer"
 
       placeholder:
+        title:     "Titre du lien"
         url:       "URL du lien"
+
+    # Editor
+    editor:
+      left_align:  "Aligner à gauche"
 

@@ -1,19 +1,14 @@
 <%= bootstrap_form_tag url: search_articles_path, remote: false do |f| %>
 
-<input type="hidden" name="themes" value="">
-<input type="hidden" name="tags" value="">
+  <input type="hidden" name="themes" value="">
+  <input type="hidden" name="tags" value="">
 
-<div class="input-group search-bar">
-  <input type="text" name="query" id="search-article" class="form-control typeahead" placeholder="<%= t('search.article_placeholder') %>" data-redirect="true">
-  <span class="input-group-btn search-container">
-    <button class="btn btn-default" type="button" id="bt-search">
-      <span class="glyphicon glyphicon-search"></span>
-    </button>
-  </span>
-</div>
-  <% end %>
-
-<%= link_to search_path, class: "btn btn-default hidden", id: "bt-search-extended" do %>
-  <%= t('search.extended') %>
-  <%= fa_icon 'arrow-circle-right' %>
+  <div class="input-group search-bar">
+    <input type="text" name="query" id="search-article" class="form-control typeahead" placeholder="<%= t('search.article_placeholder') %>" data-redirect="true">
+    <span class="input-group-btn search-container">
+      <button class="btn btn-default" type="button" id="bt-search">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </span>
+  </div>
 <% end %>

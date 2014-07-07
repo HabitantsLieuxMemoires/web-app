@@ -1,5 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos, :published?
+  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos, :published?, :locked?
 
   decorates_association :history_tracks
   decorates_association :links
@@ -68,7 +68,15 @@ class ArticleDecorator < ApplicationDecorator
         t('none')
       end
     else
-      object.location.split(',').map { |x| x.to_f.round(4).to_s }.join(', ')
+      coordinates = object.location.split(',')
+      latitude    = coordinates[0]
+      longitude   = coordinates[1]
+
+      # Link to OpenStreetMap
+      link       = "http://www.openstreetmap.org/?mlat=#{latitude}&mlon=#{longitude}&zoom=12"
+      link_title = coordinates.map { |x| x.to_f.round(4).to_s }.join(', ')
+
+      h.link_to link_title, url_for(link), target: '_blank'
     end
   end
 

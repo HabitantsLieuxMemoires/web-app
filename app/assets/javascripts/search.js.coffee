@@ -51,20 +51,12 @@ $(document).ready ->
 
   # Extend size of search input container when appended button clicked
   $('#bt-search').on 'click', ->
-    ###
-    showExtendedSearch = (parent) ->
-      $('#bt-search-extended')
-        .appendTo('.search-container')
-        .removeClass('hidden')
-
-    $('#sidebar-actions')
-      .css('z-index', 10)
-      .animate({
-        width: '+=220px',
-        duration: 1000
-      }, showExtendedSearch)
-    ###
     $("#search-column form").submit()
+
+  # Redirect to extended search when enter pressed on search field
+  $('#search-article').on 'keypress', (e) ->
+    if (e.which == 13)
+      $("#search-column form").submit()
 
   # On mobile, when search input focuses, scroll to !
   if Modernizr.touch

@@ -2,9 +2,11 @@ class Link
   include Mongoid::Document
   include Mongoid::Timestamps::Created
 
-  field :url, type: String
+  field :title, type: String
+  field :url,   type: String
 
   embedded_in :article
 
-  validates :url, presence: true, length: { in: 8..2000 }
+  validates :title, presence: true, length: { in: 4..256  }
+  validates :url,   presence: true, length: { in: 8..2000 }
 end

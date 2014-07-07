@@ -4,6 +4,7 @@
 
 <% if current_user %>
   <div class="well hidden-xs hidden-sm" id="article-actions">
+
     <%= link_to edit_article_path(article.slug),
                 class: 'btn btn-success btn-block',
                 type: 'button' do %>

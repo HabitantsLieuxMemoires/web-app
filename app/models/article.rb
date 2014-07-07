@@ -20,7 +20,6 @@ class Article
   field :comment_count, type: Integer, default: 0 # Counter cache
   field :share_count,   type: Integer, default: 0
   field :public,        type: Mongoid::Boolean, default: true
-  field :locked,        type: Mongoid::Boolean, default: false
   field :published,     type: Mongoid::Boolean, default: false
 
   # Theme

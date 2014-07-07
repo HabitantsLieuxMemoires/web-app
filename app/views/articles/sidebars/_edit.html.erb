@@ -1,8 +1,13 @@
 <div class="well" id="article-actions">
   <%= f.submit t('article.do.publish'), class: 'btn btn-primary btn-block' %>
-  <% if article.published? %>
-    <%= link_to t('article.do.view'), article_path(article.slug), class: 'btn btn-default btn-block' %>
-  <% end %>
+  <%= f.submit t('article.do.save'),    class: 'btn btn-default btn-block', id: 'bt-save-article',
+      disabled: true,
+      title: t('article.tooltip.save'),
+      data: {
+        toggle: "tooltip",
+        placement: "left"
+      }
+  %>
 </div>
 
 <div class="panel panel-default" id="article-details">
@@ -16,10 +21,6 @@
     <%= f.collection_select :theme_id, Theme.all, :id, :title %>
     <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
     <%= f.text_field :tags %>
-    <%= f.form_group do %>
-      <%= f.check_box  :public, inline: true %>
-      <%= f.check_box  :locked, inline: true %>
-    <% end %>
   </div>
 </div>
 
@@ -43,28 +44,6 @@
         </span>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="panel panel-default" id="article-external-notes">
-  <div class="panel-heading">
-    <h4 class="panel-title">
-      <%= fa_icon "link" %>
-      <%= t('article.external_links') %>
-      <div class="pull-right">
-        <%= f.link_to_add t('article.link.do.add') , :links, wrapper: false, class: "btn btn-xs btn-primary", :data => { :target => "#article-links" } %>
-      </div>
-    </h4>
-  </div>
-  <div class="panel-body">
-    <table class="table table-condensed" id="article-links" >
-      <%= f.fields_for :links, wrapper: false do |link_form| %>
-        <tr class="fields">
-          <td><%= link_form.text_field :url, hide_label: true, placeholder: t('article.link.placeholder.url') %></td>
-          <td><%= link_form.link_to_remove("x", class: 'btn btn-sm btn-danger') %></td>
-        </tr>
-      <% end %>
-    </table>
   </div>
 </div>
 

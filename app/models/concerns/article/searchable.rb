@@ -15,6 +15,10 @@ class Article
           share_count:  share_count
         }
       end
+
+      def should_index?
+        published? # only index published articles
+      end
     end
 
   end

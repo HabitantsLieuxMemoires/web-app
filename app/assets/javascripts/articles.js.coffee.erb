@@ -31,6 +31,7 @@ window['articles#edit'] = (data) ->
   UI.initEditor($('#article_body'))
   UI.initTagsSelector($('#article_tags'))
   UI.initThemeAndChronologySelects()
+  UI.initTooltips()
 
   Form.initEditForm()
 
@@ -128,6 +129,9 @@ UI =
   initThemeAndChronologySelects: ->
     $('#article_theme_id').selectize()
     $('#article_chronology_id').selectize()
+
+  initTooltips: ->
+    $('#bt-save-article').tooltip()
 
 Form =
   initCreateForm: ->

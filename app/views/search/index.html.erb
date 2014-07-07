@@ -65,6 +65,10 @@
         <ul class="media-list" id="search-results">
           <% if @articles.any? %>
             <%= render "/articles/search_results", articles: @articles %>
+          <% else %>
+            <p class="bg-info">
+              <%= t('search.no_result') %>
+            </p>
           <% end %>
         </ul>
 

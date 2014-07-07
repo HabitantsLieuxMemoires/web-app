@@ -25,7 +25,7 @@ window.customWysihtml5Buttons =
 			container = $(selection).find(':first-child')
 		# Text block
 		else if selection?  && selection.parentNode?
-			# Two cases : 
+			# Two cases :
 			# 1. Selection is the P container
 			container = $(selection.parentNode)
 			# 2. Selection is a child, we'll go up to P
@@ -57,9 +57,9 @@ window.customWysihtml5Buttons =
 					container.attr 'class', className
 
 # Once editor has beend initialized, add custom buttons
-$(document).on 'editorInitialized', ->
+$(document).on 'editorInitialized', (e, data) ->
 	customWysihtml5Buttons.addGroupButton [
-		{icon: 'glyphicon-align-left', title: 'Left alignment', class: 'wysiwyg-float-left', callback: customWysihtml5Buttons.classToggle}
-		{icon: 'glyphicon-align-center', title: 'Center alignment', class: 'wysiwyg-centered', callback: customWysihtml5Buttons.classToggle}
-		{icon: 'glyphicon-align-right', title: 'Right alignment', class: 'wysiwyg-float-right', callback: customWysihtml5Buttons.classToggle}
+		{icon: 'glyphicon-align-left', title: 'Aligner à gauche', class: 'wysiwyg-float-left', callback: customWysihtml5Buttons.classToggle}
+		{icon: 'glyphicon-align-center', title: 'Aligner au centre', class: 'wysiwyg-centered', callback: customWysihtml5Buttons.classToggle}
+		{icon: 'glyphicon-align-right', title: 'Aligner à droite', class: 'wysiwyg-float-right', callback: customWysihtml5Buttons.classToggle}
 	]
