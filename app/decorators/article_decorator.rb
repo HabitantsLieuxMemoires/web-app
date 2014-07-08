@@ -28,6 +28,10 @@ class ArticleDecorator < ApplicationDecorator
     object.theme_fields["title"]
   end
 
+  def theme_icon
+    asset_path('map_icons/' << object.theme.title.downcase << '.png')
+  end
+
   def chronology
     object.chronology_fields["title"]
   end

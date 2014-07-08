@@ -15,10 +15,9 @@ mapSettings =
     mapbox:
       url:'https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-  icons: (theme) ->
+  icons: (icon_url) ->
     L.icon(
-      iconUrl: '/assets/map_icons/'+theme+'.png'
-
+      iconUrl:      icon_url,
       iconSize:     [35, 50], # size of the icon
       iconAnchor:   [17, 48], # point of the icon which will correspond to marker's location
       popupAnchor:  [-3, -76] # point from which the popup should open relative to the iconAnchor
@@ -302,7 +301,7 @@ window.mapController =
     text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
     mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
       draggable:mapController.isEditing(),
-      icon: mapSettings.icons data.theme 
+      icon: mapSettings.icons data.theme
     ).bindPopup(text))
     mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
       padding: [70,70]

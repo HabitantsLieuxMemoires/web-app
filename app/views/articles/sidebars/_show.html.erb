@@ -53,7 +53,7 @@
         <div><p><%= article.display_slug %></p></div>
       </a>
       <a class="list-group-item gps" href="<%= article.location_url %>" target="_blank">
-        <div  class="location" data-theme="<%= article.theme.downcase %>"
+        <div  class="location" data-theme="<%= article.theme_icon %>"
                                data-latlng="<%= article.location %>"
                                data-title="<%= article.title %>"
                                data-uri="<%= article_path(article.slug) %>">
