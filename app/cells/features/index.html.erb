@@ -12,8 +12,8 @@
       <ul class="media-list">
         <% @feature.articles.each do |f| %>
           <li class="media feature">
-            <img class="author" src="http://lorempixel.com/53/53/people/?<%= f.url %>">
-            <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+            <img class="author" src="<%= f.author_avatar %>">
+            <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
             <div class="title color<%= rand(1..5) %>">
               <%= link_to f.url, class: 'location', data: {
                   :latlng => f.location,
@@ -24,24 +24,24 @@
                 <%= f.title %>
               <% end %>
               <div>
-
-              Par <span class="author">Laurence</span>
-              <!-- In case of multiple author, add authorSeparator.png between
-              each span.author -->
+                <%= t('article.by_html', author: f.author) %>
+                <!-- TODO: In case of multiple author, add authorSeparator.png between
+                each span.author -->
               </div>
             </div>
 
-            <!-- @todo Do not include img if no img available -->
-            <a class="pull-left thumbnail" href="#">
-              <img class="media-object img-thumbnail article-featured-image" src="<%= f.image %>" alt="64x64">
-            </a>
+            <% if f.has_image? %>
+              <a class="pull-left thumbnail" href="<%= f.url %>">
+                <img class="media-object article-featured-image" src="<%= f.image %>" alt="64x64">
+              </a>
+            <% end %>
 
             <div class="media-body">
               <%= f.body(350) %>
             </div>
             <div class="shareAndComments">
-              <div class="share"><span>15</span></div>
-              <div class="comments"><span>48</span></div>
+              <div class="share"><span><%= f.share_count %></span></div>
+              <div class="comments"><span><%= f.comment_count %></span></div>
             </div>
           </li>
         <% end %>

@@ -235,8 +235,8 @@ html.touch .heightToggle
   float:right;
 }
 .navbar-title {
-  width:870px;
-  font-size:54px;
+  width:820px;
+  font-size:50px;
   font-family: "freeroadregular","Droid Sans",Tahoma;
   text-transform: uppercase;
   color:#777;
@@ -386,6 +386,7 @@ footer.footer-legals {
   .list-group-item {
     height:40px;
     margin-left:-25px;
+    margin-top: 10px;
   }
  .list-group-item:hover {
     margin-left:-15px;
@@ -405,21 +406,20 @@ footer.footer-legals {
     padding-left: 70px;
 
     line-height: 15px;
-    width: 180px;
 
-    position: absolute; 
+    position: absolute;
     display: table;
   }
   .list-group-item>div>p {
-    display: table-cell; 
-    vertical-align: middle; 
+    display: table-cell;
+    vertical-align: middle;
     text-align: left;
   }
   .badge {
     color: #aeaeae;
     font-weight: normal;
     font-size:10px;
-  } 
+  }
 }
 
 #sidebar-themes, #article-details .panel-body {
@@ -517,7 +517,7 @@ footer.footer-legals {
 
 /** Bottom Logos **/
 /*** Thank you http://css.spritegen.com/ **/
-.logos-gironde, .logos-bassens, .logos-gpv, .logos-cenon, .logos-floirac,.logos-lacub, .logos-lormont, .logos-ue 
+.logos-gironde, .logos-bassens, .logos-gpv, .logos-cenon, .logos-floirac,.logos-lacub, .logos-lormont, .logos-ue
 { cursor:pointer; margin:40px 0 40px 25px; display: inline-block; background-repeat:no-repeat; background: url('/assets/logos/bg.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
 .logos-gironde { background-position: -4px -2px; width: 130px; height: 43px; }
 .logos-bassens { background-position: -4px -50px; width: 127px; height: 44px; }
@@ -553,10 +553,10 @@ footer.footer-legals {
     margin-top: -20px;
   }
 }
-.btn-article-create { 
-  color: #ffffff; 
-  background-color: #00993C; 
-  border-color: #00993C; 
+.btn-article-create {
+  color: #ffffff;
+  background-color: #00993C;
+  border-color: #00993C;
   width:90%;
   height:65px;
   padding: 20px 0 20px 0px;
@@ -564,48 +564,48 @@ footer.footer-legals {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: -1px;
-} 
-.btn-article-create:hover, 
-.btn-article-create:focus, 
-.btn-article-create:active, 
-.btn-article-create.active, 
-.open .dropdown-toggle.btn-article-create { 
-  color: #ffffff; 
-  background-color: #01702E; 
-  border-color: #00993C; 
-} 
-.btn-article-create:active, 
-.btn-article-create.active, 
-.open .dropdown-toggle.btn-article-create { 
-  background-image: none; 
-} 
-.btn-article-create.disabled, 
-.btn-article-create[disabled], 
-fieldset[disabled] .btn-article-create, 
-.btn-article-create.disabled:hover, 
-.btn-article-create[disabled]:hover, 
-fieldset[disabled] .btn-article-create:hover, 
-.btn-article-create.disabled:focus, 
-.btn-article-create[disabled]:focus, 
-fieldset[disabled] .btn-article-create:focus, 
-.btn-article-create.disabled:active, 
-.btn-article-create[disabled]:active, 
-fieldset[disabled] .btn-article-create:active, 
-.btn-article-create.disabled.active, 
-.btn-article-create[disabled].active, 
-fieldset[disabled] .btn-article-create.active { 
-  background-color: #00993C; 
-  border-color: #00993C; 
-} 
-.btn-article-create .badge { 
-  color: #00993C; 
-  background-color: #ffffff; 
+}
+.btn-article-create:hover,
+.btn-article-create:focus,
+.btn-article-create:active,
+.btn-article-create.active,
+.open .dropdown-toggle.btn-article-create {
+  color: #ffffff;
+  background-color: #01702E;
+  border-color: #00993C;
+}
+.btn-article-create:active,
+.btn-article-create.active,
+.open .dropdown-toggle.btn-article-create {
+  background-image: none;
+}
+.btn-article-create.disabled,
+.btn-article-create[disabled],
+fieldset[disabled] .btn-article-create,
+.btn-article-create.disabled:hover,
+.btn-article-create[disabled]:hover,
+fieldset[disabled] .btn-article-create:hover,
+.btn-article-create.disabled:focus,
+.btn-article-create[disabled]:focus,
+fieldset[disabled] .btn-article-create:focus,
+.btn-article-create.disabled:active,
+.btn-article-create[disabled]:active,
+fieldset[disabled] .btn-article-create:active,
+.btn-article-create.disabled.active,
+.btn-article-create[disabled].active,
+fieldset[disabled] .btn-article-create.active {
+  background-color: #00993C;
+  border-color: #00993C;
+}
+.btn-article-create .badge {
+  color: #00993C;
+  background-color: #ffffff;
 }
 
 
 
 /** Featured/Popular/Search **/
-#main-featured, #main-popular, #article-container, #comments-list, #search-page, #theme-browser {
+#main-featured, #main-popular, #article-container, #comments-list, #search-page, #theme-browser, #chronology-browser {
   border:none;
 
   .panel-heading {
@@ -654,6 +654,7 @@ fieldset[disabled] .btn-article-create.active {
 
   img.author {
     float: left;
+    max-width: 50px;
     margin: 0 20px 10px 0px;
     @include rounded-corners(50px);
   }
@@ -681,7 +682,7 @@ fieldset[disabled] .btn-article-create.active {
     clear:both;
   }
 }
-#main-popular .shareAndComments 
+#main-popular .shareAndComments
 {
   margin-left:55px;
 }
@@ -689,8 +690,7 @@ fieldset[disabled] .btn-article-create.active {
 
 /** Article **/
 .shareAndComments {
-  /*margin: 20px 0 0 0;*/
-  clear:both;
+  margin: 20px 0 0 0;
 
   div {
     background-repeat: no-repeat;
@@ -704,7 +704,7 @@ fieldset[disabled] .btn-article-create.active {
     -moz-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
-    margin-left:15px;
+    margin-right:15px;
     margin-top:5px;
     float:left;
 
@@ -868,7 +868,8 @@ fieldset[disabled] .btn-article-create.active {
   }
 
   .title {
-    margin:0px;
+    margin-left:0px;
+    margin-bottom:10px;
     color:#777;
   }
 

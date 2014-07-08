@@ -1,21 +1,35 @@
-<div class="article row">
-  <div class="col-xs-12 col-sm-12 col-md-3">
-    <a href="#" title="<%= article.title %>" class="thumbnail">
-      <img src="<%= article.image %>" alt="image" />
-    </a>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-3">
-    <ul class="meta-search">
-      <li><%= fa_icon "calendar", text: article.created_at %></li>
-    </ul>
-    <div class="shareAndComments">
-      <div class="share"><span><%= article.share_count %></span></div>
-      <div class="comments"><span><%= article.comment_count %></span></div>
+<li class="media article">
+  <img class="author" src="<%= article.author_avatar %>">
+  <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+  <div class="title color<%= rand(1..5) %>">
+    <%= link_to article.url, class: 'location', data: {
+        :latlng => article.location,
+        :title  => article.title,
+        :uri    => article.url,
+        :theme  => article.theme.downcase
+      } do %>
+      <%= article.title %>
+    <% end %>
+    <div>
+      <%= t('article.by_html', author: article.author) %>
+      <!-- TODO: In case of multiple author, add authorSeparator.png between
+      each span.author -->
     </div>
   </div>
-  <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
-    <h3><%= link_to article.title, article.url %></h3>
-    <p><%= article.body(200) %></p>
+
+  <% if article.has_image? %>
+    <a class="pull-left thumbnail" href="<%= article.url %>">
+      <img class="media-object article-featured-image" src="<%= article.image %>" alt="64x64">
+    </a>
+  <% end %>
+
+  <div class="media-body">
+    <%= article.body(350) %>
   </div>
-  <span class="clearfix"></span>
-</div>
+
+  <div class="shareAndComments">
+    <div class="share"><span><%= article.share_count %></span></div>
+    <div class="comments"><span><%= article.comment_count %></span></div>
+  </div>
+
+</li>

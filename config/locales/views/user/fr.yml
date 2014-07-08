@@ -1,7 +1,8 @@
 fr:
   user:
-    warned: "Utilisateur averti avec succès"
-    banned: "Utilisateur banni avec succès"
+    warned:   "Utilisateur averti avec succès"
+    banned:   "Utilisateur banni avec succès"
+    unknown:  "Inconnu"
 
     role:
       user:       "Utilisateur"

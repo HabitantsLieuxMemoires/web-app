@@ -12,15 +12,12 @@
 <div id="article-container">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
-      <img class="author" src="http://lorempixel.com/53/53/people/?<%= article.url %>">
+      <img class="author" src="<%= article.author_avatar %>">
       <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
       <div class="title color<%= rand(1..5) %>">
         <%= article.title %>
         <div>
-          Par <span class="author">Laurence</span>
-          <!-- In case of multiple author, add authorSeparator.png between
-          each span.author -->
-          le <span class="datetime">XX/XX/XXX</span>
+          <%= t('article.by_the_html', author: article.author, date: article.created_at) %>
           -
           <%= article.visibility %>
         </div>

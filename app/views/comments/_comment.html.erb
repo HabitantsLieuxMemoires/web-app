@@ -5,18 +5,12 @@
   <div class="media-body">
 
     <div class="title color<%= rand(1..5) %>">
-      <%= comment.user %>
+      <%= link_to comment.user, user_path(comment.user_id) %>
       <div>
-        Par <span class="author">link_to comment.user, user_path(comment.user_id)</span>
-        le <span class="datetime"><%= comment.created_at %></span>
+        <%= t('article.comment.since_html', date: comment.created_at) %>
       </div>
     </div>
 
     <%= comment.content %>
-
-    <div class="shareAndComments">
-      <div class="share"><span>15</span></div>
-      <div class="comments"><span>48</span></div>
-    </div>
   </div>
 </div>

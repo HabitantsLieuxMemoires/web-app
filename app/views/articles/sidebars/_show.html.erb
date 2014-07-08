@@ -1,9 +1,5 @@
 <%= render 'shared/sidebar_searchbox' %>
 
-<div id="search-column" class="hidden-xs hidden-sm">
-<%= render 'shared/sidebar_actions' %>
-</div>
-
 <% if current_user %>
   <div class="well hidden-xs hidden-sm" id="article-actions">
 
@@ -34,18 +30,9 @@
       </h4>
     </div>
     <div class="list-group">
-      <a class="list-group-item theme patrimoine"><div><%= article.theme %></div></a>
+      <a class="list-group-item theme"><div class="<%= @article.theme.slug %>"><%= article.theme %></div></a>
       <a class="list-group-item chronology"><div><%= article.chronology %></div></a>
       <a class="list-group-item tags"><div><%= article.tags %></div></a>
-      <!--<%= f.static_control nil, label: Article.human_attribute_name(:theme_id) do %>
-        <%= article.theme %>
-      <% end %>
-      <%= f.static_control nil, label: Article.human_attribute_name(:chronology_id) do %>
-        <%= article.chronology %>
-      <% end %>
-      <%= f.static_control nil, label: Article.human_attribute_name(:tags) do %>
-        <%= article.tags %>
-      <% end %>-->
     </div>
   </div>
 
@@ -56,29 +43,29 @@
       </h4>
     </div>
     <div class="list-group">
-      <a class="list-group-item revision"><div><p>pwet</p></div><span class="badge">123</span></a>
-      <a class="list-group-item title"><div><p>sdf sf sdf</p></div></a>
-      <a class="list-group-item gps"><div><p>XX.XXXX, -X.XXXX</p></div></a>
-    <!--
-      <div class="history">
-        <%= f.static_control nil, label: Article.human_attribute_name(:revision) do %>
-          <%= article.history %>
-        <% end %>
-      </div>
-      <%= f.static_control nil, label: Article.human_attribute_name(:slug) do %>
-        <%= link_to article.display_slug, article.url %>
-      <% end %>
-      <%= f.static_control nil, label: Article.human_attribute_name(:location) do %>
-        <span id="article-location" class="location" data-theme="<%= article.theme.downcase %>" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>"><%= article.display_location %></span>
-      <% end %>
-    -->
+      <a class="list-group-item revision">
+        <div>
+          <p><%= Article.human_attribute_name(:revision) %></p>
+        </div>
+        <span class="badge"><%= article.history %></span>
+      </a>
+      <a class="list-group-item title" href="<%= article.url %>">
+        <div><p><%= article.display_slug %></p></div>
+      </a>
+      <a class="list-group-item gps" href="<%= article.location_url %>" target="_blank">
+        <div  class="location" data-theme="<%= article.theme.downcase %>"
+                               data-latlng="<%= article.location %>"
+                               data-title="<%= article.title %>"
+                               data-uri="<%= article_path(article.slug) %>">
+          <p><%= article.display_location %></p>
+        </div>
+      </a>
     </div>
   </div>
 
-  <div class="panel panel-default" id="article-contributors">
+  <div class="panel panel-default" id="article-writers">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <%= fa_icon "users" %>
         <%= t('article.contributors') %>
       </h4>
     </div>
