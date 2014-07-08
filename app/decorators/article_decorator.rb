@@ -13,7 +13,11 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def author
-    object.author_fields['nickname'] || t('unknown')
+    object.author_fields['nickname'] || t('user.unknown')
+  end
+
+  def author_avatar
+    object.author_fields['avatar_url']
   end
 
   def history
@@ -33,7 +37,8 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def visibility
-    h.content_tag(:span, class: "label label-default") do
+    # Remoded class "label label-default"
+    h.content_tag(:span, class: " ") do
       object.public? ? t('article.public') : t('article.private')
     end
   end
@@ -52,7 +57,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def tags
     if object.tags_array.any?
-      object.tags_array.collect { |tag| h.content_tag(:span, tag, class: "label label-primary tag") }.join.html_safe
+      object.tags_array.collect { |tag| h.content_tag(:span, tag, class: "label label-normal tag") }.join.html_safe
     else
       h.content_tag(:span, t('none'), class: "label label-warning")
     end
@@ -64,20 +69,25 @@ class ArticleDecorator < ApplicationDecorator
 
   def display_location
     if object.location.blank?
-      h.content_tag(:span, class: "label label-warning") do
-        t('none')
-      end
+      t('none')
     else
-      coordinates = object.location.split(',')
-      latitude    = coordinates[0]
-      longitude   = coordinates[1]
-
-      # Link to OpenStreetMap
-      link       = "http://www.openstreetmap.org/?mlat=#{latitude}&mlon=#{longitude}&zoom=12"
-      link_title = coordinates.map { |x| x.to_f.round(4).to_s }.join(', ')
-
-      h.link_to link_title, url_for(link), target: '_blank'
+      link_title = object.location.split(',').map { |x| x.to_f.round(4).to_s }.join(', ')
     end
+  end
+
+  def location_url
+    if object.location.blank?
+      return
+    end
+
+    coordinates = object.location.split(',')
+    latitude    = coordinates[0]
+    longitude   = coordinates[1]
+
+    # Link to OpenStreetMap
+    link = "http://www.openstreetmap.org/?mlat=#{latitude}&mlon=#{longitude}&zoom=12"
+
+    url_for(link)
   end
 
   def summary
@@ -91,6 +101,9 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def body(truncate = nil)
+    # Force HTML tag to be prefixed by a space
+    # (proper display once tags has been stripped)
+    object.body.gsub! '<', ' <'
     body = strip_tags(object.body)
     body.truncate(truncate).html_safe unless truncate.nil?
   end
@@ -100,8 +113,11 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def image
-    image = object.images.first
-    image.nil? ? ActionController::Base.helpers.asset_path("article/default.png") : image.article_image_url(:thumb)
+    has_image? ? object.images.sample.article_image_url(:thumb) : ActionController::Base.helpers.asset_path("article/default.png")
+  end
+
+  def has_image?
+    object.images.any?
   end
 
   def featured_images

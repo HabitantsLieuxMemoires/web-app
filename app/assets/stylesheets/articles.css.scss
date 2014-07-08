@@ -13,9 +13,17 @@
 
 #article-details {
   .tag {
-    margin-left: 5px;
     float: left;
+    font-size: 12px;
+    display: inline-block;
+    border-radius: 5px;
+    width: 63px;
+    margin-left: 5px;
     margin-top: 5px;
+  }
+
+  .label-normal.tag {
+    background-color: #bebebe;
   }
 }
 

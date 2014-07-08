@@ -84,7 +84,7 @@ window.socialControllers =
       socialControllers.facebook.init()
       socialControllers.twitter.init()
       socialControllers.google.init()
-      console.log "social::Init done"
+      debug "social::Init done"
 
 window.gTestCB= (json)->
   debug json

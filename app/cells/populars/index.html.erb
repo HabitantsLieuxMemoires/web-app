@@ -1,30 +1,41 @@
 <div class="panel panel-default" id="main-popular">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= fa_icon "share-square-o" %>
       <%= t('cells.popular.title') %>
     </h3>
   </div>
   <div class="panel-body">
     <% if @populars.any? %>
-      <div class="row">
+      <ul class="media-list">
         <% @populars.each do |p| %>
-          <div class="col-md-4 popular">
-            <img class="img-thumbnail article-popular-image" alt="80x80" src="<%= p.image %>">
-            <%= link_to p.url, class: 'location', data: {
-                :latlng => p.location,
-                :title  => p.title,
-                :uri    => p.url
-              } do %>
-              <h5><%= p.title %></h5>
-            <% end %>
-            <p><%= p.body(120) %></p>
-          </div>
+          <li class="media popular">
+            <img class="author" src="<%= p.author_avatar %>">
+            <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+            <div class="title color<%= rand(1..5) %>">
+              <%= link_to p.url, class: 'location', data: {
+                  :latlng => p.location,
+                  :title  => p.title,
+                  :uri    => p.url,
+                  :theme  => p.theme.downcase
+                } do %>
+                <%= p.title %>
+              <% end %>
+              <div>
+                <%= t('article.by_html', author: p.author) %>
+                <!-- TODO: In case of multiple author, add authorSeparator.png between
+                each span.author -->
+              </div>
+            </div>
+
+            <div class="shareAndComments">
+              <div class="share"><span><%= p.share_count %></span></div>
+              <div class="comments"><span><%= p.comment_count %></span></div>
+            </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
     <% else %>
-      <p class="bg-info"><%= t('article.popular.none') %></p>
+      <p class="bg-info"><%= t('admin.editorial.feature.none') %></p>
     <% end %>
   </div>
-
 </div>

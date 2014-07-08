@@ -10,7 +10,7 @@ class Theme
 
   has_many :articles
 
-  validates :title, presence: true, uniqueness: true, length: { in: 6..50 }
+  validates :title, presence: true, uniqueness: true, length: { in: 4..50 }
 
-  scope :by_articles_count, -> { desc(:article_count).limit(5) }
+  scope :by_articles_count, -> { desc(:article_count).limit(20) }
 end

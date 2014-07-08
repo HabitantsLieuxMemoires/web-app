@@ -13,7 +13,7 @@ class Article
       # Denormalize author fields
       belongs_to    :author, :class_name => 'User'
       counter_cache :author
-      alize         :author, :nickname
+      alize         :author, :nickname, :avatar_url
     end
 
     module ClassMethods

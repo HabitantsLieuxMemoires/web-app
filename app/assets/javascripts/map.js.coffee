@@ -1,23 +1,28 @@
 #= require leaflet-search.min
 
 mapSettings =
-  el:'business-header',
+  el:'mapContainer',
   defaultPosition:[44.857981, -0.530777],
   maxBounds:
     southWest: [44.80254, -0.6439],
     northEast: [44.87327, -0.42984]
-  osmProviders:{
-    osm:{
+  osmProviders:
+    osm:
       url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    },
   # For testing purposes only
   # Mapbox is not free and limited to 3 000view/month (1 view = 15 tiles)
-    mapbox:{
+    mapbox:
       url:'https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    }
-  }
+  icons: (theme) ->
+    L.icon(
+      iconUrl: '/assets/map_icons/'+theme+'.png'
+
+      iconSize:     [35, 50], # size of the icon
+      iconAnchor:   [17, 48], # point of the icon which will correspond to marker's location
+      popupAnchor:  [-3, -76] # point from which the popup should open relative to the iconAnchor
+    )
 
 window.mapController =
   currentMarker:null,
@@ -33,7 +38,7 @@ window.mapController =
         # Berk!
         # @todo find a better fix
         cb = ->
-          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 13)
         setTimeout cb, 2000
       # Unbind after 1st localization
       # mapController.mapInstance.off 'viewreset', mapController.locate
@@ -146,9 +151,9 @@ window.mapController =
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
     # Already initialized?
-    if $('#business-header').hasClass('leaflet-container') == false
+    if $('#mapContainer').hasClass('leaflet-container') == false
       debug "Map:: Initialization..."
-      mapSettings.originalHeight = $('#business-header').height()
+      mapSettings.originalHeight = $('#mapContainer').height()
 
       # Marker cluster
       @markerCluster = new L.MarkerClusterGroup
@@ -196,8 +201,8 @@ window.mapController =
       map.addLayer @markerCluster
 
       # Position picker
-      $('.business-header').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
-      $('.business-header').append '<div class="leaflet-control-position-picker buttons"></div>'
+      $('#mapContainer').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
+      $('#mapContainer').append '<div class="leaflet-control-position-picker buttons"></div>'
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
       # Location picket
@@ -230,12 +235,15 @@ window.mapController =
           control= L.DomUtil.create 'div', ''
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
           control.onclick = ->
+            debug "click!"
             # On mobile, hide the map
             if Modernizr.touch
+              debug "AAA"
               $('.map-mobile-toggle').click()
             # On desktop, toggle height
             else
-              mapController.heightToggle
+              debug "BBB"
+              mapController.heightToggle()
           control.className = 'heightToggle leaflet-bar'
           control
 
@@ -264,6 +272,7 @@ window.mapController =
     debug markers.length + " markers found"
     markers.each ->
       dataLocation = $(this).data("latlng")
+      dataTheme = $(this).data("theme")
       if dataLocation
         latlng = dataLocation.split ', '
         mapController.addMarker
@@ -271,6 +280,7 @@ window.mapController =
           longitude: latlng[1]
           text: $(this).data "title"
           uri: $(this).data "uri"
+          theme: dataTheme
 
   # Erase all markers
   deleteMarkers: ->
@@ -291,7 +301,8 @@ window.mapController =
   addMarker: (data) ->
     text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
     mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
-      draggable:mapController.isEditing()
+      draggable:mapController.isEditing(),
+      icon: mapSettings.icons data.theme 
     ).bindPopup(text))
     mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
       padding: [70,70]

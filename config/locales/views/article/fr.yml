@@ -18,6 +18,9 @@ fr:
     published:      "Publié"
     unpublished:    "En attente"
 
+    by_html:        "Par <span class='author'>%{author}</span>"
+    by_the_html:    "Par <span class='author'>%{author}</span> le <span class='datetime'>%{date}</span>"
+
     created:        "Contenu créé avec succès"
     creation_error: "Une erreur est survenue pendant la création du contenu"
     created_by:     "%{user} a ajouté le contenu %{article}"
@@ -32,7 +35,7 @@ fr:
     remove_error:   "Une erreur est survenue pendant la suppression du contenu"
 
     do:
-      create:       "Créer un contenu"
+      create:       "Je publie mon article"
       publish:      "Publier le contenu"
       update:       "Modifier le contenu"
       report:       "Signaler le contenu"
@@ -65,6 +68,8 @@ fr:
     comment:
       none:         "Aucun commentaire pour ce contenu"
       list:         "Liste des commentaires"
+
+      since_html:   "Il y a <span class='datetime'>%{date}</span>"
 
       deleted:      "Commentaire supprimé avec succès"
       delete_error: "Une erreur est survenue pendant la suppression du commentaire"

@@ -12,14 +12,20 @@
 <div id="article-container">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
-      <div class="pull-left">
-        <h3 class="panel-title">
-          <%= fa_icon "edit" %>
-          <%= article.title %>
-        </h3>
+      <img class="author" src="<%= article.author_avatar %>">
+      <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+      <div class="title color<%= rand(1..5) %>">
+        <%= article.title %>
+        <div>
+          <%= t('article.by_the_html', author: article.author, date: article.created_at) %>
+          -
+          <%= article.visibility %>
+        </div>
       </div>
-      <div class="pull-right">
-        <%= article.visibility %>
+
+      <div class="shareAndComments">
+        <div class="share"><span>15</span></div>
+        <div class="comments"><span>48</span></div>
       </div>
     </div>
 
@@ -45,6 +51,7 @@
         <%= render 'articles/videos' %>
       </div>
     </div>
+
     <div class="panel-footer">
       <div class="text-center">
         <%= render 'social',   article: article %>

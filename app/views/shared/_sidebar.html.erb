@@ -1,10 +1,11 @@
-<%= render 'shared/sidebar_actions' %>
+<%= render 'shared/sidebar_searchbox' %>
 
 <%= render_cell :themes,        :index %>
-<%= render_cell :chronologies,  :index %>
 
 <% if content_for?(:last_cell) %>
   <%= yield(:last_cell) %>
 <% else %>
   <%= render_cell :news, :index %>
 <% end %>
+
+<%= render_cell :chronologies,  :index %>

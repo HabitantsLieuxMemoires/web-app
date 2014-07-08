@@ -1,21 +1,51 @@
-<footer id="footer">
+<div class="container">
+  <div class="row">
+  <div class="col-sm-12" id="logosContainer">
+      <a href="http://www.surlarivedroite.fr/"><div class="logos-gpv"></div></a>
+      <a href="http://www.ville-bassens.fr/"><div class="logos-bassens"></div></a>
+      <a href="http://www.lormont.fr/"><div class="logos-lormont"></div></a>
+      <a href="http://www.ville-cenon.fr/"><div class="logos-cenon"></div></a>
+      <a href="http://www.ville-floirac33.fr/"><div class="logos-floirac"></div></a>
+      <a href="http://www.lacub.fr/"><div class="logos-lacub"></div></a>
+      <a href="http://www.gironde.fr/"><div class="logos-gironde"></div></a>
+      <a href="http://www.europe-en-aquitaine.eu/"><div class="logos-ue"></div></a>
+    </div>
+  </div>
+</div>
+
+<footer id="footer" class="footer-nav">
+
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="#" class="pull-right">Habitants Lieux Mémoires by GIP GPV</a>
-        <ul class="list-inline">
-          <li><a href="#">GitHub Project</a></li>
-          <li><%= link_to "Conditions d'utilisation", page_path('cgu') %></li>
-        </ul>
+    <div class="col-sm-12">
+        <div class="pull-right">
+          <a href="#">Mentions légales</a> /
+          <a href="#">Charte</a> /
+          <a href="#">Plan du site</a> /
+          <a href="#">Contacts</a>
+          <a href="https://twitter.com/rivedroitebx"#><img src="<%= asset_path 'twitter.png' %>"></a>
+          <a href="https://www.facebook.com/jaime.larivedroite"><img src="<%= asset_path 'facebook.png' %>"></a>
+        </div>
+        <div class="pull-left">
+          <strong>Habitants Lieux Mémoires</strong> / Projet du Groupement d’Interêt Public : Grand Projet des Villes / Lormont, Bassens, Cenon & Floirac
+        </div>
       </div>
     </div>
+
+  </div>
+</footer>
+
+<footer id="footer" class="footer-legals">
+
+  <div class="container">
 
     <div class="row">
       <div class="col-sm-12">
         <div class="pull-right">
-          Apache 2.0 Licence - Powered by <a href="http://www.innovantic.fr">Innovantic</a>
+          <a href="https://github.com/HabitantsLieuxMemoires/web-app">GitHub Project</a> : <%= link_to "Conditions d'utilisation", page_path('cgu') %>
+          <span class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">Licence Creative Commons 3.0</a> - Powered by <a href="http://www.innovantic.fr">Innovantic</a></span>
         </div>
       </div>
     </div>
+
   </div>
 </footer>
