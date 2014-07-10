@@ -7,7 +7,6 @@
 #= require prettify
 #= require bootstrap/bootstrap-validator
 #= require shared/ekko-lightbox-loader
-#= require shared/modal-form-cleaner
 #= require shared/toggle-button
 #= require shared/article-summary
 #= require shared/bootstrap-video-validator
@@ -31,11 +30,15 @@ window['articles#edit'] = (data) ->
   UI.initTagsSelector($('#article_tags'))
   UI.initThemeAndChronologySelects()
   UI.initTooltips()
+  UI.initLadda()
 
   Form.initEditForm()
 
   # Binding validation on modals
   $('#modal-add-image').on 'loaded.bs.modal', ->
+    Form.initAddImageForm()
+
+  $('#modal-select-image').on 'loaded.bs.modal', ->
     Form.initAddImageForm()
 
   $('#modal-add-video').on 'loaded.bs.modal', ->
@@ -100,20 +103,37 @@ UI =
         $('.nav-tabs li.active').removeClass('active')
 
   initTagsSelector: (@component, @delimiter = ',') ->
+    tags_url = $('#data-load-tags').data('load')
+
     @component.selectize
-        plugins: ['remove_button']
-        delimiter: @delimiter
-        persist: false
-        create: (input) ->
-          return {
-            value: input,
-            text: input.toLowerCase()
-          }
+      plugins: ['remove_button'],
+      delimiter:    @delimiter,
+      labelField:   'item',
+      valueField:   'item',
+      searchField:  'item',
+      addPrecedence: true,
+      preload:       true,
+      create:        true,
+      load: (query, callback) ->
+        if (query.length)
+          return callback()
+
+        $.ajax
+          url: tags_url,
+          type: 'GET',
+          success: (res) ->
+            callback(res.map (t) -> {item: t})
 
   initTabs: ->
     $('[data-toggle=tab]').on 'shown.bs.tab', (e) ->
       # Loading comments if they appear
       $.waypoints('refresh')
+
+      # Showing/Hiding links if needed
+      if e.target.id == 'show_images' || e.target.id == 'show_videos'
+        $('#article-external-notes').hide()
+      else
+        $('#article-external-notes').show()
 
       if $('#show_info').hasClass 'mobile-toggle-button-active'
         ButtonToggle.Hide $('#show_info').data 'target'
@@ -131,6 +151,15 @@ UI =
 
   initTooltips: ->
     $('#bt-save-article').tooltip()
+
+  initLadda: ->
+    $('.ladda-button').ladda()
+
+    # Binding remove image handlers
+    $('.ladda-button').on 'ajax:before': (e) ->
+      $(this).ladda('start')
+    $('.ladda-button').on 'ajax:complete': (e) ->
+      $(this).ladda('stop')
 
 Form =
   initCreateForm: ->
@@ -175,6 +204,12 @@ Form =
           validators:
             notEmpty:
               message: I18n.t("errors.messages.blank")
+            file:
+              extension: 'jpeg,jpg,png,gif'
+              maxSize: 2048 * 1024
+              message: I18n.t("errors.messages.invalid")
+      submitHandler: (validator, form, submitButton) ->
+        debug 'Image added'
 
   initAddVideoForm: ->
     $("#new_video").bootstrapValidator
@@ -202,6 +237,8 @@ Form =
               message: I18n.t("errors.messages.invalid_uri")
             videoProvider:
               message: I18n.t("errors.messages.invalid_video_provider")
+      submitHandler: (validator, form, submitButton) ->
+        debug 'Video added'
 
   initAddCommentForm: ->
     $('#new_comment').bootstrapValidator
@@ -214,6 +251,8 @@ Form =
             stringLength:
               min: 4
               message: I18n.t("errors.messages.too_short.other", {count: "4"})
+      submitHandler: (validator, form, submitButton) ->
+        debug 'Comment added'
 
   initCreateReportForm: ->
     $('#new_report').bootstrapValidator

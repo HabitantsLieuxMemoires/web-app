@@ -17,7 +17,6 @@
     font-size: 12px;
     display: inline-block;
     border-radius: 5px;
-    width: 63px;
     margin-left: 5px;
     margin-top: 5px;
   }
@@ -41,6 +40,28 @@
 
 .comment-avatar {
   max-width: 50px;
+}
+
+#images-list {
+  .image {
+    height: 240px;
+  }
+}
+
+#videos-list {
+  .video {
+    margin-top: 40px;
+  }
+}
+
+#modal-select-image {
+  .tab-content {
+    margin-top: 30px;
+  }
+
+  img {
+    max-height: 150px;
+  }
 }
 
 @media (max-width: 767px) {

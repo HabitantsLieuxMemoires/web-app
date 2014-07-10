@@ -42,7 +42,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def unfeature
-    feature = Feature.find(params[:feature_id])
+    feature = Feature.last
     feature.articles.delete(@article)
 
     redirect_to admin_features_path

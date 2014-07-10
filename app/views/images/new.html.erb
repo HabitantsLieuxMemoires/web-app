@@ -20,7 +20,11 @@
     <% end %>
   </div>
   <div class="modal-footer">
-    <%= f.primary t('article.image.do.upload'), id: 'upload_image' %>
+    <button class="btn btn-primary ladda-button"
+            data-style="expand-right"
+            name="commit" type="submit">
+      <span class="ladda-label"><%= t('article.image.do.upload') %></span>
+    </button>
   </div>
 <% end %>
 

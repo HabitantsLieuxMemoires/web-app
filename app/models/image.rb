@@ -5,6 +5,8 @@ class Image
 
   include Trackable
 
+  attr_accessor :size
+
   field :title, type: String
 
   mount_uploader :article_image, ArticleImageUploader

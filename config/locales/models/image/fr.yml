@@ -5,6 +5,7 @@ fr:
     attributes:
       image:
         title:    "Titre"
+        size:     "Taille"
     errors:
       models:
         image:

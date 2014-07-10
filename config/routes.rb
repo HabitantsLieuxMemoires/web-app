@@ -30,7 +30,7 @@ Hlm::Application.routes.draw do
     end
 
     resources :images,   only: [:new, :create, :destroy] do
-      get 'select', on: :collection
+      get   'select', on: :collection
     end
   end
 
@@ -39,6 +39,10 @@ Hlm::Application.routes.draw do
   end
 
   resources :chronologies, only: [:show] do
+    get 'page/:page', action: :show, on: :member
+  end
+
+  resources :tags, only: [:index, :show] do
     get 'page/:page', action: :show, on: :member
   end
 

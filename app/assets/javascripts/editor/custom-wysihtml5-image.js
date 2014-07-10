@@ -31,13 +31,51 @@ bootWysiImageOverrides = {
       var chooser = selectImageModal.find('#image_chooser');
       chooser.on('click', '.thumbnail .btn-primary', function(e) {
         var $row = $(e.currentTarget).parents('.thumbnail');
-        // var $row = $(e.delegateTarget).find('.thumbnail');
 
         insertImage({
           url: $(this).data('url'),
           caption: $row.data('caption')
         })
         selectImageModal.modal('hide');
+      });
+
+      var newImageForm = selectImageModal.find('#new_image');
+      var loader       = newImageForm.find('.ladda-button').ladda();
+
+      newImageForm.on('submit', function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        var bootstrapValidator = $this.data('bootstrapValidator');
+        if (bootstrapValidator && bootstrapValidator.isValid()) {
+          loader.ladda('start');
+
+          //TODO: Does not work for IE<10, find a better fix
+          var data = new FormData($this[0])
+          $.ajax({
+              url: $this.attr('action'),
+              type: $this.attr('method'),
+              data: data,
+              contentType: false,
+              processData: false,
+              async: false,
+              cache: false,
+              dataType: 'json',
+              success: function(json) {
+                insertImage({
+                  url: json.url,
+                  caption: json.caption
+                })
+                selectImageModal.modal('hide');
+              },
+              complete: function() {
+                loader.ladda('stop');
+              }
+          });
+        }
+
+        return false;
       });
     });
 

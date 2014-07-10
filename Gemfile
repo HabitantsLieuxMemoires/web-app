@@ -35,8 +35,6 @@ gem 'underscore-rails',             "~> 1.6.0"
 gem 'leaflet-rails',                "~> 0.7.3"
 gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
-gem 'spinjs-rails',                 "~> 1.3"
-gem 'ajaxspin',                     "~> 1.1.1"
 gem 'ionicons-rails',               "~> 1.4.1.0"
 
 # Mongoid gems

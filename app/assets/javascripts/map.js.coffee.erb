@@ -167,7 +167,6 @@ window.mapController =
       map = new L.Map el,
         maxBounds: new L.LatLngBounds maxSW, maxNE
         zoomControl: !Modernizr.touch
-        maxZoom: 19
         minZoom: 13
 
       # Search plugin
@@ -234,14 +233,11 @@ window.mapController =
           control= L.DomUtil.create 'div', ''
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
           control.onclick = ->
-            debug "click!"
             # On mobile, hide the map
             if Modernizr.touch
-              debug "AAA"
               $('.map-mobile-toggle').click()
             # On desktop, toggle height
             else
-              debug "BBB"
               mapController.heightToggle()
           control.className = 'heightToggle leaflet-bar'
           control

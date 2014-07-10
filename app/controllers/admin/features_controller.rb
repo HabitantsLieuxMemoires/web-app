@@ -1,9 +1,8 @@
 class Admin::FeaturesController < Admin::BaseController
-  before_action :set_feature, only: [:edit, :update]
+  before_action :set_feature, only: [:index, :edit, :update]
 
   def index
-    feature = Feature.last
-    redirect_to feature.blank? ? new_admin_feature_path : edit_admin_feature_path(feature)
+    redirect_to @feature.blank? ? new_admin_feature_path : edit_admin_feature_path(@feature)
   end
 
   def new
@@ -19,6 +18,7 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def edit
+    @feature = @feature.decorate
   end
 
   def update
@@ -37,7 +37,7 @@ class Admin::FeaturesController < Admin::BaseController
   end
 
   def set_feature
-    @feature = Feature.last.decorate
+    @feature = Feature.last
   end
 
 end

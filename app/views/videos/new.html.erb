@@ -35,6 +35,10 @@
 
   </div>
   <div class="modal-footer">
-      <%= f.primary t('article.video.do.add'), id: 'add_video' %>
+    <button class="btn btn-primary ladda-button"
+            data-style="expand-right"
+            name="commit" type="submit">
+      <span class="ladda-label"><%= t('article.video.do.add') %></span>
+    </button>
   </div>
 <% end %>

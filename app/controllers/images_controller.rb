@@ -11,9 +11,18 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @article.save && create_activity(@image, 'article.add_image')
-        format.js
+        if image_params[:size]
+          format.json   {
+            render :json => {
+              :url      => get_image_for_size(@image, image_params[:size]),
+              :caption  => @image.title
+            }
+          }
+        else
+          format.js
+        end
       else
-        format.json { render :json => @image.errors, :status => :unprocessable_entity }
+        format.json     { render :json => @image.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -37,7 +46,7 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :article_image, :article_image_cache)
+    params.require(:image).permit(:title, :article_image, :article_image_cache, :size)
   end
 
   def set_article
@@ -50,6 +59,17 @@ class ImagesController < ApplicationController
                              author:    current_user.nickname,
                              title:     @article.title,
                              url:       image.article_image_url(:thumb)
+  end
+
+  def get_image_for_size(image, size)
+    case size
+    when 'large'
+      image.article_image_url(:large)
+    when 'medium'
+      image.article_image_url(:medium)
+    else
+      image.article_image_url(:thumb)
+    end
   end
 
 end

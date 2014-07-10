@@ -12,16 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-//= require jquery_nested_form
-//= require underscore
 //= require bootstrap
+//= require jquery.remotipart
+//= require jquery.simplyscroll.min.js
+//= require jquery_nested_form
+//= require modernizr
+//= require underscore
 //= require leaflet
 //= require leaflet.markercluster.js
-//= require modernizr
-//= require shared/ajax-spin
+//= require shared/modal-spin-loader
+//= require shared/modal-form-cleaner
 //= require i18n
 //= require i18n/translations
-//= require jquery.simplyscroll.min.js
 //= require_directory
 

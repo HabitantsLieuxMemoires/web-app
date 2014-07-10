@@ -13,7 +13,7 @@
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
       <img class="author" src="<%= article.author_avatar %>">
-      <img class="themeIco" src="/assets/themes/<%= asset_path 'icoChat.png' %>">
+      <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
       <div class="title color<%= rand(1..5) %>">
         <%= article.title %>
         <div>
@@ -45,6 +45,8 @@
               </div>
             </div>
           <% end %>
+
+          <%= render partial: 'articles/links/show', locals: { :article => article } %>
         </div>
 
         <%= render 'articles/images' %>
@@ -58,8 +60,6 @@
       </div>
     </div>
   </div>
-
-  <%= render partial: 'articles/links/show', locals: { :article => article } %>
 
 </div>
 

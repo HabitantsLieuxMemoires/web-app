@@ -15,9 +15,6 @@
       <%= f.form_group do %>
         <%= f.check_box  :public, inline: true %>
       <% end %>
-      <%= f.form_group do %>
-        <%= f.check_box  :locked, inline: true %>
-      <% end %>
       <%= f.hidden_field :published, value: '0' %>
 
     </div>
@@ -26,3 +23,7 @@
     </div>
   </div>
 <% end %>
+
+<!-- Data -->
+<div id="data-load-tags" data-load="<%= tags_path %>">
+</div>

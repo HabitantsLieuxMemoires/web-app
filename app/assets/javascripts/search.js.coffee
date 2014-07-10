@@ -12,15 +12,25 @@ SearchController=
     # Checkboxes are selected by default
     markCheckboxes(true)
 
+    tags_url = $('#data-load-tags').data('load')
+
     # Selectize tags
     $('#tags').selectize
-          plugins: ['remove_button']
-          persist: false
-          create: (input) ->
-            return {
-              value: input,
-              text: input
-            }
+      plugins: ['remove_button'],
+      labelField:   'item',
+      valueField:   'item',
+      searchField:  'item',
+      preload:       true,
+      create:        false,
+      load: (query, callback) ->
+        if (query.length)
+          return callback()
+
+        $.ajax
+          url: tags_url,
+          type: 'GET',
+          success: (res) ->
+            callback(res.map (t) -> {item: t})
 
     # Binding events
     $('.themes-all').on 'click', (e) ->

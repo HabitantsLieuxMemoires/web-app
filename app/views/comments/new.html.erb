@@ -13,6 +13,10 @@
     <%= f.text_area   :content %>
   </div>
   <div class="modal-footer">
-    <%= f.primary t('article.comment.do.create'), id: 'submit_comment' %>
+    <button class="btn btn-primary ladda-button"
+            data-style="expand-right"
+            name="commit" type="submit">
+      <span class="ladda-label"><%= t('article.comment.do.create') %></span>
+    </button>
   </div>
 <% end %>

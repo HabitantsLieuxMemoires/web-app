@@ -23,8 +23,6 @@
               <%= f.text_field  :title %>
               <%= f.text_area   :body, rows: 32 %>
               <%= f.hidden_field :published, value: '1' %>
-
-              <%= render partial: 'articles/links/edit', locals: { :f => f } %>
             </div>
 
             <%= render 'articles/images', edit_mode: true %>
@@ -33,6 +31,8 @@
         </div>
       </div>
 
+      <%= render partial: 'articles/links/edit', locals: { :f => f } %>
+
     </div>
   </div>
 <% end %>
@@ -40,7 +40,7 @@
 <!-- Data -->
 <div id="data-select-image" data-load="<%= select_article_images_path(@article.id) %>">
 </div>
-<div id="data-load-tags" data-load="<%= tags_articles_path %>">
+<div id="data-load-tags" data-load="<%= tags_path %>">
 </div>
 
 <%= render 'articles/modals/edit' %>

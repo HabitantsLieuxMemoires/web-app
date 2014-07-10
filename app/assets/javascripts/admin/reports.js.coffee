@@ -1,6 +1,6 @@
 #= require jasny-bootstrap.min
 #= require moment
-#= require bootstrap-daterangepicker
+#= require bootstrap/bootstrap-daterangepicker
 
 window['admin/reports#index'] = (data) ->
   $('#report_date_range').daterangepicker({

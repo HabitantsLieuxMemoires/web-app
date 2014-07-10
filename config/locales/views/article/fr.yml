@@ -108,6 +108,10 @@ fr:
         view:           "Voir la photo"
         restore:        "Restaurer la photo"
 
+      tab:
+        select:         "Médiathèque"
+        insert:         "Nouvelle photo"
+
       title:
         upload:    "Publication de photo"
         insert:    "Insertion d'une photo"

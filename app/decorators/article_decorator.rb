@@ -61,7 +61,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def tags
     if object.tags_array.any?
-      object.tags_array.collect { |tag| h.content_tag(:span, tag, class: "label label-normal tag") }.join.html_safe
+      object.tags_array.collect { |tag| tag_link(tag) }.join.html_safe
     else
       h.content_tag(:span, t('none'), class: "label label-warning")
     end
@@ -143,6 +143,11 @@ class ArticleDecorator < ApplicationDecorator
     h.content_tag(:div, class: image_class) do
       h.image_tag(image_url)
     end
+  end
+
+  def tag_link(tag)
+    link_to_tag = link_to(tag, tag_path(tag))
+    h.content_tag(:span, link_to_tag, class: "label label-normal tag")
   end
 
 end

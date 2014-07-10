@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   include ActionView::Helpers::TextHelper
+
   skip_before_action   :require_login,              only: [:show, :autocomplete, :search, :share]
   before_action        :set_article,                only: [:show, :share]
   before_action        :set_unpublished_article,    only: [:edit, :update]
@@ -44,7 +45,8 @@ class ArticlesController < ApplicationController
 
   #TODO: Externalize autocomplete and search in own concern
   def autocomplete
-    articles = ArticleDecorator.decorate_collection(Article.search(params[:query], autocomplete: true, limit: 10))
+    articles = Article.search(params[:query], limit: 10)
+    articles = ArticleDecorator.decorate_collection(articles)
 
     render json: articles.map{|a| {
       :id => a.slug,
@@ -85,12 +87,6 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.json { render json: @article.share_count }
     end
-  end
-
-  def tags
-    tags = Article.tags
-
-     render json: tags
   end
 
   private
