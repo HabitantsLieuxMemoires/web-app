@@ -13,7 +13,7 @@
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
       <img class="author" src="<%= article.author_avatar %>">
-      <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+      <img class="themeIco" src="<%= article.theme_picto %>">
       <div class="title color<%= rand(1..5) %>">
         <%= article.title %>
         <div>
@@ -24,8 +24,8 @@
       </div>
 
       <div class="shareAndComments">
-        <div class="share"><span>15</span></div>
-        <div class="comments"><span>48</span></div>
+        <div class="share"><span><%= article.share_count %></span></div>
+        <div class="comments"><span><%= article.comment_count %></span></div>
       </div>
     </div>
 

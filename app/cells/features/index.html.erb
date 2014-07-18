@@ -13,7 +13,7 @@
         <% @feature.articles.each do |f| %>
           <li class="media feature">
             <img class="author" src="<%= f.author_avatar %>">
-            <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+            <img class="themeIco" src="<%= f.theme_picto %>">
             <div class="title color<%= rand(1..5) %>">
               <%= link_to f.url, class: 'location', data: {
                   :latlng => f.location,

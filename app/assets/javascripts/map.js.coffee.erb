@@ -33,9 +33,6 @@ window.mapController =
         maxZoom: 13
         minZoom: 13
       mapController.mapInstance.on 'locationerror',
-        debug 'Location error'
-        # Berk!
-        # @todo find a better fix
         cb = ->
           mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 13)
         setTimeout cb, 2000

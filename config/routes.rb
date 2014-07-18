@@ -1,12 +1,15 @@
 Hlm::Application.routes.draw do
+  mount_roboto
   root "home#index"
 
-  get "logout",   to: "sessions#destroy",  as: "logout"
-  get "login",    to: "sessions#new",      as: "login"
-  get "signup",   to: "users#new",         as: "signup"
-  get "profile",  to: "users#show",        as: "profile"
+  get "logout",       to: "sessions#destroy",  as: "logout"
+  get "login",        to: "sessions#new",      as: "login"
+  get "signup",       to: "users#new",         as: "signup"
+  get "profile",      to: "users#show",        as: "profile"
 
-  get "search", to: "search#index",      as: "search"
+  get "search",       to: "search#index",      as: "search"
+
+  get "/pages/*id",   to: 'pages#show',        as: :page, format: false
 
   resources :sessions,        only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]

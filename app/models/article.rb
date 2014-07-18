@@ -24,7 +24,7 @@ class Article
 
   # Theme
   belongs_to    :theme, dependent: :nullify
-  alize         :theme, :title
+  alize         :theme, :title, :slug
   counter_cache :theme
 
   # Chronology

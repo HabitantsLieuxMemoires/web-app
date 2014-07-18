@@ -10,7 +10,7 @@
         <% @populars.each do |p| %>
           <li class="media popular">
             <img class="author" src="<%= p.author_avatar %>">
-            <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+            <img class="themeIco" src="<%= p.theme_picto %>">
             <div class="title color<%= rand(1..5) %>">
               <%= link_to p.url, class: 'location', data: {
                   :latlng => p.location,

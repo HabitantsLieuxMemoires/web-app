@@ -1,6 +1,6 @@
 <li class="media article">
   <img class="author" src="<%= article.author_avatar %>">
-  <img class="themeIco" src="<%= asset_path 'themes/icoChat.png' %>">
+  <img class="themeIco" src="<%= article.theme_picto %>">
   <div class="title color<%= rand(1..5) %>">
     <%= link_to article.url, class: 'location', data: {
         :latlng => article.location,

@@ -1,5 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  delegate :id, :slug, :title, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos, :published?, :locked?
+  delegate :id, :slug, :body, :to_key, :theme, :chronology, :author_id, :location, :comment_count, :share_count, :images, :videos, :published?, :locked?
 
   decorates_association :history_tracks
   decorates_association :links
@@ -17,7 +17,7 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def author_avatar
-    object.author_fields['avatar_url']
+    object.author.avatar_url
   end
 
   def history
@@ -29,7 +29,11 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def theme_icon
-    asset_path('map_icons/' << object.theme.title.downcase << '.png')
+    asset_path('map_icons/' << theme_slug << '.png')
+  end
+
+  def theme_picto
+    asset_path('themes/' << theme_slug << '.png')
   end
 
   def chronology
@@ -104,6 +108,10 @@ class ArticleDecorator < ApplicationDecorator
     end unless heads.empty?
   end
 
+  def title(truncate = nil)
+    truncate.nil? ? object.title : object.title.truncate(truncate)
+  end
+
   def body(truncate = nil)
     # Force HTML tag to be prefixed by a space
     # (proper display once tags has been stripped)
@@ -117,7 +125,7 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def image
-    has_image? ? object.images.sample.article_image_url(:thumb) : ActionController::Base.helpers.asset_path("article/default.png")
+    has_image? ? object.images.first.article_image_url(:thumb) : ActionController::Base.helpers.asset_path("article/default.png")
   end
 
   def has_image?
@@ -148,6 +156,11 @@ class ArticleDecorator < ApplicationDecorator
   def tag_link(tag)
     link_to_tag = link_to(tag, tag_path(tag))
     h.content_tag(:span, link_to_tag, class: "label label-normal tag")
+  end
+
+  def theme_slug
+    # For backward compatibility with non-denormalized modelization
+    object.theme_fields["slug"] || object.theme.slug
   end
 
 end

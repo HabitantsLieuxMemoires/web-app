@@ -13,7 +13,9 @@ class Article
       # Denormalize author fields
       belongs_to    :author, :class_name => 'User'
       counter_cache :author
-      alize         :author, :nickname, :avatar_url
+
+      #TODO: Find a way to denormalize author avatar url to avoid querying user for his avatar
+      alize         :author, :nickname
     end
 
     module ClassMethods

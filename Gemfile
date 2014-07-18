@@ -66,6 +66,7 @@ gem 'public_activity',              "~> 1.4.1"    # Public activity tracking
 gem 'mini_magick',                  "~> 3.7.0"    # Images manipulation
 gem 'high_voltage',                 "~> 2.2.0"    # Static page serving
 gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc5"    # JS i18n
+gem 'roboto',                       "~> 0.2.0"    # robots.txt management
 
 # Deployment
 gem 'capistrano',                   "~> 3.2.1", require: false
