@@ -9,7 +9,7 @@ $(document).ready ->
   $('.article-creation-button>img').on 'mouseout', ->
   	$('.article-creation-button>a').removeClass 'active'
 
-  # Image slideshow
+  ### Image slideshow
   $('.slideshow').simplyScroll 
   	pauseOnHover: false
-  	pauseOnTouch: false
+  	pauseOnTouch: false###
