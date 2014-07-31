@@ -227,11 +227,11 @@ window.mapController =
           control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
           control.onclick = ->
             # On mobile, hide the map
-            if Modernizr.touch
+            if Modernizr.touch && $(window).width() < 1024
               $('.map-mobile-toggle').click()
             # On desktop, toggle height
             else
-              mapController.heightToggle()
+            mapController.heightToggle()
           control.className = 'heightToggle leaflet-bar'
           control
 
@@ -297,7 +297,7 @@ window.mapController =
 
   heightToggle: ->
     currentHeight = $('#'+mapSettings.el).height()
-    targetHeight = if currentHeight!= mapSettings.originalHeight then mapSettings.originalHeight else mapSettings.originalHeight * 0.3
+    targetHeight = if currentHeight!= mapSettings.originalHeight then mapSettings.originalHeight else 157
     $('#'+mapSettings.el).animate
       'height':targetHeight+'px'
     ,500

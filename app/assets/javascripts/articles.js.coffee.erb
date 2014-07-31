@@ -83,7 +83,7 @@ UI =
               "check_attributes": {
                 "width": "numbers"
                 "alt": "alt"
-                "src": "url"
+                "src": "src"
                 "height": "numbers"
                 "id": "alt"
                 "class": "alt"
@@ -98,7 +98,8 @@ UI =
   initMobileUI: ->
     mobileWidth = document.documentElement.clientWidth
     if (Modernizr.touch || $('body').data 'env' == "development") && mobileWidth < 768
-      $('#article-control').insertAfter "body>.container hr:nth(0)"
+      $('#article-control').prependTo $('.article-data').parents('.row')
+      $('#search-column').prependTo $('.article-data').parents('.row')
       # Mobile Fix : When showing article-info deselect previous tab
       $('#show_info').click ->
         $('.nav-tabs li.active').removeClass('active')
@@ -218,7 +219,7 @@ Form =
             notEmpty:
               message: I18n.t("errors.messages.blank")
             file:
-              extension: 'jpeg,jpg,png,gif'
+              extension: 'jpeg,jpg,png,gif,JPEG,JPG,PNG,GIF'
               maxSize: 2048 * 1024
               message: I18n.t("errors.messages.invalid")
       submitHandler: (validator, form, submitButton) ->

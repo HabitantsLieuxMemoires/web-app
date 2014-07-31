@@ -1,4 +1,4 @@
-@mixin clearfix {
+show_infomixin clearfix {
   &:after {
     content: "";
     display: table;
@@ -452,6 +452,10 @@ footer.footer-legals {
     font-weight: normal;
     font-size:10px;
   }
+}
+
+#sidebar-themes a>div>p {
+  font-size:14px;
 }
 
 #sidebar-themes, #article-details .panel-body {
@@ -1094,6 +1098,10 @@ form {
 
   .footer-nav {
     text-align: center;
+
+    img {
+      margin:0 0 0 0px !important;
+    }
   }
 
   .footer-legals {
@@ -1104,11 +1112,73 @@ form {
     padding-top:0px;
   }
 }
+@media (max-width: 992px) {
+  .navbar-nav li {
+    float:none;
+  }
+}
+
 @media (max-width: 767px) {
+  #article-container {
+    .panel-heading {
+      padding-left:0;
+      padding-right:0;
+    }
+    .panel-body {
+      padding-left:0;
+      padding-right:0;
+
+      .article-body {
+        padding:0;
+      }
+    }
+  }
+
+  #article-control {
+    .nav-row {
+      >div {
+        width: 400px;
+        margin: 0 auto;
+      }
+    }
+    .nav-col {
+      width: 80px;
+      padding:0px !important;
+
+      .ico {
+        margin:8px auto;
+        float:none !important;
+      }
+
+      a {
+        text-align: center !important;
+        float: none !important;
+        padding:0 !important;
+        width:100% !important;
+      }
+    }
+  }
+
+  .searchbox_container {
+    top: inherit;
+    left: inherit;
+    position: inherit;
+    z-index: 1;
+
+    .searchbox {
+      height: inherit;
+      width: 100%;
+
+      &:hover {
+        @include box-shadow(none);
+      }
+    }
+  }
+
   .navbar-brand {
     height:90px;
     width: 68px;
-    margin: 0;
+    margin: 0 10px 0 0;
     padding: 0;
 
     img {
@@ -1123,7 +1193,7 @@ form {
     line-height: 27px;
     padding-left: 1px;
     margin-top:0px;
-    width:128px;
+    width:100%;
   }
 
   .navbar-subtitle {
@@ -1144,9 +1214,33 @@ form {
 
   .footer-legals {
     font-size:9px;
+
+    .pull-right {
+      float: none !important;
+      text-align:center !important;
+    }
   }
 
   .footer-nav .pull-left {
     padding-top:0px;
+    font-size: 10px !important;
+  }
+
+  .footer-nav .pull-right {
+    a {
+      font-size:10px;
+      img {
+        width:25px;
+      }
+    }
+  }
+
+  #article-control {
+    margin-top:10px;
+  }
+
+  .logos-gironde, .logos-bassens, .logos-gpv, .logos-cenon, .logos-floirac,.logos-lacub, .logos-lormont, .logos-ue
+  { 
+    margin: 0px 0 15px 10px;
   }
 }
