@@ -26,6 +26,22 @@
   }
 }
 
+#article-metadatas {
+
+  table {
+    margin-bottom: 0;
+  }
+
+  #article-locations > tbody > tr > td {
+    border-top: 0px;
+    padding: 8px 0 0 0;
+  }
+
+  .add-location {
+    margin-left: 30px;
+  }
+}
+
 .article-featured-images {
   margin-top: 20px;
 }

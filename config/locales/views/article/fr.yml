@@ -9,6 +9,7 @@ fr:
     pictures:       "Photos"
     videos:         "Vidéos"
     metadatas:      "Métadonnées"
+    locations:      "Coordonnées"
     public:         "Publique"
     private:        "Privé"
     summary:        "Sommaire"
@@ -169,6 +170,11 @@ fr:
       placeholder:
         title:     "Titre du lien"
         url:       "URL du lien"
+
+    # Location
+    location:
+      do:
+        add:       "Ajouter des coordonnées GPS"
 
     # Editor
     editor:

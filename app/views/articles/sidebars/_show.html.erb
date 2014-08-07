@@ -53,14 +53,16 @@
       <a class="list-group-item title" href="<%= article.url %>">
         <div><p><%= article.display_slug %></p></div>
       </a>
-      <a class="list-group-item gps" href="<%= article.location_url %>" target="_blank">
-        <div  class="location" data-theme="<%= article.theme_icon %>"
-                               data-latlng="<%= article.location %>"
-                               data-title="<%= article.title %>"
-                               data-uri="<%= article_path(article.slug) %>">
-          <p><%= article.display_location %></p>
-        </div>
-      </a>
+      <% article.locations.each do |l| %>
+        <a class="list-group-item gps" href="<%= l.url %>" target="_blank">
+          <div  class="location" data-theme="<%= article.theme_icon %>"
+                                 data-latlng="<%= l.coordinates %>"
+                                 data-title="<%= article.title %>"
+                                 data-uri="<%= article_path(article.slug) %>">
+            <p><%= l.display_coordinates %></p>
+          </div>
+        </a>
+      <% end %>
     </div>
   </div>
 

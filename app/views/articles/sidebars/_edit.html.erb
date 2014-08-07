@@ -28,22 +28,23 @@
   <div class="panel-heading">
     <h4 class="panel-title">
       <%= fa_icon "tag" %>
-      <%= t('article.metadatas') %>
+      <%= t('article.locations') %>
     </h4>
   </div>
   <div class="panel-body">
     <!-- TODO: Waiting for bootstrap-rails-form to implement append-prepend buttons -->
-    <div class="form-group">
-      <label class="control-label" for="article_location"><%= Article.human_attribute_name(:location) %></label>
-      <div class="input-group">
-        <input class="form-control location" data-theme="<%= article.theme_icon %>" data-latlng="<%= article.location %>" data-title="<%= article.title %>" data-uri="<%= article_path(article.slug) %>" readonly="readonly" id="article_location" name="article[location]" type="text" value="<%= article.location %>">
-        <span class="input-group-btn">
-          <a class="btn btn-default" href="#" id="bt_fill_location">
-            <i class="fa fa-map-marker"></i>
-          </a>
-        </span>
-      </div>
-    </div>
+    <%= f.link_to_add t('article.location.do.add') , :locations, wrapper: false, class: "btn btn-xs btn-primary add-location", :data => { :target => "#article-locations" } %>
+
+    <table class="table" id="article-locations" >
+      <%= f.fields_for :locations, wrapper: false do |link_form| %>
+        <tr class="fields">
+          <td>
+            <%= link_form.text_field :coordinates, hide_label: true, readonly: true,
+                prepend: location_input_prepend, append: location_input_append(f) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 

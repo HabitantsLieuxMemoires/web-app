@@ -6,12 +6,12 @@
   </div>
   <div class="list-group">
     <% @news.each_with_index do |n, index| %>
-      <%= link_to n.url, class: 'new list-group-item location', data: {
-          :latlng => n.location,
+      <%= link_to n.url, class: 'new list-group-item', data: {
           :title  => n.title,
           :uri    => n.url,
           :theme  => n.theme_icon
         } do %>
+        <%= n.display_coordinates %>
         <div class="level<%= index %>">
           <p><%= n.title(30) %></p>
         </div>

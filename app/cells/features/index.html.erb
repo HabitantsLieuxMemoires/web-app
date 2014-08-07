@@ -15,14 +15,14 @@
             <img class="author" src="<%= f.author_avatar %>">
             <img class="themeIco" src="<%= f.theme_picto %>">
             <div class="title color<%= rand(1..5) %>">
-              <%= link_to f.url, class: 'location', data: {
-                  :latlng => f.location,
+              <%= link_to f.url, data: {
                   :title  => f.title,
                   :uri    => f.url,
                   :theme  => f.theme_icon
                 } do %>
                 <%= f.title %>
               <% end %>
+              <%= f.display_coordinates %>
               <div>
                 <%= t('article.by_html', author: f.author) %>
                 <!-- TODO: In case of multiple author, add authorSeparator.png between

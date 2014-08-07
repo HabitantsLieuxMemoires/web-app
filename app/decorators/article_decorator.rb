@@ -3,6 +3,7 @@ class ArticleDecorator < ApplicationDecorator
 
   decorates_association :history_tracks
   decorates_association :links
+  decorates_association :locations
 
   def created_at(format = :short)
     l(object.created_at, format: format)
@@ -71,31 +72,16 @@ class ArticleDecorator < ApplicationDecorator
     end
   end
 
+  def display_coordinates
+    if object.locations.any?
+      object.locations.each do |l|
+        concat(h.content_tag(:div, class: 'location', :data => { :latlng => l.coordinates }))
+      end
+    end
+  end
+
   def display_slug
     truncate(object.slug, length: 20)
-  end
-
-  def display_location
-    if object.location.blank?
-      t('none')
-    else
-      link_title = object.location.split(',').map { |x| x.to_f.round(4).to_s }.join(', ')
-    end
-  end
-
-  def location_url
-    if object.location.blank?
-      return
-    end
-
-    coordinates = object.location.split(',')
-    latitude    = coordinates[0]
-    longitude   = coordinates[1]
-
-    # Link to OpenStreetMap
-    link = "http://www.openstreetmap.org/?mlat=#{latitude}&mlon=#{longitude}&zoom=12"
-
-    url_for(link)
   end
 
   def summary

@@ -16,7 +16,6 @@ class Article
   slug  :title
 
   field :body,          type: String
-  field :location,      type: String
   field :comment_count, type: Integer, default: 0 # Counter cache
   field :share_count,   type: Integer, default: 0
   field :public,        type: Mongoid::Boolean, default: true
@@ -34,6 +33,10 @@ class Article
 
   # Feature (optional)
   belongs_to :feature
+
+  # Coordinates
+  embeds_many :locations
+  accepts_nested_attributes_for :locations, :allow_destroy => true
 
   # Media
   embeds_many :images
