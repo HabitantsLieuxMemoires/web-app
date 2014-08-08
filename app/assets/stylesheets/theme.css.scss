@@ -362,6 +362,7 @@ footer.footer-legals {
   width:278px;
   background-color:white;
   padding:15px 5px 0px 5px;
+  opacity:0.9;
 
   .search-bar {
     width:95%;
@@ -376,6 +377,7 @@ footer.footer-legals {
 
   &:hover {
     @include box-shadow(1px 1px 5px 3px rgba(231, 231, 231, 0.7));
+    opacity:1;
   }
 }
 #search-column, #article-info {

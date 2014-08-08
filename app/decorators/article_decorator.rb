@@ -74,9 +74,13 @@ class ArticleDecorator < ApplicationDecorator
 
   def display_coordinates
     if object.locations.any?
-      object.locations.each do |l|
-        concat(h.content_tag(:div, class: 'location', :data => { :latlng => l.coordinates }))
-      end
+      object.locations.collect do |l|
+        h.content_tag(:div, "", class: "location", :data => { 
+          :latlng => l.coordinates,
+          :uri    => to_model.url,
+          :theme    => to_model.theme_icon
+        })
+      end.join.html_safe
     end
   end
 

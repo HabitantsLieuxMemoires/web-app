@@ -128,8 +128,11 @@ window.mapController =
     mapController.positionPickerActive = false
     # Populate GPS field
     if action == 'save'
-      gps = selectedMarker.getLatLng()
-      $('#article_location').val gps.lat+', '+gps.lng
+      latlng = selectedMarker.getLatLng()
+      # Fill the 1st empty GPS input
+      gpsField = $('#article-locations input[type=text]').filter ->
+        $(this).val() == ''
+      gpsField.val latlng.lat.toFixed(4)+', '+latlng.lng.toFixed(4)
       selectedMarker.closePopup()
     else if action == 'delete'
       $('#article_location').val ''
@@ -200,7 +203,7 @@ window.mapController =
       $('#mapContainer').append '<div class="leaflet-control-position-picker buttons"></div>'
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
-
+    
       # Search button
       $('.leaflet-control-position-picker button.search').on 'click', (e) ->
         e.preventDefault();
@@ -249,14 +252,16 @@ window.mapController =
   loadMarkers: ->
     debug "Loading markers from the current page"
     markersLoaded = {}
-    markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]').filter ->
+    markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
+    ### Dédoublonnage désactivé car plusieurs points par article
+      .filter ->
       # Remove duplicates element
       txt = $(this).data('title')
       if (markersLoaded[txt])
         false
       else
         markersLoaded[txt] = true
-        true
+        true###
     debug markers.length + " markers found"
     markers.each ->
       dataLocation = $(this).data("latlng")

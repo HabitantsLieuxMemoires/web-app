@@ -1,7 +1,7 @@
 class LocationDecorator < ApplicationDecorator
 
   def display_coordinates
-    object.coordinates.split(',').map { |x| x.to_f.round(4).to_s }.join(', ')
+    object.coordinates.split(',').map { |x| x.to_f.to_s }.join(', ')
   end
 
   def url

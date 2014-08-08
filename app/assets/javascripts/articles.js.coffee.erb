@@ -167,13 +167,13 @@ UI =
     $('#article-metadatas').on 'nested:fieldAdded:locations': (event) ->
       event.field.find('.bt_fill_location').click (e) ->
         # Loading location picker
-        $('.bt_fill_location').click (e) ->
-          mapController.enablePositionPicker()
-          e.preventDefault()
-          return false;
+        mapController.enablePositionPicker()
+        e.preventDefault()
+        return false;
 
     $('#article-metadatas').on 'nested:fieldRemoved:locations': (event) ->
       #TODO: Remove location picker
+      debug "REMOVING MARKER... TODO"
 
 Form =
   initCreateForm: ->

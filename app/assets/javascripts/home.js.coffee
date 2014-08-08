@@ -1,5 +1,5 @@
 window['home#index'] = (data) ->
-	if !Modernizr.touch
+	###if !Modernizr.touch
 	  	mapController.locate()
 	  else
-	  	mapController.locateOnViewReset()
+	  	mapController.locateOnViewReset()###
