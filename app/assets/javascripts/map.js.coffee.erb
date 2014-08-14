@@ -6,12 +6,13 @@ mapSettings =
   maxBounds:
     southWest: [44.80254, -0.6439],
     northEast: [44.87327, -0.42984]
+  fitBoundsPadding: [70, 70]
   osmProviders:
     osm:
       url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
   # For testing purposes only
-  # Mapbox is not free and limited to 3 000view/month (1 view = 15 tiles)
+  # Mapbox is not free and limited to 3 000 view/month (1 view = 15 tiles)
     mapbox:
       url:'https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png',
       attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -73,11 +74,7 @@ window.mapController =
 
     # Editing mode
     if mapController.isEditing()
-      layers = mapController.markerCluster.getLayers()
-      if layers?
-        marker = layers[0]
-      if marker?
-        mapController.showMarkerEditPopup marker
+      @.enableMarkersEdition()
 
     $('.leaflet-control-position-picker').show()
     # Bind map click to add marker
@@ -85,6 +82,12 @@ window.mapController =
       if mapController.positionPickerActive == false
         return
       mapController.addPosition e.latlng
+
+  enableMarkersEdition: ->
+    layers = mapController.markerCluster.getLayers()
+    if layers?
+      jQuery.each layers, (i) ->
+        mapController.showMarkerEditPopup layers[i]
 
   generateButtonElement: (icoClass, btnClass, btnText) ->
     btn = document.createElement 'button'
@@ -97,16 +100,14 @@ window.mapController =
     btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
     btnRemove = mapController.generateButtonElement 'glyphicon-remove', 'btn-danger', 'Supprimer ce point'
     btnRemove.onclick = ->
-      debug "ok1"
-      mapController.markerCluster.removeLayer marker
-      debug "ok2"
-      #mapController.disablePositionPicker 'delete', marker
+      mapController.disablePositionPicker 'cancel', marker
     btnAdd.onclick = ->
       mapController.disablePositionPicker 'save', marker
     div = document.createElement 'div'
     div.innerHTML = marker._popup._content+'<br>'
     div.appendChild btnAdd
-    marker.bindPopup(div).openPopup()
+    div.appendChild btnRemove
+    marker.bindPopup(div)
 
   showMarkerAddPopup:(marker) ->
     btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
@@ -126,16 +127,23 @@ window.mapController =
 
   disablePositionPicker: (action, selectedMarker) ->
     mapController.positionPickerActive = false
+    # Search current editing GPS field
+    gpsField = $('#article-locations input[type=text]').filter ->
+      $(this).val() == '' && $(this).siblings().find('[id$=destroy]').val() != '1'
     # Populate GPS field
     if action == 'save'
+      # Filled, setting GPS position
       latlng = selectedMarker.getLatLng()
-      # Fill the 1st empty GPS input
-      gpsField = $('#article-locations input[type=text]').filter ->
-        $(this).val() == ''
       gpsField.val latlng.lat.toFixed(4)+', '+latlng.lng.toFixed(4)
       selectedMarker.closePopup()
-    else if action == 'delete'
-      $('#article_location').val ''
+    else if action == 'cancel'
+      # Not filled, deleting...
+      debug "Deleting..."
+      if selectedMarker?
+        latlng = selectedMarker.getLatLng()
+        gpsField = $('#article-locations input[type=text][value="'+latlng.lat+', '+latlng.lng+'"]')
+        debug gpsField
+      gpsField.parents('.fields').find('a.remove_nested_fields').click()
     # Hide position picker
     $('.leaflet-control-position-picker').hide()
     $('.leaflet-control-search').show()
@@ -146,6 +154,11 @@ window.mapController =
       mapController.mapInstance.invalidateSize()
       # Scroll back to article
       $('html,body').animate({ scrollTop: $('#article-container').offset().top }, 'slow')
+    # Hide marker from the map in few secs
+    if mapController.currentMarker?
+      setTimeout ->
+        mapController.mapInstance.removeLayer mapController.currentMarker
+      , 1500
 
   # Map Initilizator
   init: (providerSettings, el, defaultPosition) ->
@@ -247,12 +260,16 @@ window.mapController =
   refresh: ->
     mapController.deleteMarkers()
     mapController.loadMarkers()
+    if mapController.markerCluster.getLayers().length > 0
+      mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
+        padding: mapSettings.fitBoundsPadding
 
   # Load all markers contained into the current page
   loadMarkers: ->
-    debug "Loading markers from the current page"
-    markersLoaded = {}
+    debug "Searching markers into current page..."
+    #markersLoaded = {}
     markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
+    markersEdit = $('#article-locations input[type=text]')
     ### Dédoublonnage désactivé car plusieurs points par article
       .filter ->
       # Remove duplicates element
@@ -262,18 +279,29 @@ window.mapController =
       else
         markersLoaded[txt] = true
         true###
-    debug markers.length + " markers found"
-    markers.each ->
-      dataLocation = $(this).data("latlng")
-      dataTheme = $(this).data("theme")
-      if dataLocation
-        latlng = dataLocation.split ', '
+    if markers.length == 0 && markersEdit.length > 0
+      debug markersEdit.length + " markers found (edit mode)"
+      markersEdit.each ->
+        latlng = $(this).val().split(', ');
         mapController.addMarker
-          latitude: latlng[0]
-          longitude: latlng[1]
-          text: $(this).data "title"
-          uri: $(this).data "uri"
-          theme: dataTheme
+            latitude: latlng[0]
+            longitude: latlng[1]
+            text: $('#article_title').val()
+            uri: $('.article-data').data('uri')
+            theme: $('.article-data').data('theme')
+    else
+      debug markers.length + " markers found (show mode)"
+      markers.each ->
+        dataLocation = $(this).data("latlng")
+        dataTheme = $(this).data("theme")
+        if dataLocation
+          latlng = dataLocation.split ', '
+          mapController.addMarker
+            latitude: latlng[0]
+            longitude: latlng[1]
+            text: $(this).data "title"
+            uri: $(this).data "uri"
+            theme: dataTheme
 
   # Erase all markers
   deleteMarkers: ->
@@ -289,16 +317,24 @@ window.mapController =
     if dataArr? and dataArr.length > 0
       for data in dataArr
         mapController.addMarker(data)
+
   addMarkerHandler: (e, data) ->
     mapController.addMarker(data)
+
   addMarker: (data) ->
     text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
     mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
-      draggable:mapController.isEditing(),
+      #draggable:mapController.isEditing(),
+      draggable:false,
       icon: mapSettings.icons data.theme
     ).bindPopup(text))
-    mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
-      padding: [70,70]
+
+  delMarkerByLatLng: (latlng) ->
+    latlng = latlng.split(', ')
+    jQuery.each mapController.markerCluster.getLayers(), (i, layer) ->
+      markerLatLng = layer.getLatLng()
+      if markerLatLng.lat == parseFloat(latlng[0]) && markerLatLng.lng == parseFloat(latlng[1])
+        mapController.markerCluster.removeLayer layer
 
   heightToggle: ->
     currentHeight = $('#'+mapSettings.el).height()

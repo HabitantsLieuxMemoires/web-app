@@ -190,7 +190,19 @@ html.touch .heightToggle
 
 
 /** Default settings **/
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+/** imported from http://fonts.googleapis.com/css?family=Droid+Sans:400,700 */
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(/assets/DroidSans.woff) format('woff'), url(/assets/DroidSans.woff2) format('woff2'), url(/assets/DroidSans.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(/assets/DroidSans-Bold.woff2) format('woff2'), url(/assets/DroidSans-Bold.woff) format('woff'), url(/assets/DroidSans-Bold.ttf) format('truetype');
+}
 @font-face {
     font-family: 'freeroadregular';
     src: asset-url('fonts/freeroad-webfont.eot');
@@ -244,20 +256,21 @@ html.touch .heightToggle
 
 .navbar-nav>.open {
   a {
-    background-color: #2b2b2b;
+    background-color: #000;
+    @include box-shadow(black 2px 2px 5px);
 
     &:hover {
-      @include box-shadow(black 2px 2px 5px);
       background-color: #5e5e5e;
     }
   }
 
   .dropdown-menu {
-    background-color: #2b2b2b;
+    background-color: #000;
+    @include box-shadow(black 2px 2px 5px);
   }
 
   .dropdown-toggle {
-    background-color: #2b2b2b !important;
+    background-color: #000 !important;
     @include rounded-corners(10px);
   }
 }
@@ -1069,6 +1082,21 @@ form {
 
 
 
+/*** PAGINATION ***/
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus,
+  .pagination > li > a, .pagination > li > span {
+  color: #777777;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus
+{
+  color: #777777;
+  background-color: #f6f6f6;
+  border: 1px solid #D3D3D3;
+}
+.pagination > li > a, .pagination > li > span
+{
+  border: 1px solid #D3D3D3;
+}
 
 
 
@@ -1083,6 +1111,9 @@ form {
       width:67px;
       padding-top: 0;
     }
+  }
+  #search-column .list-group-item > div, #article-info .list-group-item > div {
+    max-width: 220px;
   }
 
   .subheader {

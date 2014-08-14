@@ -165,15 +165,24 @@ UI =
 
   initMapPositionPicker: ->
     $('#article-metadatas').on 'nested:fieldAdded:locations': (event) ->
-      event.field.find('.bt_fill_location').click (e) ->
-        # Loading location picker
-        mapController.enablePositionPicker()
-        e.preventDefault()
-        return false;
+      # Auto click on picker
+      mapController.enablePositionPicker()
 
-    $('#article-metadatas').on 'nested:fieldRemoved:locations': (event) ->
-      #TODO: Remove location picker
-      debug "REMOVING MARKER... TODO"
+    # Be careful,
+    # Don't know why, event not fired with model name
+    # Anyway, article-locations is containing only this model,
+    # so I'm using the generic event.
+    # - Kevin (140814)
+    $('#article-locations').on 'nested:fieldRemoved': (event) ->
+      field = event.field.find('input[type=text]')
+      # Delete marker
+      mapController.delMarkerByLatLng field.val()
+      # Remove field from the form
+      ###field.parents('.fields:nth(0)').next('input[type=hidden]').remove()
+      field.remove()###
+
+    # Load existing markers
+    mapController.enableMarkersEdition() 
 
 Form =
   initCreateForm: ->

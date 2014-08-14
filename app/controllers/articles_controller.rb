@@ -95,7 +95,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :title, :body, :tags, :location, :theme_id, :chronology_id, :public, :locked, :published,
       links_attributes: [:id, :title, :url, :_destroy],
-      locations_attributes: [:id, :coordinates, :destroy]
+      locations_attributes: [:id, :coordinates, :_destroy]
     )
   end
 

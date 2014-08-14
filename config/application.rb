@@ -36,6 +36,9 @@ module Hlm
     # Add css assets
     config.assets.precompile += %w( editor.css )
 
+    # Add fonts
+    config.assets.precompile += %w( *.ttf )
+
     # Adding validators path
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 

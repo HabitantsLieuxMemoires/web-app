@@ -77,6 +77,7 @@ class ArticleDecorator < ApplicationDecorator
       object.locations.collect do |l|
         h.content_tag(:div, "", class: "location", :data => { 
           :latlng => l.coordinates,
+          :title    => to_model.title,
           :uri    => to_model.url,
           :theme    => to_model.theme_icon
         })
