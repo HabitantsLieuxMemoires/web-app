@@ -26,14 +26,15 @@
     </span>
 
     <hr>
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <%= f.submit t('do.login'), class: "btn btn-success btn-block btn-lg" %>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <%= link_to t('auth.signup'), new_user_path, class: "btn btn-primary btn-block btn-lg" %>
-      </div>
+    <div class="text-center">
+      <%= f.submit t('do.login'), class: "btn btn-success btn-block btn-lg" %>
     </div>
 
+    <hr>
+
+    <div class="text-center">
+      <p><%= t('auth.no_account') %></p>
+      <%= link_to t('auth.signup'), new_user_path, class: "btn btn-primary btn-block btn-lg" %>
+    </div>
   <% end %>
 </div>

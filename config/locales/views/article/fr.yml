@@ -69,6 +69,7 @@ fr:
     comment:
       none:         "Aucun commentaire pour ce contenu"
       list:         "Liste des commentaires"
+      no_session:   "Authentifiez-vous pour commenter l'article"
 
       since_html:   "Il y a <span class='datetime'>%{date}</span>"
 

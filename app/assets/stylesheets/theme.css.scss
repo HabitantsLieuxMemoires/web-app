@@ -1038,6 +1038,7 @@ fieldset[disabled] .btn-article-create.active {
       }
       &.revision {
         background-position: 6px 3px;
+        cursor: default;
       }
       &.title {
         background-position: 6px -36px;
@@ -1273,7 +1274,7 @@ form {
   }
 
   .logos-gironde, .logos-bassens, .logos-gpv, .logos-cenon, .logos-floirac,.logos-lacub, .logos-lormont, .logos-ue
-  { 
+  {
     margin: 0px 0 15px 10px;
   }
 }

@@ -16,6 +16,10 @@
                   } do %>
           <%= fa_icon 'comment', text: t('article.comment.do.create') %>
         <% end %>
+      <% else %>
+        <%= link_to new_session_path do %>
+          <div class="label label-primary"><%= t('article.comment.no_session') %></div>
+        <% end %>
       <% end %>
     </div>
   </div>
