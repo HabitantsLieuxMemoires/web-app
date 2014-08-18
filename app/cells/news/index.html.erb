@@ -11,8 +11,8 @@
           :uri    => n.url,
           :theme  => n.theme_icon
         } do %>
-        <%= n.display_coordinates %>
         <div class="level<%= index %>">
+          <%= n.display_coordinates %>
           <p><%= n.title(30) %></p>
         </div>
       <% end %>
