@@ -1,4 +1,4 @@
-show_infomixin clearfix {
+@mixin clearfix {
   &:after {
     content: "";
     display: table;
@@ -1153,6 +1153,15 @@ form {
 }
 
 @media (max-width: 767px) {
+  .navbar-header
+  {
+    margin:0;
+  }
+
+  .col-md-12, .col-xs-2 {
+    min-height:0px;
+  }
+
   #article-container {
     .panel-heading {
       padding-left:0;
@@ -1168,12 +1177,22 @@ form {
     }
   }
 
+  .nav-row {
+    margin-bottom: 0px;
+  }
+
   #article-control {
     .nav-row {
+      padding:0;
+      
       >div {
-        width: 400px;
-        margin: 0 auto;
+        max-width: 100%;
+        margin:0 auto;
       }
+    }
+
+    .row {
+      margin: 0;
     }
     .nav-col {
       width: 80px;
@@ -1191,6 +1210,11 @@ form {
         width:100% !important;
       }
     }
+  }
+
+  #article-control .nav-col, #article-control .nav-row .active
+  {
+    margin:0 0 0 7px;
   }
 
   .searchbox_container {
