@@ -1,0 +1,10 @@
+---
+
+- name: web | install packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - xvfb
+    - libqtwebkit-dev
+    - imagemagick
+    - nodejs
+  sudo: yes

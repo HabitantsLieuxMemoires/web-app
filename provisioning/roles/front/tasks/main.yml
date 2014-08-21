@@ -1,0 +1,5 @@
+---
+
+- name: front | install nginx
+  apt: name=nginx
+  sudo: yes

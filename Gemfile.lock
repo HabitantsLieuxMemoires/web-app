@@ -181,6 +181,7 @@ GEM
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
     leaflet-markercluster-rails (0.7.0)
@@ -283,6 +284,7 @@ GEM
       activesupport (= 4.0.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     ref (1.0.5)
     remotipart (1.2.1)
@@ -356,6 +358,10 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore-rails (1.6.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     video_info (2.3.1)
       addressable
       htmlentities
@@ -434,4 +440,5 @@ DEPENDENCIES
   therubyracer (~> 0.12.1)
   uglifier (~> 2.5.0)
   underscore-rails (~> 1.6.0)
+  unicorn
   video_info (~> 2.3.1)

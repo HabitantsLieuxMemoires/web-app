@@ -1,0 +1,18 @@
+---
+- hosts: all
+  vars:
+    app_user: "hlm"
+    app_user_home: "/home/hlm"
+    app_mongodb_dbname: "hlm"
+    app_mongodb_dbuser: "hlm"
+    app_mongodb_dbpassword: "hlm"
+    app_indexer_name: "hlm"
+  roles:
+    - common
+    - database
+    - indexer
+    - web
+
+- hosts: production
+  roles:
+    - front

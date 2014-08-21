@@ -22,6 +22,13 @@ set :keep_releases, 5
 # Tasks
 namespace :deploy do
 
+  desc 'Copy dotenv configuration'
+  task :copy_env do
+    on roles(:app) do
+      upload! ".env.#{fetch(:stage)}", "#{shared_path}"
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -31,4 +38,8 @@ namespace :deploy do
 
   after :publishing, :restart
 
+end
+
+task :setup do
+  invoke 'deploy:copy_env'
 end

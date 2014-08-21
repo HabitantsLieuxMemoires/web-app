@@ -28,3 +28,4 @@ provisioning/.librarian/
 .env.production
 .env.staging
 rename_commiter.sh
+provisioning/public_keys/
