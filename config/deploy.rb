@@ -15,7 +15,6 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.1.2'
 
 # Linked files/dirs
-set :linked_files, %w{.env.production}
 set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :keep_releases, 5

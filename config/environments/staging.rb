@@ -32,9 +32,12 @@ Hlm::Application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
+  # Version of your assets, change this if you want to expire all your assets.
+  config.assets.version = '1.0'
+
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -58,10 +61,12 @@ Hlm::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
+  # Ignore bad email addresses and do not raise email delivery errors.
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_options        = { from: 'hlm@innovantic.fr' }
+  config.action_mailer.default_url_options    = { host: 'hlm.innovantic.fr' }
   config.action_mailer.delivery_method        = :smtp
-  config.action_mailer.default_options        = { from: 'contact@habitantslieuxmemoires.fr' }
-  config.action_mailer.default_url_options    = { host: 'habitantslieuxmemoires.fr' }
-  config.action_mailer.raise_delivery_errors  = true
   config.action_mailer.smtp_settings          = {
     :address              => ENV['SMTP_SERVER'],
     :authentication       => :login,
@@ -84,16 +89,4 @@ Hlm::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-
-  # Send error email whenever uncaught exception occurs in production
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[#{Rails.env.to_s.upcase}] ",
-      :sender_address => %Q{"HabitantsLieuxMemoires errors" <support@habitantslieuxmemoires.fr>},
-      :exception_recipients => %w(alarm@innovantic.fr),
-      :sections => %w(version request environment backtrace),
-      :background_sections => %w(version backtrace data),
-      :email_format => :html
-    }
 end

@@ -5,7 +5,6 @@ ruby '2.1.2'
 gem 'rails',                        "4.0.8"
 
 # Environment variables management (before any other gems)
-gem 'dotenv-deployment',            "~> 0.0.2"
 gem 'dotenv-rails',                 "~> 0.11.1", group: [:development, :test, :production]
 
 # Gems used only for assets and not required
@@ -38,7 +37,7 @@ gem 'modernizr-rails',              "~> 2.7.1"
 gem 'ionicons-rails',               "~> 1.4.1.0"
 
 # Mongoid gems
-gem 'mongoid',                      github: "mongoid/mongoid", tag: "v4.0.0.rc2"
+gem 'mongoid',                      "~> 4.0.0"
 gem 'bson_ext'
 gem 'mongoid_taggable',             "~> 1.1.1"
 gem 'carrierwave-mongoid',          "~> 0.7.1"
@@ -46,7 +45,7 @@ gem 'mongoid_magic_counter_cache',  "~> 1.1.0"
 gem 'mongoid-audit',                "~> 0.3.2"
 gem 'mongoid_slug',                 "~> 3.2.1"
 gem 'mongoid_alize',                "~> 0.4.3"
-gem 'mongoid-paranoia',             github: "simi/mongoid-paranoia"
+gem 'mongoid_paranoia',             "~> 0.1.2"
 
 # Misc gems
 gem 'sorcery',                      "~> 0.8.5"    # Authentication
@@ -65,16 +64,16 @@ gem 'fog',                          "~> 1.22.1"   # Amazon S3 (file storing)
 gem 'public_activity',              "~> 1.4.1"    # Public activity tracking
 gem 'mini_magick',                  "~> 3.7.0"    # Images manipulation
 gem 'high_voltage',                 "~> 2.2.0"    # Static page serving
-gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc5"    # JS i18n
+gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc6"    # JS i18n
 gem 'roboto',                       "~> 0.2.0"    # robots.txt management
 
-# Deployment
-gem 'capistrano',                   "~> 3.2.1", require: false
-gem 'capistrano-bundler',           "~> 1.1.2", require: false
-gem 'capistrano-rails',             "~> 1.1.1", require: false
-gem 'capistrano-rbenv',             "~> 2.0.2", require: false
-
 group :development do
+  # Deployment
+  gem 'capistrano',                   "~> 3.2.1", require: false
+  gem 'capistrano-bundler',           "~> 1.1.2", require: false
+  gem 'capistrano-rails',             "~> 1.1.1", require: false
+  gem 'capistrano-rbenv',             "~> 2.0.2", require: false
+
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
@@ -99,4 +98,7 @@ group :test do
 end
 
 group :production, :staging do
+  gem 'dotenv-deployment',            "~> 0.0.2"
+  gem 'exception_notification'
+  gem 'unicorn',                      :require => false
 end

@@ -26,4 +26,5 @@ provisioning/.librarian/
 .cache
 .profile
 .env.production
+.env.staging
 rename_commiter.sh
