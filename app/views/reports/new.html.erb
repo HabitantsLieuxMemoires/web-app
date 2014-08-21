@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="modal-report-article-label">
+    <%= fa_icon "thumbs-down" %>
+    <%= t('article.title.report') %>
+  </h4>
+</div>
+<%= bootstrap_form_for [@article, Report.new],
+                       url: {action: "create"},
+                       layout: :horizontal do |f| %>
+
+  <div class="modal-body">
+    <div class="alert alert-info"><%= t('article.report_welcome') %></div>
+
+    <%= f.static_control nil, label: Article.human_attribute_name(:title) do %>
+      <%= @article.title %>
+    <% end %>
+
+    <%= f.text_area   :description %>
+
+  </div>
+  <div class="modal-footer">
+    <%= f.primary t('article.do.report'), id: 'report_article' %>
+  </div>
+<% end %>

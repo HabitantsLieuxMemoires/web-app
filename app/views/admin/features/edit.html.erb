@@ -1,0 +1,28 @@
+<%= render 'header' %>
+
+<%= bootstrap_form_for @feature, url: admin_feature_path(@feature) do |f| %>
+  <div class="box">
+    <div class="box-header">
+      <%= fa_icon "edit" %>
+      <h3 class="box-title"><%= t('admin.editorial.content') %></h3>
+    </div>
+    <div class="box-body">
+      <%= f.text_field :title, label: Feature.human_attribute_name(:title) %>
+      <%= f.text_area  :description, rows: 8, label: Feature.human_attribute_name(:description) %>
+    </div>
+    <div class="box-footer">
+      <%= f.primary t('admin.editorial.feature.do.publish') %>
+    </div>
+  </div>
+<% end %>
+
+<div class="box">
+  <div class="box-header">
+    <%= fa_icon "star" %>
+    <h3 class="box-title"><%= t('admin.editorial.feature.articles') %></h3>
+  </div>
+  <div class="box-body">
+    <%= render 'admin/articles/articles', articles: @feature.articles %>
+  </div>
+</div>
+

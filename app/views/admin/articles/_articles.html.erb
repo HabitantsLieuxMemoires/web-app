@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <tbody id="featured-articles">
+    <tr>
+      <th class="col-md-5"><%= Article.human_attribute_name(:title) %></th>
+      <th class="col-md-5"><%= Article.human_attribute_name(:author) %></th>
+      <th class="col-md-2"><%= t('actions') %></th>
+    </tr>
+    <tr>
+      <td>
+        <div class="input-group">
+          <input class="form-control select-article-url" type="text" placeholder="<%= t('search.article_placeholder') %>">
+          <span class="input-group-btn">
+            <button class="btn btn-default" id="add-article" type="button">
+              <%= t('admin.editorial.feature.do.add_article') %>
+            </button>
+          </span>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <%= render partial: 'admin/articles/article', collection: articles %>
+
+  </tbody>
+</table>

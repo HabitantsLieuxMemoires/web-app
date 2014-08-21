@@ -1,0 +1,10 @@
+<% summary ||= article.summary %>
+
+<% unless summary.blank? %>
+  <div class="row">
+      <div id="summary">
+        <h4><%= t('article.summary') %></h4>
+        <%= summary %>
+      </div>
+  </div>
+<% end %>

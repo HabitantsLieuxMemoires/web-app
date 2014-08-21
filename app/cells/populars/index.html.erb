@@ -1,0 +1,41 @@
+<div class="panel panel-default" id="main-popular">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= t('cells.popular.title') %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <% if @populars.any? %>
+      <ul class="media-list">
+        <% @populars.each do |p| %>
+          <li class="media popular">
+            <img class="author" src="<%= p.author_avatar %>">
+            <img class="themeIco" src="<%= p.theme_picto %>">
+            <div class="title color<%= rand(1..5) %>">
+              <%= link_to p.url, data: {
+                  :title  => p.title,
+                  :uri    => p.url,
+                  :theme  => p.theme_icon
+                } do %>
+                <%= p.title %>
+              <% end %>
+              <%= p.display_coordinates %>
+              <div>
+                <%= t('article.by_html', author: p.author) %>
+                <!-- TODO: In case of multiple author, add authorSeparator.png between
+                each span.author -->
+              </div>
+            </div>
+
+            <div class="shareAndComments">
+              <div class="share"><span><%= p.share_count %></span></div>
+              <div class="comments"><span><%= p.comment_count %></span></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="bg-info"><%= t('admin.editorial.feature.none') %></p>
+    <% end %>
+  </div>
+</div>

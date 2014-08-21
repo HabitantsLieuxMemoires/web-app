@@ -1,0 +1,8 @@
+<li>
+  <i class="fa fa-user bg-aqua"></i>
+  <div class="timeline-item">
+      <span class="time"><i class="fa fa-clock-o"></i> <%= l(a.updated_at) %></span>
+      <h3 class="timeline-header"><%= t('article.updated_by', user: a.author, article: a.title) %></h3>
+      <%= render 'public_activity/article/footer', a: a %>
+  </div>
+</li>

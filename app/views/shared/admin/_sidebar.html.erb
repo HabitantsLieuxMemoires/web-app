@@ -1,0 +1,58 @@
+<section class="sidebar">
+  <ul class="sidebar-menu">
+    <li class="active">
+      <%= link_to admin_root_path do %>
+        <i class="fa fa-dashboard"></i>
+        <span><%= t('nav.admin.dashboard') %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_features_path do %>
+        <i class="fa fa-pencil"></i>
+        <span><%= t('nav.admin.editorial') %></span>
+      <% end %>
+    </li>
+    <li class="treeview active">
+      <a href="#">
+          <i class="fa fa-warning"></i>
+          <span><%= t('nav.admin.alert') %></span>
+          <i class="fa pull-right fa-angle-down"></i>
+      </a>
+      <ul class="treeview-menu">
+          <li>
+            <%= link_to admin_articles_path do %>
+              <i class="fa fa-angle-double-right"></i> <%= t('nav.admin.updates') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_comments_path do %>
+              <i class="fa fa-angle-double-right"></i> <%= t('nav.admin.comments') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_shares_path do %>
+              <i class="fa fa-angle-double-right"></i> <%= t('nav.admin.shares') %>
+            <% end %>
+          </li>
+      </ul>
+    </li>
+    <li>
+      <%= link_to admin_reports_path do %>
+        <i class="fa fa-eye"></i>
+        <span><%= t('nav.admin.moderation') %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to admin_users_path do %>
+        <i class="fa fa-users"></i>
+        <span><%= t('nav.admin.users') %></span>
+      <% end %>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-exchange"></i>
+        <span><%= t('nav.admin.import_export') %></span>
+      </a>
+    </li>
+  </ul>
+</section>

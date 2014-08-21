@@ -1,0 +1,16 @@
+<div class="media comment">
+  <a class="pull-left" href="#">
+    <img class="media-object img-responsive img-circle comment-avatar" src="<%= comment.user_avatar %>" alt="64x64">
+  </a>
+  <div class="media-body">
+
+    <div class="title color<%= rand(1..5) %>">
+      <%= link_to comment.user, user_path(comment.user_id) %>
+      <div>
+        <%= t('article.comment.since_html', date: comment.created_at) %>
+      </div>
+    </div>
+
+    <%= comment.content %>
+  </div>
+</div>

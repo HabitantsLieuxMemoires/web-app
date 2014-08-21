@@ -1,0 +1,26 @@
+fr:
+  mongoid:
+    models:
+      article: "Contenu"
+    attributes:
+      article:
+        created_at:     "Date de création"
+        updated_at:     "Date de modification"
+        created_by:     "Créé par"
+        title:          "Titre"
+        body:           "Contenu"
+        theme_id:       "Thème"
+        chronology_id:  "Chronologie"
+        tags:           "Tags"
+        public:         "Publique"
+        locked:         "Verrouillé"
+        location:       "GPS"
+        revision:       "Révision"
+        slug:           "Lien"
+        author:         "Auteur"
+        changes:        "Contributions"
+        status:         "Statut"
+    errors:
+      models:
+        article:
+          attributes:

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 col-xs-12 nav-row center-block">
+    <div class="nav-col col-md-4 col-xs-3 active">
+      <a href="#profile" data-toggle="tab">
+        <span class="glyphicon glyphicon-user"></span>
+        <p><%= t('profile.content') %></p>
+      </a>
+    </div>
+    <% if edit %>
+      <div class="nav-col col-md-4 col-xs-3">
+        <a href="#security" data-toggle="tab">
+          <span class="glyphicon glyphicon-lock"></span>
+          <p><%= t('profile.security') %></p>
+        </a>
+      </div>
+    <% end %>
+    <div class="nav-col col-md-4 col-xs-3">
+      <a href="#activity" data-toggle="tab">
+        <span class="glyphicon glyphicon-tasks"></span>
+        <p><%= t('profile.activity') %></p>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

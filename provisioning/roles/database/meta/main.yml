@@ -1,0 +1,10 @@
+---
+
+dependencies:
+  - role: Stouts.mongodb
+    mongodb_nohttpinterface: true
+    mongodb_verbose: false
+    mongodb_nojournal: false
+    mongodb_cpu: false
+    mongodb_nohints: true
+    sudo: yes

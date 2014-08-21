@@ -1,0 +1,11 @@
+fr:
+  mongoid:
+    models:
+      comment:      "Commentaire"
+    attributes:
+      comment:
+        content:    "Contenu"
+    errors:
+      models:
+        comment:
+          attributes:

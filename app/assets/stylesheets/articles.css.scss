@@ -1,0 +1,118 @@
+/**
+ *= require prettify
+ *= require bootstrap-wysihtml5
+ */
+
+#article-content {
+  blockquote {
+    border-left: none;
+    padding: 0px;
+    margin: 10px 20px 10px 20px;
+  }
+}
+
+#article-details {
+  .tag {
+    float: left;
+    font-size: 12px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  .label-normal.tag {
+    background-color: #bebebe;
+  }
+}
+
+#article-metadatas {
+
+  table {
+    margin-bottom: 0;
+  }
+
+  #article-locations > tbody > tr > td {
+    border-top: 0px;
+    padding: 8px 0 0 0;
+  }
+
+  .add-location {
+    margin-left: 30px;
+  }
+}
+
+.article-featured-images {
+  margin-top: 20px;
+}
+
+.article-featured-image {
+  max-width: 96px;
+}
+
+.article-popular-image {
+  max-width: 96px;
+}
+
+.comment-avatar {
+  max-width: 50px;
+}
+
+#images-list {
+  .image {
+    height: 240px;
+  }
+}
+
+#videos-list {
+  .video {
+    margin-top: 40px;
+  }
+}
+
+#modal-select-image {
+  .tab-content {
+    margin-top: 30px;
+  }
+
+  img {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+	#article-actionbar
+	{
+		border-bottom:none;
+	}
+
+	.container .row .col-lg-3 {
+		margin-top:20px;
+	}
+
+	.ekko-lightbox .modal-dialog {
+		margin:30px auto 0 auto;
+	}
+}
+
+.mb20 { margin-bottom: 20px; }
+
+.hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
+.hgroup h2.lead { color: #2a3644; margin: 0; padding-bottom: 10px; }
+
+.article .thumbnail { border-radius: 0 !important; }
+.article:first-child { margin-top: 0 !important; }
+.article { margin-top: 20px; }
+.article .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
+.article ul { padding-left: 0 !important; list-style: none;  }
+.article ul li { line-height: 30px; }
+.article ul li i { padding-right: 5px; }
+.article .col-md-7 { position: relative; }
+.article h3 { margin-top: 0 !important; margin-bottom: 10px !important; }
+.article h3 > a, .article i { color: #248dc1 !important; }
+.article p { font: normal normal 1.125em; }
+.article span.plus { position: absolute; right: 0; top: 126px; }
+.article span.plus a { background-color: #248dc1; padding: 5px 5px 3px 5px; }
+.article span.plus a:hover { background-color: #414141; }
+.article span.plus a i { color: #fff !important; }
+.article span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }

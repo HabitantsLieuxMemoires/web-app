@@ -1,0 +1,24 @@
+<%= render 'header' %>
+
+<div class="box">
+  <div class="box-header">
+    <%= fa_icon "list-ul" %>
+    <h3 class="box-title"><%= t('article.title.details') %></h3>
+  </div>
+  <div class="box-body">
+    <dl class="dl-horizontal">
+      <dt><%= Article.human_attribute_name(:created_at) %></dt>
+      <dd><%= @article.created_at %></dd>
+      <dt><%= Article.human_attribute_name(:created_by) %></dt>
+      <dd><%= @article.author %></dd>
+      <dt><%= Article.human_attribute_name(:title) %></dt>
+      <dd><%= @article.title %></dd>
+    </dl>
+  </div>
+  <div class="box-footer">
+    <%= link_to t('article.do.view'), @article.url, class: 'btn btn-default' %>
+    <%= link_to t('article.do.remove'), admin_article_path(@article), method: :delete, class: 'btn btn-danger' %>
+  </div>
+</div>
+
+<%= render partial: '/admin/articles/contributions', locals: {contributions: @tracks} %>

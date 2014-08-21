@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+    <head>
+      <title>Habitants Lieux Mémoires :: Administration</title>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <%= stylesheet_link_tag    "admin/admin", media: "all" %>
+      <%= javascript_include_tag "admin/admin" %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body class="skin-blue" data-env="<%= Rails.env %>">
+
+      <header class="header">
+        <a href="#" class="logo">Administration</a>
+        <%= render 'shared/admin/navbar' %>
+      </header>
+
+      <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas">
+          <%= render 'shared/admin/sidebar' %>
+        </aside>
+
+        <aside class="right-side">
+          <% if content_for?(:content_header) %>
+            <section class="content-header">
+              <%= yield :content_header %>
+            </section>
+          <% end %>
+
+          <section class="content">
+            <%= render 'shared/messages' %>
+            <%= yield %>
+          </section>
+        </aside>
+      </div>
+
+      <%= javascript_pluggable_tag %>
+    </body>
+</html>

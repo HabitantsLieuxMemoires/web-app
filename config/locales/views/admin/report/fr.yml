@@ -1,0 +1,22 @@
+fr:
+  admin:
+    moderation:
+      title:            "Gestion des signalements"
+      title_extended:   "Modérez les contenus jugés inappropriés"
+
+      report:
+        list:           "Liste des signalements"
+        details:        "Détails du signalement"
+        history:        "Historique des contributions"
+
+        addressed:      "Traité"
+        not_addressed:  "A traiter"
+
+        treated:        "Signalement traité avec succès"
+        treat_error:    "Une erreur est survenue pendant le traitement du signalement"
+
+        do:
+          treat:        "Traiter le signalement"
+
+        title:
+          track:        "Visualisation de la modification"

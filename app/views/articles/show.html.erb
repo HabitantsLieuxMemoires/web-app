@@ -1,0 +1,68 @@
+<% content_for :sidebar do %>
+  <%= render 'articles/sidebars/show', article: article %>
+<% end %>
+
+<!-- Could be used on JS to build AJax URLs -->
+<div class="article-data" data-uri="<%= article.url %>"></div>
+
+<div id="article-control">
+  <%= render 'actionbar', article: article %>
+</div>
+
+<div id="article-container">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <img class="author" src="<%= article.author_avatar %>">
+      <img class="themeIco" src="<%= article.theme_picto %>">
+      <div class="title color<%= rand(1..5) %>">
+        <%= article.title %>
+        <div>
+          <%= t('article.by_the_html', author: article.author, date: article.created_at) %>
+          -
+          <%= article.visibility %>
+        </div>
+      </div>
+
+      <div class="shareAndComments">
+        <div class="share"><span><%= article.share_count %></span></div>
+        <div class="comments"><span><%= article.comment_count %></span></div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="content">
+          <%= render 'summary', article: article %>
+
+          <div class="article-body">
+            <%= article.full_body %>
+          </div>
+
+          <% if @article.images.any? %>
+            <div class="well article-featured-images">
+              <div class="row row-centered">
+                <%= article.featured_images %>
+              </div>
+            </div>
+          <% end %>
+
+          <%= render partial: 'articles/links/show', locals: { :article => article } %>
+        </div>
+
+        <%= render 'articles/images' %>
+        <%= render 'articles/videos' %>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <div class="text-center">
+        <%= render 'social',   article: article %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <%= render 'comments', article: article %>
+  <%= render 'articles/modals/show' %>
+

@@ -1,0 +1,27 @@
+<div class="box box" id="article-contributions">
+  <div class="box-header">
+    <%= fa_icon "edit" %>
+    <h3 class="box-title"><%= t('admin.moderation.report.history') %></h3>
+  </div>
+  <div class="box-body">
+    <% if contributions.any? %>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th><%= Article.human_attribute_name(:updated_at) %></th>
+            <th><%= Article.human_attribute_name(:author) %></th>
+            <th><%= Article.human_attribute_name(:changes) %></th>
+            <th><%= t('actions') %></th>
+          </tr>
+            <%= render partial: '/admin/articles/contribution', collection: contributions %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="callout callout-info">
+        <p><%= t('article.track.none') %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render '/admin/articles/modals' %>

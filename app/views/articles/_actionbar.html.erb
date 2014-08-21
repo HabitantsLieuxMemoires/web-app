@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 nav-row center-block">
+    <div>
+      <div class="col-md-3 hidden-xs hidden-sm">
+      </div>
+      <div class="nav-col col-md-2 col-xs-2 active content">
+        <div class="ico"></div>
+        <a href="#content" data-toggle="tab">
+          <p><%= t('article.content') %></p>
+        </a>
+      </div>
+      <div class="nav-col visible-sm visible-xs col-md-2 col-xs-2 details">
+        <div class="ico"></div>
+        <a href="#info" id="show_info" class="mobile-toggle-button" data-target="#article-info">
+          <p><%= t('article.details') %></p>
+        </a>
+      </div>
+      <div class="nav-col col-md-2 col-xs-2 picture">
+        <div class="ico"></div>
+        <a href="#images" id="show_images" data-toggle="tab">
+          <p><%= t('article.pictures') %><span class="badge pull-right images-count hidden-xs"><%= article.images_count %></span></p>
+        </a>
+      </div>
+      <div class="nav-col col-md-2 col-xs-2 videos">
+        <div class="ico"></div>
+        <a href="#videos" id="show_videos" data-toggle="tab">
+          <p><%= t('article.videos') %><span class="badge pull-right videos-count hidden-xs"><%= article.videos_count %></span></p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

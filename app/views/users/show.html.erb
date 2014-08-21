@@ -1,0 +1,26 @@
+<div id="profile-control">
+  <%= render partial: 'actionbar', locals: {:edit => @edit} %>
+</div>
+
+<div id="profile-container">
+  <div class="panel panel-default" id="user-profile">
+    <div class="panel-heading">
+      <h4 class="panel-title"><%= @user.nickname %></h4>
+    </div>
+    <div class="panel-body">
+      <div class="tab-content">
+        <%= render 'users/profile', user: @user, edit: @edit %>
+
+        <% if @edit %>
+          <%= render 'users/security', user: @user %>
+        <% end %>
+
+        <%= render 'users/activity', user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @edit %>
+  <%= render 'users/modals/change_avatar', user: @user %>
+<% end %>

@@ -1,0 +1,18 @@
+fr:
+  admin:
+    editorial:
+      title:            "Gestion éditoriale"
+      title_extended:   "Gérer les contenus à afficher en page d'accueil"
+      content:          "Texte de présentation"
+
+      feature:
+        none:           "Aucun article sélectionné par la rédaction"
+        articles:       "Liste des articles à mettre en avant"
+
+        saved:          "Texte de l'accueil publié avec succès"
+        save_error:     "Une erreur est survenue pendant la publication du texte d'accueil"
+
+        do:
+          publish:        "Publier la nouvelle page d'accueil"
+          add_article:    "Ajouter l'article"
+          delete_article: "Enlever l'article"

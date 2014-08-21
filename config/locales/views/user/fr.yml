@@ -1,0 +1,49 @@
+fr:
+  user:
+    warned:   "Utilisateur averti avec succès"
+    banned:   "Utilisateur banni avec succès"
+    unknown:  "Inconnu"
+
+    role:
+      user:       "Utilisateur"
+      moderator:  "Modérateur"
+      admin:      "Administrateur"
+
+    do:
+      warn: "Avertir"
+      ban:  "Bannir"
+
+  profile:
+    content:    "Profil"
+    security:   "Sécurité"
+    activity:   "Activité"
+
+    manage_content:    "Identité et informations sur la plateforme"
+    manage_password:   "Gérez votre mot de passe"
+
+    activities:
+      none:     "Aucune activité récente"
+      manage:   "Contributions aux articles de la plateforme"
+
+    details:
+      articles:       "Articles"
+      contributions:  "Contributions"
+      comments:       "Commentaires"
+
+    do:
+      change_avatar:  "Changer mon avatar"
+      change_email:   "Changer mon email"
+
+    avatar:
+      changed:        "Avatar mis à jour avec succès"
+      change_error:   "Une erreur est survenue pendant le changement de votre avatar"
+
+      title:
+        change:       "Changement d'avatar"
+
+      do:
+        select:       "Sélectionnez un avatar"
+        change:       "Changer l'avatar"
+        remove:       "Supprimer l'avatar"
+        upload:       "Valider le nouvel avatar"
+

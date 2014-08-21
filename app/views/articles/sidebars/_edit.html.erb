@@ -1,0 +1,44 @@
+<div class="well" id="article-actions">
+  <%= f.submit t('article.do.publish'), class: 'btn btn-primary btn-block' %>
+</div>
+
+<div class="panel panel-default" id="article-details">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <%= fa_icon "list" %>
+      <%= t('article.details') %>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <%= f.collection_select :theme_id, Theme.all, :id, :title %>
+    <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
+    <%= f.text_field :tags %>
+  </div>
+</div>
+
+<div class="panel panel-default" id="article-metadatas">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <%= fa_icon "tag" %>
+      <%= t('article.locations') %>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <!-- TODO: Waiting for bootstrap-rails-form to implement append-prepend buttons -->
+    <%= f.link_to_add t('article.location.do.add') , :locations, wrapper: false, class: "btn btn-xs btn-primary add-location", :data => { :target => "#article-locations" } %>
+
+    <table class="table" id="article-locations" >
+      <%= f.fields_for :locations, wrapper: false do |link_form| %>
+        <tr class="fields">
+          <td>
+            <%= link_form.text_field :coordinates, hide_label: true, readonly: true,
+                append: location_input_append(link_form) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+

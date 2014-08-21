@@ -1,0 +1,18 @@
+fr:
+  mongoid:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        email:                  "Mail"
+        nickname:               "Pseudo"
+        password:               "Mot de passe"
+        password_confirmation:  "Confirmez le mot de passe"
+        since:                  "Membre depuis"
+        articles:               "Articles"
+        comments:               "Commentaires"
+        role:                   "Rôle"
+    errors:
+      models:
+        user:
+          attributes:

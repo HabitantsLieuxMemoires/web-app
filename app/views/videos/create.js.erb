@@ -1,0 +1,11 @@
+// Hidding no video alert
+$('.no-video').hide()
+
+// Appending video partial
+$('#videos-list').append("<%= escape_javascript render(:partial => 'videos/video', :locals => { :article => @article, :video => @video, :edit_mode => true }) %>");
+
+// Incrementing video counter
+$('.videos-count').html("<%= @article.videos.count %>");
+
+// Closing modal
+$('#modal-add-video').modal('hide');

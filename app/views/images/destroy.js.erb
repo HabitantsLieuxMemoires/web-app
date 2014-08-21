@@ -1,0 +1,13 @@
+// Removing image from list
+$('#images-list').find("[data-id='<%= @image.id %>']").remove();
+
+// Hidding spinner
+$('.spinner').hide();
+
+// Decrementing image counter
+$('.images-count').html("<%= @article.images.count - 1 %>");
+
+// Displaying no image alert if needed
+if ($('#images-list').find('.image').length < 1) {
+  $('.no-image').show();
+}

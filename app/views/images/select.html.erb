@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="modal-select-image-label"><%= t('article.image.title.insert') %></h4>
+</div>
+<div class="modal-body">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#select" role="tab" data-toggle="tab"><%= t('article.image.tab.select') %></a></li>
+    <li><a href="#insert" role="tab" data-toggle="tab"><%= t('article.image.tab.insert') %></a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="select">
+      <% if @article.images.any? %>
+        <div class="row" id="image_chooser">
+            <%= render partial: 'file_select', collection: @article.images %>
+        </div>
+      <% else %>
+        <div class="alert alert-info">
+          <%= t('article.image.none') %>
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="insert">
+      <%= bootstrap_form_for [@article, Image.new],
+                       url: {action: "create"},
+                       html: {:multipart => true},
+                       layout: :horizontal do |f| %>
+
+        <%= f.text_field :title %>
+
+        <%= f.form_group do %>
+          <%= render partial: 'file_upload', locals: {f: f} %>
+
+          <%= f.hidden_field :article_image_cache %>
+        <% end %>
+
+        <%= f.select :size, options_for_image_size, label: Image.human_attribute_name(:size) %>
+
+        <%= f.form_group do %>
+            <button class="btn btn-primary ladda-button"
+                    data-style="expand-right"
+                    name="commit" type="submit">
+              <span class="ladda-label"><%= t('article.image.do.select') %></span>
+            </button>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

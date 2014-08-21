@@ -1,0 +1,12 @@
+fr:
+  cells:
+    themes:
+      title: "Thèmes"
+    chronologies:
+      title: "Chronologies"
+    news:
+      title: "Nouveautés"
+    featured:
+      title: "Contenus sélectionnés par HLM"
+    popular:
+      title: "Contenus les plus populaires"

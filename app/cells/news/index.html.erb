@@ -1,0 +1,21 @@
+<div class="panel panel-default" id="sidebar-news">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <%= t('cells.news.title') %>
+    </h4>
+  </div>
+  <div class="list-group">
+    <% @news.each_with_index do |n, index| %>
+      <%= link_to n.url, class: 'new list-group-item', data: {
+          :title  => n.title,
+          :uri    => n.url,
+          :theme  => n.theme_icon
+        } do %>
+        <div class="level<%= index %>">
+          <%= n.display_coordinates %>
+          <p><%= n.title(30) %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

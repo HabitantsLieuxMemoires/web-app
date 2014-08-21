@@ -1,0 +1,183 @@
+fr:
+  article:
+    create_welcome: "Bienvenue dans l'assistant de création de contenu. Remplissez les champs présents puis cliquez sur créer pour accéder à l'éditeur de contenu"
+    report_welcome: "Bienvenue dans le formulaire de signalement de contenu. Remplissez les champs suivants pour signaler un contenu inapproprié"
+    video_welcome:  "Bienvenue dans le formulaire d'ajout de vidéo. Veuillez entrer un lien vers une vidéo hébergée par un des fournisseurs listés ci-dessous"
+
+    content:        "Contenu"
+    details:        "Détails"
+    pictures:       "Photos"
+    videos:         "Vidéos"
+    metadatas:      "Métadonnées"
+    locations:      "Coordonnées"
+    public:         "Publique"
+    private:        "Privé"
+    summary:        "Sommaire"
+    external_links: "Liens externes"
+    contributors:   "Contributeurs"
+
+    published:      "Publié"
+    unpublished:    "En attente"
+
+    by_html:        "Par <span class='author'>%{author}</span>"
+    by_the_html:    "Par <span class='author'>%{author}</span> le <span class='datetime'>%{date}</span>"
+
+    created:        "Contenu créé avec succès"
+    creation_error: "Une erreur est survenue pendant la création du contenu"
+    created_by:     "%{user} a ajouté le contenu %{article}"
+    updated:        "Contenu mis à jour avec succès"
+    update_error:   "Une erreur est survenue pendant la mise à jour du contenu"
+    updated_by:     "%{user} a contribué au contenu %{article}"
+    reported:       "Contenu a été signalé avec succès"
+    report_error:   "Une erreur est survenue pendant le signalement du contenu"
+    commented_by:   "%{user} a commenté le contenu %{article}"
+    shared_by:      "%{user} a partagé le contenu %{article}"
+    removed:        "Contenu supprimé avec succès"
+    remove_error:   "Une erreur est survenue pendant la suppression du contenu"
+
+    do:
+      create:       "Je publie mon article"
+      publish:      "Publier le contenu"
+      update:       "Modifier le contenu"
+      report:       "Signaler le contenu"
+      view:         "Voir l'article"
+      see_changes:  "Voir les modifications"
+      search:       "Chercher un contenu"
+      remove:       "Supprimer le contenu"
+      save:         "Sauvegarder le contenu"
+
+    title:
+      create:       "Création de contenu"
+      edit:         "Edition du contenu"
+      report:       "Signalement de contenu"
+      details:      "Détails du contenu"
+      remove:       "Contenu supprimé"
+
+    tooltip:
+      save:         "Sauvegardez le contenu pour une publication ultérieure"
+
+    popular:
+      none:         "Aucun article populaire publié"
+
+    chronologies:
+      none:         "Aucun article publié pour cette chronologie"
+
+    themes:
+      none:         "Aucun article publié pour ce thème"
+
+    # Comments
+    comment:
+      none:         "Aucun commentaire pour ce contenu"
+      list:         "Liste des commentaires"
+      no_session:   "Authentifiez-vous pour commenter l'article"
+
+      since_html:   "Il y a <span class='datetime'>%{date}</span>"
+
+      deleted:      "Commentaire supprimé avec succès"
+      delete_error: "Une erreur est survenue pendant la suppression du commentaire"
+
+      do:
+        create:     "Commenter le contenu"
+        delete:     "Supprimer le commentaire"
+
+      title:
+        create:     "Création d'un commentaire"
+
+    # Pictures
+    image:
+      none:           "Aucune photo publiée pour ce contenu"
+
+      uploaded:       "Photo publiée avec succès"
+      upload_error:   "Une erreur est survenue pendant la publication de la photo"
+      uploaded_by:    "%{user} a ajouté une photo au contenu %{article}"
+      removed:        "Photo supprimée avec succès"
+      remove_error:   "Une erreur est survenue pendant la suppression de la photo"
+      removed_by:     "%{user} a supprimé une photo du contenu %{article}"
+      restored:       "Photo restaurée avec succès"
+      restore_error:  "Une erreur est survenue pendant la restauration de la photo"
+
+      list:           "Liste des photos"
+
+      do:
+        upload:         "Publier une photo"
+        select:         "Sélectionner la photo"
+        select_thumb:   "Petite"
+        select_normal:  "Moyenne"
+        select_large:   "Grande"
+        change:         "Changer de photo"
+        remove:         "Supprimer la photo"
+        see_all:        "Voir toutes les photos"
+        view:           "Voir la photo"
+        restore:        "Restaurer la photo"
+
+      tab:
+        select:         "Médiathèque"
+        insert:         "Nouvelle photo"
+
+      title:
+        upload:    "Publication de photo"
+        insert:    "Insertion d'une photo"
+        view:      "Visualisation de la photo"
+
+      track:
+        added:       "Photo ajoutée"
+        removed:     "Photo supprimée"
+
+    # Video
+    video:
+      none:           "Aucune vidéo publiée pour ce contenu"
+
+      added:          "Vidéo ajoutée avec succès"
+      add_error:      "Une erreur est survenue pendant l'ajout de la vidéo"
+      added_by:       "%{user} a ajouté une vidéo au contenu %{article}"
+      removed:        "Vidéo supprimée avec succès"
+      remove_error:   "Une erreur est survenue pendant la suppression de la vidéo"
+      removed_by:     "%{user} a supprimé une vidéo du contenu %{article}"
+      restored:       "Vidéo restaurée avec succès"
+      restore_error:  "Une erreur est survenue pendant la restauration de la vidéo"
+
+      list:           "Liste des vidéos"
+
+      do:
+        add:       "Ajouter une vidéo"
+        remove:    "Supprimer la vidéo"
+        view:      "Voir la vidéo"
+        restore:   "Restaurer la vidéo"
+
+      title:
+        add:       "Ajout de vidéo"
+        view:      "Visualisation de la vidéo"
+
+      track:
+        added:     "Vidéo ajoutée"
+        removed:   "Vidéo supprimée"
+
+    # Track
+    track:
+      none:        "Aucune contribution pour ce contenu"
+      updates:     "%{count} modification(s)"
+
+    # Link
+    link:
+      explain:     "Liste des ressources externes du contenu. Cliquez sur ajouter et précisez le titre et l'URL du lien avant de publier."
+
+      title:
+        insert:    "Insertion d'un lien interne"
+
+      do:
+        add:       "Ajouter"
+        delete:    "Supprimer"
+
+      placeholder:
+        title:     "Titre du lien"
+        url:       "URL du lien"
+
+    # Location
+    location:
+      do:
+        add:       "Ajouter des coordonnées GPS"
+
+    # Editor
+    editor:
+      left_align:  "Aligner à gauche"
+

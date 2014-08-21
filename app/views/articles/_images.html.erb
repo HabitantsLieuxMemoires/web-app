@@ -1,0 +1,29 @@
+<% edit_mode = false if local_assigns[:edit_mode].nil? %>
+
+<div class="tab-pane clearfix" id="images">
+  <h4>
+    <%= t('article.image.list') %>
+    <small class="pull-right">
+      <% if edit_mode %>
+        <%= link_to new_article_image_path(@article.id),
+                id: "add_image",
+                class: "btn btn-primary btn-sm",
+                data: {
+                  toggle: 'modal',
+                  target: '#modal-add-image'
+                }  do %>
+            <%= fa_icon "cloud-upload", text: t('article.image.do.upload'), right: true %>
+        <% end %>
+      <% end %>
+    </small>
+  </h4>
+  <hr>
+
+  <div class="row" id="images-list">
+    <% if @article.images.any? %>
+      <%= render partial: '/images/image', collection: @article.images, locals: {article: @article, edit_mode: edit_mode} %>
+    <% else %>
+      <p class="bg-info no-image"><%= t('article.image.none') %></p>
+    <% end %>
+  </div>
+</div>

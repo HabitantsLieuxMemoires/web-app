@@ -1,0 +1,8 @@
+---
+
+- name: database | add mongodb user
+  mongodb_user: database="{{ app_mongodb_dbname }}"
+                name="{{ app_mongodb_dbuser }}"
+                password="{{ app_mongodb_dbpassword }}"
+                roles='readWrite,dbAdmin,userAdmin'
+                state=present

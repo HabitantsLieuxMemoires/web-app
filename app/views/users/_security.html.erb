@@ -1,0 +1,24 @@
+<div class="tab-pane" id="security">
+  <h3><%= t('profile.security') %> <small><%= t('profile.manage_password') %></small></h3>
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= bootstrap_form_tag url: change_password_user_path(@current_user), method: :post, inline_errors: false do |f| %>
+          <%= f.password_field :password,
+                               hide_label: true,
+                               placeholder: User.human_attribute_name(:password),
+                               class: "input-lg" %>
+
+          <%= f.password_field :password_confirmation,
+                               hide_label: true,
+                               placeholder: User.human_attribute_name(:password_confirmation),
+                               class: "input-lg" %>
+
+          <%= f.submit t('do.change_password'), class: "btn btn-primary btn-block btn-lg" %>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+<%= content_for :content_header do %>
+  <h1>
+    <%= t('admin.dashboard.title') %>
+    <small><%= t('admin.dashboard.title_extended') %></small>
+  </h1>
+<% end %>
+
+<div class="row">
+  <div class="col-md-3 col-xs-6">
+      <div class="small-box bg-aqua">
+          <div class="inner">
+              <h3><%= @registrations %></h3>
+              <p><%= t('admin.dashboard.registrations') %></p>
+          </div>
+          <div class="icon">
+              <i class="icon ion-person-add"></i>
+          </div>
+      </div>
+  </div><!-- ./col -->
+  <div class="col-md-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-green">
+          <div class="inner">
+              <h3><%= @articles %></h3>
+              <p><%= t('admin.dashboard.articles') %></p>
+          </div>
+          <div class="icon">
+              <i class="icon ion-clipboard"></i>
+          </div>
+      </div>
+  </div><!-- ./col -->
+  <div class="col-md-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-yellow">
+          <div class="inner">
+              <h3><%= @comments %></h3>
+              <p><%= t('admin.dashboard.comments') %></p>
+          </div>
+          <div class="icon">
+              <i class="icon ion-android-forums"></i>
+          </div>
+      </div>
+  </div><!-- ./col -->
+  <div class="col-md-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-red">
+          <div class="inner">
+              <h3><%= @shares %></h3>
+              <p><%= t('admin.dashboard.shares') %></p>
+          </div>
+          <div class="icon">
+              <i class="icon ion-heart"></i>
+          </div>
+      </div>
+  </div><!-- ./col -->
+</div>

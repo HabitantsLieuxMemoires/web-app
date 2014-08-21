@@ -1,0 +1,56 @@
+---
+
+- name: common | update apt-cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: common | upgrade the distro
+  apt: upgrade=yes
+  sudo: yes
+
+- name: common | install packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - build-essential
+    - git
+    - curl
+    - zip
+    - unzip
+    - wget
+  sudo: yes
+
+- name: common | create admin group
+  group: name=admin state=present
+  sudo: yes
+
+- name: common | create app user group
+  group: name={{ app_user }} state=present
+  sudo: yes
+
+- name: common | create user
+  user: name="{{ app_user }}"
+        groups=admin,{{ app_user }}
+        home="{{ app_user_home }}"
+        shell=/bin/bash
+        state=present
+  sudo: yes
+
+- name: common | add ssh key
+  authorized_key: user={{ app_user}}
+                  key="{{ lookup('file', 'public_keys/hlm.pub') }}"
+  sudo: yes
+
+- name: common | add admin group to sudoers
+  lineinfile: dest=/etc/sudoers state=present
+              regexp='^%ADMIN ALL\='
+              line='%ADMIN ALL=(ALL) NOPASSWD:ALL'
+              validate='visudo -cf %s'
+  sudo: yes
+
+- name: common | allow ssh to git server for root
+  shell: ssh-keyscan -H -t dsa github.com >> /etc/ssh/known_hosts 2>&1
+  sudo: yes
+
+- name: common | allow ssh to git server
+  shell: "ssh-keyscan -H -t dsa github.com >> {{ app_user_home }}/.ssh/known_hosts 2>&1"
+  sudo: yes

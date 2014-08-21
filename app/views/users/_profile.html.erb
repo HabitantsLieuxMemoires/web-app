@@ -1,0 +1,49 @@
+<div class="tab-pane active" id="profile">
+  <h3><%= t('profile.content') %> <small><%= t('profile.manage_content') %></small></h3>
+  <hr>
+
+  <div class="row">
+   <div class="col-xs-12 col-sm-8">
+      <dl class="dl-horizontal profile">
+        <dt><%= User.human_attribute_name(:nickname) %></dt>
+        <dd><%= @user.nickname %></dd>
+        <dt><%= User.human_attribute_name(:email) %></dt>
+        <dd><%= @user.email %></dd>
+        <dt><%= User.human_attribute_name(:since) %></dt>
+        <dd><%= l(@user.created_at) %></dd>
+      </dl>
+
+      <% if edit %>
+        <div class="text-center">
+          <a data-toggle="modal" data-target="#modal-change-avatar" class="btn btn-primary btn-sm"><%= t('profile.do.change_avatar') %></a>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <figure>
+        <img src="<%= @user.avatar_url %>" alt="avatar" class="img-circle img-responsive">
+      </figure>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div class="col-xs-12 col-sm-4 emphasis">
+          <h2><strong><%= @profile[:articles] %></strong></h2>
+          <p><small><%= t('profile.details.articles') %></small></p>
+        </div>
+        <div class="col-xs-12 col-sm-4 emphasis">
+          <h2><strong><%= @profile[:contributions] %></strong></h2>
+          <p><small><%= t('profile.details.contributions') %></small></p>
+        </div>
+        <div class="col-xs-12 col-sm-4 emphasis">
+          <h2><strong><%= @profile[:comments] %></strong></h2>
+          <p><small><%= t('profile.details.comments') %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

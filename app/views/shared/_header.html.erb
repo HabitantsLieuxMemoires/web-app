@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+
+    <header class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-hlm-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <button type="button" class="navbar-toggle navbar-icon map-mobile-toggle mobile-toggle-button" data-target="#business-header" data-callback="mapController.mobileToggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-map-marker"></span>
+      </button>
+      <button type="button" class="navbar-toggle navbar-icon search-toggle mobile-toggle-button" data-target="#search-column" data-effect-delay="0">
+        <span class="sr-only">Toggle search</span>
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">
+        <img src="<%= asset_path 'logo.png' %>" alt="hlm">
+      </a>
+      <h1 class="navbar-title">Habitants Lieux Mémoires</h1>
+      <h2 class="navbar-subtitle">Villes de <strong>Bassens, Lormont, Cenon & Floirac</strong></h2>
+    </header>
+
+    <div class="collapse navbar-collapse" id="navbar-hlm-collapse">
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to t('nav.about'), page_path('about') %></li>
+        <% if current_user %>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.nickname %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('nav.profile'),  profile_path %></li>
+                <li><%= link_to t('auth.logout'),  logout_path %></li>
+              </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t('auth.signup'),  signup_path %></li>
+          <li><%= link_to t('auth.login'),   login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="business-header hidden-xs hidden-sm" id="business-header">
+  <div class="container " id="mapContainer"></div>
+
+  <div class="subheader hidden-xs hidden-sm">Habitants de Bassens, Lormont, Cenon et Floirac, venez partager vos expériences !</div>
+</div>

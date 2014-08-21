@@ -1,0 +1,4 @@
+fr:
+  auth:
+    invalid_credentials: "Identifiant ou mot de passe incorrect."
+    no_account:          "Vous n'êtes pas enregistré(e)"

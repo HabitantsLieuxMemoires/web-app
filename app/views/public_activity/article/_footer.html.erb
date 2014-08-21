@@ -1,0 +1,8 @@
+<% if a.trackable %>
+  <div class="timeline-footer">
+      <%= link_to t('article.do.view'), article_path(a.trackable_id), class: 'btn btn-xs btn-primary' %>
+      <%= link_to t('article.do.see_changes'), admin_article_path(a.trackable_id), class: 'btn btn-xs btn-warning' %>
+  </div>
+<% else %>
+  <a class="btn btn-xs bg-red" href="#"><%= t('article.title.remove') %></a>
+<% end %>

@@ -1,0 +1,12 @@
+fr:
+  mongoid:
+    models:
+      image:      "Photo"
+    attributes:
+      image:
+        title:    "Titre"
+        size:     "Taille"
+    errors:
+      models:
+        image:
+          attributes:

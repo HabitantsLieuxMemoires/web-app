@@ -1,0 +1,15 @@
+<tr class="contribution">
+  <td><%= contribution.updated_at %></td>
+  <%= render 'admin/articles/contributions/author', contribution: contribution %>
+  <% if contribution.is_added_image? %>
+    <%= render 'admin/articles/contributions/add_image', contribution: contribution %>
+  <% elsif contribution.is_removed_image? %>
+    <%= render 'admin/articles/contributions/remove_image', contribution: contribution %>
+  <% elsif contribution.is_added_video? %>
+    <%= render 'admin/articles/contributions/add_video', contribution: contribution %>
+  <% elsif contribution.is_removed_video? %>
+    <%= render 'admin/articles/contributions/remove_video', contribution: contribution %>
+  <% else %>
+    <%= render 'admin/articles/contributions/update', contribution: contribution %>
+  <% end %>
+</tr>

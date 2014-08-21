@@ -1,0 +1,22 @@
+fr:
+  none:         "Aucun"
+  all:          "Tous"
+  actions:      "Actions disponibles"
+  read_more:    "Lire plus"
+
+  errors:
+    messages:
+      invalid_email:            "n'est pas une adresse mail valide"
+      invalid_uri:              "n'est pas une addresse web valide"
+      invalid_video_provider:   "n'est pas un fournisseur vidéo valide"
+
+  do:
+    cancel:     "Annuler"
+
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: "Dernière &raquo;"
+      previous: "&lsaquo; Précédente"
+      next: "Suivante &rsaquo;"
+      truncate: "&hellip;"

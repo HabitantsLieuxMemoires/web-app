@@ -1,0 +1,27 @@
+<div class="panel panel-default" id="change-password">
+  <div class="panel-heading">
+    <p><%= t('password.title.reset') %></p>
+  </div>
+  <div class="panel-body">
+    <%= bootstrap_form_for @user,
+                           url: password_reset_path(@user),
+                           html: {method: :put},
+                           layout: :horizontal,
+                           label_col: "col-lg-4",
+                           control_col: "col-lg-8" do |f| %>
+
+        <div class="alert alert-info">
+          <%= t('password.reset_welcome') %>
+        </div>
+
+        <%= f.static_control :email, label: User.human_attribute_name(:email) %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.hidden_field   :token, value: @token %>
+
+        <%= f.form_group do %>
+          <%= f.submit t('do.change_password'), class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

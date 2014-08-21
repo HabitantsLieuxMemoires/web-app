@@ -1,0 +1,29 @@
+<% edit_mode = false if local_assigns[:edit_mode].nil? %>
+
+<div class="tab-pane clearfix" id="videos">
+  <h4>
+    <%= t('article.video.list') %>
+    <small class="pull-right">
+      <% if edit_mode %>
+        <%= link_to new_article_video_path(@article.id),
+                id: "add_video",
+                class: "btn btn-primary btn-sm",
+                data: {
+                  toggle: 'modal',
+                  target: '#modal-add-video'
+                }  do %>
+            <%= fa_icon "cloud-upload", text: t('article.video.do.add'), right: true %>
+        <% end %>
+      <% end %>
+    </small>
+  </h4>
+  <hr>
+
+  <div class="row" id="videos-list">
+    <% if @article.videos.any? %>
+      <%= render partial: '/videos/video', collection: @article.videos, locals: {article: @article, edit_mode: edit_mode} %>
+    <% else %>
+      <p class="bg-info no-video"><%= t('article.video.none') %></p>
+    <% end %>
+  </div>
+</div>

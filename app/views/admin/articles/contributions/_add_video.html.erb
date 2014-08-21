@@ -1,0 +1,11 @@
+<td><span class="label label-success"><%= t('article.video.track.added') %></span></td>
+<td>
+  <%= link_to admin_article_video_path(contribution.article_id, contribution.video_id),
+          class: "btn btn-default btn-xs",
+          data: {
+            toggle: 'modal',
+            target: '#modal-view-video'
+          }  do %>
+      <%= fa_icon 'eye', text: t('article.video.do.view'), right: true %>
+  <% end %>
+</td>

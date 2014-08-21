@@ -1,0 +1,361 @@
+#= require leaflet-search.min
+
+mapSettings =
+  el:'mapContainer',
+  defaultPosition:[44.857981, -0.530777],
+  maxBounds:
+    southWest: [44.80254, -0.6439],
+    northEast: [44.87327, -0.42984]
+  fitBoundsPadding: [70, 70]
+  osmProviders:
+    osm:
+      url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  # For testing purposes only
+  # Mapbox is not free and limited to 3 000 view/month (1 view = 15 tiles)
+    mapbox:
+      url:'https://{s}.tiles.mapbox.com/v3/examples.map-zr0njcqy/{z}/{x}/{y}.png',
+      attrib:'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  icons: (icon_url) ->
+    L.icon(
+      iconUrl:      icon_url,
+      iconSize:     [35, 50], # size of the icon
+      iconAnchor:   [17, 48], # point of the icon which will correspond to marker's location
+      popupAnchor:  [-3, -76] # point from which the popup should open relative to the iconAnchor
+    )
+
+window.mapController =
+  currentMarker:null,
+  positionPickerActive:false,
+  locate: ->
+    if Modernizr.geolocation
+      mapController.mapInstance.locate
+        setView: true
+        maxZoom: 13
+        minZoom: 13
+      mapController.mapInstance.on 'locationerror',
+        cb = ->
+          mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 13)
+        setTimeout cb, 2000
+      # Unbind after 1st localization
+      # mapController.mapInstance.off 'viewreset', mapController.locate
+
+  locateOnViewReset: ->
+    mapController.mapInstance.on 'viewreset', mapController.locate
+
+  addPosition: (latlng) ->
+    debug "New marker added on "+latlng
+    # Delete old markers
+    mapController.markerCluster.clearLayers()
+    # Add new marker
+    if mapController.currentMarker?
+      mapController.mapInstance.removeLayer mapController.currentMarker
+    mapController.currentMarker = new L.marker new L.LatLng(latlng.lat, latlng.lng),
+      draggable:true
+    .addTo( mapController.mapInstance)
+    # Show popup
+    mapController.showMarkerAddPopup mapController.currentMarker
+    # Marker moved
+    mapController.currentMarker.on 'dragend', (e) ->
+      debug "Marker moved to "+e.target.getLatLng()
+      e.target.openPopup()
+
+  enablePositionPicker: ->
+    mapController.positionPickerActive = true
+    $('.leaflet-control-search').show()
+    # Scroll to top
+    $('html, body').animate({ scrollTop: 0 },'slow')
+
+    # Bigger map
+    $('#'+mapSettings.el).animate
+      'height':'500px'
+    ,1000, 'swing', ->
+        mapController.mapInstance.invalidateSize()
+
+    # Editing mode
+    if mapController.isEditing()
+      @.enableMarkersEdition()
+
+    $('.leaflet-control-position-picker').show()
+    # Bind map click to add marker
+    mapController.mapInstance.on 'click', (e) ->
+      if mapController.positionPickerActive == false
+        return
+      mapController.addPosition e.latlng
+
+  enableMarkersEdition: ->
+    layers = mapController.markerCluster.getLayers()
+    if layers?
+      jQuery.each layers, (i) ->
+        mapController.showMarkerEditPopup layers[i]
+
+  generateButtonElement: (icoClass, btnClass, btnText) ->
+    btn = document.createElement 'button'
+    btn.innerHTML = '<span class="glyphicon '+icoClass+'"></span> '+btnText
+    btn.className = 'btn '+btnClass+' btn-xs'
+    btn.type = 'button'
+    btn
+
+  showMarkerEditPopup:(marker) ->
+    btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
+    btnRemove = mapController.generateButtonElement 'glyphicon-remove', 'btn-danger', 'Supprimer ce point'
+    btnRemove.onclick = ->
+      mapController.disablePositionPicker 'cancel', marker
+    btnAdd.onclick = ->
+      mapController.disablePositionPicker 'save', marker
+    div = document.createElement 'div'
+    div.innerHTML = marker._popup._content+'<br>'
+    div.appendChild btnAdd
+    div.appendChild btnRemove
+    marker.bindPopup(div)
+
+  showMarkerAddPopup:(marker) ->
+    btnAdd = mapController.generateButtonElement 'glyphicon-ok', 'btn-success', 'Valider ce point'
+    btnAdd.onclick = ->
+      mapController.disablePositionPicker 'save', marker
+    marker.bindPopup(btnAdd).openPopup()
+
+  setCentered: ->
+    bounds = mapController.markerCluster.getBounds() if mapController.markerCluster?
+    if mapController.markerCluster? && bounds._northEast
+      mapController.mapInstance.invalidateSize(false)
+      mapController.mapInstance.fitBounds bounds,
+        padding: [130,130]
+    else
+      mapController.mapInstance.setZoomAround(new L.LatLng(mapSettings.defaultPosition[0], mapSettings.defaultPosition[1]), 14)
+      mapController.mapInstance.invalidateSize(false)
+
+  disablePositionPicker: (action, selectedMarker) ->
+    mapController.positionPickerActive = false
+    # Search current editing GPS field
+    gpsField = $('#article-locations input[type=text]').filter ->
+      $(this).val() == '' && $(this).siblings().find('[id$=destroy]').val() != '1'
+    # Populate GPS field
+    if action == 'save'
+      # Filled, setting GPS position
+      latlng = selectedMarker.getLatLng()
+      gpsField.val latlng.lat.toFixed(4)+', '+latlng.lng.toFixed(4)
+      selectedMarker.closePopup()
+    else if action == 'cancel'
+      # Not filled, deleting...
+      debug "Deleting..."
+      if selectedMarker?
+        latlng = selectedMarker.getLatLng()
+        gpsField = $('#article-locations input[type=text][value="'+latlng.lat+', '+latlng.lng+'"]')
+        debug gpsField
+      gpsField.parents('.fields').find('a.remove_nested_fields').click()
+    # Hide position picker
+    $('.leaflet-control-position-picker').hide()
+    $('.leaflet-control-search').show()
+    # Restore map to initial state
+    $('#'+mapSettings.el).animate
+      'height':mapSettings.originalHeight+'px'
+    ,500, 'swing', ->
+      mapController.mapInstance.invalidateSize()
+      # Scroll back to article
+      $('html,body').animate({ scrollTop: $('#article-container').offset().top }, 'slow')
+    # Hide marker from the map in few secs
+    if mapController.currentMarker?
+      setTimeout ->
+        mapController.mapInstance.removeLayer mapController.currentMarker
+      , 1500
+
+  # Map Initilizator
+  init: (providerSettings, el, defaultPosition) ->
+    # Already initialized?
+    if $('#mapContainer').hasClass('leaflet-container') == false
+      debug "Map:: Initialization..."
+      mapSettings.originalHeight = $('#mapContainer').height()
+
+      # Marker cluster
+      @markerCluster = new L.MarkerClusterGroup
+        showCoverageOnHover:  false
+        spiderfyOnMaxZoom: true
+        animateAddingMarkers: true
+
+      # Map instanciation & settings
+      maxBounds = mapSettings.maxBounds;
+      maxSW = new L.LatLng maxBounds.southWest[0], maxBounds.southWest[1]
+      maxNE = new L.LatLng maxBounds.northEast[0], maxBounds.northEast[1]
+      map = new L.Map el,
+        maxBounds: new L.LatLngBounds maxSW, maxNE
+        zoomControl: !Modernizr.touch
+        minZoom: 13
+
+      # Search plugin
+      searchControl = new L.Control.Search({
+        url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+        jsonpParam: 'json_callback',
+        propertyName: 'display_name',
+        propertyLoc: ['lat','lon'],
+        markerLocation: false,
+        circleLocation:false,
+        autoType: false,
+        autoCollapse: true,
+        minLength: 2,
+        zoom:14,
+        text:'Recherche...',
+        textCancel:'Fermer',
+        textErr:'Aucun résultat',
+        position:'topleft'
+      })
+      searchControl.on('search_locationfound', (e) ->
+        mapController.addPosition(e.latlng)
+      )
+      map.addControl(searchControl)
+
+      # Base view settings
+      tileLayer = new L.TileLayer providerSettings.url,
+        attribution: providerSettings.attrib
+      map.setView new L.LatLng(defaultPosition[0],defaultPosition[1]),12
+      map.addLayer tileLayer
+      map.addLayer @markerCluster
+
+      # Position picker
+      $('#mapContainer').append '<div class="leaflet-control-position-picker"><span>Cliquez sur la carte pour choisir un emplacement</span></div>'
+      $('#mapContainer').append '<div class="leaflet-control-position-picker buttons"></div>'
+      $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
+      $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
+    
+      # Search button
+      $('.leaflet-control-position-picker button.search').on 'click', (e) ->
+        e.preventDefault();
+        searchControl._handleSubmit();
+        return false;
+      # Cancel button
+      $('.leaflet-control-position-picker button.cancel').on 'click', (e) ->
+        e.preventDefault();
+        if mapController.currentMarker?
+          mapController.mapInstance.removeLayer mapController.currentMarker
+        mapController.disablePositionPicker 'cancel'
+        return false;
+
+      # Store map instance
+      @mapInstance = map
+
+      # Add height toggle button
+      heightControl = L.Control.extend
+        options:
+          position: 'topright'
+        ,
+        onAdd: (map) ->
+          control= L.DomUtil.create 'div', ''
+          control.innerHTML = '<span class="glyphicon glyphicon-minus"></span>'
+          control.onclick = ->
+            # On mobile, hide the map
+            if Modernizr.touch && $(window).width() < 1024
+              $('.map-mobile-toggle').click()
+            # On desktop, toggle height
+            else
+            mapController.heightToggle()
+          control.className = 'heightToggle leaflet-bar'
+          control
+
+      map.addControl(new heightControl())
+
+    # Refresh markers
+    @refresh()
+
+  # Refresh markers (delete all & reload)
+  refresh: ->
+    mapController.deleteMarkers()
+    mapController.loadMarkers()
+    if mapController.markerCluster.getLayers().length > 0
+      mapController.mapInstance.fitBounds mapController.markerCluster.getBounds(),
+        padding: mapSettings.fitBoundsPadding
+
+  # Load all markers contained into the current page
+  loadMarkers: ->
+    debug "Searching markers into current page..."
+    #markersLoaded = {}
+    markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
+    markersEdit = $('#article-locations input[type=text]')
+    ### Dédoublonnage désactivé car plusieurs points par article
+      .filter ->
+      # Remove duplicates element
+      txt = $(this).data('title')
+      if (markersLoaded[txt])
+        false
+      else
+        markersLoaded[txt] = true
+        true###
+    if markers.length == 0 && markersEdit.length > 0
+      debug markersEdit.length + " markers found (edit mode)"
+      markersEdit.each ->
+        latlng = $(this).val().split(', ');
+        mapController.addMarker
+            latitude: latlng[0]
+            longitude: latlng[1]
+            text: $('#article_title').val()
+            uri: $('.article-data').data('uri')
+            theme: $('.article-data').data('theme')
+    else
+      debug markers.length + " markers found (show mode)"
+      markers.each ->
+        dataLocation = $(this).data("latlng")
+        dataTheme = $(this).data("theme")
+        if dataLocation
+          latlng = dataLocation.split ', '
+          mapController.addMarker
+            latitude: latlng[0]
+            longitude: latlng[1]
+            text: $(this).data "title"
+            uri: $(this).data "uri"
+            theme: dataTheme
+
+  # Erase all markers
+  deleteMarkers: ->
+    debug 'Map:: Deleting all markers'
+    @markerCluster.clearLayers();
+
+  isEditing: ->
+    $('.edit_article').length > 0
+
+  # Add Marker Handlers
+  addMarkersHandler: (e, dataArr) ->
+    debug 'Map:: New data'
+    if dataArr? and dataArr.length > 0
+      for data in dataArr
+        mapController.addMarker(data)
+
+  addMarkerHandler: (e, data) ->
+    mapController.addMarker(data)
+
+  addMarker: (data) ->
+    text = "<a href=\"#{ data.uri }\">#{ data.text }</a>";
+    mapController.markerCluster.addLayer(L.marker([data.latitude, data.longitude],
+      #draggable:mapController.isEditing(),
+      draggable:false,
+      icon: mapSettings.icons data.theme
+    ).bindPopup(text))
+
+  delMarkerByLatLng: (latlng) ->
+    latlng = latlng.split(', ')
+    jQuery.each mapController.markerCluster.getLayers(), (i, layer) ->
+      markerLatLng = layer.getLatLng()
+      if markerLatLng.lat == parseFloat(latlng[0]) && markerLatLng.lng == parseFloat(latlng[1])
+        mapController.markerCluster.removeLayer layer
+
+  heightToggle: ->
+    currentHeight = $('#'+mapSettings.el).height()
+    targetHeight = if currentHeight!= mapSettings.originalHeight then mapSettings.originalHeight else 157
+    $('#'+mapSettings.el).animate
+      'height':targetHeight+'px'
+    ,500
+    $('#'+mapSettings.el).find('.heightToggle span.glyphicon').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus')
+
+  mobileToggle: ->
+      # Full height display on mobile
+      fullHeight = $(window).height()
+      $('#'+mapSettings.el).animate
+        'height':fullHeight+'px'
+      ,500, ->
+          mapController.setCentered()
+
+
+$(document).ready -> mapController.init mapSettings.osmProviders.osm, mapSettings.el, mapSettings.defaultPosition
+
+# Bind "map:addMarkers"
+$(document).on 'map:addMarkers', mapController.addMarkersHandler
+$(document).on 'map:addMarker', mapController.addMarkerHandler
+$(document).on 'map:refresh', mapController.refresh

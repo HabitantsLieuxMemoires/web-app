@@ -1,0 +1,9 @@
+<div class="hgroup mb20">
+  <h2 class="lead">
+    <%=raw t('search.results_for', count: articles.size) %>
+  </h2>
+</div>
+
+<div class="col-md-12">
+  <%= render partial: 'articles/article', collection: articles %>
+</div>

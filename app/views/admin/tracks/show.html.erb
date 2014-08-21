@@ -1,0 +1,9 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="modal-see-changes-label"><%= t('admin.moderation.report.title.track') %></h4>
+</div>
+<div class="modal-body">
+  <% @track.tracked_changes.each do |change| %>
+    <%= render 'diff', column: change[0], from: change[1]["from"], to: change[1]["to"] %>
+  <% end %>
+</div>

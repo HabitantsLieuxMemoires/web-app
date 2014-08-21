@@ -1,0 +1,13 @@
+// Removing video from list
+$('#videos-list').find("[data-id='<%= @video.id %>']").remove();
+
+// Hidding spinner
+$('.spinner').hide();
+
+// Decrementing video counter
+$('.videos-count').html("<%= @article.videos.count - 1 %>");
+
+// Displaying no video alert if needed
+if ($('#videos-list').find('.video').length < 1) {
+  $('.no-video').show();
+}

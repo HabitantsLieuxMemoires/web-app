@@ -1,0 +1,14 @@
+<% if a.trackable %>
+  <li>
+    <i class="fa fa-comments bg-yellow"></i>
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> <%= l(a.created_at) %></span>
+        <h3 class="timeline-header"><%= t('article.commented_by', article: a.title, user: a.author) %></h3>
+        <div class="timeline-body"><%= a.content %></div>
+        <div class="timeline-footer">
+            <%= link_to t('article.do.view'), article_path(a.slug), class: "btn btn-primary btn-flat btn-xs" %>
+            <%= link_to t('article.comment.do.delete'), admin_comment_path(a.trackable_id), method: :delete, class: "btn btn-danger btn-flat btn-xs" %>
+        </div>
+    </div>
+  </li>
+<% end %>

@@ -1,0 +1,11 @@
+// Hidding no image alert
+$('.no-image').hide()
+
+// Appending image partial
+$('#images-list').append("<%= escape_javascript render(:partial => 'images/image', :locals => { :article => @article, :image => @image, :edit_mode => true }) %>");
+
+// Incrementing images counter
+$('.images-count').html("<%= @article.images.count %>");
+
+// Closing modal
+$('#modal-add-image').modal('hide');

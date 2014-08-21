@@ -1,0 +1,35 @@
+<li class="media article">
+  <img class="author" src="<%= article.author_avatar %>">
+  <img class="themeIco" src="<%= article.theme_picto %>">
+  <div class="title color<%= rand(1..5) %>">
+    <%= link_to article.url, data: {
+        :title  => article.title,
+        :uri    => article.url,
+        :theme  => article.theme_icon
+      } do %>
+      <%= article.title %>
+    <% end %>
+    <%= article.display_coordinates %>
+    <div>
+      <%= t('article.by_html', author: article.author) %>
+      <!-- TODO: In case of multiple author, add authorSeparator.png between
+      each span.author -->
+    </div>
+  </div>
+
+  <% if article.has_image? %>
+    <a class="pull-left thumbnail" href="<%= article.url %>">
+      <img class="media-object article-featured-image" src="<%= article.image %>" alt="64x64">
+    </a>
+  <% end %>
+
+  <div class="media-body">
+    <%= article.body(350) %>
+  </div>
+
+  <div class="shareAndComments">
+    <div class="share"><span><%= article.share_count %></span></div>
+    <div class="comments"><span><%= article.comment_count %></span></div>
+  </div>
+
+</li>

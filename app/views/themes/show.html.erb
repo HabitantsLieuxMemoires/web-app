@@ -1,0 +1,24 @@
+<% content_for :last_cell do %>
+  <div></div>
+<% end %>
+
+<div class="panel panel-default" id="theme-browser">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @theme.title %></h3>
+  </div>
+  <div class="panel-body">
+    <% if @articles.any? %>
+      <ul class="media-list" id="theme-articles">
+        <%= render partial: 'articles/article', collection: @articles %>
+      </ul>
+
+      <div class="text-center">
+        <%= paginate @articles, :theme => 'twitter-bootstrap-3' %>
+      </div>
+    <% else %>
+      <div class="alert alert-info">
+        <%= t('article.themes.none') %>
+      </div>
+    <% end %>
+  </div>
+</div>

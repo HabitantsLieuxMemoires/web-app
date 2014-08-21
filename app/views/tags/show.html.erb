@@ -1,0 +1,16 @@
+<div class="panel panel-default" id="tag-browser">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @tag %></h3>
+  </div>
+  <div class="panel-body">
+    <% if @articles.any? %>
+      <ul class="media-list" id="chronology-articles">
+        <%= render partial: 'articles/article', collection: @articles %>
+      </ul>
+
+      <div class="text-center">
+        <%= paginate @articles, :theme => 'twitter-bootstrap-3' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="fileinput fileinput-new input-group" data-provides="fileinput">
+  <div class="form-control" data-trigger="fileinput">
+    <i class="glyphicon glyphicon-file fileinput-exists"></i>
+    <span class="fileinput-filename"></span>
+  </div>
+  <span class="input-group-addon btn btn-default btn-file">
+    <span class="fileinput-new"><%= t('article.image.do.select') %></span>
+    <span class="fileinput-exists"><%= t('article.image.do.change') %></span>
+    <input type="file" name="image[article_image]">
+  </span>
+  <%= link_to t('article.image.do.remove'), "#", class: "input-group-addon btn btn-default fileinput-exists", "data-dismiss" => "fileinput" %>
+</div>

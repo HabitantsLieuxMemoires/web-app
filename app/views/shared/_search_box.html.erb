@@ -1,0 +1,19 @@
+<%= bootstrap_form_tag url: search_articles_path, remote: false do |f| %>
+
+  <input type="hidden" name="themes" value="">
+  <input type="hidden" name="tags" value="">
+
+  <div class="input-group search-bar">
+    <input type="text" name="query" id="search-article" class="form-control typeahead" placeholder="<%= t('search.article_placeholder') %>" data-redirect="true">
+    <span class="input-group-btn search-container">
+      <button class="btn btn-default" type="button" id="bt-search">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </span>
+  </div>
+
+  <div class="article-creation-button hidden-xs hidden-sm">
+    <img src="<%= asset_path 'article-create.png' %>">
+    <%= link_to t('article.do.create'), new_article_path, class: 'btn btn-article-create hidden-xs hidden-sm', role: 'button' %>
+  </div>
+<% end %>

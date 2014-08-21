@@ -1,0 +1,5 @@
+<div class="social-buttons">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-lang="fr" data-count="none" data-text="<%= article.title %>">Tweet</a>
+  <div class="g-plusone" data-size="medium" data-annotation="none" data-callback="socialControllers.google.callback" data-recommendations="false" data-href="<%= request.original_url %>"></div>
+  <a href="http://www.facebook.com/sharer.php?u=<%= request.original_url %>&t=<%= article.title %>" class="shareButton shareFacebook" data-text="<%= article.body(150) %>" data-href="<%= request.original_url %>" data-title="<%= article.title %>" rel="nofollow" target="_blank"><img src="" class="facebookShareButton" /></a>
+</div>

@@ -1,0 +1,14 @@
+<div class="col-md-6 col-xs-12 video" data-id="<%= video.id %>">
+  <div class="text-center">
+    <%=raw video.embedded %>
+  </div>
+  <% if edit_mode %>
+    <div class="text-center">
+      <%= link_to article_video_path(article, video), method: :delete, remote: true, class: "btn btn-danger btn-sm ladda-button", data: {
+          :style => "expand-right"
+        } do %>
+          <span class="ladda-label"><%= t('article.video.do.remove') %></span>
+        <% end %>
+    </div>
+  <% end %>
+</div>

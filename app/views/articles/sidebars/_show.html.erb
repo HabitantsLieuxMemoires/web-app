@@ -1,0 +1,86 @@
+<div id="search-column" class="hidden-xs hidden-sm">
+<%= render 'shared/sidebar_searchbox' %>
+</div>
+
+<% if current_user %>
+  <div class="well hidden-xs hidden-sm" id="article-actions">
+
+    <%= link_to edit_article_path(article.slug),
+                class: 'btn btn-success btn-block',
+                type: 'button' do %>
+      <%= fa_icon "edit", text: t('article.do.update') %>
+    <% end %>
+
+    <%= link_to new_article_report_path(article.id),
+              id: 'create_report',
+              class: "btn btn-danger btn-block",
+              data: {
+                toggle: 'modal',
+                target: '#modal-report-article'
+              } do %>
+      <%= fa_icon "thumbs-down", text: t('article.do.report') %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>
+<div id="article-info" class="hidden-xs hidden-sm">
+  <div class="panel panel-default" id="article-details">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <%= t('article.details') %>
+      </h4>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item theme"><div class="<%= @article.theme.slug %>"><%= article.theme %></div></div>
+      <div class="list-group-item chronology"><div><%= article.chronology %></div></div>
+      <div class="list-group-item tags"><div><%= article.tags %></div></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default" id="article-metadatas">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <%= t('article.metadatas') %>
+      </h4>
+    </div>
+    <div class="list-group">
+      <a class="list-group-item revision">
+        <div>
+          <p><%= Article.human_attribute_name(:revision) %></p>
+        </div>
+        <span class="badge"><%= article.history %></span>
+      </a>
+      <a class="list-group-item title" href="<%= article.url %>">
+        <div><p><%= article.display_slug %></p></div>
+      </a>
+      <% article.locations.each do |l| %>
+        <a class="list-group-item gps" href="<%= l.url %>" target="_blank">
+          <div  class="location" data-theme="<%= article.theme_icon %>"
+                                 data-latlng="<%= l.display_coordinates %>"
+                                 data-title="<%= article.title %>"
+                                 data-uri="<%= article_path(article.slug) %>">
+            <p><%= l.display_coordinates %></p>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-default" id="article-writers">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <%= t('article.contributors') %>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% @contributors.each do |c| %>
+          <li><%= link_to c.nickname, user_path(c.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>

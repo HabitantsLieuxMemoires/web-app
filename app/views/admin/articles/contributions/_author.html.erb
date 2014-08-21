@@ -1,0 +1,10 @@
+<td>
+  <%= contribution.author %>
+  &nbsp;
+  <%= link_to warn_admin_user_path(contribution.modifier_id, :article_id => contribution.article_id), class: "btn btn-warning btn-xs" do %>
+    <%= fa_icon 'warning', text: t('user.do.warn'), right: true %>
+  <% end %>
+  <%= link_to ban_admin_user_path(contribution.modifier_id, :article_id => contribution.article_id), class: "btn btn-danger btn-xs" do %>
+    <%= fa_icon 'minus-circle', text: t('user.do.ban'), right: true %>
+  <% end %>
+</td>
