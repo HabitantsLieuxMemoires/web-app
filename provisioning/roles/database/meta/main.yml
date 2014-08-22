@@ -2,7 +2,7 @@
 
 dependencies:
   - role: Stouts.mongodb
-    mongodb_nohttpinterface: true
+    mongodb_nohttpinterface: false
     mongodb_verbose: false
     mongodb_nojournal: false
     mongodb_cpu: false
