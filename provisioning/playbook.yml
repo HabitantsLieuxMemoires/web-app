@@ -7,6 +7,7 @@
     app_mongodb_dbuser: "hlm"
     app_mongodb_dbpassword: "hlm"
     app_indexer_name: "hlm"
+    app_ruby_version: 2.1.2
   roles:
     - common
     - database

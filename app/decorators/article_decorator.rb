@@ -75,7 +75,7 @@ class ArticleDecorator < ApplicationDecorator
   def display_coordinates
     if object.locations.any?
       object.locations.collect do |l|
-        h.content_tag(:div, "", class: "location", :data => { 
+        h.content_tag(:div, "", class: "location", :data => {
           :latlng => l.coordinates,
           :title    => to_model.title,
           :uri    => to_model.url,
@@ -125,7 +125,9 @@ class ArticleDecorator < ApplicationDecorator
 
   def featured_images
     images = object.images.take(4)
-    images.collect { |img| featured_image('col-md-3 col-centered', img.article_image_url(:thumb)) }.join.html_safe
+    images.collect do |img|
+      featured_image('col-md-3 col-centered', img.article_image_url(:thumb), img.article_image_url)
+    end.join.html_safe
   end
 
   def images_count
@@ -138,9 +140,11 @@ class ArticleDecorator < ApplicationDecorator
 
   private
 
-  def featured_image(image_class, image_url)
+  def featured_image(image_class, image_url, image_full_url)
     h.content_tag(:div, class: image_class) do
-      h.image_tag(image_url)
+      h.link_to(image_full_url) do
+        h.image_tag(image_url)
+      end
     end
   end
 

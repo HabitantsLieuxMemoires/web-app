@@ -9,4 +9,7 @@ set :ssh_options, {
   forward_agent: true
 }
 
-server '54.77.174.155', user: 'hlm', roles: %w{web app}
+set :nginx_server_name, 'habitantslieuxmemoires.fr'
+set :unicorn_workers, 4
+
+server '54.77.157.145', user: 'hlm', roles: %w{web app}

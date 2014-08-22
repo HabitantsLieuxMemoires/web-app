@@ -39,8 +39,14 @@ window['articles#edit'] = (data) ->
   $('#modal-add-image').on 'loaded.bs.modal', ->
     Form.initAddImageForm()
 
+  $('#modal-add-image').on 'hide.bs.modal', ->
+    $(this).data('bs.modal', null)
+
   $('#modal-select-image').on 'loaded.bs.modal', ->
     Form.initAddImageForm()
+
+  $('#modal-select-image').on 'hide.bs.modal', ->
+    $(this).data('bs.modal', null)
 
   $('#modal-add-video').on 'loaded.bs.modal', ->
     Form.initAddVideoForm()
@@ -182,7 +188,7 @@ UI =
       field.remove()###
 
     # Load existing markers
-    mapController.enableMarkersEdition() 
+    mapController.enableMarkersEdition()
 
 Form =
   initCreateForm: ->
