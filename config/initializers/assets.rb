@@ -12,7 +12,3 @@ Rails.application.config.assets.precompile += ['admin/admin.js', 'admin/admin.cs
 
 # Add css assets
 Rails.application.config.assets.precompile += %w( editor.css )
-
-# Add fonts
-Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
-Rails.application.config.assets.precompile += %w( *.ttf )
