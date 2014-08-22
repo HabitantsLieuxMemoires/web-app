@@ -45,6 +45,12 @@
   }
 }
 
+.backtohome {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .vertical-center {
     display: inline-block;
     vertical-align: middle;
