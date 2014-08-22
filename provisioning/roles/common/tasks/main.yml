@@ -46,11 +46,3 @@
               line='%ADMIN ALL=(ALL) NOPASSWD:ALL'
               validate='visudo -cf %s'
   sudo: yes
-
-- name: common | allow ssh to git server for root
-  shell: ssh-keyscan -H -t dsa github.com >> /etc/ssh/known_hosts 2>&1
-  sudo: yes
-
-- name: common | allow ssh to git server
-  shell: "ssh-keyscan -H -t dsa github.com >> {{ app_user_home }}/.ssh/known_hosts 2>&1"
-  sudo: yes

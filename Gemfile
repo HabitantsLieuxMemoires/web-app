@@ -73,6 +73,7 @@ group :development do
   gem 'capistrano-bundler',           "~> 1.1.2", require: false
   gem 'capistrano-rails',             "~> 1.1.1", require: false
   gem 'capistrano-rbenv',             "~> 2.0.2", require: false
+  gem 'capistrano-unicorn-nginx',     "~> 2.0",   require: false
 
   gem 'better_errors'
   gem 'binding_of_caller'

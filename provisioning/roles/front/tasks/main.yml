@@ -3,3 +3,9 @@
 - name: front | install nginx
   apt: name=nginx
   sudo: yes
+
+- name: front | delete default nginx vhost
+  action: file path=/etc/nginx/sites-enabled/default state=absent
+  notify:
+    - restart nginx
+  sudo: yes

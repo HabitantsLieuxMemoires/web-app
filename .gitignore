@@ -14,18 +14,21 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+public/uploads/
 
 # Ignore Vagrant and provisioning files
 .vagrant/
+provisioning/public_keys/
 
 # Ignore IDE related files
 .idea/
-public/uploads/
-provisioning/.librarian/
+
+# Ignore UNIX related files
 .bash_history
 .cache
 .profile
+
+# Ignore staging/production related files
 .env.production
 .env.staging
-rename_commiter.sh
-provisioning/public_keys/
+
