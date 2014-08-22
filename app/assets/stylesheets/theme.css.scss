@@ -201,13 +201,13 @@ html.touch .heightToggle
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Droid Sans'), local('DroidSans'), url(/assets/DroidSans.woff) format('woff'), url(/assets/DroidSans.woff2) format('woff2'), url(/assets/DroidSans.ttf) format('truetype');
+  src: font-url('DroidSans.woff') format('woff'), font-url('DroidSans.woff2') format('woff2'), font-url('DroidSans.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(/assets/DroidSans-Bold.woff2) format('woff2'), url(/assets/DroidSans-Bold.woff) format('woff'), url(/assets/DroidSans-Bold.ttf) format('truetype');
+  src: font-url('DroidSans-Bold.woff2') format('woff2'), font-url('DroidSans-Bold.woff') format('woff'), font-url('DroidSans-Bold.ttf') format('truetype');
 }
 @font-face {
     font-family: 'freeroadregular';
@@ -1190,7 +1190,7 @@ form {
   #article-control {
     .nav-row {
       padding:0;
-      
+
       >div {
         max-width: 100%;
         margin:0 auto;
