@@ -7,4 +7,3 @@ dependencies:
     mongodb_nojournal: false
     mongodb_cpu: false
     mongodb_nohints: true
-    sudo: yes

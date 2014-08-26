@@ -1,19 +1,11 @@
 ---
 - hosts: all
-  vars:
-    app_user: "hlm"
-    app_user_home: "/home/hlm"
-    app_mongodb_dbname: "hlm"
-    app_mongodb_dbuser: "hlm"
-    app_mongodb_dbpassword: "hlm"
-    app_indexer_name: "hlm"
-    app_ruby_version: 2.1.2
   roles:
-    - common
-    - database
-    - indexer
-    - web
+    - { role: common,   sudo: yes, tags: ['common']     }
+    - { role: database, sudo: yes, tags: ['db']         }
+    - { role: indexer,  sudo: yes, tags: ['indexer']    }
+    - { role: web,      sudo: yes, tags: ['web']        }
 
 - hosts: production
   roles:
-    - front
+    - { role: front,    sudo: yes, tags: ['front']      }

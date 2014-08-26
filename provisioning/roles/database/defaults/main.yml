@@ -1,0 +1,5 @@
+---
+
+app_mongodb_dbname: "hlm"
+app_mongodb_dbuser: "hlm"
+app_mongodb_dbpassword: "hlm"
