@@ -3,5 +3,4 @@
 dependencies:
   - role: nickjj.locale
     locale_locales:
-    - { locale: en_US.UTF-8, state: present }
-    sudo: yes
+    - { locale: "{{ app_locale }}", state: present }

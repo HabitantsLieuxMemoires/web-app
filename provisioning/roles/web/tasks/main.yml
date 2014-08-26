@@ -7,7 +7,6 @@
     - libqtwebkit-dev
     - imagemagick
     - nodejs
-  sudo: yes
 
 - name: web | rbenv | install build depends
   apt: pkg={{ item }} state=latest install_recommends=no
@@ -20,14 +19,12 @@
     - libxml2-dev
     - libxslt1-dev
     - zlib1g-dev
-  sudo: true
 
 - name: web | rbenv | checkout git repo
   git: repo="git://github.com/sstephenson/rbenv.git"
        dest="{{ app_user_home }}/.rbenv"
        version="v0.4.0"
        accept_hostkey=true
-  sudo: true
   sudo_user: "{{ app_user }}"
 
 - name: web | rbenv | install ruby-build plugin
@@ -35,32 +32,26 @@
        dest="{{ app_user_home }}/.rbenv/plugins/ruby-build"
        version="v20140702"
        accept_hostkey=true
-  sudo: true
   sudo_user: "{{ app_user }}"
 
 - name: web | rbenv | add rbenv initialization to profile
   template: src=rbenv.sh.j2 dest=/etc/profile.d/rbenv.sh owner=root group=root mode=0755
-  sudo: true
 
 - name: web | rbenv | chow permission to .rbenv directory
   shell: "chown -R {{ app_user }}:{{ app_user }} {{ app_user_home }}/.rbenv"
-  sudo: true
 
 - name: web | rbenv | check ruby {{ app_ruby_version }} installed
   shell: bash -lc "rbenv versions | grep {{ app_ruby_version }}"
-  sudo: true
   sudo_user: "{{ app_user }}"
   register: ruby_installed
   ignore_errors: yes
 
 - name: web | rbenv | install ruby {{ app_ruby_version }}
   shell: bash -lc "rbenv install {{ app_ruby_version }}"
-  sudo: true
   sudo_user: "{{ app_user }}"
   when: ruby_installed.rc != 0
 
 - name: web | rbenv | set global ruby {{ app_ruby_version }}
   shell: bash -lc "rbenv global {{ app_ruby_version }} && rbenv rehash"
-  sudo: true
   sudo_user: "{{ app_user }}"
   when: ruby_installed.rc != 0

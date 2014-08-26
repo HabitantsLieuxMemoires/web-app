@@ -2,11 +2,9 @@
 
 - name: common | update apt-cache
   apt: update_cache=yes cache_valid_time=3600
-  sudo: yes
 
 - name: common | upgrade the distro
   apt: upgrade=yes
-  sudo: yes
 
 - name: common | install packages
   apt: pkg={{ item }} state=latest
@@ -17,15 +15,16 @@
     - zip
     - unzip
     - wget
-  sudo: yes
 
 - name: common | create admin group
   group: name=admin state=present
-  sudo: yes
+  tags:
+    - user
 
 - name: common | create app user group
   group: name={{ app_user }} state=present
-  sudo: yes
+  tags:
+    - user
 
 - name: common | create user
   user: name="{{ app_user }}"
@@ -33,16 +32,19 @@
         home="{{ app_user_home }}"
         shell=/bin/bash
         state=present
-  sudo: yes
+  tags:
+    - user
 
 - name: common | add ssh key
   authorized_key: user={{ app_user}}
                   key="{{ lookup('file', 'public_keys/hlm.pub') }}"
-  sudo: yes
+  tags:
+    - user
 
 - name: common | add admin group to sudoers
   lineinfile: dest=/etc/sudoers state=present
               regexp='^%ADMIN ALL\='
               line='%ADMIN ALL=(ALL) NOPASSWD:ALL'
               validate='visudo -cf %s'
-  sudo: yes
+  tags:
+    - user
