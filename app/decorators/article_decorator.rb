@@ -90,11 +90,22 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def summary
+    linkLevel = 1
+    parentLevel = 1;
     heads = Nokogiri::HTML(object.body).css('h1, h2, h3, h4, h5, h6').sort()
-    h.content_tag(:ol) do
+    h.content_tag(:ul) do
       heads.reject { |h| h.text.empty? }.collect do |head|
-        link = '<a href="%s" data-level="%s">%s</a>' % [head, head.name[1], head.text]
-        h.content_tag(:li, raw(link))
+        className = "h%s" % [head.name[1]]
+        if head.name[1] == "5"
+          currentLevelLabel = " %s. " % [linkLevel]
+          linkLevel = linkLevel + 1
+        else
+          linkLevel = 1
+          currentLevelLabel = " %s. " % [parentLevel]
+          parentLevel = parentLevel + 1
+        end
+        link = '%s <a href="%s" data-level="%s">%s</a>' % [currentLevelLabel, head, head.name[1], head.text]
+        h.content_tag(:li, raw(link), class: className)
       end.join.html_safe
     end unless heads.empty?
   end

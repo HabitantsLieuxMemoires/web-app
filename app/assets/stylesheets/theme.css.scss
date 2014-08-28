@@ -851,6 +851,16 @@ fieldset[disabled] .btn-article-create.active {
       margin-right:-7px;
       font-size:16px;
     }
+
+    h5 {
+      background: #e7e7e7;
+      color: #777;
+      font-weight: bold;
+      padding: 10px 0px 10px 20px;
+      margin-left:0px;
+      margin-right:-7px;
+      font-size:16px;
+    }
   }
 
   .article-featured-images {
@@ -876,7 +886,7 @@ fieldset[disabled] .btn-article-create.active {
     font-size:15px;
   }
 
-  ol {
+  ol, ul {
     color: #fff;
     counter-reset: item;
     margin-left: 0;
@@ -886,18 +896,25 @@ fieldset[disabled] .btn-article-create.active {
       background-color: #00993c;
       border-radius: 6px;
       margin: 5px;
-      display: inline-block;
+      /*display: inline-block;*/
       margin-bottom: 5px;
       margin-left: 20px;
+      padding-left: 5px;
+      font-weight: 700;
+      font-size: 14px;
 
-      &:before {
+      &.h5 {
+        margin-left:40px;
+      }
+
+      /*&:before {
         display: inline-block;
         content: counter(item) ". ";
         counter-increment: item;
         width: 10px;
         margin-left: 5px;
         font-weight: 700;
-      }
+      }*/
 
       a {
         color: white;
