@@ -153,7 +153,7 @@ class ArticleDecorator < ApplicationDecorator
 
   def featured_image(image_class, image_url, image_full_url)
     h.content_tag(:div, class: image_class) do
-      h.link_to(image_full_url) do
+      h.link_to(image_full_url, target: '_blank') do
         h.image_tag(image_url)
       end
     end
