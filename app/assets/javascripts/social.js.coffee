@@ -2,7 +2,7 @@ window.socialControllers =
   initialized:false,
   facebook:
     settings:
-      appId: '654760637922290' ## 654760637922290 = HLM Devel
+      appId: '1398812933674558' ## 654760637922290 = HLM Devel
     init: ->
       ## Load SDK
       $.getScript '//connect.facebook.net/fr_FR/all.js', ->
