@@ -12,6 +12,7 @@ fr:
 
   do:
     cancel:     "Annuler"
+    back_home:  "Retourner à l'accueil"
 
   views:
     pagination:

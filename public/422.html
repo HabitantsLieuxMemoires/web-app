@@ -1,58 +1,79 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <title>Habitant Lieux M&eacute;moires - Erreur</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
   <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-  }
-
-  div.dialog {
-    width: 25em;
-    margin: 4em auto 0 auto;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 4em 0 4em;
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  body > p {
-    width: 33em;
-    margin: 0 auto 1em;
-    padding: 1em 0;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    body {
+      text-align: center;
+      width:100%;
+      padding:0;
+      margin:0;
+      font-family: freeroadregular, 'Droid Sans', Tahoma;
+    }
+    hr {
+      border:4px solid #00993c;
+    }
+    .navbar > img {
+      float:left;
+    }
+    .navbar > h1 {
+      box-sizing: border-box;
+      color: rgb(119, 119, 119);
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      height: 100%;
+      line-height: 55px;
+      max-height: 85px;
+      padding-top: 20px;
+      margin: 0 auto;
+      text-transform: uppercase;
+    }
+    .navbar > h2 {
+      background-color: rgb(38, 38, 38);
+      border-bottom-color: rgb(0, 153, 60);
+      border-bottom-style: solid;
+      border-bottom-width: 9px;
+      border-top-color: rgb(43, 43, 43);
+      border-top-style: solid;
+      border-top-width: 9px;
+      box-sizing: border-box;
+      padding-bottom:5px;
+      color: rgb(255, 255, 255);
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 1.399999976158142px;
+      text-align: center;
+    }
+    .error-actions {
+      margin-top: 30px;
+    }
   </style>
 </head>
-
 <body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <h1>The change you wanted was rejected.</h1>
-    <p>Maybe you tried to change something you didn't have access to.</p>
-  </div>
-  <p>If you are the application owner check the logs for more information.</p>
-</body>
-</html>
+
+<div class="navbar">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABZCAYAAAB7Tqk9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEQ2NTdBODVGN0I5MTFFM0FFNTQ5Qzc0MEIyREFGOUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEQ2NTdBODZGN0I5MTFFM0FFNTQ5Qzc0MEIyREFGOUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0RDY1N0E4M0Y3QjkxMUUzQUU1NDlDNzQwQjJEQUY5QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0RDY1N0E4NEY3QjkxMUUzQUU1NDlDNzQwQjJEQUY5QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsqcCcoAABASSURBVHja7FwHWBTXFj50aYKKiGJBRVE0do3Rt4m9JvaKxliD7aUaSxKj8akx3RR97tOYZ0lUjD0afYIlgDGWxK5BBRXsCggqSpF3/jsz6+6y4AKzy5pvD9+ZYWd37tz559xz/nPmzhBZSrSa9qxx9DcURwu2XZu1FgPnbgfNfMmQ12520OxiUdB8jCzODpoZEsh6k8KjH9pBM19CWM/bh2fhpDnrYTto5nO0Z3hZkXXv3xE0Zwu1O4AVvuyXEj9DrcaLl3Vl3liONYc1kfUI+9tLRWnSwQKdLMVLdGY7d2pYCYBUnZcdWDuyNmMNKuA8T7Muw17c19SSBG0KL+exNuaOHLESUP68fJl1BGu9IrRwh3U66wLu8yPrgqbV1OTln6wbrWJlWk1VXs5iDWN1UaHFPayDuO/XrQOaVuMhO/7KrA35wDcsCBaONZt1okpg6QtcS3vu/znLgiadxDpxMKLOfMDdFgSsJS9XsAZb0IYvs7bJDzgHFU6iKS+/Z63DOpQPFGFBwAbLx7JGEeCsCCTh0WnqgabVgIfNYR3OGs/6KusV1lLyL0A5kvig6SoBFs7LRVaOxZtYe/M55BYPNKk+9hbrNFZPeestVr989oBTjWGNZI3gDiQX4Zj9ebm6hKoyY7nP2qKBptU4iMhC9DFrlSJ2IIt1DetH3JFTZh4Xw/6Q3gWyttwR5Dg8+mrhQNNqQnm5mLWVSh15JA+19woklVoNLOs31hYlnFcs434ONw80qdMgqzNZXS3QmUTBscKjY/I5/iheLrGBdDNHBDo5mjo+gWVvZ51rIcBIHua7ZHCMj4+8+F0bydGdZB9eQJVDqwmWh0VHK3TIRViTVjPVaHs31ho2VNwYzH30NQ2a5L/2lUCHP+Jjj9P7PNTGKkLucn5r5NO0mgq8PFiM6KhGgOgi0xNQE18bA24v+7U2DkaUAj6sUwl37CZrH9boouzs6OBIfqV8dBrgXpYqefpRysN0Wh63g3Ipt7gBwU+/CBlmA4BBystE1iypV6Y6xfRcQL6uXnQ/+wF5OJfK97cnkhPo8K2/ihsQ2jrrUYuZNjQMAs394cOcTLp87yYl3b1J9ctWF9sAzEkGKCXzLrk5utDQWp3Iy8WdvF091OhbMyUQtLVw1cAi4u9ehi7evU71175Cz24M123vv/MDmrR/IWkCGtAft+Lo50v7xHZXR1Wq+02UVnqpTmzYt5R39+Ur7UpX7t+irEfZZu1Xs3QghQV3EEMN/gmfa3hXov/GbaMJ9fpQIPun+9kPqZKHH/m4etKqc5EUtmuW+P09Vk8enp4upcjbxYOa+NWm7lWfo7g7iZL5epZX49SCFNDaF6eVfjXa0NsNBvJQyRKdRucqsBXgpCGZj7Jo9bkoGh/zhTgxCHxQ/bI16G5WhjjJEJ+q5OzoREHeATStUV62EXv9OOXm5grA6vpWE9u2XvqNfkrYo/tNKjt7HH9Sg8H0KFeqWgPMvVeP0Ph6vena/WQ1QAtwYH9WSS66FVnefGYATWk0hJ2wm7jC6Vn3afPFWLrEQwef+1Z/gSp6lKMFJzfQxNgvxT6r28+kgTXbGfINPtGgHwdQTZ9A6hWkodfr9xMgV1zRS7QJCS0TRCf7L6e0zHvkv6KHuFA6R99/mQgM+rIuYS/12zld1VEEU3i+uI18eTyCAlb0pJmHvxeff4rfQ0N3/YvePfAf+mfsfBoQOUNs71i5mW6feUd+oJF75+mGzmv7vqKaqwdR4r0btOfKnzT94BIBFCynU+Xmuv1a+kv3Tf6XdNAAMMnS7or1olObqO/O98X31b0riiBwMWwt28ck1UBrqtYVuHb/tlh7uhhOScvJzRHrjOzH0zqO3D5L3/+1jQ7ePCM+x6ddoQvp13TfA7DvzmwV/2NoKdIusIlYb0/6Pc/xUzMl0E6kxNP6hF/ZSjNERAVoVb0q8L6qnGoufFp9tUBTOh3kFUDdqrakMq7eVI87PTKku9iO4ZlnH9k64OOM5duT6+n1Z/pRu0pNqJZPZTp7J0n8r1iasYDAQsq5+eisGcHiZkaqmtEzyVlNqqEA0MK/Lm3t8onBd3Dai89syVvhk4H2dcsL2vm0y7Tl4j7qUa01ja3bU+wP33gyJYES7+a92ZUtW3Qw+8TypXxp44VocTHCeV+Foqgg8QDNX21Lg5OGf8OVB0Of0XS4CP0NywUL5/58xYZUe80Q4fiVfXxMWBrkq+NrBWjDQ7rSVXn4G1vZuNBeNLrOi7qo+nKtzkKNxc3JRUR0JbIWUY4CtNJqW9oDZukIDjo2yHxpVJ3u1Kx8iHDM4F6wgOSHaQUOT8iuK3+I9Ae+6b0m0v3n7YmG/gw0Bce4/SCNEtKvcoZwi9Ky7gk6A0t+xFQF6+PJ8cUFDLJD1QkwitWUcfM22A5yK4ZHqTKCZ0FKc0ojQCtgeOqs7cRaWvz8ZAEsLsivV48afD/l90UiUucUH5AnCZzmbkTPLDWzAFFVZIfbtUpL4dsgiv95uXZnsQ2VhmQeuqhC+LtL1Z+mfiGCm9X2yVuV+uHcTrqRkSL+/yVxvwAuT/nB8oBBVlB4dAbILe6yBBS3tQthEVTZ018HnCJN14+mJE6oD/VeTFW8JPf5+bE1rKspacg6Xdag69XZHTRs95w87dfxrcqRsymtiY8Sw9BcwUUC3ch+lCOINgIJ0juskbV8fWIdB5tYs6gGiioM2mkMz7NqgLYz6ZCIWMeSz4thB/DQUfgjpFG114QJ2nDrwR3h0JEyzTi8VAzXM6kXxRpEVuFtxnIm9ZJQcwXt4/ibO88T4OQn8H9mggYrOy1VbrUa3Ah99WmoaCDpB7AhbHWgIwHu5eidhoPFBUJkhF8ERwvwKCus6pU9cyn22nERVbd0mUcx145Rt18m07TGQ0XWsa3rp7Tm/C4asmvWkw6PGeq493lRXBAYiSVBA+WA33JycBLrKjyEse1aRjLt5sionwohrwQfg0XeZmtdHrdd0AtQlSN9lxq0i+rGCeZrfao/L8Aox/4R4CBIIN+cyrkwqrYA99aDVF1Uz8h5SJMbhok+wNdW8ihnzmnMUQBTQIuSa/MWueUf23MBNSpXy+R3GMqtNo4TSXmXKs/Sps5zyZnBBfNvU6kxDQnuSFMPaOnLYxGi/DMypBt1CGwmLANkGdUVEWB2z6Zn/UNFEWAZA730r60CNFibRKDviXXz8nUpqvt8nd9dcuZnXYpXgGCy9ccGQ58RTOEhuoukKZdmyWctJ1Awcy1wIThUlHWwvsu5XlxqIi06vUnklZCJnLC3qdiYZjcfLSzgtdivxDDD51fr9uBkvAVtvhhDS5hSPMjOJM3miQJMDLGYHgtoTvMxtDZ+t7CsUN8gAVocgwogsh5JJ1yBLUrhe0ibFIKtT2NAbUoziNgGX+fl7E4L4zcYFANMCBodwhhlGyfsIsspjPW0DqhPjfyCBetGLggHvfp8FB28cUYMpaUvTKVPW46XLI19yqrzkeJ/BAhwtps8XM6lXdY5bFgAanCgFgBMSv6T6ZOjq4RVoLRkkHLJRDiSgw8iMfYx5nv11g6jyb//24B4Y8g3/GmESMMQjdH/b1q/wVE/3+LkKAYsz00FhdxiUsrn5g7R53hIgYtljIoUrLvTtrcM/FJsz4U0qcEgimAni2ioWAEA3thprmDwAPfAjdO0jYdZR/lqo3StL4fkSKpwN2NgcAEm7V9g+J0MKGiOIfFO11EeXBx3JzdRoDRVldHzYxH5lYZInhGzpTDWhiEGMLyMDngq5QLN53wRMiKkm8EJgS8hhVLyPwxvpD+vcT4KcXdyNbppkqWzRlPAmEz8jb7DsXBcB/6D1YazS0BOjKAwOLiDXBXJk0muJGnismk6o/c/nF3PwqVN6Ry1SgvgYHGPOdtBmtl0BA+7OrqKLOpjGMYtNkiBeke3z6l9YFNhiW3Z6Ss5qr5U864g1pdkC8wPGERCJVmHBSOA4GYK/B6CB1IwRRYZFSJR44Pb0JPNhImKRhP5TIMWHv0bB4RNhQFOiUo4CX3QlFzT1cnFwKeU1ctJcdsNVx60QPFhSL1aVahP+66foFJsdcq9gk0XYujFqq10ljGqzouC6Y/59RPRh1nNRol7FApoK9tNp547pomSO8BDiR2kGkQW/hTDMj3zPj1k0q1fGJWZRH/GosCQapywvylHUU/zLO2xj9H3IdW8AnRAgXOND+0t8kx3ZzeK7vGtKEfj3iSGLxR55cCoGbS962e096VvhPWhGoIIuvDUBnEbblqHocIy9984SZk52SJiOsizKuYdWSkiMKgKQEBuq1xQXAxTxU8TgsnVPRiwzCdmGwafwqMT2NreIGkCn9mlIONaGGpf4rJdPszUpLKIUkdunxPgYCiBlyHa4uQBJu4o4YSf2zROEE9EtqPJ52jagSjBu8S9zMgP8u0HrMi48lFIgT8fiGTcnB+bntSn1QC00U/aeXnb9wQguHmCYQCuNqxWFxob2lNYYd2IoWrdNrOkrCdMozLDwp4EmpPcWA9TX4M6gN8gEro55X32ARxscNSHOspgw7JUpJBP8GHmgSYBh/j/A2s/469wG21OizGUkHZVOH2lGophB/+DZNhK9a3iCHjpOwVFycKD9tjiUNyaQn8veZfB+qioO5s7uxvD9DvK/1mBp0kmMGALi9NAYZ4jqCCb9JCnFCz4ixEM2PLiNlSUJ1Za8xI3NVs9ZaDB4S9Wo6HiPBsFEoxp4u2eAsBeZ8C+VqsxNZ7Cw2zwcYLrSM+I25p8zIBNVbNBNR+SBWHrLFMUBI4yNgCYyafobAc0QwCdRVqCZ5+kNxWUhOA1ZM1NPa9pm6A9Bs9RVA0krlfTioBlyoAds0TjDlY5Bcny8Lz5h6Ti3JEC5G0G7AtLNe5g1QEjcb1vZOtDtfg4STPL1Xx4HzWxjmr7sZID7TF4eCIFnAnD933WRiS9U8OpmC2jiBZa1De7mCsl89K58GhUUBqwnmT9lqTXOmCKY2QxW55pacBIhStbdPn5Ujq9VG2FnM+iiO8pD1sAicnTXoVsEVXIkdyuxcsrDmQLotW8zcvPSLqp0V8OFnhcu28hWmnLVrbHGt21jXdChkejEDCG9SWS3ruRwttAkjH18a45dmstwGwHNAk4PKs+gaSnAefL21aQ9PK6gkrAiJJTrdlVB7I10WpmkPRE4BgZSGzDvb+VZLr8voZ/N8iaXbTFV7ZisthGEVWlV/KQ/BaZPmT6DTCzrN1BB7JF0WqQ7P/BigeiGhvcKdJq8G42pfy+jb/rbu3u2ebLgTH9SwoCoXn8lVTmmS1/+prsksfivmN9KL9czvi7KXJBgOzD0xAYTBxLEEEgPHqsrXTL4SmwNvgwTICrycAl2kKXnoYXnislHrulFdLaVvESc0grm/N2ULulSfIjSW9obmUfnuYLCotZJBUs7aCZydtAcvG2vn/YQSuc4I0kLe2gFU5wS640B4WydtDMlwvyOtAOmvmCp8IwJ9azpDvyfwEGAMFENqi3+SLgAAAAAElFTkSuQmCC"/>
+
+  <h1>Habitants Lieux M&eacute;moires</h1>
+  <h2>Habitants de Bassens, Lormont, Cenon et Floirac, venez partager vos exp&eacute;riences !</h2>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="error-template jumbotron">
+            <h2>
+                Op&eacute;ration interdite !
+            </h2>
+            <div class="error-details">
+                Votre requ&ecirc;te a &eacute;t&eacute; refus&eacute;e.
+            </div>
+            <div class="error-actions">
+                <a href="http://www.habitantslieuxmemoires.fr" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    Allez &agrave; l'accueil </a>
+            </div>
+        </div>
+    </div>
+</div>

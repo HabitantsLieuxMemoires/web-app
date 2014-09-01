@@ -22,6 +22,9 @@ fr:
     by_html:        "Par <span class='author'>%{author}</span>"
     by_the_html:    "Par <span class='author'>%{author}</span> le <span class='datetime'>%{date}</span>"
 
+    not_found:          "Article inconnu"
+    not_found_details:  "Le contenu que vous recherchez n'existe pas sur la plateforme."
+
     created:        "Contenu créé avec succès"
     creation_error: "Une erreur est survenue pendant la création du contenu"
     created_by:     "%{user} a ajouté le contenu %{article}"
