@@ -25,6 +25,7 @@ mapSettings =
     )
 
 window.mapController =
+  removeDuplicates: false,
   currentMarker:null,
   positionPickerActive:false,
   locate: ->
@@ -267,19 +268,21 @@ window.mapController =
   # Load all markers contained into the current page
   loadMarkers: ->
     debug "Searching markers into current page..."
-    #markersLoaded = {}
+    markersLoaded = {}
     markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
     markersEdit = $('#article-locations input[type=text]')
-    ### Dédoublonnage désactivé car plusieurs points par article
-      .filter ->
+    # Dédoublonnage
+    cbFilter = ->
       # Remove duplicates element
-      txt = $(this).data('title')
+      txt = $(this).data('latlng')
       if (markersLoaded[txt])
         false
       else
         markersLoaded[txt] = true
-        true###
+        true
     if markers.length == 0 && markersEdit.length > 0
+      if mapController.removeDuplicates == true
+        markersEdit = markersEdit.filter cbFilter
       debug markersEdit.length + " markers found (edit mode)"
       markersEdit.each ->
         latlng = $(this).val().split(', ');
@@ -290,6 +293,8 @@ window.mapController =
             uri: $('.article-data').data('uri')
             theme: $('.article-data').data('theme')
     else
+      if mapController.removeDuplicates == true
+        markers = markers.filter cbFilter
       debug markers.length + " markers found (show mode)"
       markers.each ->
         dataLocation = $(this).data("latlng")
