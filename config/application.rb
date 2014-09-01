@@ -20,6 +20,10 @@ module Hlm
     # Adding validators path
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 
+    # Adding custom exceptions handler path
+    require Rails.root.join("lib/custom_public_exceptions")
+    config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
+
     # Adding translation files
     config.i18n.default_locale    = :fr
     config.i18n.available_locales = [:fr, :en]

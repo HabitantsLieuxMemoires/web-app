@@ -2,6 +2,8 @@ Hlm::Application.routes.draw do
   mount_roboto
   root "home#index"
 
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+
   get "logout",       to: "sessions#destroy",  as: "logout"
   get "login",        to: "sessions#new",      as: "login"
   get "signup",       to: "users#new",         as: "signup"
