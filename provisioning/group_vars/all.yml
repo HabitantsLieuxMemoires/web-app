@@ -1,0 +1,15 @@
+---
+
+# Common
+app_user: "hlm"
+app_user_home: "hlm"
+app_locale: "en_US.UTF-8"
+app_ruby_version: 2.1.2
+
+# MongoDB
+app_mongodb_dbname: "hlm"
+app_mongodb_dbuser: "hlm"
+app_mongodb_dbpassword: "hlm"
+
+# ElasticSearch
+app_indexer_name: "hlm"

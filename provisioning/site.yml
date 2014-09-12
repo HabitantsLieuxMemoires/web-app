@@ -1,11 +1,9 @@
 ---
+
 - hosts: all
   roles:
     - { role: common,   sudo: yes, tags: ['common']     }
     - { role: database, sudo: yes, tags: ['db']         }
     - { role: indexer,  sudo: yes, tags: ['indexer']    }
     - { role: web,      sudo: yes, tags: ['web']        }
-
-- hosts: production
-  roles:
     - { role: front,    sudo: yes, tags: ['front']      }

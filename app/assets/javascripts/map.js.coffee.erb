@@ -217,7 +217,7 @@ window.mapController =
       $('#mapContainer').append '<div class="leaflet-control-position-picker buttons"></div>'
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs search"><span class="glyphicon glyphicon-search"></span> Rechercher un lieu</button></div>')
       $('.leaflet-control-position-picker.buttons').append('<button type="button" class="btn btn-default btn-xs cancel"><span class="glyphicon glyphicon-remove"></span> Fermer</button></div>')
-    
+
       # Search button
       $('.leaflet-control-position-picker button.search').on 'click', (e) ->
         e.preventDefault();
@@ -255,7 +255,7 @@ window.mapController =
       map.addControl(new heightControl())
 
     # Refresh markers
-    @refresh()
+    #@refresh()
 
   # Refresh markers (delete all & reload)
   refresh: ->
