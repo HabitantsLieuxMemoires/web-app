@@ -4,6 +4,8 @@ mapSettings =
   el:'mapContainer',
   defaultPosition:[44.857981, -0.530777],
   maxBounds:
+    # Set to true to lock map bounds
+    enabled: false,
     southWest: [44.80254, -0.6439],
     northEast: [44.95327, -0.42984]
   fitBoundsPadding: [70, 70]
@@ -176,12 +178,17 @@ window.mapController =
 
       # Map instanciation & settings
       maxBounds = mapSettings.maxBounds;
-      maxSW = new L.LatLng maxBounds.southWest[0], maxBounds.southWest[1]
-      maxNE = new L.LatLng maxBounds.northEast[0], maxBounds.northEast[1]
-      map = new L.Map el,
-        maxBounds: new L.LatLngBounds maxSW, maxNE
-        zoomControl: !Modernizr.touch
-        minZoom: 13
+      if maxBounds.enabled == true
+        maxSW = new L.LatLng maxBounds.southWest[0], maxBounds.southWest[1]
+        maxNE = new L.LatLng maxBounds.northEast[0], maxBounds.northEast[1]
+        map = new L.Map el,
+          maxBounds: new L.LatLngBounds maxSW, maxNE
+          zoomControl: !Modernizr.touch
+          minZoom: 13
+      else
+        map = new L.Map el,
+          zoomControl: !Modernizr.touch
+          minZoom: 13
 
       # Search plugin
       searchControl = new L.Control.Search({
@@ -269,17 +276,20 @@ window.mapController =
   loadMarkers: ->
     debug "Searching markers into current page..."
     markersLoaded = {}
+    # Markers trouvés sur les pages de lecture
     markers = $('.location[data-latlng!=""], #theme-articles .media-heading[data-latlng!=""]')
+    # Markers trouvés sur les pages d'édition
     markersEdit = $('#article-locations input[type=text]')
-    # Dédoublonnage
+    # Dédoublonnage sur latlng
     cbFilter = ->
       # Remove duplicates element
-      txt = $(this).data('latlng')
-      if (markersLoaded[txt])
+      tmp = $(this).data('latlng')
+      if (markersLoaded[tmp])
         false
       else
-        markersLoaded[txt] = true
+        markersLoaded[tmp] = true
         true
+
     if markers.length == 0 && markersEdit.length > 0
       if mapController.removeDuplicates == true
         markersEdit = markersEdit.filter cbFilter

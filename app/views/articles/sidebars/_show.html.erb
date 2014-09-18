@@ -21,6 +21,14 @@
       <%= fa_icon "thumbs-down", text: t('article.do.report') %>
     <% end %>
   </div>
+<% else %>
+  <div class="well hidden-xs hidden-sm" id="article-actions">
+    <%= link_to edit_article_path(article.slug),
+                class: 'btn btn-success btn-block',
+                type: 'button' do %>
+        <%= fa_icon "edit", text: t('article.do.improve') %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= bootstrap_form_for article, layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7" do |f| %>

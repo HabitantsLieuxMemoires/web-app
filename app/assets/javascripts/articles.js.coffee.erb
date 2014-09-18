@@ -62,6 +62,9 @@ window['articles#show'] = (data) ->
   $('#modal-report-article').on 'loaded.bs.modal', ->
     Form.initCreateReportForm()
 
+  # Refreshing map
+  mapController.refresh()
+
 UI =
   initEditor: (@editor) ->
     editor = @editor.wysihtml5('deepExtend', {
@@ -189,6 +192,9 @@ UI =
 
     # Load existing markers
     mapController.enableMarkersEdition()
+
+    # Refreshing
+    mapController.refresh()
 
 Form =
   initCreateForm: ->
