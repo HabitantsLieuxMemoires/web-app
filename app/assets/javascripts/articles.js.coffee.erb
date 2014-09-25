@@ -55,6 +55,7 @@ window['articles#show'] = (data) ->
   UI.initTabs()
   UI.infineComments()
   UI.initMobileUI()
+  UI.sanitizeEditor()
 
   $('#modal-create-comment').on 'loaded.bs.modal', ->
     Form.initAddCommentForm()
@@ -195,6 +196,23 @@ UI =
 
     # Refreshing
     mapController.refresh()
+
+  sanitizeEditor: ->
+    isElementEmpty = (element) ->
+      return element.is(':empty')
+
+    clearNoContent = (element) ->
+      element.contents()
+        .filter -> return this.nodeType == 3
+        .end()
+        .filter("br")
+        .remove()
+
+    $('.article-body > h4,h5,h6').each ->
+      clearNoContent($(this))
+
+      if isElementEmpty($(this))
+        $(this).hide()
 
 Form =
   initCreateForm: ->
