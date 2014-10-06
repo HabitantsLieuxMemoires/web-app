@@ -1,9 +1,14 @@
 <head>
-  <title>Habitants Lieux Mémoires</title>
+  <title><%= content_for?(:title) ? yield(:title) : "Habitants Lieux Mémoires" %></title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Habitants, Lieux, Mémoires, la plateforme ouverte de récit collectif de la Rive Droite." />
+
+  <% if content_for?(:description) %>
+    <meta name="description" content="<%= content_for(:description) %>" />
+  <% else %>
+    <meta name="description" content="Habitants, Lieux, Mémoires, la plateforme ouverte de récit collectif de la Rive Droite." />
+  <% end %>
 
   <%= favicon_link_tag       'favicon.ico' %>
   <%= stylesheet_link_tag    "application", media: "all" %>

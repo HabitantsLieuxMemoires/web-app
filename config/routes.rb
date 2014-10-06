@@ -8,6 +8,8 @@ Hlm::Application.routes.draw do
   get "login",        to: "sessions#new",      as: "login"
   get "signup",       to: "users#new",         as: "signup"
   get "profile",      to: "users#show",        as: "profile"
+  get "contact",      to: "contact#new"
+  post "contact",     to: "contact#create"
 
   get "search",       to: "search#index",      as: "search"
 

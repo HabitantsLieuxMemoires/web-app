@@ -1,3 +1,9 @@
+<% content_for :title do %>
+  <%= article.title %>
+<% end %>
+<%= content_for :description do %>
+  <%= article.body(350) %>
+<% end %>
 <% content_for :sidebar do %>
   <%= render 'articles/sidebars/show', article: article %>
 <% end %>
