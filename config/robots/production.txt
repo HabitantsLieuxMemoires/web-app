@@ -1,2 +1,3 @@
-User-Agent: *    
-Disallow: 
+User-Agent: *
+Sitemap: http://www.habitantslieuxmemoires.fr/sitemap.xml.gz
+Disallow:
