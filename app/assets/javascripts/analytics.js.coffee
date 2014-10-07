@@ -30,6 +30,13 @@ class @GoogleAnalytics
         window._gaq.push ["_trackPageview"]
       window._gaq.push ["_trackPageLoadTime"]
 
+  @trackEvent: (category, action, label) ->
+    unless GoogleAnalytics.isLocalRequest()
+      if label?
+        window._gaq.push ["_trackEvent", category, action, label]
+      else
+        window._gaq.push ["_trackEvent", category, action]
+
   @isLocalRequest: ->
     GoogleAnalytics.documentDomainIncludes "local"
 

@@ -7,4 +7,6 @@ SitemapGenerator::Sitemap.create do
   add '/contact'
   add '/search'
   add '/pages/about'
+  add '/login'
+  add '/signup'
 end

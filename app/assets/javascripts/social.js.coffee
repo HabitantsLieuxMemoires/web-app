@@ -76,7 +76,7 @@ window.socialControllers =
             dataType: 'json',
             success: (data, textStatus, jqXHR) ->
               debug "Share counter incremented to " + data
-
+              GoogleAnalytics.trackEvent 'Contenus populaires', 'Votes', articleURL
       else
         debug "Share cancelled for "+service
 
