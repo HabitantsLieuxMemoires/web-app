@@ -25,4 +25,5 @@
 //= require i18n
 //= require i18n/translations
 //= require_directory
+//= require jquery-placeholder
 

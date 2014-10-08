@@ -87,6 +87,10 @@
       cursor:pointer;
     }
   }
+  .ie9 &, .ie8 & {
+    position:relative;
+    z-index:0;
+  }
 }
 
 /** Header - Image slideshow */
@@ -373,7 +377,7 @@ footer.footer-legals {
   z-index:1;
 
   .ie9 &, .ie8 & {
-    top:-170px;
+    top:-200px;
   }
 }
 .searchbox {
@@ -1324,5 +1328,21 @@ form {
   .logos-gironde, .logos-bassens, .logos-gpv, .logos-cenon, .logos-floirac,.logos-lacub, .logos-lormont, .logos-ue
   {
     margin: 0px 0 15px 10px;
+  }
+}
+
+@media (max-width: 767px)
+{
+  #main-featured, #main-popular, #article-container, #comments-list, #search-page, #theme-browser, #chronology-browser, #tag-browser, #user-profile 
+  {
+    .title
+    {
+      height:auto;
+    }
+  }
+
+  .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]
+  {
+    margin-left:auto;
   }
 }
