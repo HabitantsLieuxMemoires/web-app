@@ -35,6 +35,7 @@ gem 'leaflet-rails',                "~> 0.7.3"
 gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
 gem 'ionicons-rails',               "~> 1.4.1.0"
+gem 'jquery-placeholder-rails',     "~> 2.0.7"
 
 # Mongoid gems
 gem 'mongoid',                      "~> 4.0.0"
