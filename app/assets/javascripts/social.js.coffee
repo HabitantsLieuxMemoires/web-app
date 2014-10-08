@@ -9,8 +9,11 @@ window.socialControllers =
       $.getScript '//connect.facebook.net/fr_FR/all.js', ->
         FB.init socialControllers.facebook.settings
       ## Bind click on FB share button
-      $('.shareFacebook').click ->
-        socialControllers.facebook.shareAction $(this)
+      $('.shareFacebook').click (e)-> 
+        e.stopPropagation()
+        e.preventDefault()
+        elt = $(@)
+        socialControllers.facebook.shareAction(elt)
         return false
       debug "social::FB Initialized"
     shareAction: (elt) ->
