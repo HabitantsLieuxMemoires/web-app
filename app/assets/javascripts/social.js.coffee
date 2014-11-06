@@ -2,23 +2,28 @@ window.socialControllers =
   initialized:false,
   facebook:
     settings:
-      appId: '1398812933674558' ## 654760637922290 = HLM Devel
+      appId: '1398812933674558' # Production
+      # appId: '1400887326800452' # Testing
     init: ->
       ## Load SDK
       $.getScript '//connect.facebook.net/fr_FR/all.js', ->
         FB.init socialControllers.facebook.settings
       ## Bind click on FB share button
-      $('.shareFacebook').click ->
-        socialControllers.facebook.shareAction $(this)
+      $('.shareFacebook').click (e)-> 
+        e.stopPropagation()
+        e.preventDefault()
+        elt = $(@)
+        socialControllers.facebook.shareAction(elt)
         return false
       debug "social::FB Initialized"
     shareAction: (elt) ->
       obj=
         method: 'feed'
         link: elt.data "url"
-        picture: elt.data "image"
         name: elt.data "title"
+        caption: elt.data "title"
         description: elt.data "text"
+        picture: elt.data "image"
       FB.ui obj, (response)->
         socialControllers.shareCallback "facebook",response
 
@@ -74,7 +79,7 @@ window.socialControllers =
             dataType: 'json',
             success: (data, textStatus, jqXHR) ->
               debug "Share counter incremented to " + data
-
+              GoogleAnalytics.trackEvent 'Contenus populaires', 'Votes', articleURL
       else
         debug "Share cancelled for "+service
 

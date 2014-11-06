@@ -4,3 +4,13 @@ fr:
     about:     "A Propos"
     contact:   "Contact"
     profile:   "Mon profil"
+  contact:
+    title:     "Formulaire de contact"
+    welcome:   "Pour prendre contact avec l'équipe d'Habitants, Lieux, Mémoires, nous mettons à votre disposition un formulaire personnalisé."
+    do:
+      send:    "Envoyer le message"
+    model:
+      name:    "Nom"
+      email:   "Mail"
+      subject: "Sujet"
+      body:    "Message"

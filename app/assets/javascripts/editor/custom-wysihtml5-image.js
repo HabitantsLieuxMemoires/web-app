@@ -2,7 +2,7 @@ wysiImageHelpers = {
   getImageTemplate: function() {
     /* this is what goes in the wysiwyg content after the image has been chosen */
     var tmpl;
-    var imgEntry = "<img src='<%= url %>' alt='<%= caption %>' >";
+    var imgEntry = "<img src='<%= url %>' alt='<%= caption %>' class='img-responsive' >";
     tmpl = _.template("<div class='wysiwyg-image'>" +
                       imgEntry +
                       "</div>");

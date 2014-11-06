@@ -104,7 +104,8 @@ class ArticleDecorator < ApplicationDecorator
           currentLevelLabel = " %s. " % [parentLevel]
           parentLevel = parentLevel + 1
         end
-        link = '%s <a href="%s" data-level="%s">%s</a>' % [currentLevelLabel, head, head.name[1], head.text]
+        head_link = object.slug << '#' << head
+        link = '%s <a href="%s" data-level="%s">%s</a>' % [currentLevelLabel, head_link, head.name[1], head.text]
         h.content_tag(:li, raw(link), class: className)
       end.join.html_safe
     end unless heads.empty?

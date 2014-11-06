@@ -22,6 +22,18 @@
   tags:
     - common_install
 
+- name: create locale
+  locale_gen: name={{ app_locale }} state=present
+  tags:
+    - common_install
+    - common_install_locale
+
+- name: set default locale
+  command: "/usr/sbin/update-locale LANG={{ app_locale }}"
+  tags:
+    - common_install
+    - common_install_locale
+
 - name: common | create admin group
   group: name=admin state=present
   tags:
