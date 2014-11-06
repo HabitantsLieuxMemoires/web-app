@@ -1,0 +1,26 @@
+<%= bootstrap_form_for @message, url: {action: "create"} do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title"><%= t('contact.title') %></p>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-info">
+        <%= t('contact.welcome') %>
+      </div>
+
+      <%= f.text_field :name,     label: t('contact.model.name') %>
+      <%= f.email_field :email,   label: t('contact.model.email') %>
+      <%= f.text_field :subject,  label: t('contact.model.subject') %>
+      <%= f.text_area  :body,     label: t('contact.model.body') %>
+
+      <hr/>
+
+      <%= f.text_field :humanizer_answer, label: @message.humanizer_question %>
+      <%= f.hidden_field :humanizer_question_id %>
+
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-right"><%= f.submit t('contact.do.send'), class: "btn btn-primary" %></div>
+    </div>
+  </div>
+<% end %>

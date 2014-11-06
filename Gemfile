@@ -35,6 +35,7 @@ gem 'leaflet-rails',                "~> 0.7.3"
 gem 'leaflet-markercluster-rails',  "~> 0.7.0"
 gem 'modernizr-rails',              "~> 2.7.1"
 gem 'ionicons-rails',               "~> 1.4.1.0"
+gem 'jquery-placeholder-rails',     "~> 2.0.7"
 
 # Mongoid gems
 gem 'mongoid',                      "~> 4.0.0"
@@ -66,6 +67,8 @@ gem 'mini_magick',                  "~> 3.7.0"    # Images manipulation
 gem 'high_voltage',                 "~> 2.2.0"    # Static page serving
 gem 'i18n-js',                      github: "fnando/i18n-js", tag: "v3.0.0.rc6"    # JS i18n
 gem 'roboto',                       "~> 0.2.0"    # robots.txt management
+gem 'humanizer',                    "~> 2.6.0"    # Captcha generation
+gem 'sitemap_generator',            "~> 5.0.5"    # Sitemap generation
 
 group :development do
   # Deployment

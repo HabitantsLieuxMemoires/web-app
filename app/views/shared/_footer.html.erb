@@ -18,10 +18,8 @@
   <div class="container">
     <div class="col-sm-12">
         <div class="pull-right">
-          <a href="#" title="Mentions légales">Mentions légales</a> /
-          <a href="#" title="Charte">Charte</a> /
-          <a href="#" title="Plan du site">Plan du site</a> /
-          <a href="#" title="Contacts">Contacts</a>
+          <%= link_to "Mentions légales et CGU", page_path('cgu'), :title => "Mentions légales et CGU" %> /
+          <%= link_to "Contacts", contact_path, :title => "Contactd" %>
           <a href="https://twitter.com/rivedroitebx" title="Twitter RiveDroiteBx"><img src="<%= asset_path 'twitter.png' %>"></a>
           <a href="https://www.facebook.com/jaime.larivedroite" title="Facebook JaimeLaRiveDroite"><img src="<%= asset_path 'facebook.png' %>"></a>
         </div>

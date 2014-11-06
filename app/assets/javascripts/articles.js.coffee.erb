@@ -55,12 +55,16 @@ window['articles#show'] = (data) ->
   UI.initTabs()
   UI.infineComments()
   UI.initMobileUI()
+  UI.sanitizeEditor()
 
   $('#modal-create-comment').on 'loaded.bs.modal', ->
     Form.initAddCommentForm()
 
   $('#modal-report-article').on 'loaded.bs.modal', ->
     Form.initCreateReportForm()
+
+  # Refreshing map
+  mapController.refresh()
 
 UI =
   initEditor: (@editor) ->
@@ -93,6 +97,15 @@ UI =
                 "height": "numbers"
                 "id": "alt"
                 "class": "alt"
+              }
+            }
+            "a": {
+              "check_attributes": {
+                "href": "src"
+              },
+              "set_attributes": {
+                "rel": "nofollow"
+                "target": "_blank"
               }
             }
           }
@@ -190,6 +203,26 @@ UI =
     # Load existing markers
     mapController.enableMarkersEdition()
 
+    # Refreshing
+    mapController.refresh()
+
+  sanitizeEditor: ->
+    isElementEmpty = (element) ->
+      return element.is(':empty')
+
+    clearNoContent = (element) ->
+      element.contents()
+        .filter -> return this.nodeType == 3
+        .end()
+        .filter("br")
+        .remove()
+
+    $('.article-body > h4,h5,h6').each ->
+      clearNoContent($(this))
+
+      if isElementEmpty($(this))
+        $(this).hide()
+
 Form =
   initCreateForm: ->
     $('#new_article').bootstrapValidator
@@ -207,6 +240,10 @@ Form =
               min: 4
               message: I18n.t("errors.messages.too_short.other", {count: "4"})
 
+    $('#new_article').on 'submit': (event) ->
+      debug 'Article created'
+      GoogleAnalytics.trackEvent 'Contributeurs', window.current_user_nickname
+
   initEditForm: ->
     $('.edit_article').bootstrapValidator
       fields:
@@ -217,6 +254,11 @@ Form =
             stringLength:
               min: 4
               message: I18n.t("errors.messages.too_short.other", {count: "4"})
+
+    $('.edit_article').on 'submit': (event) ->
+      debug 'Article edited'
+      GoogleAnalytics.trackEvent 'Contributeurs', window.current_user_nickname
+      GoogleAnalytics.trackEvent 'Contenus populaires', 'Modifications', window.location.href
 
   initAddImageForm: ->
     $('#new_image').bootstrapValidator
@@ -239,6 +281,8 @@ Form =
               message: I18n.t("errors.messages.invalid")
       submitHandler: (validator, form, submitButton) ->
         debug 'Image added'
+        GoogleAnalytics.trackEvent 'Contributeurs', user
+        GoogleAnalytics.trackEvent 'Contenus populaires', 'Modifications', window.location.href
 
   initAddVideoForm: ->
     $("#new_video").bootstrapValidator
@@ -268,6 +312,8 @@ Form =
               message: I18n.t("errors.messages.invalid_video_provider")
       submitHandler: (validator, form, submitButton) ->
         debug 'Video added'
+        GoogleAnalytics.trackEvent 'Contributeurs', user
+        GoogleAnalytics.trackEvent 'Contenus populaires', 'Modifications', window.location.href
 
   initAddCommentForm: ->
     $('#new_comment').bootstrapValidator
@@ -282,6 +328,7 @@ Form =
               message: I18n.t("errors.messages.too_short.other", {count: "4"})
       submitHandler: (validator, form, submitButton) ->
         debug 'Comment added'
+        GoogleAnalytics.trackEvent 'Contenus populaires', 'Commentaires', window.location.href
 
   initCreateReportForm: ->
     $('#new_report').bootstrapValidator

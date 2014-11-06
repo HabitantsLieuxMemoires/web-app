@@ -22,8 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook        = "provisioning/playbook.yml"
-    ansible.skip_tags       = "common_user"
+    ansible.playbook        = "provisioning/site.yml"
+    ansible.skip_tags       = ["common_user", "front"]
     ansible.extra_vars      = {
       app_user: 'vagrant',
       app_user_home: '/home/vagrant'

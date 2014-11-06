@@ -92,8 +92,8 @@ Hlm::Application.configure do
       :email_prefix => "[#{Rails.env.to_s.upcase}] ",
       :sender_address => %Q{"HabitantsLieuxMemoires errors" <support@habitantslieuxmemoires.fr>},
       :exception_recipients => %w(alarm@innovantic.fr),
-      :sections => %w(version request environment backtrace),
-      :background_sections => %w(version backtrace data),
+      :sections => %w(request environment backtrace),
+      :background_sections => %w(backtrace data),
       :email_format => :html
     }
 end

@@ -64,7 +64,6 @@ class ArticlesController < ApplicationController
       fields: [{title: :word_start}],
       misspellings: {distance: 2},
       operator: "or",
-      boost: "share_count",
       where: ({
         theme: ([params[:themes]] unless params[:themes].empty?),
         tags:  ([params[:tags]] unless params[:tags].empty?)

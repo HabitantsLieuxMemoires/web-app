@@ -12,8 +12,6 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
     ActionController::Base.helpers.asset_path("article/default.png")
   end
 
-  process :resize_to_fit => [800, 800]
-
   version :thumb, :from_version => :medium do
     process resize_to_fit: [150, 150]
   end
@@ -23,7 +21,7 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process resize_to_fit: [450, 450]
+    process resize_to_fit: [800, 800]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

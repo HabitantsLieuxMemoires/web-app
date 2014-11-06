@@ -5,13 +5,10 @@ bootWysiLinkOverrides = {
     var urlInput = insertLinkModal.find('.insert-link-url');
 
     var insertLink = function(linkData) {
-      console.log(linkData);
       if(linkData) {
         self.editor.currentView.element.focus();
         self.editor.composer.commands.exec("createLink", {
-            'href' : linkData.full_url,
-            'target' : '_self',
-            'rel' : ''
+            'href' : linkData.full_url
         });
 
         insertLinkModal.modal('hide');
