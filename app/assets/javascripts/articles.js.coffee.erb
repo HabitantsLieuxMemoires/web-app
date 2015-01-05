@@ -72,6 +72,7 @@ UI =
         customTemplates: wysiwygTemplates
         useLineBreaks: false
         html: true
+        table: true
         stylesheets: ["<%= asset_path('editor.css') %>"]
         locale: 'fr-FR'
         parserRules: {
@@ -107,6 +108,46 @@ UI =
                 "rel": "nofollow"
                 "target": "_blank"
               }
+            },
+            "iframe": { },
+            "table": {},
+            "tr": {
+                "add_class": {
+                    "align": "align_text"
+                }
+            },
+            "tbody": {
+                "add_class": {
+                    "align": "align_text"
+                }
+            },
+            "td": {
+                "check_attributes": {
+                    "rowspan": "numbers",
+                    "colspan": "numbers"
+                },
+                "add_class": {
+                    "align": "align_text"
+                }
+            },
+            "tfoot": {
+                "add_class": {
+                    "align": "align_text"
+                }
+            },
+            "thead": {
+                "add_class": {
+                    "align": "align_text"
+                }
+            },
+            "th": {
+                "check_attributes": {
+                    "rowspan": "numbers",
+                    "colspan": "numbers"
+                },
+                "add_class": {
+                    "align": "align_text"
+                }
             }
           }
         }
