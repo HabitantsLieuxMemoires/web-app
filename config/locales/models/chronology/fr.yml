@@ -1,0 +1,11 @@
+fr:
+  mongoid:
+    models:
+      chronology:     "Chronologie"
+    attributes:
+      chronology:
+        title:        "Titre"
+    errors:
+      models:
+        chronology:
+          attributes:
