@@ -880,8 +880,10 @@ fieldset[disabled] .btn-article-create.active {
   }
 }
 #summary {
-  width:300px;
+  max-width:818px;
   margin-bottom: 40px;
+  float: left;
+  clear: left;
 
   h4 {
     color:#bebebe;

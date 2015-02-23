@@ -1,0 +1,12 @@
+fr:
+  admin:
+    chronologies:
+      title:            "Gestion des chronologies"
+      title_extended:   "Ajouter des chronologies disponibles lors de l'édition d'un contenu"
+      content:          "Ajout de chronologie"
+
+      saved:            "Chronologie créée succès"
+      save_error:       "Une erreur est survenue pendant la création de la chronologie"
+
+      do:
+        add:            "Ajouter une chronologie"
