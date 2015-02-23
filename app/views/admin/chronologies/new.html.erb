@@ -1,0 +1,16 @@
+<%= render 'header' %>
+
+<%= bootstrap_form_for Chronology.new, url: {action: "create"} do |f| %>
+  <div class="box">
+    <div class="box-header">
+      <%= fa_icon "edit" %>
+      <h3 class="box-title"><%= t('admin.chronologies.content') %></h3>
+    </div>
+    <div class="box-body">
+      <%= f.text_field :title, label: Chronology.human_attribute_name(:title) %>
+    </div>
+    <div class="box-footer">
+      <%= f.primary t('admin.chronologies.do.add') %>
+    </div>
+  </div>
+<% end %>

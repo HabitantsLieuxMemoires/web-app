@@ -49,6 +49,12 @@
       <% end %>
     </li>
     <li>
+      <%= link_to new_admin_chronologies_path do %>
+        <i class="fa fa-history"></i>
+        <span><%= t('nav.admin.chronologies') %></span>
+      <% end %>
+    </li>
+    <li>
       <a href="#">
         <i class="fa fa-exchange"></i>
         <span><%= t('nav.admin.import_export') %></span>
