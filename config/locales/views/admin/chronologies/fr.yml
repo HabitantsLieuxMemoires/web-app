@@ -3,8 +3,10 @@ fr:
     chronologies:
       title:            "Gestion des chronologies"
       title_extended:   "Ajouter des chronologies disponibles lors de l'édition d'un contenu"
+      list:             "Liste des chronologies"
       content:          "Ajout de chronologie"
 
+      create:           "Ajouter une chronologie"
       saved:            "Chronologie créée succès"
       save_error:       "Une erreur est survenue pendant la création de la chronologie"
 

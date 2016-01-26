@@ -91,7 +91,7 @@ Hlm::Application.routes.draw do
 
     resources :features,      only: [:index, :new, :create, :edit, :update]
     resources :tracks,        only: [:show]
-    resource  :chronologies,  only: [:new, :create]
+    resources  :chronologies,  only: [:index, :new, :create]
   end
 
   # Development only routes
