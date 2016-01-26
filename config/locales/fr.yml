@@ -5,7 +5,10 @@ fr:
       validations:
         message: There was validation errors on %{document}
         summary: "Errors:\n    %{errors}"
-        resolution: Check the instances for this model looking for missing fields or wrong values.  
+        resolution: Check the instances for this model looking for missing fields or wrong values.
+        wrong_size: "a une mauvaise taille (devrait être %{file_size})"
+        size_too_small: "est trop petite (au minimum %{file_size})"
+        size_too_big: "est trop grande (au maximum %{file_size})"
   activemodel:
     errors:
       <<: *errors
