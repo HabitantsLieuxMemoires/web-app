@@ -4,14 +4,14 @@ development:
     default:
       database: hlm_development
       hosts:
-        - localhost:27017
+        - db:27017
 
 test:
   sessions:
     default:
       database: hlm_test
       hosts:
-        - localhost:27017
+        - db:27017
       options:
         read: primary
         # In the test environment we lower the retries and retry interval to
