@@ -10,7 +10,7 @@
 
       <%= f.text_field  :title %>
       <%= f.collection_select :theme_id, Theme.all, :id, :title %>
-      <%= f.collection_select :chronology_id, Chronology.all, :id, :title %>
+      <%= f.collection_select :chronology_id, Chronology.by_creation_date, :id, :title %>
       <%= f.text_field :tags %>
       <%= f.form_group do %>
         <%= f.check_box  :public, inline: true %>

@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Image
   include Mongoid::Document
   include Mongoid::Paranoia
@@ -14,6 +16,10 @@ class Image
   embedded_in :article
 
   validates :title, presence: true, length: { in: 4..80 }
-  validates :article_image, presence: true
+  validates :article_image,
+    :presence => true,
+    :file_size => {
+      :maximum => 2.megabytes.to_i
+    }
 
 end
