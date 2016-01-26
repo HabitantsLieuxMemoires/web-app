@@ -1,7 +1,7 @@
 set :stage, :staging
 set :rails_env, :production
 
-set :version, '1.1.0'
+set :version, '1.2.0'
 set :branch, "release/#{fetch(:version)}"
 
 set :linked_files, %w{.env.staging}
