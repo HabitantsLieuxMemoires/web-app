@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:identity], params[:password], params[:remember_me])
     if user
-      redirect_to root_url
+      redirect_back_or_to root_url
     else
       flash[:error] = t('auth.invalid_credentials')
       render :new, layout: 'empty'
