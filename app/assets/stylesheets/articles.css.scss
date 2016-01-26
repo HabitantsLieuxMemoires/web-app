@@ -80,6 +80,21 @@
   }
 }
 
+#modal-change-avatar,
+#modal-select-image,
+#modal-add-image {
+	.fileinput {
+		.fileinput-filename {
+			width: calc( 100% - 20px );
+			height: 20px;
+		}
+	}
+	.maximum-size {
+		float: right;
+		font-size: 85%;
+	}
+}
+
 @media (max-width: 767px) {
 	#article-actionbar
 	{
